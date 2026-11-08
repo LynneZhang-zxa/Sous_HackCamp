@@ -1,0 +1,1820 @@
+OpenAI Codex v0.166.0
+--------
+workdir: C:\Users\L\Desktop\sous\Sous_HackCamp
+model: gpt-6.1-sol
+provider: openai
+approval: never
+sandbox: workspace-write [workdir, /tmp, $TMPDIR]
+reasoning effort: none
+reasoning summaries: none
+session id: 01a1ba76-1c48-7033-9108-22b6b928099f
+--------
+user
+You are modifying the existing SOUS Next.js repository. Read FOUNDATION-REPORT.md and inspect actual source before editing. Work on the assigned stage fully, rather than stopping after planning. Do not commit, push, pull, fetch, reset, rebase, merge, create or switch branches, or modify Git configuration. Do not modify secrets, .env files, remote Alebex configuration, or run paid provider calls. Do not delete unrelated files. Do not introduce authentication or new databases. MANDATORY: attempt every assigned task even when another task or verification fails. Never defer recipe expansion because build, browser, or Alebex access is blocked. On a blocker, record exact evidence, finish all independent subtasks, and continue. A failed check is not permission to skip subsequent stages. Do not fake test success. You may fix package/config issues using existing dependencies; do not upgrade packages or install new ones without an established necessity. Record remaining blockers clearly.
+Fix current Next.js 16.4.5 build failures with minimal scoped changes. Diagnose Turbopack @tailwindcss/postcss resolution and Webpack App Router page type/export errors (MicIcon, recipes optional props). Run npm test, npx tsc --noEmit, npm run build and report actual results. Do not alter unrelated features.
+
+
+codex
+I’ll read the foundation report and inspect the affected source, make scoped fixes, then run all three checks and report their actual results.
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "Get-Content FOUNDATION-REPORT.md; Get-ChildItem -Name; rg --files -g AGENTS.md -g package.json -g '*config*' -g '*page*' -g '*MicIcon*'" in C:\Users\L\Desktop\sous\Sous_HackCamp
+ succeeded in 340ms:
+# SOUS foundation development report
+
+## Status
+
+The foundation quality gate is **not yet met**: full tests, browser verification and the completed production build are blocked by process restrictions. No paid calls, secrets changes, Git mutations, new dependencies, authentication, databases, or Stage B accessibility features were introduced.
+
+| Stage | Status | Result |
+| --- | --- | --- |
+| Recipe stabilization | Partially completed | Existing centralized listing, detailed routes and invalid-ID handling preserved; saving and loading UI added. All 20 recipe records resolve in offline checks; HTTP routes remain unverified. |
+| Navigation restructuring | Implemented, browser verification pending | Home, Tools and Collection; native keyboard-operable Tools disclosure; search and honest Settings disclosure. |
+| Homepage cleanup / collection | Implemented, browser verification pending | Removed standalone tools, large voice card, My Recipes and Quick Actions. Balanced nutrition and recommendation; nutrition explicitly demo data. Dedicated collection page. |
+| Library expansion | Deferred | 20 recipes, zero added. Existing IDs unchanged and unique. Foundation correctness takes priority over 50 recipes. |
+| Search / filters | Implemented, partial verification | Shared case-insensitive title, cuisine, ingredient and tag search; combined cuisine/tag/time filters; deterministic alphabetical/time sorting; reset and empty state. URL-backed GET forms. |
+| Saved Recipes | Implemented, partial verification | Local browser storage; save/remove on listing/detail/collection; same-tab and cross-tab update events; invalid IDs and corrupt JSON discarded; storage failures shown. Reload and browser UI behavior unverified. Uploaded and Recently Cooked honestly coming soon. |
+| Universal voice | Partially completed | Existing selection flow preserved. Invalid JSON and non-string IDs rejected before provider contact. Non-chicken calls now receive their own complete recipe as knowledge base, avoiding the chicken-specific knowledge base. Existing chicken path and audio/WebSocket handling preserved. |
+| Final regression | Blocked in part | Direct TypeScript and offline checks pass; full test runner/build worker/dev server cannot spawn. |
+
+## Actual verification
+
+- `npx tsc --noEmit`: PASS after implementation.
+- `node scripts/foundation-check.cjs`: PASS. Checks all 20 unique recipe records, lookup, assets, search fields, combined filters, empty result, time sorting, saved-data serialization/deduplication/removal/malformed values, recipe-specific call payloads and context length. Pure logic only; no provider calls and no browser storage API coverage. Uses Node 24 experimental type stripping to load local TypeScript without spawning tools.
+- `git diff --check`: PASS.
+- `npm test`: BLOCKED before test execution, both baseline and final attempt. Vite config loading hits Windows `spawn EPERM`. No Vitest tests can be claimed as passed or assertion-failed. New discovery/persistence and malformed call-start tests added; existing page tests updated for async search and new navigation.
+- `npm run build`: FAILED to complete. Production compilation succeeded; TypeScript worker spawn failed with `EPERM`. This is not a successful production build.
+- `npm run dev -- --hostname 127.0.0.1`: BLOCKED by `spawn EPERM`; browser and HTTP checks were not performed.
+- Alebex prompting guide retrieval: unavailable through web tool, then DNS resolution failed via PowerShell. No agent prompt edits made.
+
+## Limitations and known follow-up work
+
+- Full detail-page render tests and runtime 404s still require the normal test runner and local server. All 20 records resolve, but that is not verification of all HTTP routes.
+- Saved UI persistence, multi-tab synchronization, keyboard interaction and mobile layout need browser checks. Storage is per browser, without cross-device sync.
+- Existing agent prompt and chicken knowledge base contain chicken-specific advice, visual doneness language and recipe-specific allergen assertions. They were not rewritten because the required prompting guide could not be read. These need review before claiming universally safe live guidance. Non-chicken knowledge payloads are now recipe-specific, but that does not verify deployed agent behavior.
+- Existing chicken context keeps the prior context format; tips/safety are present in the full non-chicken recipe knowledge payload. No remote agent configuration was changed.
+- Live Alebex audio, interruption/mark handling, tools, recipe-specific conversation, substitutions and step synchronization remain unverified. No real paid calls were made.
+- Nutrition overview is a clearly marked demo; recommendation is a fixed editorial pick, not personalization. Existing estimated recipe nutrition remains labeled with provenance.
+- Library remains 20 recipes by deliberate foundation-first prioritization while verification is blocked.
+
+## Files changed in this task
+
+Modified:
+- app/page.tsx
+- app/globals.css
+- app/recipes/page.tsx
+- app/recipes/[id]/page.tsx
+- app/api/call/start/route.ts
+- components/Nav.tsx
+- lib/recipe.ts (decimal amount formatting correction)
+- lib/agent-config.ts (knowledge base selection only)
+- lib/recipe-pages.test.ts
+- lib/call-start-recipe.test.ts
+
+Created:
+- app/tools/page.tsx
+- app/collection/my-recipes/page.tsx
+- app/recipes/loading.tsx
+- components/SavedRecipes.tsx
+- lib/recipe-search.ts
+- lib/saved-recipes.ts
+- lib/discovery.test.ts
+- scripts/foundation-check.cjs
+- FOUNDATION-REPORT.md
+
+Pre-existing workspace changes: next-env.d.ts, tsconfig.tsbuildinfo, overnight-task.md. TypeScript/build commands may refresh generated type artifacts; these were not intentionally edited as product changes.
+
+## Preparation for tomorrow
+
+1. In an environment permitting normal tool workers, rerun TypeScript, Vitest and production build; then browser-check all routes, combined search, favorites reload, mobile overflow and keyboard controls.
+2. Retrieve the required prompting guide and review the deployed prompt, safety language and recipe-specific substitution guidance. Perform an explicitly authorized manual live voice smoke test after mock tests pass.
+3. Keep recipe data, cooking session state and voice presentation separate. Use these boundaries to design tomorrow's accessibility features after the foundation gate passes.
+4. Expand the catalog only after stability checks pass, with recipe review rather than filler records.
+.next
+.overnight-runs
+app
+components
+docs
+lib
+node_modules
+public
+scripts
+supabase
+.env.example
+.gitignore
+AGENTS.md
+FOUNDATION-REPORT.md
+next-env.d.ts
+next.config.ts
+overnight-task.md
+package-lock.json
+package.json
+postcss.config.mjs
+README.md
+run-sous-continuous.ps1
+tsconfig.json
+tsconfig.tsbuildinfo
+vitest.config.ts
+vitest.config.ts
+tsconfig.tsbuildinfo
+tsconfig.json
+postcss.config.mjs
+package.json
+next.config.ts
+AGENTS.md
+app\tools\page.tsx
+lib\recipe-pages.test.ts
+lib\agent-config.ts
+lib\agent-config.test.ts
+app\page.tsx
+app\cook\page.tsx
+app\recipes\page.tsx
+app\recipes\[id]\page.tsx
+app\collection\my-recipes\page.tsx
+
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "Get-Content package.json, next.config.ts, postcss.config.mjs, tsconfig.json; Get-Content app/page.tsx, app/recipes/page.tsx; rg 'MicIcon|RecipesPage' app components lib; Get-Content lib/recipe-pages.test.ts; Get-Content AGENTS.md -Tail 15" in C:\Users\L\Desktop\sous\Sous_HackCamp
+ succeeded in 379ms:
+{
+  "name": "sous",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "create-agent": "tsx --env-file=.env.local scripts/create-agent.ts",
+    "seed": "tsx --env-file=.env.local scripts/seed.ts"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.117.3",
+    "next": "16.4.5",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.3",
+    "@types/node": "^26.6.4",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "playwright": "^1.64.0",
+    "tailwindcss": "^4.3.3",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.3"
+  }
+}
+import type { NextConfig } from "next";
+
+const nextConfig: NextConfig = {
+  reactStrictMode: true,
+  experimental: {
+    agentUpgrade: "security",
+  },
+};
+
+export default nextConfig;
+const config = {
+  plugins: {
+    "@tailwindcss/postcss": {},
+  },
+};
+export default config;
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "react-jsx",
+    "incremental": true,
+    "types": [
+      "node"
+    ],
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@/*": [
+        "./*"
+      ]
+    }
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    ".next/dev/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
+"use client";
+
+import Link from "next/link";
+import { RecipeImage } from "@/components/RecipeImage";
+import { Nav } from "@/components/Nav";
+import { Toast, useToast } from "@/components/Toast";
+import { CREAMY_GARLIC_CHICKEN, POPULAR_RECIPES, nutritionLabel } from "@/lib/recipe";
+
+const FEATURED_ORDER = ["bibimbap", "chicken-curry", "creamy-garlic-chicken", "garlic-butter-shrimp", "tomato-beef-stew"];
+const CHIPS = ["All", "Chinese", "Italian", "Japanese", "Korean", "Indian", "Mexican"];
+
+export default function Home() {
+  const toast = useToast();
+  return (
+    <div className="landing-page">
+      <div className="landing-backdrop" aria-hidden="true" />
+      <Nav onSoon={toast.soon} />
+      <main className="landing-main">
+        <section className="landing-hero">
+          <div className="hero-copy">
+            <p className="hero-eyebrow">Your AI cooking companion</p>
+            <h1 className="font-display">Good Food <span>Starts with a Conversation</span></h1>
+            <p className="hero-description">Find recipes, get personalized suggestions, cook hands-free with an AI voice, and keep track of your nutrition, all in one place.</p>
+            <div className="hero-actions">
+              <Link href="/cook" className="hero-primary"><MicIcon className="h-5 w-5" /> Start cooking</Link>
+              <Link href="/recipes" className="hero-secondary">Browse recipes <span aria-hidden>鈫?/span></Link>
+            </div>
+          </div>
+        </section>
+        {/* Popular recipes */}
+        <section id="popular" className="recipe-showcase scroll-mt-24">
+          <div className="recipe-section-heading">
+            <h2 className="font-display text-3xl">Popular recipes</h2>
+            <div className="recipe-filters no-scrollbar flex gap-2 overflow-x-auto">
+              {CHIPS.map((c, i) => (
+                <Link href={i === 0 ? "/recipes" : `/recipes?cuisine=${encodeURIComponent(c)}`} key={c} className={`shrink-0 rounded-full px-3.5 py-1.5 text-sm transition ${i === 0 ? "bg-forest text-white" : "bg-paper text-ink/80 shadow-card hover:text-forest"}`}>
+                  {c}
+                </Link>
+              ))}
+            </div>
+          </div>
+          <div className="recipe-grid">
+            {[...POPULAR_RECIPES].sort((a, b) => FEATURED_ORDER.indexOf(a.id) - FEATURED_ORDER.indexOf(b.id)).map((r) => {
+              const live = r.id === CREAMY_GARLIC_CHICKEN.id;
+              const inner = (
+                <>
+                  <div className="relative">
+                    <RecipeImage src={r.image} title={r.title} className="block aspect-[1.85/1] w-full object-cover" loading="lazy" />
+                    {live ? (
+                      <span className="absolute left-3 top-3 rounded-full bg-coral px-2.5 py-1 text-xs font-semibold text-white">Cook by voice</span>
+                    ) : (
+                      <span className="absolute left-3 top-3 rounded-full bg-paper/90 px-2.5 py-1 text-xs font-medium text-muted">View recipe</span>
+                    )}
+                  </div>
+                  <div className="recipe-caption">
+                    <h3 className="font-semibold leading-snug">{r.title}</h3>
+                    <p className="mt-1.5 text-xs text-muted">
+                      {r.totalMinutes} min 路 {nutritionLabel(r)}
+                    </p>
+                    <p className="mt-2 inline-block rounded-full bg-cream px-2 py-0.5 text-xs text-ink/70">{r.cuisine}</p>
+                  </div>
+                </>
+              );
+              const cls = "group block overflow-hidden rounded-3xl bg-paper text-left shadow-card ring-1 ring-line/60 transition hover:-translate-y-0.5 hover:shadow-float";
+              return (
+                <Link key={r.id} href={`/recipes/${r.id}`} className={cls}>
+                  {inner}
+                </Link>
+              );
+            })}
+          </div>
+        </section>
+
+        <form className="landing-voice-search" action="/recipes">
+          <span className="voice-wave" aria-hidden>{[12,22,32,42,28,18].map((h,i)=><i key={i} style={{height:h}} />)}</span>
+          <input name="q" aria-label="Search recipes" placeholder="Search for a recipe, e.g. tomato beef stew, chicken curry鈥? />
+          <Link href="/cook" aria-label="Start cooking with voice" className="voice-search-mic"><MicIcon className="h-6 w-6" /></Link>
+          <button type="submit" className="sr-only">Search</button>
+        </form>
+        <div className="hero-notes"><span>Hey Chef, what&apos;s next?</span><span>Good food, brighter days</span></div>
+        {/* Dashboard row */}
+        <section className="mt-14 grid gap-4 lg:grid-cols-2">
+          <div id="nutrition" className="scroll-mt-24 rounded-3xl bg-paper p-6 shadow-card ring-1 ring-line/60">
+            <div className="flex items-center justify-between">
+              <h2 className="font-display text-2xl">Nutrition dashboard</h2>
+              <button onClick={toast.soon} className="shrink-0 whitespace-nowrap text-sm font-medium text-forest">
+                Edit goal 鈫?
+              </button>
+            </div>
+            <p className="mt-3 text-sm text-muted">Demo overview: these meals are sample data, not your activity.</p>
+            <div className="mt-5 flex flex-wrap items-center gap-6">
+              <Ring value={1250} max={2000} />
+              <ul className="space-y-3 text-sm">
+                <li>
+                  <span className="block text-muted">Consumed</span>
+                  <span className="font-semibold">1,250 kcal</span>
+                </li>
+                <li>
+                  <span className="block text-muted">Remaining</span>
+                  <span className="font-semibold">750 kcal</span>
+                </li>
+                <li>
+                  <span className="block text-muted">Daily goal</span>
+                  <span className="font-semibold">2,000 kcal</span>
+                </li>
+              </ul>
+            </div>
+            <h3 className="mt-6 text-sm font-semibold">Today&apos;s meals</h3>
+            <ul className="mt-2 divide-y divide-line text-sm">
+              {[
+                ["Breakfast", "Oatmeal with banana", 320, "馃ィ"],
+                ["Lunch", "Chicken salad", 520, "馃"],
+                ["Dinner (planned)", "Creamy garlic chicken", 610, "馃崡"],
+              ].map(([meal, dish, kcal, emoji]) => (
+                <li key={meal as string} className="flex items-center gap-3 py-2.5">
+                  <span className="text-xl">{emoji}</span>
+                  <span className="flex-1">
+                    <span className="block font-medium">{meal}</span>
+                    <span className="block text-xs text-muted">{dish}</span>
+                  </span>
+                  <span className="text-xs text-muted">{kcal} kcal</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="rounded-3xl bg-butter-tint p-6 shadow-card">
+            <h2 className="font-display text-2xl">Today&apos;s recommendation</h2>
+            <p className="mt-4 text-ink/75">Try a favorite from the SOUS kitchen.</p>
+            <Link href="/recipes/bibimbap" className="mt-6 block font-semibold text-forest">Bibimbap</Link>
+            <p className="mt-3 text-sm text-muted">Explore ingredients and instructions before you cook.</p>
+          </div>
+        </section>
+
+        <footer className="mt-16 flex flex-wrap items-center justify-between gap-2 border-t border-line pt-6 text-xs text-muted">
+          <span>Sous 路 hands-free cooking, powered by ALEBEX voice</span>
+          <span>Built for the hackathon</span>
+        </footer>
+      </main>
+      <Toast msg={toast.msg} />
+    </div>
+  );
+}
+
+function Ring({ value, max }: { value: number; max: number }) {
+  const r = 52;
+  const c = 2 * Math.PI * r;
+  const pct = Math.min(1, value / max);
+  return (
+    <svg viewBox="0 0 128 128" className="h-32 w-32 shrink-0" role="img" aria-label={`${value} of ${max} calories`}>
+      <circle cx="64" cy="64" r={r} fill="none" stroke="#e9e4d8" strokeWidth="12" />
+      <circle cx="64" cy="64" r={r} fill="none" stroke="#6b8f5e" strokeWidth="12" strokeLinecap="round" strokeDasharray={c} strokeDashoffset={c * (1 - pct)} transform="rotate(-90 64 64)" />
+      <text x="64" y="60" textAnchor="middle" className="fill-ink font-display" fontSize="22">
+        {value.toLocaleString()}
+      </text>
+      <text x="64" y="80" textAnchor="middle" className="fill-muted" fontSize="11">
+        / {max.toLocaleString()} kcal
+      </text>
+    </svg>
+  );
+}
+
+export function MicIcon({ className = "" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+      <rect x="9" y="3" width="6" height="11" rx="3" />
+      <path d="M5 11a7 7 0 0 0 14 0M12 18v3M9 21h6" />
+    </svg>
+  );
+}
+import { searchRecipes } from "@/lib/recipe-search";
+import { SaveRecipe } from "@/components/SavedRecipes";
+import Link from "next/link";
+import { Nav } from "@/components/Nav";
+import { RecipeImage } from "@/components/RecipeImage";
+import { listRecipes, nutritionLabel } from "@/lib/recipe";
+
+export const metadata = { title: "All recipes 路 Sous" };
+
+export default async function RecipesPage({ searchParams }: { searchParams?: Promise<Record<string,string | string[] | undefined>> } = {}) {
+  const raw = await searchParams ?? {};
+  const query = Object.fromEntries(Object.entries(raw).filter((entry): entry is [string,string] => typeof entry[1] === "string"));
+  const all = listRecipes();
+  const recipes = searchRecipes(all, query);
+  return <>
+    <Nav browsing />
+    <main id="main-content" className="mx-auto max-w-6xl px-4 py-10 pb-20 sm:px-6">
+      <Link href="/" className="text-sm font-semibold text-forest">鈫?Home</Link>
+      <h1 className="mt-5 font-display text-5xl">All recipes</h1>
+      <p className="mt-4 text-ink/75">Find your next meal. Explore {recipes.length} recipes and cook at your own pace.</p>
+      <form action="/recipes" id="recipe-search" className="mt-6 flex flex-wrap items-end gap-4 rounded-3xl bg-paper p-5">
+        <label className="flex flex-col gap-2">Search<input name="q" defaultValue={query.q} placeholder="Title, ingredient, cuisine or tag" className="rounded-xl border border-line p-2" /></label>
+        <label className="flex flex-col gap-2">Cuisine<select name="cuisine" defaultValue={query.cuisine ?? ""} className="rounded-xl border border-line p-2"><option value="">All cuisines</option>{[...new Set(all.map(r=>r.cuisine))].sort().map(c=><option key={c}>{c}</option>)}</select></label>
+        <label className="flex flex-col gap-2">Maximum minutes<input name="maxMinutes" type="number" min="1" defaultValue={query.maxMinutes} className="w-28 rounded-xl border border-line p-2" /></label>
+        <label className="flex flex-col gap-2">Tag<select name="tag" defaultValue={query.tag ?? ""} className="rounded-xl border border-line p-2"><option value="">All tags</option>{[...new Set(all.flatMap(r=>r.tags))].sort().map(t=><option key={t}>{t}</option>)}</select></label>
+        <label className="flex flex-col gap-2">Sort<select name="sort" defaultValue={query.sort ?? "alphabetical"} className="rounded-xl border border-line p-2"><option value="alphabetical">Alphabetical</option><option value="shortest">Shortest time</option><option value="longest">Longest time</option></select></label>
+        <button className="rounded-full bg-forest px-5 py-2 text-white">Search</button><Link href="/recipes" className="py-2 text-forest underline">Reset Filters</Link>
+      </form>
+      <p className="mt-4" role="status">{recipes.length} recipes found</p>
+      {recipes.length === 0 ? <div className="mt-8 rounded-3xl bg-paper p-8 shadow-card" role="status">
+        <h2 className="font-display text-2xl">{all.length ? "No matching recipes" : "No recipes yet"}</h2>
+        <p className="mt-2 text-muted">Try another search or reset your filters.</p>
+      </div> : <ul className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4" aria-label="All recipes">
+        {recipes.map(recipe => <li key={recipe.id} className="min-w-0">
+          <Link href={`/recipes/${recipe.id}`} className="block overflow-hidden rounded-3xl bg-paper shadow-card ring-1 ring-line/60 transition hover:-translate-y-0.5 hover:shadow-float">
+            <RecipeImage src={recipe.image} title={recipe.title} className="aspect-[4/3] w-full object-cover" />
+            <div className="p-5">
+              <p className="text-xs font-semibold text-forest">{recipe.cuisine}</p>
+              <h2 className="mt-2 font-display text-xl">{recipe.title}</h2>
+              <p className="mt-3 text-sm text-muted">{recipe.totalMinutes} min 路 {recipe.servings} servings</p>
+              {recipe.nutrition.status === "estimated" && <p className="mt-2 text-xs text-muted">{nutritionLabel(recipe)} per serving</p>}
+              <ul className="mt-3 flex flex-wrap gap-2" aria-label="Tags">
+                {recipe.tags.map(tag => <li key={tag} className="rounded-full bg-cream px-2 py-1 text-xs text-ink/70">{tag}</li>)}
+              </ul>
+            </div>
+          </Link>
+          <div className="mt-3"><SaveRecipe id={recipe.id}/></div>
+        </li>)}
+      </ul>}
+    </main>
+  </>;
+}
+app\collection\my-recipes\page.tsx:export default function MyRecipesPage() { return <><Nav browsing/><main className="mx-auto max-w-5xl px-4 py-10"><Link href="/" className="text-forest">Home</Link><h1 className="mt-5 font-display text-4xl">My Recipes</h1><SavedRecipes/></main></>; }
+components\cook\MicButton.tsx:          <MicIcon className={icon} />
+components\cook\MicButton.tsx:export function MicIcon({ className = "" }: { className?: string }) {
+app\page.tsx:              <Link href="/cook" className="hero-primary"><MicIcon className="h-5 w-5" /> Start cooking</Link>
+app\page.tsx:          <Link href="/cook" aria-label="Start cooking with voice" className="voice-search-mic"><MicIcon className="h-6 w-6" /></Link>
+app\page.tsx:export function MicIcon({ className = "" }: { className?: string }) {
+lib\recipe-pages.test.ts:import RecipesPage from "../app/recipes/page";
+lib\recipe-pages.test.ts:    const html = renderToStaticMarkup(await RecipesPage());
+lib\recipe-pages.test.ts:      expect(renderToStaticMarkup(await RecipesPage())).toContain("No recipes yet");
+app\recipes\page.tsx:export default async function RecipesPage({ searchParams }: { searchParams?: Promise<Record<string,string | string[] | undefined>> } = {}) {
+import { createElement } from "react";
+import { renderToStaticMarkup } from "react-dom/server";
+import { describe, expect, it, vi } from "vitest";
+import * as recipeData from "./recipe";
+import { CREAMY_GARLIC_CHICKEN, describeIngredient, listRecipes } from "./recipe";
+import Home from "../app/page";
+import { Nav } from "../components/Nav";
+import RecipesPage from "../app/recipes/page";
+import RecipePage, { generateStaticParams } from "../app/recipes/[id]/page";
+import CookPage from "../app/cook/page";
+
+vi.mock("next/navigation", () => ({ notFound: () => { throw new Error("NEXT_HTTP_ERROR_FALLBACK;404"); } }));
+vi.mock("@/components/cook/CookScreen", () => ({ CookScreen: () => null }));
+const recipes = listRecipes();
+const htmlText = (text: string) => renderToStaticMarkup(createElement("span", null, text)).replace(/^<span>|<\/span>$/g, "");
+
+describe("recipe browsing and selection", () => {
+  it("lists every recipe with the correct detail link and existing image", async () => {
+    const html = renderToStaticMarkup(await RecipesPage());
+    expect((html.match(/href="\/recipes\//g) ?? []).length).toBe(20);
+    for (const recipe of recipes) {
+      expect(html).toContain('href="/recipes/' + recipe.id + '"');
+      expect(html).toContain('src="' + recipe.image + '"');
+      expect(html).toContain(htmlText(recipe.title));
+    }
+    expect(generateStaticParams()).toEqual(recipes.map(({ id }) => ({ id })));
+  });
+  it("connects homepage cards and navigation while retaining direct cooking actions", () => {
+    const home = renderToStaticMarkup(createElement(Home));
+    for (const id of ["creamy-garlic-chicken", "tomato-beef-stew", "chicken-curry", "bibimbap", "garlic-butter-shrimp"]) {
+      expect(home).toContain('href="/recipes/' + id + '"');
+    }
+    expect(home).toContain('href="/cook"');
+    expect(home).not.toContain("Quick actions");
+    expect(home).not.toContain("Tap to wake");
+    expect(home).toContain("Today&#x27;s recommendation");
+    const nav = renderToStaticMarkup(createElement(Nav));
+    expect(nav).toContain('href="/recipes"');
+    expect(nav).toContain('aria-label="All recipes"');
+    expect(nav).toContain('href="/cook"');
+    expect(nav).toContain('href="/tools#ingredients"');
+    expect(nav).toContain('href="/collection/my-recipes"');
+  });
+  it("shows a meaningful empty collection state", async () => {
+    const spy = vi.spyOn(recipeData, "listRecipes").mockReturnValue([]);
+    try {
+      expect(renderToStaticMarkup(await RecipesPage())).toContain("No recipes yet");
+    } finally { spy.mockRestore(); }
+  });
+
+  for (const recipe of recipes) {
+    it(recipe.id + " renders its complete data and propagates the selected ID", async () => {
+      const html = renderToStaticMarkup(await RecipePage({ params: Promise.resolve({ id: recipe.id }) }));
+      expect(html).toContain(htmlText(recipe.title));
+      expect(html).toContain(htmlText(recipe.description));
+      expect(html).toContain('href="/cook?recipeId=' + recipe.id + '"');
+      for (const ingredient of recipe.ingredients) expect(html).toContain(htmlText(describeIngredient(ingredient, recipe.servings, recipe.servings, "screen")));
+      for (const step of recipe.steps) {
+        expect(html).toContain(htmlText(step.instruction));
+        if (step.safety) expect(html).toContain(htmlText(step.safety));
+        if (step.tip) expect(html).toContain(htmlText(step.tip));
+      }
+      expect(html.includes('aria-label="Estimated nutrition"')).toBe(recipe.nutrition.status === "estimated");
+      const cook = await CookPage({ searchParams: Promise.resolve({ recipeId: recipe.id }) });
+      expect(cook.props.selectedRecipe).toBe(recipe);
+      expect(cook.key).toBe(recipe.id);
+    });
+  }
+  it("retains the default cooking recipe without a query parameter", async () => {
+    const page = await CookPage({ searchParams: Promise.resolve({}) });
+    expect(page.props.selectedRecipe).toBe(CREAMY_GARLIC_CHICKEN);
+  });
+  for (const id of ["missing", "", "toString", "__proto__"]) {
+    it("returns notFound for invalid detail and cook ID: " + id, async () => {
+      await expect(RecipePage({ params: Promise.resolve({ id }) })).rejects.toThrow("404");
+      await expect(CookPage({ searchParams: Promise.resolve({ recipeId: id }) })).rejects.toThrow("404");
+    });
+  }
+  it("rejects ambiguous repeated cooking IDs", async () => {
+    await expect(CookPage({ searchParams: Promise.resolve({ recipeId: recipes.slice(0, 2).map(r => r.id) }) })).rejects.toThrow("404");
+  });
+});
+- The call config route checks the signature on the raw body with the call config
+  webhook's own secret (`ALEBEX_CALL_CONFIG_SECRET`), not an end-of-call endpoint's.
+- Live call events are switched on per agent (`behaviour.callEvents`), carry an
+  `idempotencyKey` when your app may send the same one twice, and keep `payload` small:
+  1024 bytes, a few facts the agent can say in a sentence.
+
+<!-- BEGIN:nextjs-agent-rules -->
+
+## This is NOT the Next.js you know
+
+This version has breaking changes 鈥?APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
+
+This block is written and re-added by `next dev` 鈥?verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
+
+<!-- END:nextjs-agent-rules -->
+
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "rg --files node_modules/next/dist/docs | rg 'turbopack|page.mdx|postcss'; Get-Content node_modules/@tailwindcss/postcss/package.json; Get-Content .next/types/validator.ts -TotalCount 100; git status --short; npm run build" in C:\Users\L\Desktop\sous\Sous_HackCamp
+ exited 1 in 2885ms:
+node_modules/next/dist/docs\02-pages\04-api-reference\08-turbopack.md
+node_modules/next/dist/docs\01-app\03-api-reference\08-turbopack.md
+node_modules/next/dist/docs\02-pages\04-api-reference\04-config\01-next-config-js\turbopackChunking.md
+node_modules/next/dist/docs\02-pages\04-api-reference\04-config\01-next-config-js\turbopack.md
+node_modules/next/dist/docs\01-app\03-api-reference\05-config\01-next-config-js\turbopackRustReactCompiler.md
+node_modules/next/dist/docs\01-app\03-api-reference\05-config\01-next-config-js\turbopackPluginRuntimeStrategy.md
+node_modules/next/dist/docs\01-app\03-api-reference\05-config\01-next-config-js\turbopackMemoryEviction.md
+node_modules/next/dist/docs\01-app\03-api-reference\05-config\01-next-config-js\turbopackLocalPostcssConfig.md
+node_modules/next/dist/docs\01-app\03-api-reference\05-config\01-next-config-js\turbopackLazyDynamicImportsSSR.md
+node_modules/next/dist/docs\01-app\03-api-reference\05-config\01-next-config-js\turbopackLazyDynamicImports.md
+node_modules/next/dist/docs\01-app\03-api-reference\05-config\01-next-config-js\turbopackIgnoreIssue.md
+node_modules/next/dist/docs\01-app\03-api-reference\05-config\01-next-config-js\turbopackGc.md
+node_modules/next/dist/docs\01-app\03-api-reference\05-config\01-next-config-js\turbopackFileSystemCache.md
+node_modules/next/dist/docs\01-app\03-api-reference\05-config\01-next-config-js\turbopackChunking.md
+node_modules/next/dist/docs\01-app\03-api-reference\05-config\01-next-config-js\turbopack.md
+{
+  "name": "@tailwindcss/postcss",
+  "version": "4.3.3",
+  "description": "PostCSS plugin for Tailwind CSS, a utility-first CSS framework for rapidly building custom user interfaces",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tailwindlabs/tailwindcss.git",
+    "directory": "packages/@tailwindcss-postcss"
+  },
+  "bugs": "https://github.com/tailwindlabs/tailwindcss/issues",
+  "homepage": "https://tailwindcss.com",
+  "files": [
+    "dist/"
+  ],
+  "publishConfig": {
+    "provenance": true,
+    "access": "public"
+  },
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
+      },
+      "require": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      }
+    }
+  },
+  "dependencies": {
+    "@alloc/quick-lru": "^5.2.0",
+    "postcss": "^8.5.16",
+    "@tailwindcss/node": "4.3.3",
+    "@tailwindcss/oxide": "4.3.3",
+    "tailwindcss": "4.3.3"
+  },
+  "devDependencies": {
+    "@types/node": "22.19.21",
+    "@types/postcss-import": "14.0.3",
+    "dedent": "1.7.2",
+    "postcss-import": "^16.1.1",
+    "internal-example-plugin": "0.0.0"
+  },
+  "scripts": {
+    "lint": "tsc --noEmit",
+    "build": "tsup-node",
+    "dev": "pnpm run build -- --watch"
+  }
+}
+// This file is generated automatically by Next.js
+// Do not edit this file manually
+// This file validates that all pages and layouts export the correct types
+
+import type { AppRoutes, LayoutRoutes, ParamMap, AppRouteHandlerRoutes } from "./routes.js"
+import type { ResolvingMetadata, ResolvingViewport } from "next/types.js"
+import type { NextRequest } from 'next/server.js'
+
+type ParamMatchFragment<Route extends keyof ParamMap> = Partial<Record<keyof ParamMap[Route], string>>
+type ParamMatchingExports<Route extends keyof ParamMap> =
+  | { unstable_paramMatching?: ParamMatchFragment<Route>; unstable_generateParamMatching?: never }
+  | { unstable_paramMatching?: never; unstable_generateParamMatching?: () => Promise<ParamMatchFragment<Route>> | ParamMatchFragment<Route> }
+
+type AppPageConfig<Route extends AppRoutes = AppRoutes> = {
+  default: React.ComponentType<{ params: Promise<ParamMap[Route]> } & any> | ((props: { params: Promise<ParamMap[Route]> } & any) => React.ReactNode | Promise<React.ReactNode> | never | void | Promise<void>)
+  generateStaticParams?: (props: { params: ParamMap[Route] }) => Promise<any[]> | any[]
+  generateMetadata?: (
+    props: { params: Promise<ParamMap[Route]> } & any,
+    parent: ResolvingMetadata
+  ) => Promise<any> | any
+  generateViewport?: (
+    props: { params: Promise<ParamMap[Route]> } & any,
+    parent: ResolvingViewport
+  ) => Promise<any> | any
+  metadata?: any
+  viewport?: any
+} & ParamMatchingExports<Route>
+
+type LayoutConfig<Route extends LayoutRoutes = LayoutRoutes> = {
+  default: React.ComponentType<LayoutProps<Route>> | ((props: LayoutProps<Route>) => React.ReactNode | Promise<React.ReactNode> | never | void | Promise<void>)
+  generateStaticParams?: (props: { params: ParamMap[Route] }) => Promise<any[]> | any[]
+  generateMetadata?: (
+    props: { params: Promise<ParamMap[Route]> } & any,
+    parent: ResolvingMetadata
+  ) => Promise<any> | any
+  generateViewport?: (
+    props: { params: Promise<ParamMap[Route]> } & any,
+    parent: ResolvingViewport
+  ) => Promise<any> | any
+  metadata?: any
+  viewport?: any
+} & ParamMatchingExports<Route>
+
+type RouteHandlerConfig<Route extends AppRouteHandlerRoutes = AppRouteHandlerRoutes> = {
+  GET?: (request: NextRequest, context: { params: Promise<ParamMap[Route]> }) => Promise<Response | void> | Response | void
+  POST?: (request: NextRequest, context: { params: Promise<ParamMap[Route]> }) => Promise<Response | void> | Response | void
+  PUT?: (request: NextRequest, context: { params: Promise<ParamMap[Route]> }) => Promise<Response | void> | Response | void
+  PATCH?: (request: NextRequest, context: { params: Promise<ParamMap[Route]> }) => Promise<Response | void> | Response | void
+  DELETE?: (request: NextRequest, context: { params: Promise<ParamMap[Route]> }) => Promise<Response | void> | Response | void
+  HEAD?: (request: NextRequest, context: { params: Promise<ParamMap[Route]> }) => Promise<Response | void> | Response | void
+  OPTIONS?: (request: NextRequest, context: { params: Promise<ParamMap[Route]> }) => Promise<Response | void> | Response | void
+}
+
+
+// Validate ../../app/collection/my-recipes/page.tsx
+{
+  type __IsExpected<Specific extends AppPageConfig<"/collection/my-recipes">> = Specific
+  const handler = {} as typeof import("../../app/collection/my-recipes/page.js")
+  type __Check = __IsExpected<typeof handler>
+  
+  type __ParamMatchingValue =
+    typeof handler extends { unstable_paramMatching: infer Matcher } ? Matcher :
+    typeof handler extends { unstable_generateParamMatching: (...args: any[]) => infer Matcher } ? Awaited<Matcher> : {}
+  type __InvalidParamMatchingKeys = Exclude<keyof __ParamMatchingValue, keyof ParamMap["/collection/my-recipes"]>
+  type __AssertNoInvalidParamMatchingKeys<Invalid extends never> = Invalid
+  const __paramMatchingKeyCheck: __AssertNoInvalidParamMatchingKeys<__InvalidParamMatchingKeys> | undefined = undefined
+  void __paramMatchingKeyCheck
+  // @ts-ignore
+  type __Unused = __Check
+}
+
+// Validate ../../app/cook/page.tsx
+{
+  type __IsExpected<Specific extends AppPageConfig<"/cook">> = Specific
+  const handler = {} as typeof import("../../app/cook/page.js")
+  type __Check = __IsExpected<typeof handler>
+  
+  type __ParamMatchingValue =
+    typeof handler extends { unstable_paramMatching: infer Matcher } ? Matcher :
+    typeof handler extends { unstable_generateParamMatching: (...args: any[]) => infer Matcher } ? Awaited<Matcher> : {}
+  type __InvalidParamMatchingKeys = Exclude<keyof __ParamMatchingValue, keyof ParamMap["/cook"]>
+  type __AssertNoInvalidParamMatchingKeys<Invalid extends never> = Invalid
+  const __paramMatchingKeyCheck: __AssertNoInvalidParamMatchingKeys<__InvalidParamMatchingKeys> | undefined = undefined
+  void __paramMatchingKeyCheck
+  // @ts-ignore
+  type __Unused = __Check
+}
+
+// Validate ../../app/page.tsx
+{
+  type __IsExpected<Specific extends AppPageConfig<"/">> = Specific
+  const handler = {} as typeof import("../../app/page.js")
+  type __Check = __IsExpected<typeof handler>
+  
+  type __ParamMatchingValue =
+    typeof handler extends { unstable_paramMatching: infer Matcher } ? Matcher :
+    typeof handler extends { unstable_generateParamMatching: (...args: any[]) => infer Matcher } ? Awaited<Matcher> : {}
+  type __InvalidParamMatchingKeys = Exclude<keyof __ParamMatchingValue, keyof ParamMap["/"]>
+  type __AssertNoInvalidParamMatchingKeys<Invalid extends never> = Invalid
+  const __paramMatchingKeyCheck: __AssertNoInvalidParamMatchingKeys<__InvalidParamMatchingKeys> | undefined = undefined
+ M app/api/call/start/route.ts
+ M app/globals.css
+ M app/page.tsx
+ M app/recipes/[id]/page.tsx
+ M app/recipes/page.tsx
+ M components/Nav.tsx
+ M lib/agent-config.ts
+ M lib/call-start-recipe.test.ts
+ M lib/recipe-pages.test.ts
+ M lib/recipe.ts
+ M next-env.d.ts
+ M next.config.ts
+ M package-lock.json
+ M package.json
+ M tsconfig.tsbuildinfo
+?? .overnight-runs/
+?? FOUNDATION-REPORT.md
+?? app/collection/
+?? app/recipes/loading.tsx
+?? app/tools/
+?? components/SavedRecipes.tsx
+?? lib/discovery.test.ts
+?? lib/recipe-search.ts
+?? lib/saved-recipes.ts
+?? overnight-task.md
+?? run-sous-continuous.ps1
+?? scripts/catalog-gate.cjs
+?? scripts/foundation-check.cjs
+
+> sous@0.1.0 build
+> next build
+
+▲ Next.js 16.4.5 (Turbopack)
+✓ Running next.config.ts took 37ms
+
+  Creating an optimized production build ...
+
+> Build error occurred
+Error: Turbopack build failed with 4 errors:
+./app/body_74f79e1e.module.css
+Error: Error evaluating Node.js code
+Error: Cannot find module '@tailwindcss/postcss'
+Require stack:
+- C:\Users\L\Desktop\sous\Sous_HackCamp\.next\build\chunks\[root-of-the-server]__1kki86fknkq7y._.js
+- C:\Users\L\Desktop\sous\Sous_HackCamp\.next\build\chunks\[turbopack]_runtime.js
+- C:\Users\L\Desktop\sous\Sous_HackCamp\.next\build\chunks\pool_entry-[turbopack-node]_transforms_postcss_ts_0tp-k2vy8nj6i._.js
+    [at Module._resolveFilename (node:internal/modules/cjs/loader:1500:15)]
+    [at wrapResolveFilename (node:internal/modules/cjs/loader:1071:27)]
+    [at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1095:10)]
+    [at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1116:12)]
+    [at Module._load (node:internal/modules/cjs/loader:1285:25)]
+    [at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)]
+    [at Module.require (node:internal/modules/cjs/loader:1600:12)]
+    [at require (node:internal/modules/helpers:153:16)]
+    at require (turbopack:///[turbopack-node]/transforms/postcss.ts?config=[project]/postcss.config.mjs:49:25) [C:\Users\L\Desktop\sous\Sous_HackCamp\.next\build\chunks\[root-of-the-server]__1kki86fknkq7y._.js:86:33]
+    [at <anonymous>]
+
+Import trace:
+  Server Component:
+    ./app/body_74f79e1e.module.css
+    ./app/body_74f79e1e.js
+    ./app/layout.tsx
+
+
+./app/display_fab10554.module.css
+Error: Error evaluating Node.js code
+Error: Cannot find module '@tailwindcss/postcss'
+Require stack:
+- C:\Users\L\Desktop\sous\Sous_HackCamp\.next\build\chunks\[root-of-the-server]__1kki86fknkq7y._.js
+- C:\Users\L\Desktop\sous\Sous_HackCamp\.next\build\chunks\[turbopack]_runtime.js
+- C:\Users\L\Desktop\sous\Sous_HackCamp\.next\build\chunks\pool_entry-[turbopack-node]_transforms_postcss_ts_0tp-k2vy8nj6i._.js
+    [at Module._resolveFilename (node:internal/modules/cjs/loader:1500:15)]
+    [at wrapResolveFilename (node:internal/modules/cjs/loader:1071:27)]
+    [at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1095:10)]
+    [at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1116:12)]
+    [at Module._load (node:internal/modules/cjs/loader:1285:25)]
+    [at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)]
+    [at Module.require (node:internal/modules/cjs/loader:1600:12)]
+    [at require (node:internal/modules/helpers:153:16)]
+    at require (turbopack:///[turbopack-node]/transforms/postcss.ts?config=[project]/postcss.config.mjs:49:25) [C:\Users\L\Desktop\sous\Sous_HackCamp\.next\build\chunks\[root-of-the-server]__1kki86fknkq7y._.js:86:33]
+    [at <anonymous>]
+
+Import trace:
+  Server Component:
+    ./app/display_fab10554.module.css
+    ./app/display_fab10554.js
+    ./app/layout.tsx
+
+
+./app/globals.css
+Error: Error evaluating Node.js code
+Error: Cannot find module '@tailwindcss/postcss'
+Require stack:
+- C:\Users\L\Desktop\sous\Sous_HackCamp\.next\build\chunks\[root-of-the-server]__1kki86fknkq7y._.js
+- C:\Users\L\Desktop\sous\Sous_HackCamp\.next\build\chunks\[turbopack]_runtime.js
+- C:\Users\L\Desktop\sous\Sous_HackCamp\.next\build\chunks\pool_entry-[turbopack-node]_transforms_postcss_ts_0tp-k2vy8nj6i._.js
+    [at Module._resolveFilename (node:internal/modules/cjs/loader:1500:15)]
+    [at wrapResolveFilename (node:internal/modules/cjs/loader:1071:27)]
+    [at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1095:10)]
+    [at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1116:12)]
+    [at Module._load (node:internal/modules/cjs/loader:1285:25)]
+    [at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)]
+    [at Module.require (node:internal/modules/cjs/loader:1600:12)]
+    [at require (node:internal/modules/helpers:153:16)]
+    at require (turbopack:///[turbopack-node]/transforms/postcss.ts?config=[project]/postcss.config.mjs:49:25) [C:\Users\L\Desktop\sous\Sous_HackCamp\.next\build\chunks\[root-of-the-server]__1kki86fknkq7y._.js:86:33]
+    [at <anonymous>]
+
+Import trace:
+  Client Component Browser:
+    ./app/globals.css [Client Component Browser]
+    ./app/layout.tsx [Server Component]
+
+
+./app/hand_ee158ea4.module.css
+Error: Error evaluating Node.js code
+Error: Cannot find module '@tailwindcss/postcss'
+Require stack:
+- C:\Users\L\Desktop\sous\Sous_HackCamp\.next\build\chunks\[root-of-the-server]__1kki86fknkq7y._.js
+- C:\Users\L\Desktop\sous\Sous_HackCamp\.next\build\chunks\[turbopack]_runtime.js
+- C:\Users\L\Desktop\sous\Sous_HackCamp\.next\build\chunks\pool_entry-[turbopack-node]_transforms_postcss_ts_0tp-k2vy8nj6i._.js
+    [at Module._resolveFilename (node:internal/modules/cjs/loader:1500:15)]
+    [at wrapResolveFilename (node:internal/modules/cjs/loader:1071:27)]
+    [at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1095:10)]
+    [at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1116:12)]
+    [at Module._load (node:internal/modules/cjs/loader:1285:25)]
+    [at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)]
+    [at Module.require (node:internal/modules/cjs/loader:1600:12)]
+    [at require (node:internal/modules/helpers:153:16)]
+    at require (turbopack:///[turbopack-node]/transforms/postcss.ts?config=[project]/postcss.config.mjs:49:25) [C:\Users\L\Desktop\sous\Sous_HackCamp\.next\build\chunks\[root-of-the-server]__1kki86fknkq7y._.js:86:33]
+    [at <anonymous>]
+
+Import trace:
+  Server Component:
+    ./app/hand_ee158ea4.module.css
+    ./app/hand_ee158ea4.js
+    ./app/layout.tsx
+
+
+    at require (turbopack:///[turbopack-node]/transforms/postcss.ts?config=[project]/postcss.config.mjs:49:25) [C:\Users\L\Desktop\sous\Sous_HackCamp\.next\build\chunks\[root-of-the-server]__1kki86fknkq7y._.js:86:33])
+    at require (turbopack:///[turbopack-node]/transforms/postcss.ts?config=[project]/postcss.config.mjs:49:25) [C:\Users\L\Desktop\sous\Sous_HackCamp\.next\build\chunks\[root-of-the-server]__1kki86fknkq7y._.js:86:33])
+    at require (turbopack:///[turbopack-node]/transforms/postcss.ts?config=[project]/postcss.config.mjs:49:25) [C:\Users\L\Desktop\sous\Sous_HackCamp\.next\build\chunks\[root-of-the-server]__1kki86fknkq7y._.js:86:33])
+    at require (turbopack:///[turbopack-node]/transforms/postcss.ts?config=[project]/postcss.config.mjs:49:25) [C:\Users\L\Desktop\sous\Sous_HackCamp\.next\build\chunks\[root-of-the-server]__1kki86fknkq7y._.js:86:33])
+
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "Get-Content node_modules/next/dist/docs/01-app/03-api-reference/05-config/01-next-config-js/turbopack.md | Select-Object -First 150; rg --files node_modules/next/dist/docs/01-app | rg 'page|post-css'; node -e \"console.log(require.resolve('@tailwindcss/postcss')); console.log(require.resolve('@tailwindcss/postcss', {paths: [process.cwd() + '/.next/build/chunks']}))\"; npx next build --webpack" in C:\Users\L\Desktop\sous\Sous_HackCamp
+ exited 1 in 3163ms:
+---
+title: turbopack
+description: Configure Next.js with Turbopack-specific options
+---
+
+{/* The content of this doc is shared between the app and pages router. You can use the `<PagesOnly>Content</PagesOnly>` component to add content that is specific to the Pages Router. Any shared content should not be wrapped in a component. */}
+
+The `turbopack` option lets you customize [Turbopack](/docs/app/api-reference/turbopack) to transform different files and change how modules are resolved.
+
+> **Good to know**: The `turbopack` option was previously named `experimental.turbo` in Next.js versions 13.0.0 to 15.2.x, an option which still works as an alias, but new configuration should use the top-level `turbopack` option.
+>
+> If you are using an older version of Next.js, run `npx @next/codemod@latest next-experimental-turbo-to-turbopack .` to automatically migrate your configuration.
+
+```ts filename="next.config.ts" switcher
+import type { NextConfig } from 'next'
+
+const nextConfig: NextConfig = {
+  turbopack: {
+    // ...
+  },
+}
+
+export default nextConfig
+```
+
+```js filename="next.config.js" switcher
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  turbopack: {
+    // ...
+  },
+}
+
+module.exports = nextConfig
+```
+
+> **Good to know**:
+>
+> - Turbopack for Next.js does not require loaders or loader configuration for built-in functionality. Turbopack has built-in support for CSS and compiling modern JavaScript, so there's no need for `css-loader`, `postcss-loader`, or `babel-loader` if you're using `@babel/preset-env`.
+
+## Reference
+
+### Options
+
+The following options are available for the `turbopack` configuration:
+
+| Option              | Description                                                                                                                              |
+| ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| `root`              | Sets the application root directory. Should be an absolute path.                                                                         |
+| `rules`             | List of supported webpack loaders to apply when running with Turbopack.                                                                  |
+| `resolveAlias`      | Map aliased imports to modules to load in their place.                                                                                   |
+| `resolveExtensions` | List of extensions to resolve when importing files.                                                                                      |
+| `debugIds`          | Enable generation of [debug IDs](https://github.com/tc39/ecma426/blob/main/proposals/debug-id.md) in JavaScript bundles and source maps. |
+
+### Supported loaders
+
+The following loaders have been tested to work with Turbopack's webpack loader implementation, but many other webpack loaders should work as well even if not listed here:
+
+- [`babel-loader`](https://www.npmjs.com/package/babel-loader) [_(Configured automatically if a Babel configuration file is found)_](/docs/app/api-reference/turbopack#language-features)
+- [`@svgr/webpack`](https://www.npmjs.com/package/@svgr/webpack)
+- [`svg-inline-loader`](https://www.npmjs.com/package/svg-inline-loader)
+- [`yaml-loader`](https://www.npmjs.com/package/yaml-loader)
+- [`string-replace-loader`](https://www.npmjs.com/package/string-replace-loader)
+- [`raw-loader`](https://www.npmjs.com/package/raw-loader)
+- [`sass-loader`](https://www.npmjs.com/package/sass-loader) [_(Configured automatically)_](/docs/app/api-reference/turbopack#css-and-styling)
+- [`graphql-tag/loader`](https://www.npmjs.com/package/graphql-tag)
+
+#### Missing Webpack loader features
+
+Turbopack uses the [`loader-runner`](https://github.com/webpack/loader-runner) library to execute webpack loaders, which provides most of the standard loader API. However, some features are not supported:
+
+**Module loading:**
+
+- [`importModule`](https://webpack.js.org/api/loaders/#thisimportmodule) - No support
+- [`loadModule`](https://webpack.js.org/api/loaders/#thisloadmodule) - No support
+
+**File system and output:**
+
+- [`fs`](https://webpack.js.org/api/loaders/#thisfs) - Partial support: only `fs.readFile` is currently implemented.
+- [`emitFile`](https://webpack.js.org/api/loaders/#thisemitfile) - No support
+
+**Utilities:**
+
+- [`utils`](https://webpack.js.org/api/loaders/#thisutils) - No support
+
+If you have a loader that is critically dependent upon one of these features please file an issue.
+
+## Examples
+
+### Root directory
+
+Turbopack uses the root directory to resolve modules. Files outside of the project root are not resolved.
+
+Files are not resolved outside of the project root is to improve cache validation, reduce filesystem watching overhead, and reduce the number of [resolving steps](https://nodejs.org/api/esm.html#resolution-algorithm) needed.
+
+Next.js automatically detects the root directory of your project. It does so by looking for one of these files:
+
+- `pnpm-lock.yaml`
+- `package-lock.json`
+- `yarn.lock`
+- `bun.lock`
+- `bun.lockb`
+
+If you have a different project structure, for example if you don't use workspaces, you can manually set the `root` option:
+
+```js filename="next.config.js"
+const path = require('path')
+module.exports = {
+  turbopack: {
+    root: path.join(__dirname, '..'),
+  },
+}
+```
+
+To resolve files from linked dependencies outside the project root (e.g. [`npm link`]), you must either configure the `turbopack.root` to the parent directory of both the project and the linked dependencies or configure an additional root.
+
+Use this option to configure the root when working in a monorepo. Do not extend the root directory too broadly (e.g. to your home directory). Turbopack may watch all files inside of roots, and configuring too broad of a root directory can cause significant performance problems.
+
+[`npm link`]: https://docs.npmjs.com/cli/commands/npm-link
+
+### Additional roots (experimental)
+
+`experimental.turbopackAdditionalRoots` allows Turbopack to follow symbolic links whose targets are outside `turbopack.root`.
+
+It is useful for linked packages that live outside the project (e.g. [`npm link`](https://docs.npmjs.com/cli/commands/npm-link) or a [global virtual store](https://pnpm.io/global-virtual-store)).
+
+Additional roots can only be crossed at symlink boundaries. Direct relative imports that escape a root are unsupported.
+
+```js filename="next.config.js"
+const path = require('path')
+
+module.exports = {
+  experimental: {
+    turbopackAdditionalRoots: {
+      linkedPackages: { path: path.join(__dirname, '../packages') },
+    },
+  },
+}
+```
+
+Each key identifies one root. `path` can be absolute or relative to the directory where you run Next.js.
+
+> **Good to know**:
+>
+> - The symbolic link and its target must both be available on the build machine before `next dev` or `next build` starts.
+> - Deployment tools and CI systems may copy your repository to a separate build machine. These tools may be unaware of the additional roots, and they may fail to copy required files.
+> - On Windows, builds [require Developer Mode or elevated permissions to create symbolic links](https://blogs.windows.com/windowsdeveloper/2016/12/02/symlinks-windows-10/). Creating output artifacts may require creating symbolic links. In some cases, Turbopack can fall back to [directory junctions](https://learn.microsoft.com/en-us/windows/win32/fileio/hard-links-and-junctions#junctions) when symlink creation is not permitted, but these junctions use absolute paths, so the resulting output may not be relocatable.
+
+If a root path is not found when `next build` or `next dev` starts, a warning will be issued, unless `ignoreIfMissing` is set to `true` (defaults to `false`).
+
+node_modules/next/dist/docs/01-app\02-guides\keeping-pages-static.md
+node_modules/next/dist/docs/01-app\01-getting-started\03-layouts-and-pages.md
+node_modules/next/dist/docs/01-app\02-guides\public-static-pages.md
+node_modules/next/dist/docs/01-app\02-guides\single-page-applications.md
+node_modules/next/dist/docs/01-app\03-api-reference\03-file-conventions\page.md
+node_modules/next/dist/docs/01-app\03-api-reference\05-config\01-next-config-js\pageExtensions.md
+C:\Users\L\Desktop\sous\Sous_HackCamp\node_modules\@tailwindcss\postcss\dist\index.js
+C:\Users\L\Desktop\sous\Sous_HackCamp\node_modules\@tailwindcss\postcss\dist\index.js
+▲ Next.js 16.4.5 (webpack)
+✓ Running next.config.ts took 35ms
+
+  Creating an optimized production build ...
+
+> Build error occurred
+Error: spawn EPERM
+    at ignore-listed frames {
+  errno: -4048,
+  code: 'EPERM',
+  syscall: 'spawn'
+}
+
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "Get-Content node_modules/next/dist/docs/01-app/03-api-reference/03-file-conventions/page.md -TotalCount 120; Get-Content node_modules/next/dist/docs/01-app/03-api-reference/05-config/01-next-config-js/turbopackLocalPostcssConfig.md; Get-Content '.next/build/chunks/[root-of-the-server]__1kki86fknkq7y._.js' -LiteralPath '.next/build/chunks/[root-of-the-server]__1kki86fknkq7y._.js' -ErrorAction SilentlyContinue" in C:\Users\L\Desktop\sous\Sous_HackCamp
+ exited 1 in 306ms:
+---
+title: page.js
+description: API reference for the page.js file.
+---
+
+The `page` file allows you to define UI that is **unique** to a route. You can create a page by default exporting a component from the file:
+
+```tsx filename="app/blog/[slug]/page.tsx" switcher
+export default function Page({
+  params,
+  searchParams,
+}: {
+  params: Promise<{ slug: string }>
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>
+}) {
+  return <h1>My Page</h1>
+}
+```
+
+```jsx filename="app/blog/[slug]/page.js" switcher
+export default function Page({ params, searchParams }) {
+  return <h1>My Page</h1>
+}
+```
+
+## Good to know
+
+- The `.js`, `.jsx`, or `.tsx` file extensions can be used for `page`.
+- A `page` is always the **leaf** of the route subtree.
+- A `page` file is required to make a route segment **publicly accessible**.
+- Pages are [Server Components](https://react.dev/reference/rsc/server-components) by default, but can be set to a [Client Component](https://react.dev/reference/rsc/use-client).
+- In the [component hierarchy](/docs/app/getting-started/project-structure#component-hierarchy), `page.js` is the innermost file convention. It is wrapped by `loading.js` (Suspense boundary), `error.js` (error boundary), `template.js`, and `layout.js` in the same segment.
+
+## Reference
+
+### Props
+
+#### `params` (optional)
+
+A promise that resolves to an object containing the [dynamic route parameters](/docs/app/api-reference/file-conventions/dynamic-routes) from the root segment down to that page.
+
+```tsx filename="app/shop/[slug]/page.tsx" switcher
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ slug: string }>
+}) {
+  const { slug } = await params
+}
+```
+
+```jsx filename="app/shop/[slug]/page.js" switcher
+export default async function Page({ params }) {
+  const { slug } = await params
+}
+```
+
+| Example Route                        | URL         | `params`                                |
+| ------------------------------------ | ----------- | --------------------------------------- |
+| `app/shop/[slug]/page.js`            | `/shop/1`   | `Promise<{ slug: '1' }>`                |
+| `app/shop/[category]/[item]/page.js` | `/shop/1/2` | `Promise<{ category: '1', item: '2' }>` |
+| `app/shop/[...slug]/page.js`         | `/shop/1/2` | `Promise<{ slug: ['1', '2'] }>`         |
+
+- Since the `params` prop is a promise, you must use `async/await` or React's [`use`](https://react.dev/reference/react/use) function to access the values.
+  - In version 14 and earlier, `params` was a synchronous prop. To help with backwards compatibility, you can still access it synchronously in Next.js 15, but this behavior will be deprecated in the future.
+
+#### `searchParams` (optional)
+
+A promise that resolves to an object containing the [search parameters](https://developer.mozilla.org/docs/Learn/Common_questions/What_is_a_URL#parameters) of the current URL. For example:
+
+```tsx filename="app/shop/page.tsx" switcher
+export default async function Page({
+  searchParams,
+}: {
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>
+}) {
+  const filters = (await searchParams).filters
+}
+```
+
+```jsx filename="app/shop/page.js" switcher
+export default async function Page({ searchParams }) {
+  const filters = (await searchParams).filters
+}
+```
+
+Client Component **pages** can also access `searchParams` using React鈥檚 [`use`](https://react.dev/reference/react/use) hook:
+
+```tsx filename="app/shop/page.tsx" switcher
+'use client'
+import { use } from 'react'
+
+export default function Page({
+  searchParams,
+}: {
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>
+}) {
+  const filters = use(searchParams).filters
+}
+```
+
+```jsx filename="app/page.jsx" switcher
+'use client'
+import { use } from 'react'
+
+export default function Page({ searchParams }) {
+  const filters = use(searchParams).filters
+}
+```
+
+| Example URL     | `searchParams`                |
+| --------------- | ----------------------------- |
+| `/shop?a=1`     | `Promise<{ a: '1' }>`         |
+| `/shop?a=1&b=2` | `Promise<{ a: '1', b: '2' }>` |
+| `/shop?a=1&a=2` | `Promise<{ a: ['1', '2'] }>`  |
+
+- Since the `searchParams` prop is a promise. You must use `async/await` or React's [`use`](https://react.dev/reference/react/use) function to access the values.
+  - In version 14 and earlier, `searchParams` was a synchronous prop. To help with backwards compatibility, you can still access it synchronously in Next.js 15, but this behavior will be deprecated in the future.
+- `searchParams` is a **[Request-time API](/docs/app/glossary#request-time-apis)** whose values cannot be known ahead of time. Using it will opt the page into **[dynamic rendering](/docs/app/glossary#dynamic-rendering)** at request time.
+- With [Cache Components](/docs/app/getting-started/caching), where you access `searchParams` in the component tree determines how much of the page can be prerendered. See [Maximizing the static shell](/docs/app/getting-started/caching#maximizing-the-static-shell).
+---
+title: turbopackLocalPostcssConfig
+description: Enable per-directory PostCSS config resolution in Turbopack so that the config closest to each CSS file takes precedence over the project root config.
+---
+
+The `turbopackLocalPostcssConfig` option changes how Turbopack resolves `postcss.config.js` files. When enabled, Turbopack searches for the config starting from the CSS file's own directory first, then falls back to the project root. By default, Turbopack checks the project root first, meaning a root-level `postcss.config.js` always takes precedence over configs in subdirectories.
+
+This option is only relevant when using Turbopack (`next dev` or `next build`).
+
+## Usage
+
+```ts filename="next.config.ts" switcher
+import type { NextConfig } from 'next'
+
+const nextConfig: NextConfig = {
+  experimental: {
+    turbopackLocalPostcssConfig: true,
+  },
+}
+
+export default nextConfig
+```
+
+```js filename="next.config.js" switcher
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  experimental: {
+    turbopackLocalPostcssConfig: true,
+  },
+}
+
+module.exports = nextConfig
+```
+
+## Behavior
+
+| Setting           | Config resolution order             |
+| ----------------- | ----------------------------------- |
+| `false` (default) | Project root 鈫?CSS file's directory |
+| `true`            | CSS file's directory 鈫?project root |
+
+With the default behavior, a `postcss.config.js` at the project root is used for all CSS files, and per-directory configs are only applied if no root config exists. Enabling `turbopackLocalPostcssConfig` reverses this: per-directory configs take precedence, and the root config serves as the fallback.
+
+## Example
+
+This is useful for projects that need different PostCSS transforms in different directories, such as a monorepo with multiple apps or design system packages:
+
+```
+my-app/
+鈹溾攢鈹€ postcss.config.js          鈫?fallback (applied if no local config is found)
+鈹溾攢鈹€ app/
+鈹?  鈹斺攢鈹€ page.module.css        鈫?uses root config
+鈹斺攢鈹€ packages/
+    鈹斺攢鈹€ ui/
+        鈹溾攢鈹€ postcss.config.js  鈫?takes precedence for files in this directory
+        鈹斺攢鈹€ button.module.css  鈫?uses packages/ui/postcss.config.js
+```
+
+## Version History
+
+| Version   | Changes                                   |
+| --------- | ----------------------------------------- |
+| `v16.3.0` | `turbopackLocalPostcssConfig` introduced. |
+Get-Content : 找不到接受实际参数“.next/build/chunks/[root-of-the-server]__1kki86fknkq7y._.js”的位置形式参数。
+所在位置 行:2 字符: 234
++ ... sConfig.md; Get-Content '.next/build/chunks/[root-of-the-server]__1kk ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidArgument: (:) [Get-Content]，ParameterBindingException
+    + FullyQualifiedErrorId : PositionalParameterNotFound,Microsoft.PowerShell.Commands.GetContentCommand
+ 
+
+apply patch
+patch: completed
+C:\Users\L\Desktop\sous\Sous_HackCamp\app\page.tsx
+C:\Users\L\Desktop\sous\Sous_HackCamp\app\recipes\page.tsx
+C:\Users\L\Desktop\sous\Sous_HackCamp\lib\recipe-pages.test.ts
+C:\Users\L\Desktop\sous\Sous_HackCamp\postcss.config.mjs
+diff --git a/app/page.tsx b/app/page.tsx
+index 5814ff25ea6374bb720b10a9f1814f761689c096..4497238495b6dc9e8340072f5cc91680c3c1a2e4
+--- a/app/page.tsx
++++ b/app/page.tsx
+@@ -160,7 +160,7 @@
+   );
+ }
+ 
+-export function MicIcon({ className = "" }: { className?: string }) {
++function MicIcon({ className = "" }: { className?: string }) {
+   return (
+     <svg viewBox="0 0 24 24" className={className} fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+       <rect x="9" y="3" width="6" height="11" rx="3" />
+diff --git a/app/recipes/page.tsx b/app/recipes/page.tsx
+index 823f2a6330c13d2df1f6f3fbfac92be424ef4ecf..42eebe574ad8395a820e500eca74fa3a927abbcf
+--- a/app/recipes/page.tsx
++++ b/app/recipes/page.tsx
+@@ -7,7 +7,7 @@
+ 
+ export const metadata = { title: "All recipes · Sous" };
+ 
+-export default async function RecipesPage({ searchParams }: { searchParams?: Promise<Record<string,string | string[] | undefined>> } = {}) {
++export default async function RecipesPage({ searchParams }: { searchParams: Promise<Record<string,string | string[] | undefined>> }) {
+   const raw = await searchParams ?? {};
+   const query = Object.fromEntries(Object.entries(raw).filter((entry): entry is [string,string] => typeof entry[1] === "string"));
+   const all = listRecipes();
+diff --git a/lib/recipe-pages.test.ts b/lib/recipe-pages.test.ts
+index 321af90bdccc7e9eb2bb98f16fa61d5c1567d80e..62a5218059f4be954dbcc0fde67413af3be1f094
+--- a/lib/recipe-pages.test.ts
++++ b/lib/recipe-pages.test.ts
+@@ -16,7 +16,7 @@
+ 
+ describe("recipe browsing and selection", () => {
+   it("lists every recipe with the correct detail link and existing image", async () => {
+-    const html = renderToStaticMarkup(await RecipesPage());
++    const html = renderToStaticMarkup(await RecipesPage({ searchParams: Promise.resolve({}) }));
+     expect((html.match(/href="\/recipes\//g) ?? []).length).toBe(20);
+     for (const recipe of recipes) {
+       expect(html).toContain('href="/recipes/' + recipe.id + '"');
+@@ -44,7 +44,7 @@
+   it("shows a meaningful empty collection state", async () => {
+     const spy = vi.spyOn(recipeData, "listRecipes").mockReturnValue([]);
+     try {
+-      expect(renderToStaticMarkup(await RecipesPage())).toContain("No recipes yet");
++      expect(renderToStaticMarkup(await RecipesPage({ searchParams: Promise.resolve({}) }))).toContain("No recipes yet");
+     } finally { spy.mockRestore(); }
+   });
+ 
+diff --git a/postcss.config.mjs b/postcss.config.mjs
+index f10c26686f1da08cdd1bc7c99e5df6a2216ecf65..c7fe29191133e90c47544d2b37ee70b203a0a9cd
+--- a/postcss.config.mjs
++++ b/postcss.config.mjs
+@@ -1,6 +1,11 @@
++import { createRequire } from "node:module";
++
++const require = createRequire(import.meta.url);
++
+ const config = {
+   plugins: {
+-    "@tailwindcss/postcss": {},
++    // Resolve from this config rather than Turbopack's generated worker directory.
++    [require.resolve("@tailwindcss/postcss")]: {},
+   },
+ };
+ export default config;
+
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command 'npm run build' in C:\Users\L\Desktop\sous\Sous_HackCamp
+ exited 1 in 3697ms:
+
+> sous@0.1.0 build
+> next build
+
+▲ Next.js 16.4.5 (Turbopack)
+✓ Running next.config.ts took 35ms
+
+  Creating an optimized production build ...
+
+> Build error occurred
+Error: Turbopack build failed with 7 errors:
+./app/body_74f79e1e.module.css
+Error: Error evaluating Node.js code
+Error: Cannot find module '[project]/node_modules/@tailwindcss/postcss/dist/index.js [postcss] (ecmascript)'
+Require stack:
+- C:\Users\L\Desktop\sous\Sous_HackCamp\.next\build\chunks\[root-of-the-server]__1e1_fdix6ck1m._.js
+- C:\Users\L\Desktop\sous\Sous_HackCamp\.next\build\chunks\[turbopack]_runtime.js
+- C:\Users\L\Desktop\sous\Sous_HackCamp\.next\build\chunks\pool_entry-[turbopack-node]_transforms_postcss_ts_0tp-k2vy8nj6i._.js
+    [at Module._resolveFilename (node:internal/modules/cjs/loader:1500:15)]
+    [at wrapResolveFilename (node:internal/modules/cjs/loader:1071:27)]
+    [at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1095:10)]
+    [at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1116:12)]
+    [at Module._load (node:internal/modules/cjs/loader:1285:25)]
+    [at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)]
+    [at Module.require (node:internal/modules/cjs/loader:1600:12)]
+    [at require (node:internal/modules/helpers:153:16)]
+    at require (turbopack:///[turbopack-node]/transforms/postcss.ts?config=[project]/postcss.config.mjs:49:25) [C:\Users\L\Desktop\sous\Sous_HackCamp\.next\build\chunks\[root-of-the-server]__1e1_fdix6ck1m._.js:252:33]
+    [at <anonymous>]
+
+Import trace:
+  Server Component:
+    ./app/body_74f79e1e.module.css
+    ./app/body_74f79e1e.js
+    ./app/layout.tsx
+
+
+./app/display_fab10554.module.css
+Error: Error evaluating Node.js code
+Error: Cannot find module '[project]/node_modules/@tailwindcss/postcss/dist/index.js [postcss] (ecmascript)'
+Require stack:
+- C:\Users\L\Desktop\sous\Sous_HackCamp\.next\build\chunks\[root-of-the-server]__1e1_fdix6ck1m._.js
+- C:\Users\L\Desktop\sous\Sous_HackCamp\.next\build\chunks\[turbopack]_runtime.js
+- C:\Users\L\Desktop\sous\Sous_HackCamp\.next\build\chunks\pool_entry-[turbopack-node]_transforms_postcss_ts_0tp-k2vy8nj6i._.js
+    [at Module._resolveFilename (node:internal/modules/cjs/loader:1500:15)]
+    [at wrapResolveFilename (node:internal/modules/cjs/loader:1071:27)]
+    [at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1095:10)]
+    [at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1116:12)]
+    [at Module._load (node:internal/modules/cjs/loader:1285:25)]
+    [at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)]
+    [at Module.require (node:internal/modules/cjs/loader:1600:12)]
+    [at require (node:internal/modules/helpers:153:16)]
+    at require (turbopack:///[turbopack-node]/transforms/postcss.ts?config=[project]/postcss.config.mjs:49:25) [C:\Users\L\Desktop\sous\Sous_HackCamp\.next\build\chunks\[root-of-the-server]__1e1_fdix6ck1m._.js:252:33]
+    [at <anonymous>]
+
+Import trace:
+  Server Component:
+    ./app/display_fab10554.module.css
+    ./app/display_fab10554.js
+    ./app/layout.tsx
+
+
+./app/globals.css
+Error: Error evaluating Node.js code
+Error: Cannot find module '[project]/node_modules/@tailwindcss/postcss/dist/index.js [postcss] (ecmascript)'
+Require stack:
+- C:\Users\L\Desktop\sous\Sous_HackCamp\.next\build\chunks\[root-of-the-server]__1e1_fdix6ck1m._.js
+- C:\Users\L\Desktop\sous\Sous_HackCamp\.next\build\chunks\[turbopack]_runtime.js
+- C:\Users\L\Desktop\sous\Sous_HackCamp\.next\build\chunks\pool_entry-[turbopack-node]_transforms_postcss_ts_0tp-k2vy8nj6i._.js
+    [at Module._resolveFilename (node:internal/modules/cjs/loader:1500:15)]
+    [at wrapResolveFilename (node:internal/modules/cjs/loader:1071:27)]
+    [at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1095:10)]
+    [at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1116:12)]
+    [at Module._load (node:internal/modules/cjs/loader:1285:25)]
+    [at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)]
+    [at Module.require (node:internal/modules/cjs/loader:1600:12)]
+    [at require (node:internal/modules/helpers:153:16)]
+    at require (turbopack:///[turbopack-node]/transforms/postcss.ts?config=[project]/postcss.config.mjs:49:25) [C:\Users\L\Desktop\sous\Sous_HackCamp\.next\build\chunks\[root-of-the-server]__1e1_fdix6ck1m._.js:252:33]
+    [at <anonymous>]
+
+Import trace:
+  Client Component Browser:
+    ./app/globals.css [Client Component Browser]
+    ./app/layout.tsx [Server Component]
+
+
+./app/hand_ee158ea4.module.css
+Error: Error evaluating Node.js code
+Error: Cannot find module '[project]/node_modules/@tailwindcss/postcss/dist/index.js [postcss] (ecmascript)'
+Require stack:
+- C:\Users\L\Desktop\sous\Sous_HackCamp\.next\build\chunks\[root-of-the-server]__1e1_fdix6ck1m._.js
+- C:\Users\L\Desktop\sous\Sous_HackCamp\.next\build\chunks\[turbopack]_runtime.js
+- C:\Users\L\Desktop\sous\Sous_HackCamp\.next\build\chunks\pool_entry-[turbopack-node]_transforms_postcss_ts_0tp-k2vy8nj6i._.js
+    [at Module._resolveFilename (node:internal/modules/cjs/loader:1500:15)]
+    [at wrapResolveFilename (node:internal/modules/cjs/loader:1071:27)]
+    [at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1095:10)]
+    [at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1116:12)]
+    [at Module._load (node:internal/modules/cjs/loader:1285:25)]
+    [at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)]
+    [at Module.require (node:internal/modules/cjs/loader:1600:12)]
+    [at require (node:internal/modules/helpers:153:16)]
+    at require (turbopack:///[turbopack-node]/transforms/postcss.ts?config=[project]/postcss.config.mjs:49:25) [C:\Users\L\Desktop\sous\Sous_HackCamp\.next\build\chunks\[root-of-the-server]__1e1_fdix6ck1m._.js:252:33]
+    [at <anonymous>]
+
+Import trace:
+  Server Component:
+    ./app/hand_ee158ea4.module.css
+    ./app/hand_ee158ea4.js
+    ./app/layout.tsx
+
+
+./node_modules/lightningcss/node/index.js:20:12
+Error: Module not found: Can't resolve '../lightningcss.' <dynamic> '.node'
+  [90m18 |[0m   native = require([32m`lightningcss-[0m${parts.join([32m'-'[0m)[32m}`[0m);
+  [90m19 |[0m } [36mcatch[0m (err) {
+[31m[1m>[0m [90m20 |[0m   native = require([32m`../lightningcss.[0m${parts.join([32m'-'[0m)[32m}.node`[0m);
+  [90m   |[0m            [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m21 |[0m }
+  [90m22 |[0m
+  [90m23 |[0m module.exports.transform = wrap(native.transform);
+
+
+
+Import trace:
+  postcss:
+    ./node_modules/lightningcss/node/index.js
+    ./node_modules/@tailwindcss/node/dist/index.js
+    ./node_modules/@tailwindcss/postcss/dist/index.js
+    ./postcss.config.mjs
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+./node_modules/@tailwindcss/oxide/index.js
+Error: non-ecmascript placeable asset
+[project]/node_modules/@tailwindcss/oxide-win32-x64-msvc/tailwindcss-oxide.win32-x64-msvc.node (node addon) is not placeable in ESM chunks, so it doesn't have a module id and can't be imported here. Only modules that are compiled to JavaScript can be imported.
+
+Import trace:
+  postcss:
+    ./node_modules/@tailwindcss/oxide/index.js
+    ./node_modules/@tailwindcss/postcss/dist/index.js
+    ./postcss.config.mjs
+
+
+./node_modules/lightningcss/node/index.js
+Error: non-ecmascript placeable asset
+[project]/node_modules/lightningcss-win32-x64-msvc/lightningcss.win32-x64-msvc.node (node addon) is not placeable in ESM chunks, so it doesn't have a module id and can't be imported here. Only modules that are compiled to JavaScript can be imported.
+
+Import trace:
+  postcss:
+    ./node_modules/lightningcss/node/index.js
+    ./node_modules/@tailwindcss/node/dist/index.js
+    ./node_modules/@tailwindcss/postcss/dist/index.js
+    ./postcss.config.mjs
+
+
+    at require (turbopack:///[turbopack-node]/transforms/postcss.ts?config=[project]/postcss.config.mjs:49:25) [C:\Users\L\Desktop\sous\Sous_HackCamp\.next\build\chunks\[root-of-the-server]__1e1_fdix6ck1m._.js:252:33])
+    at require (turbopack:///[turbopack-node]/transforms/postcss.ts?config=[project]/postcss.config.mjs:49:25) [C:\Users\L\Desktop\sous\Sous_HackCamp\.next\build\chunks\[root-of-the-server]__1e1_fdix6ck1m._.js:252:33])
+    at require (turbopack:///[turbopack-node]/transforms/postcss.ts?config=[project]/postcss.config.mjs:49:25) [C:\Users\L\Desktop\sous\Sous_HackCamp\.next\build\chunks\[root-of-the-server]__1e1_fdix6ck1m._.js:252:33])
+    at require (turbopack:///[turbopack-node]/transforms/postcss.ts?config=[project]/postcss.config.mjs:49:25) [C:\Users\L\Desktop\sous\Sous_HackCamp\.next\build\chunks\[root-of-the-server]__1e1_fdix6ck1m._.js:252:33])
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+
+codex
+The Tailwind plugin is installed and resolves from Node, but Turbopack’s generated PostCSS worker cannot load it by package name. I also found the two page issues: `MicIcon` is an unsupported page export, and the recipes page’s default argument makes its props optional. Those source fixes are in place; I’m testing a PostCSS resolution workaround. Webpack currently stops earlier with `spawn EPERM`.
+apply patch
+patch: completed
+C:\Users\L\Desktop\sous\Sous_HackCamp\postcss.config.mjs
+diff --git a/app/page.tsx b/app/page.tsx
+index 5814ff25ea6374bb720b10a9f1814f761689c096..4497238495b6dc9e8340072f5cc91680c3c1a2e4
+--- a/app/page.tsx
++++ b/app/page.tsx
+@@ -160,7 +160,7 @@
+   );
+ }
+ 
+-export function MicIcon({ className = "" }: { className?: string }) {
++function MicIcon({ className = "" }: { className?: string }) {
+   return (
+     <svg viewBox="0 0 24 24" className={className} fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+       <rect x="9" y="3" width="6" height="11" rx="3" />
+diff --git a/app/recipes/page.tsx b/app/recipes/page.tsx
+index 823f2a6330c13d2df1f6f3fbfac92be424ef4ecf..42eebe574ad8395a820e500eca74fa3a927abbcf
+--- a/app/recipes/page.tsx
++++ b/app/recipes/page.tsx
+@@ -7,7 +7,7 @@
+ 
+ export const metadata = { title: "All recipes · Sous" };
+ 
+-export default async function RecipesPage({ searchParams }: { searchParams?: Promise<Record<string,string | string[] | undefined>> } = {}) {
++export default async function RecipesPage({ searchParams }: { searchParams: Promise<Record<string,string | string[] | undefined>> }) {
+   const raw = await searchParams ?? {};
+   const query = Object.fromEntries(Object.entries(raw).filter((entry): entry is [string,string] => typeof entry[1] === "string"));
+   const all = listRecipes();
+diff --git a/lib/recipe-pages.test.ts b/lib/recipe-pages.test.ts
+index 321af90bdccc7e9eb2bb98f16fa61d5c1567d80e..62a5218059f4be954dbcc0fde67413af3be1f094
+--- a/lib/recipe-pages.test.ts
++++ b/lib/recipe-pages.test.ts
+@@ -16,7 +16,7 @@
+ 
+ describe("recipe browsing and selection", () => {
+   it("lists every recipe with the correct detail link and existing image", async () => {
+-    const html = renderToStaticMarkup(await RecipesPage());
++    const html = renderToStaticMarkup(await RecipesPage({ searchParams: Promise.resolve({}) }));
+     expect((html.match(/href="\/recipes\//g) ?? []).length).toBe(20);
+     for (const recipe of recipes) {
+       expect(html).toContain('href="/recipes/' + recipe.id + '"');
+@@ -44,7 +44,7 @@
+   it("shows a meaningful empty collection state", async () => {
+     const spy = vi.spyOn(recipeData, "listRecipes").mockReturnValue([]);
+     try {
+-      expect(renderToStaticMarkup(await RecipesPage())).toContain("No recipes yet");
++      expect(renderToStaticMarkup(await RecipesPage({ searchParams: Promise.resolve({}) }))).toContain("No recipes yet");
+     } finally { spy.mockRestore(); }
+   });
+ 
+diff --git a/postcss.config.mjs b/postcss.config.mjs
+index f10c26686f1da08cdd1bc7c99e5df6a2216ecf65..2c783db0928908092c754872c0c7d9f129e62d5b
+--- a/postcss.config.mjs
++++ b/postcss.config.mjs
+@@ -1,6 +1,9 @@
++import { fileURLToPath } from "node:url";
++
+ const config = {
+   plugins: {
+-    "@tailwindcss/postcss": {},
++    // Resolve from this config rather than Turbopack's generated worker directory.
++    [fileURLToPath(new URL("./node_modules/@tailwindcss/postcss/dist/index.js", import.meta.url))]: {},
+   },
+ };
+ export default config;
+
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command 'npm run build' in C:\Users\L\Desktop\sous\Sous_HackCamp
+ exited 1 in 2518ms:
+
+> sous@0.1.0 build
+> next build
+
+▲ Next.js 16.4.5 (Turbopack)
+✓ Running next.config.ts took 36ms
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 1002ms
+  Running TypeScript ...
+spawn EPERM
+
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command 'npm test' in C:\Users\L\Desktop\sous\Sous_HackCamp
+ exited 1 in 1437ms:
+
+> sous@0.1.0 test
+> vitest run
+
+failed to load config from C:\Users\L\Desktop\sous\Sous_HackCamp\vitest.config.ts
+
+⎯⎯⎯⎯⎯⎯⎯ Startup Error ⎯⎯⎯⎯⎯⎯⎯⎯
+Error: Build failed with 1 error:
+
+[plugin externalize-deps]
+Error: spawn EPERM
+    at ChildProcess.spawn (node:internal/child_process:441:11)
+    at spawn (node:child_process:796:9)
+    at Object.execFile (node:child_process:349:17)
+    at exec (node:child_process:236:25)
+    at optimizeSafeRealPathSync (file:///C:/Users/L/Desktop/sous/Sous_HackCamp/node_modules/vite/dist/node/chunks/node.js:2481:2)
+    at windowsSafeRealPathSync (file:///C:/Users/L/Desktop/sous/Sous_HackCamp/node_modules/vite/dist/node/chunks/node.js:2467:3)
+    at getRealPath (file:///C:/Users/L/Desktop/sous/Sous_HackCamp/node_modules/vite/dist/node/chunks/node.js:29536:36)
+    at tryResolveRealFileOrType (file:///C:/Users/L/Desktop/sous/Sous_HackCamp/node_modules/vite/dist/node/chunks/node.js:29530:9)
+    at tryCleanFsResolve (file:///C:/Users/L/Desktop/sous/Sous_HackCamp/node_modules/vite/dist/node/chunks/node.js:29279:21)
+    at tryFsResolve (file:///C:/Users/L/Desktop/sous/Sous_HackCamp/node_modules/vite/dist/node/chunks/node.js:29272:14)
+    at aggregateBindingErrorsIntoJsError (file:///C:/Users/L/Desktop/sous/Sous_HackCamp/node_modules/rolldown/dist/shared/error-Dsqzw0Oa.mjs:49:18)
+    at unwrapBindingResult (file:///C:/Users/L/Desktop/sous/Sous_HackCamp/node_modules/rolldown/dist/shared/error-Dsqzw0Oa.mjs:19:128)
+    at #build (file:///C:/Users/L/Desktop/sous/Sous_HackCamp/node_modules/rolldown/dist/shared/rolldown-D_vNlorD.mjs:133:34)
+    at async bundleConfigFile (file:///C:/Users/L/Desktop/sous/Sous_HackCamp/node_modules/vite/dist/node/chunks/node.js:38037:12)
+    at async bundleAndLoadConfigFile (file:///C:/Users/L/Desktop/sous/Sous_HackCamp/node_modules/vite/dist/node/chunks/node.js:37933:18)
+    at async loadConfigFromFile (file:///C:/Users/L/Desktop/sous/Sous_HackCamp/node_modules/vite/dist/node/chunks/node.js:37894:42)
+    at async resolveConfig (file:///C:/Users/L/Desktop/sous/Sous_HackCamp/node_modules/vite/dist/node/chunks/node.js:37495:22)
+    at async resolveConfig$1 (file:///C:/Users/L/Desktop/sous/Sous_HackCamp/node_modules/vitest/dist/chunks/index.DpLw24bj.js:14851:25)
+    at async createVitest (file:///C:/Users/L/Desktop/sous/Sous_HackCamp/node_modules/vitest/dist/chunks/cli-api.C4x4GGip.js:26:17)
+    at async prepareVitest (file:///C:/Users/L/Desktop/sous/Sous_HackCamp/node_modules/vitest/dist/chunks/cli-api.C4x4GGip.js:421:14) {
+  errors: [Getter/Setter]
+}
+
+
+
+
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command 'npx tsc --noEmit' in C:\Users\L\Desktop\sous\Sous_HackCamp
+ succeeded in 1724ms:
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "Get-Content -LiteralPath '.next/build/chunks/[root-of-the-server]__1e1_fdix6ck1m._.js' -ErrorAction SilentlyContinue | Select-Object -First 8; npx next typegen; git diff --check; git diff -- postcss.config.mjs app/recipes/page.tsx lib/recipe-pages.test.ts | Select-Object -First 100" in C:\Users\L\Desktop\sous\Sous_HackCamp
+ exited 1 in 2447ms:
+Generating route types...
+✓ Types generated successfully
+diff --git a/app/recipes/page.tsx b/app/recipes/page.tsx
+index 51cc375..8e0d78f 100644
+--- a/app/recipes/page.tsx
++++ b/app/recipes/page.tsx
+@@ -1,3 +1,5 @@
++import { searchRecipes } from "@/lib/recipe-search";
++import { SaveRecipe } from "@/components/SavedRecipes";
+ import Link from "next/link";
+ import { Nav } from "@/components/Nav";
+ import { RecipeImage } from "@/components/RecipeImage";
+@@ -5,20 +7,32 @@ import { listRecipes, nutritionLabel } from "@/lib/recipe";
+ 
+ export const metadata = { title: "All recipes · Sous" };
+ 
+-export default function RecipesPage() {
+-  const recipes = listRecipes();
++export default async function RecipesPage({ searchParams }: { searchParams: Promise<Record<string,string | string[] | undefined>> }) {
++  const raw = await searchParams ?? {};
++  const query = Object.fromEntries(Object.entries(raw).filter((entry): entry is [string,string] => typeof entry[1] === "string"));
++  const all = listRecipes();
++  const recipes = searchRecipes(all, query);
+   return <>
+     <Nav browsing />
+     <main id="main-content" className="mx-auto max-w-6xl px-4 py-10 pb-20 sm:px-6">
+       <Link href="/" className="text-sm font-semibold text-forest">← Home</Link>
+       <h1 className="mt-5 font-display text-5xl">All recipes</h1>
+       <p className="mt-4 text-ink/75">Find your next meal. Explore {recipes.length} recipes and cook at your own pace.</p>
++      <form action="/recipes" id="recipe-search" className="mt-6 flex flex-wrap items-end gap-4 rounded-3xl bg-paper p-5">
++        <label className="flex flex-col gap-2">Search<input name="q" defaultValue={query.q} placeholder="Title, ingredient, cuisine or tag" className="rounded-xl border border-line p-2" /></label>
++        <label className="flex flex-col gap-2">Cuisine<select name="cuisine" defaultValue={query.cuisine ?? ""} className="rounded-xl border border-line p-2"><option value="">All cuisines</option>{[...new Set(all.map(r=>r.cuisine))].sort().map(c=><option key={c}>{c}</option>)}</select></label>
++        <label className="flex flex-col gap-2">Maximum minutes<input name="maxMinutes" type="number" min="1" defaultValue={query.maxMinutes} className="w-28 rounded-xl border border-line p-2" /></label>
++        <label className="flex flex-col gap-2">Tag<select name="tag" defaultValue={query.tag ?? ""} className="rounded-xl border border-line p-2"><option value="">All tags</option>{[...new Set(all.flatMap(r=>r.tags))].sort().map(t=><option key={t}>{t}</option>)}</select></label>
++        <label className="flex flex-col gap-2">Sort<select name="sort" defaultValue={query.sort ?? "alphabetical"} className="rounded-xl border border-line p-2"><option value="alphabetical">Alphabetical</option><option value="shortest">Shortest time</option><option value="longest">Longest time</option></select></label>
++        <button className="rounded-full bg-forest px-5 py-2 text-white">Search</button><Link href="/recipes" className="py-2 text-forest underline">Reset Filters</Link>
++      </form>
++      <p className="mt-4" role="status">{recipes.length} recipes found</p>
+       {recipes.length === 0 ? <div className="mt-8 rounded-3xl bg-paper p-8 shadow-card" role="status">
+-        <h2 className="font-display text-2xl">No recipes yet</h2>
+-        <p className="mt-2 text-muted">There are no recipes to browse right now. Please check back later.</p>
++        <h2 className="font-display text-2xl">{all.length ? "No matching recipes" : "No recipes yet"}</h2>
++        <p className="mt-2 text-muted">Try another search or reset your filters.</p>
+       </div> : <ul className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4" aria-label="All recipes">
+         {recipes.map(recipe => <li key={recipe.id} className="min-w-0">
+-          <Link href={`/recipes/${recipe.id}`} className="block h-full overflow-hidden rounded-3xl bg-paper shadow-card ring-1 ring-line/60 transition hover:-translate-y-0.5 hover:shadow-float">
++          <Link href={`/recipes/${recipe.id}`} className="block overflow-hidden rounded-3xl bg-paper shadow-card ring-1 ring-line/60 transition hover:-translate-y-0.5 hover:shadow-float">
+             <RecipeImage src={recipe.image} title={recipe.title} className="aspect-[4/3] w-full object-cover" />
+             <div className="p-5">
+               <p className="text-xs font-semibold text-forest">{recipe.cuisine}</p>
+@@ -30,6 +44,7 @@ export default function RecipesPage() {
+               </ul>
+             </div>
+           </Link>
++          <div className="mt-3"><SaveRecipe id={recipe.id}/></div>
+         </li>)}
+       </ul>}
+     </main>
+diff --git a/lib/recipe-pages.test.ts b/lib/recipe-pages.test.ts
+index b68608b..a66c93b 100644
+--- a/lib/recipe-pages.test.ts
++++ b/lib/recipe-pages.test.ts
+@@ -15,8 +15,8 @@ const recipes = listRecipes();
+ const htmlText = (text: string) => renderToStaticMarkup(createElement("span", null, text)).replace(/^<span>|<\/span>$/g, "");
+ 
+ describe("recipe browsing and selection", () => {
+-  it("lists every recipe with the correct detail link and existing image", () => {
+-    const html = renderToStaticMarkup(createElement(RecipesPage));
++  it("lists every recipe with the correct detail link and existing image", async () => {
++    const html = renderToStaticMarkup(await RecipesPage({ searchParams: Promise.resolve({}) }));
+     expect((html.match(/href="\/recipes\//g) ?? []).length).toBe(20);
+     for (const recipe of recipes) {
+       expect(html).toContain('href="/recipes/' + recipe.id + '"');
+@@ -31,17 +31,20 @@ describe("recipe browsing and selection", () => {
+       expect(home).toContain('href="/recipes/' + id + '"');
+     }
+     expect(home).toContain('href="/cook"');
+-    expect(home).toContain("My recipes");
++    expect(home).not.toContain("Quick actions");
++    expect(home).not.toContain("Tap to wake");
++    expect(home).toContain("Today&#x27;s recommendation");
+     const nav = renderToStaticMarkup(createElement(Nav));
+     expect(nav).toContain('href="/recipes"');
+     expect(nav).toContain('aria-label="All recipes"');
+     expect(nav).toContain('href="/cook"');
+-    expect(nav).toContain('href="/#tools"');
++    expect(nav).toContain('href="/tools#ingredients"');
++    expect(nav).toContain('href="/collection/my-recipes"');
+   });
+-  it("shows a meaningful empty collection state", () => {
++  it("shows a meaningful empty collection state", async () => {
+     const spy = vi.spyOn(recipeData, "listRecipes").mockReturnValue([]);
+     try {
+-      expect(renderToStaticMarkup(createElement(RecipesPage))).toContain("No recipes yet");
++      expect(renderToStaticMarkup(await RecipesPage({ searchParams: Promise.resolve({}) }))).toContain("No recipes yet");
+     } finally { spy.mockRestore(); }
+   });
+ 
+diff --git a/postcss.config.mjs b/postcss.config.mjs
+index 7059fe9..14b689a 100644
+--- a/postcss.config.mjs
++++ b/postcss.config.mjs
+
+codex
+Turbopack now compiles successfully with the PostCSS workaround. The production build then stops at `Running TypeScript ...` with `spawn EPERM`; standalone TypeScript checking passes. Vitest also stops before running tests because of `spawn EPERM`. I’ll record those blockers and the exact changes made.
+apply patch
+patch: completed
+C:\Users\L\Desktop\sous\Sous_HackCamp\BUILD-FIX-REPORT.md
+diff --git a/BUILD-FIX-REPORT.md b/BUILD-FIX-REPORT.md
+new file mode 100644
+index 0000000000000000000000000000000000000000..acdb7457b350f4bb89ef83c6042ae97ee248cc08
+--- /dev/null
++++ b/BUILD-FIX-REPORT.md
+@@ -0,0 +1,23 @@
++# Build fixes — 2026-11-08
++
++Read FOUNDATION-REPORT.md, the installed Next.js page and Turbopack documentation, and actual source before editing.
++
++## Scoped changes
++
++- `postcss.config.mjs`: resolve the installed Tailwind PostCSS entry with a config-relative URL converted to a native absolute path. Node could resolve the package normally, but Turbopack's generated PostCSS worker failed with `Cannot find module '@tailwindcss/postcss'`. Using `require.resolve` inside the bundled config instead produced a Turbopack module identifier and attempted to bundle native addons; the URL approach avoids both failures. The explicit entry targets the currently installed Tailwind 4.3.3 package layout and should be reviewed if that dependency changes.
++- `app/page.tsx`: keep `MicIcon` local; arbitrary named component exports are not valid App Router page exports. No imports of this export existed.
++- `app/recipes/page.tsx`: require the props object and promised `searchParams`, removing the default argument that made the whole page argument optional. Empty-query behavior is preserved.
++- `lib/recipe-pages.test.ts`: pass an explicit empty searchParams promise in the two direct page calls.
++
++## Actual verification
++
++- `npm test`: exit 1 before tests execute. Vite config loading fails in `externalize-deps`, with `Error: spawn EPERM` at `optimizeSafeRealPathSync`. No tests claimed as passed.
++- `npx tsc --noEmit`: exit 0.
++- `npm run build`: exit 1. Next.js 16.4.5 Turbopack reports `Compiled successfully`, then `Running TypeScript ...` and `spawn EPERM`. The original PostCSS resolution errors are gone. Production build completion remains unverified.
++- `npx next build --webpack`: exit 1 during compilation with `Error: spawn EPERM`, errno -4048, syscall `spawn`. This environment does not reach Webpack's page export/type validation; those fixes are source-reviewed and standalone TypeScript-checked, not claimed as a successful Webpack build.
++- `npx next typegen`: exit 0, route types generated successfully.
++- `git diff --check`: no whitespace errors reported.
++
++Remaining blocker: subprocess execution restrictions prevent the Vitest runner and production build workers from completing. Rerun tests and both build modes in an environment permitting those workers.
++
++No dependency installation or upgrades, Git mutations, secrets edits, remote Alebex configuration changes, or provider calls were performed. Existing unrelated workspace changes were preserved. Recipe expansion is outside this build-only assignment; recipe data was not edited.
+diff --git a/app/page.tsx b/app/page.tsx
+index 5814ff25ea6374bb720b10a9f1814f761689c096..4497238495b6dc9e8340072f5cc91680c3c1a2e4
+--- a/app/page.tsx
++++ b/app/page.tsx
+@@ -160,7 +160,7 @@
+   );
+ }
+ 
+-export function MicIcon({ className = "" }: { className?: string }) {
++function MicIcon({ className = "" }: { className?: string }) {
+   return (
+     <svg viewBox="0 0 24 24" className={className} fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+       <rect x="9" y="3" width="6" height="11" rx="3" />
+diff --git a/app/recipes/page.tsx b/app/recipes/page.tsx
+index 823f2a6330c13d2df1f6f3fbfac92be424ef4ecf..42eebe574ad8395a820e500eca74fa3a927abbcf
+--- a/app/recipes/page.tsx
++++ b/app/recipes/page.tsx
+@@ -7,7 +7,7 @@
+ 
+ export const metadata = { title: "All recipes · Sous" };
+ 
+-export default async function RecipesPage({ searchParams }: { searchParams?: Promise<Record<string,string | string[] | undefined>> } = {}) {
++export default async function RecipesPage({ searchParams }: { searchParams: Promise<Record<string,string | string[] | undefined>> }) {
+   const raw = await searchParams ?? {};
+   const query = Object.fromEntries(Object.entries(raw).filter((entry): entry is [string,string] => typeof entry[1] === "string"));
+   const all = listRecipes();
+diff --git a/lib/recipe-pages.test.ts b/lib/recipe-pages.test.ts
+index 321af90bdccc7e9eb2bb98f16fa61d5c1567d80e..62a5218059f4be954dbcc0fde67413af3be1f094
+--- a/lib/recipe-pages.test.ts
++++ b/lib/recipe-pages.test.ts
+@@ -16,7 +16,7 @@
+ 
+ describe("recipe browsing and selection", () => {
+   it("lists every recipe with the correct detail link and existing image", async () => {
+-    const html = renderToStaticMarkup(await RecipesPage());
++    const html = renderToStaticMarkup(await RecipesPage({ searchParams: Promise.resolve({}) }));
+     expect((html.match(/href="\/recipes\//g) ?? []).length).toBe(20);
+     for (const recipe of recipes) {
+       expect(html).toContain('href="/recipes/' + recipe.id + '"');
+@@ -44,7 +44,7 @@
+   it("shows a meaningful empty collection state", async () => {
+     const spy = vi.spyOn(recipeData, "listRecipes").mockReturnValue([]);
+     try {
+-      expect(renderToStaticMarkup(await RecipesPage())).toContain("No recipes yet");
++      expect(renderToStaticMarkup(await RecipesPage({ searchParams: Promise.resolve({}) }))).toContain("No recipes yet");
+     } finally { spy.mockRestore(); }
+   });
+ 
+diff --git a/postcss.config.mjs b/postcss.config.mjs
+index f10c26686f1da08cdd1bc7c99e5df6a2216ecf65..2c783db0928908092c754872c0c7d9f129e62d5b
+--- a/postcss.config.mjs
++++ b/postcss.config.mjs
+@@ -1,6 +1,9 @@
++import { fileURLToPath } from "node:url";
++
+ const config = {
+   plugins: {
+-    "@tailwindcss/postcss": {},
++    // Resolve from this config rather than Turbopack's generated worker directory.
++    [fileURLToPath(new URL("./node_modules/@tailwindcss/postcss/dist/index.js", import.meta.url))]: {},
+   },
+ };
+ export default config;
+
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command 'npx tsc --noEmit; git diff --check' in C:\Users\L\Desktop\sous\Sous_HackCamp
+ succeeded in 2053ms:
+codex
+Applied scoped fixes for Tailwind PostCSS resolution, the invalid `MicIcon` page export, and recipes page optional props. Updated direct page test calls.
+
+Actual results:
+
+- `npx tsc --noEmit`: passed.
+- `npm test`: blocked before execution by `spawn EPERM`.
+- `npm run build`: compilation passed; TypeScript worker blocked by `spawn EPERM`.
+- Webpack build: blocked during compilation by `spawn EPERM`.
+
+Full build success remains unverified. Details: [BUILD-FIX-REPORT.md](/C:/Users/L/Desktop/sous/Sous_HackCamp/BUILD-FIX-REPORT.md).
+tokens used
+41,789

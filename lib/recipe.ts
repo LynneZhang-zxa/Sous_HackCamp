@@ -217,7 +217,7 @@ export function formatAmount(amount: number | null, unit: string): string {
   const whole = Math.floor(amount);
   const frac = amount - whole;
   const fracGlyph = frac === 0.25 ? "¼" : frac === 0.5 ? "½" : frac === 0.75 ? "¾" : "";
-  const num = whole === 0 ? fracGlyph || "0" : `${whole}${fracGlyph}`;
+  const num = frac !== 0 && !fracGlyph ? String(amount) : whole === 0 ? fracGlyph || "0" : `${whole}${fracGlyph}`;
   if (!unit) return num;
   const u = amount > 1 ? UNIT_PLURAL[unit] ?? unit : unit;
   return `${num} ${u}`;
@@ -230,6 +230,7 @@ export function spokenAmount(amount: number | null, unit: string): string {
   const frac = amount - whole;
   const fracWord = frac === 0.25 ? "a quarter" : frac === 0.5 ? "half" : frac === 0.75 ? "three quarters" : "";
   const plural = UNIT_PLURAL[unit] ?? unit;
+  if (frac !== 0 && !fracWord) return `${amount}${unit ? ` ${amount > 1 ? plural : unit}` : ""}`;
   if (whole === 0) {
     if (!unit) return fracWord;
     return frac === 0.5 ? `half a ${unit}` : `${fracWord} of a ${unit}`;

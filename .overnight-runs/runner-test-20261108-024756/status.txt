@@ -1,0 +1,15 @@
+2026-11-08T02:47:56.1978436-07:00 START stderr-success timeout=30s
+2026-11-08T02:47:56.7889687-07:00 END stderr-success exit=0 stdout=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\runner-test-20261108-024756\stderr-success.stdout.txt stderr=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\runner-test-20261108-024756\stderr-success.stderr.txt
+2026-11-08T02:47:56.7949425-07:00 START failed-command timeout=30s
+2026-11-08T02:47:57.3626007-07:00 END failed-command exit=7 stdout=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\runner-test-20261108-024756\failed-command.stdout.txt stderr=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\runner-test-20261108-024756\failed-command.stderr.txt
+2026-11-08T02:47:57.3666197-07:00 START continued-command timeout=30s
+2026-11-08T02:47:57.9161220-07:00 END continued-command exit=0 stdout=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\runner-test-20261108-024756\continued-command.stdout.txt stderr=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\runner-test-20261108-024756\continued-command.stderr.txt
+2026-11-08T02:47:57.9264891-07:00 START missing-executable timeout=30s
+2026-11-08T02:47:58.4482035-07:00 END missing-executable exit=125 stdout=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\runner-test-20261108-024756\missing-executable.stdout.txt stderr=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\runner-test-20261108-024756\missing-executable.stderr.txt
+2026-11-08T02:47:58.4606277-07:00 START timeout timeout=1s
+2026-11-08T02:48:28.5476691-07:00 RUNNING timeout pid=5260 stdout=0 stderr=0
+2026-11-08T02:48:30.0163113-07:00 TIMEOUT timeout exit=124 stalled=False
+2026-11-08T02:48:30.0251811-07:00 FAILED mock-stage attempt=1 exit=7; remaining independent stages will continue
+2026-11-08T02:48:30.0251811-07:00 FAILED mock-stage attempt=2 exit=7; remaining independent stages will continue
+2026-11-08T02:48:30.0251811-07:00 GATES mock-gates exits=7,7,7,7,7,7,7 (zero means verified command only)
+2026-11-08T02:48:30.0409434-07:00 PASS: stderr isolation, exit codes, continuation, missing executable, timeout, bounded retries and all independent gates

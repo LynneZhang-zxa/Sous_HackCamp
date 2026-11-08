@@ -7,10 +7,10 @@ import { currentStep, newSession, nextStep, setServings, startTimer } from "./se
 
 describe("central recipe collection", () => {
   const recipes = listRecipes();
-  it("contains 20 unique stable IDs and all five popular recipes", () => {
-    expect(recipes).toHaveLength(20);
-    expect(new Set(recipes.map((r) => r.id)).size).toBe(20);
-    expect(Object.keys(RECIPES)).toHaveLength(20);
+  it("contains 50 unique stable IDs and all five popular recipes", () => {
+    expect(recipes).toHaveLength(50);
+    expect(new Set(recipes.map((r) => r.id)).size).toBe(50);
+    expect(Object.keys(RECIPES)).toHaveLength(50);
     for (const id of POPULAR_RECIPE_IDS) expect(getRecipe(id)?.id).toBe(id);
     for (const id of ["unknown", "toString", "__proto__"]) expect(getRecipe(id)).toBeUndefined();
   });

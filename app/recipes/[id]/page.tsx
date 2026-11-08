@@ -1,3 +1,4 @@
+import { SaveRecipe } from "@/components/SavedRecipes";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Nav } from "@/components/Nav";
@@ -35,6 +36,7 @@ export default async function RecipePage({ params }: { params: Promise<{ id: str
               <p>{nutritionLabel(recipe)} per serving</p>
               <p className="mt-1 text-xs text-muted">{recipe.nutrition.source}</p>
             </section>}
+            <div className="mt-5"><SaveRecipe id={recipe.id}/></div>
             <Link href={`/cook?recipeId=${encodeURIComponent(recipe.id)}`} className="mt-6 inline-flex rounded-full bg-forest px-6 py-3 font-semibold text-white">Cook by Voice</Link>
           </div>
         </div>

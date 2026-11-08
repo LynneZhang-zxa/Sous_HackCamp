@@ -1,0 +1,106 @@
+
+> Build error occurred
+Error: Turbopack build failed with 4 errors:
+./app/body_74f79e1e.module.css
+Error: Error evaluating Node.js code
+Error: Cannot find module '@tailwindcss/postcss'
+Require stack:
+- C:\Users\L\Desktop\sous\Sous_HackCamp\.next\build\chunks\[root-of-the-server]__1kki86fknkq7y._.js
+- C:\Users\L\Desktop\sous\Sous_HackCamp\.next\build\chunks\[turbopack]_runtime.js
+- C:\Users\L\Desktop\sous\Sous_HackCamp\.next\build\chunks\pool_entry-[turbopack-node]_transforms_postcss_ts_0tp-k2vy8nj6i._.js
+    [at Module._resolveFilename (node:internal/modules/cjs/loader:1500:15)]
+    [at wrapResolveFilename (node:internal/modules/cjs/loader:1071:27)]
+    [at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1095:10)]
+    [at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1116:12)]
+    [at Module._load (node:internal/modules/cjs/loader:1285:25)]
+    [at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)]
+    [at Module.require (node:internal/modules/cjs/loader:1600:12)]
+    [at require (node:internal/modules/helpers:153:16)]
+    at require (turbopack:///[turbopack-node]/transforms/postcss.ts?config=[project]/postcss.config.mjs:49:25) [C:\Users\L\Desktop\sous\Sous_HackCamp\.next\build\chunks\[root-of-the-server]__1kki86fknkq7y._.js:86:33]
+    [at <anonymous>]
+
+Import trace:
+  Server Component:
+    ./app/body_74f79e1e.module.css
+    ./app/body_74f79e1e.js
+    ./app/layout.tsx
+
+
+./app/display_fab10554.module.css
+Error: Error evaluating Node.js code
+Error: Cannot find module '@tailwindcss/postcss'
+Require stack:
+- C:\Users\L\Desktop\sous\Sous_HackCamp\.next\build\chunks\[root-of-the-server]__1kki86fknkq7y._.js
+- C:\Users\L\Desktop\sous\Sous_HackCamp\.next\build\chunks\[turbopack]_runtime.js
+- C:\Users\L\Desktop\sous\Sous_HackCamp\.next\build\chunks\pool_entry-[turbopack-node]_transforms_postcss_ts_0tp-k2vy8nj6i._.js
+    [at Module._resolveFilename (node:internal/modules/cjs/loader:1500:15)]
+    [at wrapResolveFilename (node:internal/modules/cjs/loader:1071:27)]
+    [at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1095:10)]
+    [at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1116:12)]
+    [at Module._load (node:internal/modules/cjs/loader:1285:25)]
+    [at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)]
+    [at Module.require (node:internal/modules/cjs/loader:1600:12)]
+    [at require (node:internal/modules/helpers:153:16)]
+    at require (turbopack:///[turbopack-node]/transforms/postcss.ts?config=[project]/postcss.config.mjs:49:25) [C:\Users\L\Desktop\sous\Sous_HackCamp\.next\build\chunks\[root-of-the-server]__1kki86fknkq7y._.js:86:33]
+    [at <anonymous>]
+
+Import trace:
+  Server Component:
+    ./app/display_fab10554.module.css
+    ./app/display_fab10554.js
+    ./app/layout.tsx
+
+
+./app/globals.css
+Error: Error evaluating Node.js code
+Error: Cannot find module '@tailwindcss/postcss'
+Require stack:
+- C:\Users\L\Desktop\sous\Sous_HackCamp\.next\build\chunks\[root-of-the-server]__1kki86fknkq7y._.js
+- C:\Users\L\Desktop\sous\Sous_HackCamp\.next\build\chunks\[turbopack]_runtime.js
+- C:\Users\L\Desktop\sous\Sous_HackCamp\.next\build\chunks\pool_entry-[turbopack-node]_transforms_postcss_ts_0tp-k2vy8nj6i._.js
+    [at Module._resolveFilename (node:internal/modules/cjs/loader:1500:15)]
+    [at wrapResolveFilename (node:internal/modules/cjs/loader:1071:27)]
+    [at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1095:10)]
+    [at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1116:12)]
+    [at Module._load (node:internal/modules/cjs/loader:1285:25)]
+    [at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)]
+    [at Module.require (node:internal/modules/cjs/loader:1600:12)]
+    [at require (node:internal/modules/helpers:153:16)]
+    at require (turbopack:///[turbopack-node]/transforms/postcss.ts?config=[project]/postcss.config.mjs:49:25) [C:\Users\L\Desktop\sous\Sous_HackCamp\.next\build\chunks\[root-of-the-server]__1kki86fknkq7y._.js:86:33]
+    [at <anonymous>]
+
+Import trace:
+  Client Component Browser:
+    ./app/globals.css [Client Component Browser]
+    ./app/layout.tsx [Server Component]
+
+
+./app/hand_ee158ea4.module.css
+Error: Error evaluating Node.js code
+Error: Cannot find module '@tailwindcss/postcss'
+Require stack:
+- C:\Users\L\Desktop\sous\Sous_HackCamp\.next\build\chunks\[root-of-the-server]__1kki86fknkq7y._.js
+- C:\Users\L\Desktop\sous\Sous_HackCamp\.next\build\chunks\[turbopack]_runtime.js
+- C:\Users\L\Desktop\sous\Sous_HackCamp\.next\build\chunks\pool_entry-[turbopack-node]_transforms_postcss_ts_0tp-k2vy8nj6i._.js
+    [at Module._resolveFilename (node:internal/modules/cjs/loader:1500:15)]
+    [at wrapResolveFilename (node:internal/modules/cjs/loader:1071:27)]
+    [at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1095:10)]
+    [at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1116:12)]
+    [at Module._load (node:internal/modules/cjs/loader:1285:25)]
+    [at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)]
+    [at Module.require (node:internal/modules/cjs/loader:1600:12)]
+    [at require (node:internal/modules/helpers:153:16)]
+    at require (turbopack:///[turbopack-node]/transforms/postcss.ts?config=[project]/postcss.config.mjs:49:25) [C:\Users\L\Desktop\sous\Sous_HackCamp\.next\build\chunks\[root-of-the-server]__1kki86fknkq7y._.js:86:33]
+    [at <anonymous>]
+
+Import trace:
+  Server Component:
+    ./app/hand_ee158ea4.module.css
+    ./app/hand_ee158ea4.js
+    ./app/layout.tsx
+
+
+    at require (turbopack:///[turbopack-node]/transforms/postcss.ts?config=[project]/postcss.config.mjs:49:25) [C:\Users\L\Desktop\sous\Sous_HackCamp\.next\build\chunks\[root-of-the-server]__1kki86fknkq7y._.js:86:33])
+    at require (turbopack:///[turbopack-node]/transforms/postcss.ts?config=[project]/postcss.config.mjs:49:25) [C:\Users\L\Desktop\sous\Sous_HackCamp\.next\build\chunks\[root-of-the-server]__1kki86fknkq7y._.js:86:33])
+    at require (turbopack:///[turbopack-node]/transforms/postcss.ts?config=[project]/postcss.config.mjs:49:25) [C:\Users\L\Desktop\sous\Sous_HackCamp\.next\build\chunks\[root-of-the-server]__1kki86fknkq7y._.js:86:33])
+    at require (turbopack:///[turbopack-node]/transforms/postcss.ts?config=[project]/postcss.config.mjs:49:25) [C:\Users\L\Desktop\sous\Sous_HackCamp\.next\build\chunks\[root-of-the-server]__1kki86fknkq7y._.js:86:33])

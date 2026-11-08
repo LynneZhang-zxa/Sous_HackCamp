@@ -27,6 +27,10 @@ describe("call-start recipe selection with mocked Alebex", () => {
     expect(body.recipe.id).toBe(recipe.id);
     expect(body.state.recipeId).toBe(recipe.id);
     expect(body.startCall.context).toContain(recipe.title);
+    {
+      expect(JSON.parse(body.startCall.knowledgeBase)).toEqual(recipe);
+      expect(body.startCall.knowledgeBase).not.toContain("Substitutes for heavy cream");
+    }
     expect(createSession).toHaveBeenCalledExactlyOnceWith(recipe.id);
   });
   it("preserves the default recipe", async () => {
@@ -37,4 +41,14 @@ describe("call-start recipe selection with mocked Alebex", () => {
     expect(createSession).not.toHaveBeenCalled();
     expect(mintWsToken).not.toHaveBeenCalled();
   });
+});
+
+for (const body of [null, [], {recipeId:null}, {recipeId:3}, {recipeId:["creamy-garlic-chicken"]}]) it("rejects malformed selection " + JSON.stringify(body), async () => {
+ const response = await POST(new Request("https://example.test/api/call/start", {method:"POST", body:JSON.stringify(body)}));
+ expect(response.status).toBe(400);
+ expect(mintWsToken).not.toHaveBeenCalled();
+});
+it("rejects malformed JSON before contacting Alebex", async () => {
+ expect((await POST(new Request("https://example.test/api/call/start", {method:"POST",body:"{"}))).status).toBe(400);
+ expect(mintWsToken).not.toHaveBeenCalled();
 });

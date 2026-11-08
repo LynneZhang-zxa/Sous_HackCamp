@@ -244,3 +244,23 @@ body {
   .browse-nav .landing-nav-inner { height: auto; min-height: 64px; padding-block: 12px; }
   .browse-nav .landing-nav-links { order: 3; width: 100%; justify-content: center; margin: 0; }
 }
+
+/* Keep foundation navigation and controls usable at narrow widths. */
+:focus-visible { outline: 3px solid #6b8f5e; outline-offset: 4px; }
+.recommendation-photo { height: 230px; }
+.landing-nav-links > a:hover, .landing-nav-links summary:hover { color: #526637; background: rgb(255 250 243 / .65); border-radius: 999px; }
+.landing-nav-links details > div a { padding: 10px 12px; font-size: 15px; }
+@media (max-width: 700px) {
+ .recommendation-photo { height: 210px; }
+ .landing-nav-links details > div { left: auto; right: 0; }
+ .recipe-grid > :last-child { grid-column: auto; }
+ .recipe-grid > :last-child img { height: 130px; }
+ .hero-notes { flex-wrap: wrap; }
+}
+#recipe-search > label { min-width: 0; max-width: 100%; }
+#recipe-search input, #recipe-search select { max-width: 100%; }
+@media (max-width: 700px) {
+ .landing-nav .landing-nav-inner { height: auto; min-height: 64px; padding-block: 12px; }
+ .landing-nav .landing-nav-links { order: 3; width: 100%; justify-content: center; margin: 0; }
+ .landing-nav-links details > div { left: -70px; }
+}

@@ -1,0 +1,502 @@
+[
+  {
+    "id": "creamy-garlic-chicken",
+    "title": "Creamy Garlic Chicken",
+    "image": "/recipes/creamy-garlic-chicken.jpg",
+    "exists": true,
+    "sha256": "95dd92dc52bb32afd7c3717152ddfa521b888991e8b623ee568fea16a9f53254",
+    "status": "existing-photo-needs-dish-match-review",
+    "notes": "Existing file loads and is unique. Prior source URLs are in SOURCES.md; exact dish and ingredient match is not verified.",
+    "candidate": "creamy-garlic-chicken-commons.jpg"
+  },
+  {
+    "id": "tomato-beef-stew",
+    "title": "Tomato Beef Stew",
+    "image": "/recipes/tomato-beef-stew.jpg",
+    "exists": true,
+    "sha256": "fea1e419d52021988c832aacdbd2a1dc792ca07678d8c9a4bd421b887ff8c3af",
+    "status": "existing-photo-needs-dish-match-review",
+    "notes": "Existing file loads and is unique. Prior source URLs are in SOURCES.md; exact dish and ingredient match is not verified.",
+    "candidate": "tomato-beef-stew-commons.jpg"
+  },
+  {
+    "id": "chicken-curry",
+    "title": "Chicken Curry",
+    "image": "/recipes/chicken-curry.jpg",
+    "exists": true,
+    "sha256": "791aa7e1d014b3e42385655ef31bb312fa9e489f4a30f8baf59ef8d957854143",
+    "status": "existing-photo-needs-dish-match-review",
+    "notes": "Existing file loads and is unique. Prior source URLs are in SOURCES.md; exact dish and ingredient match is not verified.",
+    "candidate": "chicken-curry-commons.jpg"
+  },
+  {
+    "id": "bibimbap",
+    "title": "Bibimbap",
+    "image": "/recipes/bibimbap.jpg",
+    "exists": true,
+    "sha256": "e13fa88d0e352dcaf13c445f9687602cb89ffcc1afba5566148f653af7f347ba",
+    "status": "existing-photo-needs-dish-match-review",
+    "notes": "Existing file loads and is unique. Prior source URLs are in SOURCES.md; exact dish and ingredient match is not verified.",
+    "candidate": "bibimbap-commons.jpg"
+  },
+  {
+    "id": "garlic-butter-shrimp",
+    "title": "Garlic Butter Shrimp",
+    "image": "/recipes/garlic-butter-shrimp.jpg",
+    "exists": true,
+    "sha256": "b69b9cecf2bdc74bbd62fa2467fe537994cb155d1e826db279a649bc9a72d1ba",
+    "status": "existing-photo-needs-dish-match-review",
+    "notes": "Existing file loads and is unique. Prior source URLs are in SOURCES.md; exact dish and ingredient match is not verified.",
+    "candidate": "garlic-butter-shrimp-commons.jpg"
+  },
+  {
+    "id": "spaghetti-pomodoro",
+    "title": "Spaghetti Pomodoro",
+    "image": "/recipes/placeholder.svg",
+    "exists": true,
+    "sha256": "d378cf3700518b62df855f3c1a800f2664f5e78a0aa37a342541adcb9ca25369",
+    "status": "needs-licensed-photo",
+    "notes": "Shared fallback, not a photograph. Needs a verified matching photograph and license.",
+    "candidate": "spaghetti-pomodoro-commons.jpg"
+  },
+  {
+    "id": "chickpea-spinach-curry",
+    "title": "Chickpea Spinach Curry",
+    "image": "/recipes/placeholder.svg",
+    "exists": true,
+    "sha256": "d378cf3700518b62df855f3c1a800f2664f5e78a0aa37a342541adcb9ca25369",
+    "status": "needs-licensed-photo",
+    "notes": "Shared fallback, not a photograph. Needs a verified matching photograph and license.",
+    "candidate": "chickpea-spinach-curry-commons.jpg"
+  },
+  {
+    "id": "miso-soup",
+    "title": "Miso Soup",
+    "image": "/recipes/placeholder.svg",
+    "exists": true,
+    "sha256": "d378cf3700518b62df855f3c1a800f2664f5e78a0aa37a342541adcb9ca25369",
+    "status": "needs-licensed-photo",
+    "notes": "Shared fallback, not a photograph. Needs a verified matching photograph and license.",
+    "candidate": "miso-soup-commons.jpg"
+  },
+  {
+    "id": "teriyaki-salmon",
+    "title": "Teriyaki Salmon",
+    "image": "/recipes/placeholder.svg",
+    "exists": true,
+    "sha256": "d378cf3700518b62df855f3c1a800f2664f5e78a0aa37a342541adcb9ca25369",
+    "status": "needs-licensed-photo",
+    "notes": "Shared fallback, not a photograph. Needs a verified matching photograph and license.",
+    "candidate": "teriyaki-salmon-commons.jpg"
+  },
+  {
+    "id": "vegetable-fried-rice",
+    "title": "Vegetable Fried Rice",
+    "image": "/recipes/placeholder.svg",
+    "exists": true,
+    "sha256": "d378cf3700518b62df855f3c1a800f2664f5e78a0aa37a342541adcb9ca25369",
+    "status": "needs-licensed-photo",
+    "notes": "Shared fallback, not a photograph. Needs a verified matching photograph and license.",
+    "candidate": "vegetable-fried-rice-commons.jpg"
+  },
+  {
+    "id": "homemade-tacos",
+    "title": "Homemade Tacos",
+    "image": "/recipes/placeholder.svg",
+    "exists": true,
+    "sha256": "d378cf3700518b62df855f3c1a800f2664f5e78a0aa37a342541adcb9ca25369",
+    "status": "needs-licensed-photo",
+    "notes": "Shared fallback, not a photograph. Needs a verified matching photograph and license.",
+    "candidate": "homemade-tacos-commons.jpg"
+  },
+  {
+    "id": "black-bean-quesadillas",
+    "title": "Black Bean Quesadillas",
+    "image": "/recipes/placeholder.svg",
+    "exists": true,
+    "sha256": "d378cf3700518b62df855f3c1a800f2664f5e78a0aa37a342541adcb9ca25369",
+    "status": "needs-licensed-photo",
+    "notes": "Shared fallback, not a photograph. Needs a verified matching photograph and license.",
+    "candidate": "black-bean-quesadillas-commons.jpg"
+  },
+  {
+    "id": "greek-chickpea-salad",
+    "title": "Greek Chickpea Salad",
+    "image": "/recipes/placeholder.svg",
+    "exists": true,
+    "sha256": "d378cf3700518b62df855f3c1a800f2664f5e78a0aa37a342541adcb9ca25369",
+    "status": "needs-licensed-photo",
+    "notes": "Shared fallback, not a photograph. Needs a verified matching photograph and license.",
+    "candidate": null
+  },
+  {
+    "id": "lentil-vegetable-soup",
+    "title": "Lentil Vegetable Soup",
+    "image": "/recipes/placeholder.svg",
+    "exists": true,
+    "sha256": "d378cf3700518b62df855f3c1a800f2664f5e78a0aa37a342541adcb9ca25369",
+    "status": "needs-licensed-photo",
+    "notes": "Shared fallback, not a photograph. Needs a verified matching photograph and license.",
+    "candidate": "lentil-vegetable-soup-commons.jpg"
+  },
+  {
+    "id": "shakshuka",
+    "title": "Shakshuka",
+    "image": "/recipes/placeholder.svg",
+    "exists": true,
+    "sha256": "d378cf3700518b62df855f3c1a800f2664f5e78a0aa37a342541adcb9ca25369",
+    "status": "needs-licensed-photo",
+    "notes": "Shared fallback, not a photograph. Needs a verified matching photograph and license.",
+    "candidate": "shakshuka-commons.jpg"
+  },
+  {
+    "id": "thai-basil-chicken",
+    "title": "Thai Basil Chicken",
+    "image": "/recipes/placeholder.svg",
+    "exists": true,
+    "sha256": "d378cf3700518b62df855f3c1a800f2664f5e78a0aa37a342541adcb9ca25369",
+    "status": "needs-licensed-photo",
+    "notes": "Shared fallback, not a photograph. Needs a verified matching photograph and license.",
+    "candidate": "thai-basil-chicken-commons.jpg"
+  },
+  {
+    "id": "lemon-herb-chicken",
+    "title": "Lemon Herb Chicken",
+    "image": "/recipes/placeholder.svg",
+    "exists": true,
+    "sha256": "d378cf3700518b62df855f3c1a800f2664f5e78a0aa37a342541adcb9ca25369",
+    "status": "needs-licensed-photo",
+    "notes": "Shared fallback, not a photograph. Needs a verified matching photograph and license.",
+    "candidate": null
+  },
+  {
+    "id": "avocado-pasta",
+    "title": "Avocado Pasta",
+    "image": "/recipes/placeholder.svg",
+    "exists": true,
+    "sha256": "d378cf3700518b62df855f3c1a800f2664f5e78a0aa37a342541adcb9ca25369",
+    "status": "needs-licensed-photo",
+    "notes": "Shared fallback, not a photograph. Needs a verified matching photograph and license.",
+    "candidate": null
+  },
+  {
+    "id": "mushroom-risotto",
+    "title": "Mushroom Risotto",
+    "image": "/recipes/placeholder.svg",
+    "exists": true,
+    "sha256": "d378cf3700518b62df855f3c1a800f2664f5e78a0aa37a342541adcb9ca25369",
+    "status": "needs-licensed-photo",
+    "notes": "Shared fallback, not a photograph. Needs a verified matching photograph and license.",
+    "candidate": null
+  },
+  {
+    "id": "beef-broccoli-stir-fry",
+    "title": "Beef and Broccoli Stir-Fry",
+    "image": "/recipes/placeholder.svg",
+    "exists": true,
+    "sha256": "d378cf3700518b62df855f3c1a800f2664f5e78a0aa37a342541adcb9ca25369",
+    "status": "needs-licensed-photo",
+    "notes": "Shared fallback, not a photograph. Needs a verified matching photograph and license.",
+    "candidate": null
+  },
+  {
+    "id": "roasted-tomato-soup",
+    "title": "Roasted Tomato Soup",
+    "image": "/recipes/placeholder.svg",
+    "exists": true,
+    "sha256": "d378cf3700518b62df855f3c1a800f2664f5e78a0aa37a342541adcb9ca25369",
+    "status": "needs-licensed-photo",
+    "notes": "Shared fallback, not a photograph. Needs a verified matching photograph and license.",
+    "candidate": null
+  },
+  {
+    "id": "baked-sweet-potato-beans",
+    "title": "Baked Sweet Potatoes with Beans",
+    "image": "/recipes/placeholder.svg",
+    "exists": true,
+    "sha256": "d378cf3700518b62df855f3c1a800f2664f5e78a0aa37a342541adcb9ca25369",
+    "status": "needs-licensed-photo",
+    "notes": "Shared fallback, not a photograph. Needs a verified matching photograph and license.",
+    "candidate": null
+  },
+  {
+    "id": "broccoli-cheddar-frittata",
+    "title": "Broccoli Cheddar Frittata",
+    "image": "/recipes/placeholder.svg",
+    "exists": true,
+    "sha256": "d378cf3700518b62df855f3c1a800f2664f5e78a0aa37a342541adcb9ca25369",
+    "status": "needs-licensed-photo",
+    "notes": "Shared fallback, not a photograph. Needs a verified matching photograph and license.",
+    "candidate": null
+  },
+  {
+    "id": "lemon-couscous-chickpeas",
+    "title": "Lemon Couscous with Chickpeas",
+    "image": "/recipes/placeholder.svg",
+    "exists": true,
+    "sha256": "d378cf3700518b62df855f3c1a800f2664f5e78a0aa37a342541adcb9ca25369",
+    "status": "needs-licensed-photo",
+    "notes": "Shared fallback, not a photograph. Needs a verified matching photograph and license.",
+    "candidate": null
+  },
+  {
+    "id": "creamy-polenta-mushrooms",
+    "title": "Creamy Polenta with Mushrooms",
+    "image": "/recipes/placeholder.svg",
+    "exists": true,
+    "sha256": "d378cf3700518b62df855f3c1a800f2664f5e78a0aa37a342541adcb9ca25369",
+    "status": "needs-licensed-photo",
+    "notes": "Shared fallback, not a photograph. Needs a verified matching photograph and license.",
+    "candidate": null
+  },
+  {
+    "id": "sesame-tofu-noodles",
+    "title": "Sesame Tofu Noodles",
+    "image": "/recipes/placeholder.svg",
+    "exists": true,
+    "sha256": "d378cf3700518b62df855f3c1a800f2664f5e78a0aa37a342541adcb9ca25369",
+    "status": "needs-licensed-photo",
+    "notes": "Shared fallback, not a photograph. Needs a verified matching photograph and license.",
+    "candidate": null
+  },
+  {
+    "id": "red-lentil-dal",
+    "title": "Red Lentil Dal",
+    "image": "/recipes/placeholder.svg",
+    "exists": true,
+    "sha256": "d378cf3700518b62df855f3c1a800f2664f5e78a0aa37a342541adcb9ca25369",
+    "status": "needs-licensed-photo",
+    "notes": "Shared fallback, not a photograph. Needs a verified matching photograph and license.",
+    "candidate": null
+  },
+  {
+    "id": "spinach-ricotta-shells",
+    "title": "Spinach Ricotta Stuffed Shells",
+    "image": "/recipes/placeholder.svg",
+    "exists": true,
+    "sha256": "d378cf3700518b62df855f3c1a800f2664f5e78a0aa37a342541adcb9ca25369",
+    "status": "needs-licensed-photo",
+    "notes": "Shared fallback, not a photograph. Needs a verified matching photograph and license.",
+    "candidate": null
+  },
+  {
+    "id": "white-bean-kale-skillet",
+    "title": "White Bean and Kale Skillet",
+    "image": "/recipes/placeholder.svg",
+    "exists": true,
+    "sha256": "d378cf3700518b62df855f3c1a800f2664f5e78a0aa37a342541adcb9ca25369",
+    "status": "needs-licensed-photo",
+    "notes": "Shared fallback, not a photograph. Needs a verified matching photograph and license.",
+    "candidate": null
+  },
+  {
+    "id": "cauliflower-chickpea-traybake",
+    "title": "Cauliflower Chickpea Traybake",
+    "image": "/recipes/placeholder.svg",
+    "exists": true,
+    "sha256": "d378cf3700518b62df855f3c1a800f2664f5e78a0aa37a342541adcb9ca25369",
+    "status": "needs-licensed-photo",
+    "notes": "Shared fallback, not a photograph. Needs a verified matching photograph and license.",
+    "candidate": null
+  },
+  {
+    "id": "butternut-squash-soup",
+    "title": "Butternut Squash Soup",
+    "image": "/recipes/placeholder.svg",
+    "exists": true,
+    "sha256": "d378cf3700518b62df855f3c1a800f2664f5e78a0aa37a342541adcb9ca25369",
+    "status": "needs-licensed-photo",
+    "notes": "Shared fallback, not a photograph. Needs a verified matching photograph and license.",
+    "candidate": null
+  },
+  {
+    "id": "quinoa-roasted-vegetable-bowls",
+    "title": "Quinoa Roasted Vegetable Bowls",
+    "image": "/recipes/placeholder.svg",
+    "exists": true,
+    "sha256": "d378cf3700518b62df855f3c1a800f2664f5e78a0aa37a342541adcb9ca25369",
+    "status": "needs-licensed-photo",
+    "notes": "Shared fallback, not a photograph. Needs a verified matching photograph and license.",
+    "candidate": null
+  },
+  {
+    "id": "peanut-sweet-potato-stew",
+    "title": "Peanut Sweet Potato Stew",
+    "image": "/recipes/placeholder.svg",
+    "exists": true,
+    "sha256": "d378cf3700518b62df855f3c1a800f2664f5e78a0aa37a342541adcb9ca25369",
+    "status": "needs-licensed-photo",
+    "notes": "Shared fallback, not a photograph. Needs a verified matching photograph and license.",
+    "candidate": null
+  },
+  {
+    "id": "potato-leek-soup",
+    "title": "Potato Leek Soup",
+    "image": "/recipes/placeholder.svg",
+    "exists": true,
+    "sha256": "d378cf3700518b62df855f3c1a800f2664f5e78a0aa37a342541adcb9ca25369",
+    "status": "needs-licensed-photo",
+    "notes": "Shared fallback, not a photograph. Needs a verified matching photograph and license.",
+    "candidate": null
+  },
+  {
+    "id": "eggplant-tomato-pasta",
+    "title": "Eggplant Tomato Pasta",
+    "image": "/recipes/placeholder.svg",
+    "exists": true,
+    "sha256": "d378cf3700518b62df855f3c1a800f2664f5e78a0aa37a342541adcb9ca25369",
+    "status": "needs-licensed-photo",
+    "notes": "Shared fallback, not a photograph. Needs a verified matching photograph and license.",
+    "candidate": null
+  },
+  {
+    "id": "turkey-bean-chili",
+    "title": "Turkey Bean Chili",
+    "image": "/recipes/placeholder.svg",
+    "exists": true,
+    "sha256": "d378cf3700518b62df855f3c1a800f2664f5e78a0aa37a342541adcb9ca25369",
+    "status": "needs-licensed-photo",
+    "notes": "Shared fallback, not a photograph. Needs a verified matching photograph and license.",
+    "candidate": null
+  },
+  {
+    "id": "baked-lemon-cod",
+    "title": "Baked Lemon Cod",
+    "image": "/recipes/placeholder.svg",
+    "exists": true,
+    "sha256": "d378cf3700518b62df855f3c1a800f2664f5e78a0aa37a342541adcb9ca25369",
+    "status": "needs-licensed-photo",
+    "notes": "Shared fallback, not a photograph. Needs a verified matching photograph and license.",
+    "candidate": null
+  },
+  {
+    "id": "pork-tenderloin-apples",
+    "title": "Pork Tenderloin with Apples",
+    "image": "/recipes/placeholder.svg",
+    "exists": true,
+    "sha256": "d378cf3700518b62df855f3c1a800f2664f5e78a0aa37a342541adcb9ca25369",
+    "status": "needs-licensed-photo",
+    "notes": "Shared fallback, not a photograph. Needs a verified matching photograph and license.",
+    "candidate": null
+  },
+  {
+    "id": "chicken-noodle-soup",
+    "title": "Chicken Noodle Soup",
+    "image": "/recipes/placeholder.svg",
+    "exists": true,
+    "sha256": "d378cf3700518b62df855f3c1a800f2664f5e78a0aa37a342541adcb9ca25369",
+    "status": "needs-licensed-photo",
+    "notes": "Shared fallback, not a photograph. Needs a verified matching photograph and license.",
+    "candidate": null
+  },
+  {
+    "id": "salmon-potato-traybake",
+    "title": "Salmon Potato Traybake",
+    "image": "/recipes/placeholder.svg",
+    "exists": true,
+    "sha256": "d378cf3700518b62df855f3c1a800f2664f5e78a0aa37a342541adcb9ca25369",
+    "status": "needs-licensed-photo",
+    "notes": "Shared fallback, not a photograph. Needs a verified matching photograph and license.",
+    "candidate": null
+  },
+  {
+    "id": "ginger-chicken-lettuce-cups",
+    "title": "Ginger Chicken Lettuce Cups",
+    "image": "/recipes/placeholder.svg",
+    "exists": true,
+    "sha256": "d378cf3700518b62df855f3c1a800f2664f5e78a0aa37a342541adcb9ca25369",
+    "status": "needs-licensed-photo",
+    "notes": "Shared fallback, not a photograph. Needs a verified matching photograph and license.",
+    "candidate": null
+  },
+  {
+    "id": "beef-meatballs-tomato-sauce",
+    "title": "Beef Meatballs in Tomato Sauce",
+    "image": "/recipes/placeholder.svg",
+    "exists": true,
+    "sha256": "d378cf3700518b62df855f3c1a800f2664f5e78a0aa37a342541adcb9ca25369",
+    "status": "needs-licensed-photo",
+    "notes": "Shared fallback, not a photograph. Needs a verified matching photograph and license.",
+    "candidate": null
+  },
+  {
+    "id": "shrimp-coconut-noodle-soup",
+    "title": "Shrimp Coconut Noodle Soup",
+    "image": "/recipes/placeholder.svg",
+    "exists": true,
+    "sha256": "d378cf3700518b62df855f3c1a800f2664f5e78a0aa37a342541adcb9ca25369",
+    "status": "needs-licensed-photo",
+    "notes": "Shared fallback, not a photograph. Needs a verified matching photograph and license.",
+    "candidate": null
+  },
+  {
+    "id": "chicken-fajita-skillet",
+    "title": "Chicken Fajita Skillet",
+    "image": "/recipes/placeholder.svg",
+    "exists": true,
+    "sha256": "d378cf3700518b62df855f3c1a800f2664f5e78a0aa37a342541adcb9ca25369",
+    "status": "needs-licensed-photo",
+    "notes": "Shared fallback, not a photograph. Needs a verified matching photograph and license.",
+    "candidate": null
+  },
+  {
+    "id": "lentil-shepherds-pie",
+    "title": "Lentil Shepherd's Pie",
+    "image": "/recipes/placeholder.svg",
+    "exists": true,
+    "sha256": "d378cf3700518b62df855f3c1a800f2664f5e78a0aa37a342541adcb9ca25369",
+    "status": "needs-licensed-photo",
+    "notes": "Shared fallback, not a photograph. Needs a verified matching photograph and license.",
+    "candidate": null
+  },
+  {
+    "id": "banana-oat-pancakes",
+    "title": "Banana Oat Pancakes",
+    "image": "/recipes/placeholder.svg",
+    "exists": true,
+    "sha256": "d378cf3700518b62df855f3c1a800f2664f5e78a0aa37a342541adcb9ca25369",
+    "status": "needs-licensed-photo",
+    "notes": "Shared fallback, not a photograph. Needs a verified matching photograph and license.",
+    "candidate": null
+  },
+  {
+    "id": "apple-cinnamon-porridge",
+    "title": "Apple Cinnamon Porridge",
+    "image": "/recipes/placeholder.svg",
+    "exists": true,
+    "sha256": "d378cf3700518b62df855f3c1a800f2664f5e78a0aa37a342541adcb9ca25369",
+    "status": "needs-licensed-photo",
+    "notes": "Shared fallback, not a photograph. Needs a verified matching photograph and license.",
+    "candidate": null
+  },
+  {
+    "id": "savory-spinach-oatmeal",
+    "title": "Savory Spinach Oatmeal",
+    "image": "/recipes/placeholder.svg",
+    "exists": true,
+    "sha256": "d378cf3700518b62df855f3c1a800f2664f5e78a0aa37a342541adcb9ca25369",
+    "status": "needs-licensed-photo",
+    "notes": "Shared fallback, not a photograph. Needs a verified matching photograph and license.",
+    "candidate": null
+  },
+  {
+    "id": "mediterranean-tuna-bean-salad",
+    "title": "Mediterranean Tuna Bean Salad",
+    "image": "/recipes/placeholder.svg",
+    "exists": true,
+    "sha256": "d378cf3700518b62df855f3c1a800f2664f5e78a0aa37a342541adcb9ca25369",
+    "status": "needs-licensed-photo",
+    "notes": "Shared fallback, not a photograph. Needs a verified matching photograph and license.",
+    "candidate": null
+  },
+  {
+    "id": "roasted-carrot-hummus-wraps",
+    "title": "Roasted Carrot Hummus Wraps",
+    "image": "/recipes/placeholder.svg",
+    "exists": true,
+    "sha256": "d378cf3700518b62df855f3c1a800f2664f5e78a0aa37a342541adcb9ca25369",
+    "status": "needs-licensed-photo",
+    "notes": "Shared fallback, not a photograph. Needs a verified matching photograph and license.",
+    "candidate": null
+  }
+]

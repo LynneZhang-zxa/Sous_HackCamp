@@ -1,0 +1,40 @@
+
+> sous@0.1.0 build
+> next build
+
+▲ Next.js 16.4.5 (Turbopack)
+✓ Running next.config.ts took 41ms
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 847ms
+  Running TypeScript ...
+  Finished TypeScript in 581ms ...
+  Collecting page data using 12 workers ...
+  Generating static pages using 12 workers (0/59) ...
+  Generating static pages using 12 workers (14/59) 
+  Generating static pages using 12 workers (29/59) 
+  Generating static pages using 12 workers (44/59) 
+✓ Generating static pages using 12 workers (59/59) in 1086ms
+  Finalizing page optimization ...
+
+Route (app)
+┌ ○ /
+├ ○ /_not-found
+├ ƒ /api/call/start
+├ ƒ /api/session/[id]
+├ ƒ /api/tools
+├ ○ /collection/my-recipes
+├ ƒ /cook
+├ ƒ /recipes
+├   /recipes/[id]
+│ ├ ● /recipes/creamy-garlic-chicken
+│ ├ ● /recipes/tomato-beef-stew
+│ ├ ● /recipes/chicken-curry
+│ └ ● [+47 more paths]
+└ ○ /tools
+
+
+○  (Static)   prerendered as static content
+●  (SSG)      prerendered as static HTML (uses generateStaticParams)
+ƒ  (Dynamic)  server-rendered on demand
+

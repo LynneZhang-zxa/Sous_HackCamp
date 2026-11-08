@@ -6,8 +6,13 @@ import { createSession } from "@/lib/store";
 
 export async function POST(req: Request) {
   try {
-    const body = (await req.json().catch(() => ({}))) as { recipeId?: string };
-    const recipe = getRecipe(body.recipeId ?? CREAMY_GARLIC_CHICKEN.id);
+    let body: unknown;
+    try { body = await req.json(); } catch { return NextResponse.json({ error: "Invalid JSON" }, { status: 400 }); }
+    if (!body || typeof body !== "object" || Array.isArray(body) || ("recipeId" in body && typeof body.recipeId !== "string")) {
+      return NextResponse.json({ error: "recipeId must be a string" }, { status: 400 });
+    }
+    const { recipeId } = body as { recipeId?: string };
+    const recipe = getRecipe(recipeId ?? CREAMY_GARLIC_CHICKEN.id);
     if (!recipe) return NextResponse.json({ error: "Unknown recipe" }, { status: 404 });
 
     const agentId = requireEnv("ALEBEX_AGENT_ID");

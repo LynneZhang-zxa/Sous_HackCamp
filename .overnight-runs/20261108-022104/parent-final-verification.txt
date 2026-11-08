@@ -1,0 +1,1 @@
+PASS: stable production rebuild after all child stages ended; all 50 detail HTTP routes; invalid detail/cook HTTP 404; default cook; Edge saved/reload/cross-tab, combined filters, empty/reset, keyboard disclosure, storage-denied feedback, mobile overflow. All browser API/external requests blocked. No voice calls. Final authoritative report: SOUS-OVERNIGHT-REPORT.md.

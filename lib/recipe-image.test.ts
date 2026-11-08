@@ -13,7 +13,7 @@ describe("recipe image fallback", () => {
     photo.props.onError();
     const fallback = RecipeImage(props);
     expect(fallback.props.src).toBe("/recipes/placeholder.svg");
-    expect(fallback.props.alt).toBe(props.title);
+    expect(fallback.props.alt).toBe(props.title + " — photo unavailable");
     expect(RecipeImage({ ...props, src: "/recipes/bibimbap.jpg" }).props.src).toBe("/recipes/bibimbap.jpg");
   });
   it("uses a catalog placeholder without replacing it with an external image", () => {

@@ -1,0 +1,13 @@
+
+> sous@0.1.0 test
+> vitest run --configLoader native
+
+
+ RUN  v5.0.3 C:/Users/L/Desktop/sous/Sous_HackCamp
+
+
+ Test Files  9 passed (9)
+      Tests  542 passed (542)
+   Start at  01:50:56
+   Duration  559ms (transform 48%, import 32%, tests 17%, worker 3%)
+

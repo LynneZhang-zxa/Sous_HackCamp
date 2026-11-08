@@ -1,0 +1,10 @@
+Fixed recipe completeness issues across the 30 added recipes and repaired the test configuration. The catalog remains at 50 unique recipes; the original 20, homepage and navigation are preserved.
+
+- TypeScript: passed.
+- `npm test`: 542 tests passed across 9 files.
+- Catalog, foundation, recipe integration and voice-context checks: passed.
+- Production build: compiled, then failed with `spawn EPERM`.
+- Local server: blocked by `spawn EPERM`; browser behavior remains unverified.
+- No paid calls, secret changes, remote configuration changes or Git mutations.
+
+Full findings and remaining limitations: [FOUNDATION-REGRESSION-REPORT.md](FOUNDATION-REGRESSION-REPORT.md).

@@ -1,7 +1,7 @@
 import { defineConfig } from "vitest/config";
-import path from "node:path";
+import { fileURLToPath } from "node:url";
 
 export default defineConfig({
-  test: { include: ["lib/**/*.test.ts"] },
-  resolve: { alias: { "@": path.resolve(__dirname, ".") } },
+  test: { include: ["lib/**/*.test.ts"], pool: "threads" },
+  resolve: { alias: { "@": fileURLToPath(new URL(".", import.meta.url)) } },
 });

@@ -1,0 +1,252 @@
+[
+  {
+    "id": "creamy-garlic-chicken",
+    "title": "Creamy Garlic Chicken",
+    "image": "/recipes/creamy-garlic-chicken.jpg"
+  },
+  {
+    "id": "tomato-beef-stew",
+    "title": "Tomato Beef Stew",
+    "image": "/recipes/tomato-beef-stew.jpg"
+  },
+  {
+    "id": "chicken-curry",
+    "title": "Chicken Curry",
+    "image": "/recipes/chicken-curry.jpg"
+  },
+  {
+    "id": "bibimbap",
+    "title": "Bibimbap",
+    "image": "/recipes/bibimbap.jpg"
+  },
+  {
+    "id": "garlic-butter-shrimp",
+    "title": "Garlic Butter Shrimp",
+    "image": "/recipes/garlic-butter-shrimp.jpg"
+  },
+  {
+    "id": "spaghetti-pomodoro",
+    "title": "Spaghetti Pomodoro",
+    "image": "/recipes/placeholder.svg"
+  },
+  {
+    "id": "chickpea-spinach-curry",
+    "title": "Chickpea Spinach Curry",
+    "image": "/recipes/placeholder.svg"
+  },
+  {
+    "id": "miso-soup",
+    "title": "Miso Soup",
+    "image": "/recipes/placeholder.svg"
+  },
+  {
+    "id": "teriyaki-salmon",
+    "title": "Teriyaki Salmon",
+    "image": "/recipes/placeholder.svg"
+  },
+  {
+    "id": "vegetable-fried-rice",
+    "title": "Vegetable Fried Rice",
+    "image": "/recipes/placeholder.svg"
+  },
+  {
+    "id": "homemade-tacos",
+    "title": "Homemade Tacos",
+    "image": "/recipes/placeholder.svg"
+  },
+  {
+    "id": "black-bean-quesadillas",
+    "title": "Black Bean Quesadillas",
+    "image": "/recipes/placeholder.svg"
+  },
+  {
+    "id": "greek-chickpea-salad",
+    "title": "Greek Chickpea Salad",
+    "image": "/recipes/placeholder.svg"
+  },
+  {
+    "id": "lentil-vegetable-soup",
+    "title": "Lentil Vegetable Soup",
+    "image": "/recipes/placeholder.svg"
+  },
+  {
+    "id": "shakshuka",
+    "title": "Shakshuka",
+    "image": "/recipes/placeholder.svg"
+  },
+  {
+    "id": "thai-basil-chicken",
+    "title": "Thai Basil Chicken",
+    "image": "/recipes/placeholder.svg"
+  },
+  {
+    "id": "lemon-herb-chicken",
+    "title": "Lemon Herb Chicken",
+    "image": "/recipes/placeholder.svg"
+  },
+  {
+    "id": "avocado-pasta",
+    "title": "Avocado Pasta",
+    "image": "/recipes/placeholder.svg"
+  },
+  {
+    "id": "mushroom-risotto",
+    "title": "Mushroom Risotto",
+    "image": "/recipes/placeholder.svg"
+  },
+  {
+    "id": "beef-broccoli-stir-fry",
+    "title": "Beef and Broccoli Stir-Fry",
+    "image": "/recipes/placeholder.svg"
+  },
+  {
+    "id": "roasted-tomato-soup",
+    "title": "Roasted Tomato Soup",
+    "image": "/recipes/placeholder.svg"
+  },
+  {
+    "id": "baked-sweet-potato-beans",
+    "title": "Baked Sweet Potatoes with Beans",
+    "image": "/recipes/placeholder.svg"
+  },
+  {
+    "id": "broccoli-cheddar-frittata",
+    "title": "Broccoli Cheddar Frittata",
+    "image": "/recipes/placeholder.svg"
+  },
+  {
+    "id": "lemon-couscous-chickpeas",
+    "title": "Lemon Couscous with Chickpeas",
+    "image": "/recipes/placeholder.svg"
+  },
+  {
+    "id": "creamy-polenta-mushrooms",
+    "title": "Creamy Polenta with Mushrooms",
+    "image": "/recipes/placeholder.svg"
+  },
+  {
+    "id": "sesame-tofu-noodles",
+    "title": "Sesame Tofu Noodles",
+    "image": "/recipes/placeholder.svg"
+  },
+  {
+    "id": "red-lentil-dal",
+    "title": "Red Lentil Dal",
+    "image": "/recipes/placeholder.svg"
+  },
+  {
+    "id": "spinach-ricotta-shells",
+    "title": "Spinach Ricotta Stuffed Shells",
+    "image": "/recipes/placeholder.svg"
+  },
+  {
+    "id": "white-bean-kale-skillet",
+    "title": "White Bean and Kale Skillet",
+    "image": "/recipes/placeholder.svg"
+  },
+  {
+    "id": "cauliflower-chickpea-traybake",
+    "title": "Cauliflower Chickpea Traybake",
+    "image": "/recipes/placeholder.svg"
+  },
+  {
+    "id": "butternut-squash-soup",
+    "title": "Butternut Squash Soup",
+    "image": "/recipes/placeholder.svg"
+  },
+  {
+    "id": "quinoa-roasted-vegetable-bowls",
+    "title": "Quinoa Roasted Vegetable Bowls",
+    "image": "/recipes/placeholder.svg"
+  },
+  {
+    "id": "peanut-sweet-potato-stew",
+    "title": "Peanut Sweet Potato Stew",
+    "image": "/recipes/placeholder.svg"
+  },
+  {
+    "id": "potato-leek-soup",
+    "title": "Potato Leek Soup",
+    "image": "/recipes/placeholder.svg"
+  },
+  {
+    "id": "eggplant-tomato-pasta",
+    "title": "Eggplant Tomato Pasta",
+    "image": "/recipes/placeholder.svg"
+  },
+  {
+    "id": "turkey-bean-chili",
+    "title": "Turkey Bean Chili",
+    "image": "/recipes/placeholder.svg"
+  },
+  {
+    "id": "baked-lemon-cod",
+    "title": "Baked Lemon Cod",
+    "image": "/recipes/placeholder.svg"
+  },
+  {
+    "id": "pork-tenderloin-apples",
+    "title": "Pork Tenderloin with Apples",
+    "image": "/recipes/placeholder.svg"
+  },
+  {
+    "id": "chicken-noodle-soup",
+    "title": "Chicken Noodle Soup",
+    "image": "/recipes/placeholder.svg"
+  },
+  {
+    "id": "salmon-potato-traybake",
+    "title": "Salmon Potato Traybake",
+    "image": "/recipes/placeholder.svg"
+  },
+  {
+    "id": "ginger-chicken-lettuce-cups",
+    "title": "Ginger Chicken Lettuce Cups",
+    "image": "/recipes/placeholder.svg"
+  },
+  {
+    "id": "beef-meatballs-tomato-sauce",
+    "title": "Beef Meatballs in Tomato Sauce",
+    "image": "/recipes/placeholder.svg"
+  },
+  {
+    "id": "shrimp-coconut-noodle-soup",
+    "title": "Shrimp Coconut Noodle Soup",
+    "image": "/recipes/placeholder.svg"
+  },
+  {
+    "id": "chicken-fajita-skillet",
+    "title": "Chicken Fajita Skillet",
+    "image": "/recipes/placeholder.svg"
+  },
+  {
+    "id": "lentil-shepherds-pie",
+    "title": "Lentil Shepherd's Pie",
+    "image": "/recipes/placeholder.svg"
+  },
+  {
+    "id": "banana-oat-pancakes",
+    "title": "Banana Oat Pancakes",
+    "image": "/recipes/placeholder.svg"
+  },
+  {
+    "id": "apple-cinnamon-porridge",
+    "title": "Apple Cinnamon Porridge",
+    "image": "/recipes/placeholder.svg"
+  },
+  {
+    "id": "savory-spinach-oatmeal",
+    "title": "Savory Spinach Oatmeal",
+    "image": "/recipes/placeholder.svg"
+  },
+  {
+    "id": "mediterranean-tuna-bean-salad",
+    "title": "Mediterranean Tuna Bean Salad",
+    "image": "/recipes/placeholder.svg"
+  },
+  {
+    "id": "roasted-carrot-hummus-wraps",
+    "title": "Roasted Carrot Hummus Wraps",
+    "image": "/recipes/placeholder.svg"
+  }
+]

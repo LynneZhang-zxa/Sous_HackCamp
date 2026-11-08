@@ -6,14 +6,15 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "test": "vitest run",
-    "test:watch": "vitest",
+    "test": "vitest run --configLoader native",
+    "test:watch": "vitest --configLoader native",
     "create-agent": "tsx --env-file=.env.local scripts/create-agent.ts",
-    "seed": "tsx --env-file=.env.local scripts/seed.ts"
+    "seed": "tsx --env-file=.env.local scripts/seed.ts",
+    "test:catalog": "node scripts/catalog-gate.cjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.117.3",
-    "next": "^16.4.0",
+    "next": "16.4.5",
     "react": "^19.3.0",
     "react-dom": "^19.3.0"
   },

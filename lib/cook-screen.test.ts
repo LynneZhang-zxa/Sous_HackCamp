@@ -16,7 +16,8 @@ describe("cooking screen start action", () => {
   for (const recipe of listRecipes()) it("previews and starts " + recipe.id, () => {
     mocks.start.mockClear();
     const html = renderToStaticMarkup(createElement(CookScreen, { selectedRecipe: recipe }));
-    expect(html).toContain(recipe.title);
+    const escapedTitle = renderToStaticMarkup(createElement("span", null, recipe.title)).slice(6, -7);
+    expect(html).toContain(escapedTitle);
     expect(mocks.start).not.toHaveBeenCalled();
     expect(mocks.onStart).toBeTypeOf("function");
     mocks.onStart!();

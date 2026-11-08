@@ -1,0 +1,5 @@
+ERROR 01-build: WARNING: failed to clean up stale arg0 temp dirs: ¾Ü¾ø·ÃÎÊ¡£ (os error 5)
+ERROR 02-recipes: WARNING: failed to clean up stale arg0 temp dirs: ¾Ü¾ø·ÃÎÊ¡£ (os error 5)
+ERROR 03-integration: WARNING: failed to clean up stale arg0 temp dirs: ¾Ü¾ø·ÃÎÊ¡£ (os error 5)
+ERROR 04-voice: WARNING: failed to clean up stale arg0 temp dirs: ¾Ü¾ø·ÃÎÊ¡£ (os error 5)
+ERROR 05-quality: WARNING: failed to clean up stale arg0 temp dirs: ¾Ü¾ø·ÃÎÊ¡£ (os error 5)

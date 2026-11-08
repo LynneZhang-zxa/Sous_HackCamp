@@ -1,0 +1,2705 @@
+[
+  {
+    "id": "creamy-garlic-chicken",
+    "title": "Creamy Garlic Chicken",
+    "description": "Golden seared chicken cutlets in a silky garlic parmesan cream sauce. One pan, about thirty minutes.",
+    "cuisine": "Italian-American",
+    "tags": [
+      "chicken",
+      "one-pan",
+      "weeknight"
+    ],
+    "image": "/recipes/creamy-garlic-chicken.jpg",
+    "imageKind": "photo",
+    "prepMinutes": 10,
+    "cookMinutes": 20,
+    "servings": 2,
+    "totalMinutes": 30,
+    "calories": 610,
+    "nutrition": {
+      "status": "estimated",
+      "basis": "per-serving",
+      "calories": 610,
+      "source": "Legacy SOUS estimate; not independently calculated and excludes serving accompaniments."
+    },
+    "emoji": "🍗",
+    "ingredients": [
+      {
+        "name": "boneless skinless chicken breasts",
+        "amount": 2,
+        "unit": "",
+        "note": "about one pound"
+      },
+      {
+        "name": "salt",
+        "amount": 1,
+        "unit": "teaspoon"
+      },
+      {
+        "name": "black pepper",
+        "amount": 0.5,
+        "unit": "teaspoon"
+      },
+      {
+        "name": "paprika",
+        "amount": 1,
+        "unit": "teaspoon"
+      },
+      {
+        "name": "olive oil",
+        "amount": 2,
+        "unit": "tablespoon"
+      },
+      {
+        "name": "butter",
+        "amount": 2,
+        "unit": "tablespoon"
+      },
+      {
+        "name": "garlic",
+        "amount": 6,
+        "unit": "clove",
+        "note": "minced"
+      },
+      {
+        "name": "chicken broth",
+        "amount": 0.5,
+        "unit": "cup"
+      },
+      {
+        "name": "heavy cream",
+        "amount": 1,
+        "unit": "cup"
+      },
+      {
+        "name": "parmesan",
+        "amount": 0.5,
+        "unit": "cup",
+        "note": "finely grated"
+      },
+      {
+        "name": "Italian seasoning",
+        "amount": 1,
+        "unit": "teaspoon"
+      },
+      {
+        "name": "baby spinach",
+        "amount": 2,
+        "unit": "cup",
+        "note": "optional"
+      },
+      {
+        "name": "fresh parsley",
+        "amount": null,
+        "unit": "",
+        "note": "chopped, to finish"
+      }
+    ],
+    "steps": [
+      {
+        "id": "prep-chicken",
+        "title": "Prep the chicken",
+        "instruction": "Pat the chicken dry, then slice each breast in half horizontally so you have four thin cutlets. Season both sides with the salt, pepper and paprika.",
+        "durationSeconds": 180,
+        "tip": "Thin, even cutlets cook through at the same time as the outside browns.",
+        "safety": "Wash your hands and the board after touching raw chicken.",
+        "ingredients": [
+          "boneless skinless chicken breasts",
+          "salt",
+          "black pepper",
+          "paprika"
+        ]
+      },
+      {
+        "id": "mise-en-place",
+        "title": "Get everything ready",
+        "instruction": "Mince the garlic, and measure out the broth, cream and parmesan so they're next to the stove. Things move fast once the pan is hot.",
+        "durationSeconds": 180,
+        "ingredients": [
+          "garlic",
+          "chicken broth",
+          "heavy cream",
+          "parmesan"
+        ]
+      },
+      {
+        "id": "heat-pan",
+        "title": "Heat the pan",
+        "instruction": "Set a large skillet over medium-high heat and add the olive oil. It's ready when the oil shimmers and flows easily.",
+        "durationSeconds": 120,
+        "safety": "If the oil starts smoking, the pan is too hot. Pull it off the heat for a moment and turn the burner down a notch.",
+        "ingredients": [
+          "olive oil"
+        ]
+      },
+      {
+        "id": "sear-chicken",
+        "title": "Sear the chicken",
+        "instruction": "Lay the cutlets in the pan and leave them alone for four to five minutes until golden. Flip and cook three to four more minutes, until a thermometer in the thickest part reads 165°F (74°C). Move them to a clean plate.",
+        "durationSeconds": 300,
+        "tip": "If the pan is crowded, sear in two batches. Crowding steams the chicken instead of browning it.",
+        "safety": "Check chicken reaches 165°F (74°C) with a food thermometer; color alone is not a safety check. Use a clean plate, not the one that held raw chicken.",
+        "ingredients": [
+          "boneless skinless chicken breasts"
+        ]
+      },
+      {
+        "id": "garlic-butter",
+        "title": "Butter and garlic",
+        "instruction": "Turn the heat down to medium. Add the butter and the garlic, and stir constantly for about thirty to sixty seconds, just until it smells amazing. Don't let it brown.",
+        "durationSeconds": 45,
+        "safety": "Garlic burns fast and turns bitter. If it goes dark brown, wipe out the pan and start this step again with fresh butter.",
+        "ingredients": [
+          "butter",
+          "garlic"
+        ]
+      },
+      {
+        "id": "deglaze",
+        "title": "Deglaze with broth",
+        "instruction": "Pour in the chicken broth and scrape up the browned bits from the bottom of the pan. Let it bubble for a minute or two until it reduces by about half.",
+        "durationSeconds": 90,
+        "tip": "Those browned bits are where most of the flavor lives.",
+        "ingredients": [
+          "chicken broth"
+        ]
+      },
+      {
+        "id": "cream-sauce",
+        "title": "Make the cream sauce",
+        "instruction": "Lower the heat to medium-low. Stir in the heavy cream, the Italian seasoning and the parmesan. Simmer gently for three to four minutes until the sauce coats the back of a spoon. If you're using spinach, stir it in now and let it wilt.",
+        "durationSeconds": 240,
+        "safety": "Keep it at a gentle simmer. A hard boil can make a cream sauce split.",
+        "ingredients": [
+          "heavy cream",
+          "Italian seasoning",
+          "parmesan",
+          "baby spinach"
+        ]
+      },
+      {
+        "id": "return-chicken",
+        "title": "Bring it together",
+        "instruction": "Slide the chicken and any juices from the plate back into the sauce. Spoon sauce over the top and warm everything through for about two minutes. Taste, and add salt and pepper if it needs it.",
+        "durationSeconds": 120,
+        "ingredients": [
+          "boneless skinless chicken breasts",
+          "salt",
+          "black pepper"
+        ]
+      },
+      {
+        "id": "finish",
+        "title": "Finish and serve",
+        "instruction": "Turn off the heat and scatter the parsley over the top. Serve it over pasta or rice, or with crusty bread for the sauce.",
+        "durationSeconds": 60,
+        "ingredients": [
+          "fresh parsley"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tomato-beef-stew",
+    "title": "Tomato Beef Stew",
+    "description": "A Chinese-inspired tomato and ginger beef stew with tender potatoes and a rich broth.",
+    "cuisine": "Chinese-inspired",
+    "tags": [
+      "beef",
+      "stew",
+      "make-ahead"
+    ],
+    "image": "/recipes/tomato-beef-stew.jpg",
+    "prepMinutes": 20,
+    "cookMinutes": 110,
+    "servings": 4,
+    "ingredients": [
+      {
+        "name": "beef chuck",
+        "amount": 1.5,
+        "unit": "pound",
+        "note": "cut into one-inch cubes"
+      },
+      {
+        "name": "neutral oil",
+        "amount": 2,
+        "unit": "tablespoon"
+      },
+      {
+        "name": "onion",
+        "amount": 1,
+        "unit": "",
+        "note": "diced"
+      },
+      {
+        "name": "garlic",
+        "amount": 3,
+        "unit": "clove",
+        "note": "minced"
+      },
+      {
+        "name": "fresh ginger",
+        "amount": 1,
+        "unit": "tablespoon",
+        "note": "minced"
+      },
+      {
+        "name": "tomatoes",
+        "amount": 4,
+        "unit": "",
+        "note": "chopped"
+      },
+      {
+        "name": "tomato paste",
+        "amount": 2,
+        "unit": "tablespoon"
+      },
+      {
+        "name": "low-sodium beef broth",
+        "amount": 3,
+        "unit": "cup"
+      },
+      {
+        "name": "soy sauce",
+        "amount": 2,
+        "unit": "tablespoon"
+      },
+      {
+        "name": "potatoes",
+        "amount": 1,
+        "unit": "pound",
+        "note": "peeled and cubed"
+      },
+      {
+        "name": "carrots",
+        "amount": 2,
+        "unit": "",
+        "note": "sliced"
+      },
+      {
+        "name": "black pepper",
+        "amount": 0.25,
+        "unit": "teaspoon"
+      }
+    ],
+    "steps": [
+      {
+        "id": "prep",
+        "title": "Prepare the ingredients",
+        "instruction": "Chop the vegetables and pat the beef dry. Keep the potatoes in cold water until needed, then drain.",
+        "ingredients": [
+          "beef chuck",
+          "onion",
+          "garlic",
+          "fresh ginger",
+          "tomatoes",
+          "potatoes",
+          "carrots"
+        ],
+        "safety": "Use separate boards for raw beef and vegetables; wash hands and utensils after handling beef."
+      },
+      {
+        "id": "brown",
+        "title": "Brown the beef",
+        "instruction": "Heat the oil in a heavy pot over medium-high heat. Brown the beef in two batches for about eight minutes total, then transfer to a clean plate.",
+        "ingredients": [
+          "neutral oil",
+          "beef chuck"
+        ],
+        "durationSeconds": 480
+      },
+      {
+        "id": "base",
+        "title": "Build the tomato base",
+        "instruction": "Lower to medium heat and cook the onion for five minutes. Stir in garlic, ginger and tomato paste for one minute, then add tomatoes and cook for five minutes.",
+        "ingredients": [
+          "onion",
+          "garlic",
+          "fresh ginger",
+          "tomato paste",
+          "tomatoes"
+        ],
+        "durationSeconds": 660
+      },
+      {
+        "id": "simmer",
+        "title": "Simmer the beef",
+        "instruction": "Return the beef and its juices to the pot with broth, soy sauce and pepper. Bring to a simmer, cover and cook gently for seventy minutes, stirring occasionally.",
+        "ingredients": [
+          "beef chuck",
+          "low-sodium beef broth",
+          "soy sauce",
+          "black pepper"
+        ],
+        "durationSeconds": 4200,
+        "tip": "Add a little water if the stew begins sticking."
+      },
+      {
+        "id": "vegetables",
+        "title": "Add the vegetables",
+        "instruction": "Add drained potatoes and carrots and simmer covered for twenty-five minutes. Continue cooking if needed until the beef is fork-tender and the vegetables are soft; serve hot.",
+        "ingredients": [
+          "potatoes",
+          "carrots"
+        ],
+        "durationSeconds": 1500,
+        "safety": "Refrigerate leftovers in shallow containers within two hours, use within three to four days, and reheat to 165°F (74°C)."
+      }
+    ],
+    "imageKind": "photo",
+    "totalMinutes": 130,
+    "emoji": "🍽️",
+    "calories": null,
+    "nutrition": {
+      "status": "unavailable",
+      "reason": "No verified nutrition calculation is available for this recipe."
+    }
+  },
+  {
+    "id": "chicken-curry",
+    "title": "Chicken Curry",
+    "description": "An approachable Indian-inspired chicken curry with tomatoes, warming spices and coconut milk.",
+    "cuisine": "Indian-inspired",
+    "tags": [
+      "chicken",
+      "curry",
+      "one-pot"
+    ],
+    "image": "/recipes/chicken-curry.jpg",
+    "prepMinutes": 15,
+    "cookMinutes": 30,
+    "servings": 4,
+    "ingredients": [
+      {
+        "name": "boneless chicken thighs",
+        "amount": 1.5,
+        "unit": "pound",
+        "note": "cut into bite-size pieces"
+      },
+      {
+        "name": "neutral oil",
+        "amount": 2,
+        "unit": "tablespoon"
+      },
+      {
+        "name": "onion",
+        "amount": 1,
+        "unit": "",
+        "note": "diced"
+      },
+      {
+        "name": "garlic",
+        "amount": 4,
+        "unit": "clove",
+        "note": "minced"
+      },
+      {
+        "name": "fresh ginger",
+        "amount": 1,
+        "unit": "tablespoon",
+        "note": "grated"
+      },
+      {
+        "name": "curry powder",
+        "amount": 2,
+        "unit": "tablespoon"
+      },
+      {
+        "name": "ground cumin",
+        "amount": 1,
+        "unit": "teaspoon"
+      },
+      {
+        "name": "salt",
+        "amount": 0.75,
+        "unit": "teaspoon"
+      },
+      {
+        "name": "canned diced tomatoes",
+        "amount": 14,
+        "unit": "ounce"
+      },
+      {
+        "name": "coconut milk",
+        "amount": 13.5,
+        "unit": "ounce"
+      },
+      {
+        "name": "water",
+        "amount": 0.5,
+        "unit": "cup"
+      },
+      {
+        "name": "cilantro",
+        "amount": 0.25,
+        "unit": "cup",
+        "note": "chopped"
+      }
+    ],
+    "steps": [
+      {
+        "id": "prep",
+        "title": "Prepare the curry ingredients",
+        "instruction": "Dice the onion, mince the garlic and grate the ginger. Cut the chicken on a separate board into evenly sized pieces.",
+        "ingredients": [
+          "onion",
+          "garlic",
+          "fresh ginger",
+          "boneless chicken thighs"
+        ],
+        "safety": "Keep raw poultry separate from ready-to-eat food, wash hands and utensils, and check the thickest pieces reach 165°F (74°C) with a thermometer."
+      },
+      {
+        "id": "aromatics",
+        "title": "Soften the onion",
+        "instruction": "Heat oil in a deep skillet over medium heat. Cook the onion for seven minutes, stirring, then add garlic and ginger and cook for one minute.",
+        "ingredients": [
+          "neutral oil",
+          "onion",
+          "garlic",
+          "fresh ginger"
+        ],
+        "durationSeconds": 480
+      },
+      {
+        "id": "spices",
+        "title": "Add spices and chicken",
+        "instruction": "Stir in curry powder, cumin and salt for thirty seconds. Add chicken and stir for three minutes to coat it with the spices.",
+        "ingredients": [
+          "curry powder",
+          "ground cumin",
+          "salt",
+          "boneless chicken thighs"
+        ],
+        "durationSeconds": 180
+      },
+      {
+        "id": "simmer",
+        "title": "Simmer the curry",
+        "instruction": "Add tomatoes, coconut milk and water. Bring to a gentle simmer and cook uncovered for eighteen minutes, stirring occasionally, until the chicken reaches 165°F (74°C).",
+        "ingredients": [
+          "canned diced tomatoes",
+          "coconut milk",
+          "water"
+        ],
+        "durationSeconds": 1080,
+        "safety": "Keep raw poultry separate from ready-to-eat food, wash hands and utensils, and check the thickest pieces reach 165°F (74°C) with a thermometer."
+      },
+      {
+        "id": "serve",
+        "title": "Finish the curry",
+        "instruction": "If the sauce is thin, simmer a few minutes longer; if too thick, add a splash of water. Scatter cilantro over the curry and divide among four bowls.",
+        "ingredients": [
+          "cilantro"
+        ],
+        "safety": "Refrigerate leftovers in shallow containers within two hours, use within three to four days, and reheat to 165°F (74°C)."
+      }
+    ],
+    "imageKind": "photo",
+    "totalMinutes": 45,
+    "emoji": "🍽️",
+    "calories": null,
+    "nutrition": {
+      "status": "unavailable",
+      "reason": "No verified nutrition calculation is available for this recipe."
+    }
+  },
+  {
+    "id": "bibimbap",
+    "title": "Bibimbap",
+    "description": "Korean rice bowls with seasoned beef, sauteed vegetables, fully cooked eggs and a gochujang sauce.",
+    "cuisine": "Korean",
+    "tags": [
+      "rice",
+      "beef",
+      "bowl"
+    ],
+    "image": "/recipes/bibimbap.jpg",
+    "prepMinutes": 20,
+    "cookMinutes": 25,
+    "servings": 2,
+    "ingredients": [
+      {
+        "name": "short-grain rice",
+        "amount": 1,
+        "unit": "cup",
+        "note": "uncooked"
+      },
+      {
+        "name": "water",
+        "amount": 1.25,
+        "unit": "cup"
+      },
+      {
+        "name": "ground beef",
+        "amount": 0.5,
+        "unit": "pound"
+      },
+      {
+        "name": "soy sauce",
+        "amount": 1,
+        "unit": "tablespoon"
+      },
+      {
+        "name": "sesame oil",
+        "amount": 2,
+        "unit": "teaspoon"
+      },
+      {
+        "name": "garlic",
+        "amount": 2,
+        "unit": "clove",
+        "note": "minced"
+      },
+      {
+        "name": "neutral oil",
+        "amount": 2,
+        "unit": "tablespoon",
+        "note": "divided"
+      },
+      {
+        "name": "carrot",
+        "amount": 1,
+        "unit": "",
+        "note": "cut into matchsticks"
+      },
+      {
+        "name": "zucchini",
+        "amount": 1,
+        "unit": "",
+        "note": "thinly sliced"
+      },
+      {
+        "name": "spinach",
+        "amount": 4,
+        "unit": "cup"
+      },
+      {
+        "name": "eggs",
+        "amount": 2,
+        "unit": ""
+      },
+      {
+        "name": "gochujang",
+        "amount": 2,
+        "unit": "tablespoon"
+      },
+      {
+        "name": "rice vinegar",
+        "amount": 1,
+        "unit": "tablespoon"
+      },
+      {
+        "name": "sugar",
+        "amount": 1,
+        "unit": "teaspoon"
+      },
+      {
+        "name": "sesame seeds",
+        "amount": 1,
+        "unit": "teaspoon"
+      }
+    ],
+    "steps": [
+      {
+        "id": "rice",
+        "title": "Cook the rice",
+        "instruction": "Rinse the rice and put in a saucepan with water. Bring to a boil, cover and cook on low for fifteen minutes, then rest off the heat for ten minutes; follow the rice package if its water ratio differs.",
+        "ingredients": [
+          "short-grain rice",
+          "water"
+        ],
+        "durationSeconds": 900,
+        "safety": "Use freshly cooked rice or rice promptly refrigerated within two hours. Reheat refrigerated rice to 165°F (74°C)."
+      },
+      {
+        "id": "sauce",
+        "title": "Mix the sauce",
+        "instruction": "Mix gochujang, rice vinegar and sugar in a small bowl. Prepare the vegetables while the rice cooks.",
+        "ingredients": [
+          "gochujang",
+          "rice vinegar",
+          "sugar",
+          "carrot",
+          "zucchini",
+          "spinach"
+        ]
+      },
+      {
+        "id": "vegetables",
+        "title": "Cook the vegetables",
+        "instruction": "Heat one tablespoon neutral oil in a skillet over medium-high heat. Cook carrot for three minutes, zucchini for three minutes and spinach for one minute in separate batches; set each aside.",
+        "ingredients": [
+          "neutral oil",
+          "carrot",
+          "zucchini",
+          "spinach"
+        ],
+        "durationSeconds": 420
+      },
+      {
+        "id": "beef",
+        "title": "Cook the beef",
+        "instruction": "In the same skillet, cook beef with garlic and soy sauce for six to eight minutes, breaking it up until it reaches 160°F (71°C). Stir in sesame oil and transfer to a clean bowl.",
+        "ingredients": [
+          "ground beef",
+          "garlic",
+          "soy sauce",
+          "sesame oil"
+        ],
+        "durationSeconds": 480,
+        "safety": "Check ground beef reaches 160°F (71°C) with a food thermometer; color alone does not show it is safe."
+      },
+      {
+        "id": "eggs",
+        "title": "Cook the eggs",
+        "instruction": "Heat the remaining tablespoon neutral oil over medium heat. Fry the eggs until both whites and yolks are firm, covering the pan briefly if needed.",
+        "ingredients": [
+          "neutral oil",
+          "eggs"
+        ],
+        "durationSeconds": 240,
+        "safety": "Wash hands after handling eggs and cook both yolks and whites until firm."
+      },
+      {
+        "id": "assemble",
+        "title": "Assemble the bowls",
+        "instruction": "Divide rice between two bowls. Arrange vegetables and beef on top, add an egg to each, then sprinkle sesame seeds and serve with the sauce to mix through.",
+        "ingredients": [
+          "short-grain rice",
+          "sesame seeds"
+        ],
+        "safety": "Refrigerate leftovers in shallow containers within two hours, use within three to four days, and reheat to 165°F (74°C)."
+      }
+    ],
+    "imageKind": "photo",
+    "totalMinutes": 45,
+    "emoji": "🍽️",
+    "calories": null,
+    "nutrition": {
+      "status": "unavailable",
+      "reason": "No verified nutrition calculation is available for this recipe."
+    }
+  },
+  {
+    "id": "garlic-butter-shrimp",
+    "title": "Garlic Butter Shrimp",
+    "description": "Quick skillet shrimp with garlic butter, lemon and fresh parsley.",
+    "cuisine": "American",
+    "tags": [
+      "seafood",
+      "quick",
+      "one-pan"
+    ],
+    "image": "/recipes/garlic-butter-shrimp.jpg",
+    "prepMinutes": 10,
+    "cookMinutes": 10,
+    "servings": 2,
+    "ingredients": [
+      {
+        "name": "raw shrimp",
+        "amount": 1,
+        "unit": "pound",
+        "note": "peeled and deveined; thawed"
+      },
+      {
+        "name": "butter",
+        "amount": 3,
+        "unit": "tablespoon",
+        "note": "divided"
+      },
+      {
+        "name": "olive oil",
+        "amount": 1,
+        "unit": "tablespoon"
+      },
+      {
+        "name": "garlic",
+        "amount": 4,
+        "unit": "clove",
+        "note": "minced"
+      },
+      {
+        "name": "salt",
+        "amount": 0.5,
+        "unit": "teaspoon"
+      },
+      {
+        "name": "black pepper",
+        "amount": 0.25,
+        "unit": "teaspoon"
+      },
+      {
+        "name": "lemon juice",
+        "amount": 2,
+        "unit": "tablespoon"
+      },
+      {
+        "name": "parsley",
+        "amount": 2,
+        "unit": "tablespoon",
+        "note": "chopped"
+      }
+    ],
+    "steps": [
+      {
+        "id": "prep",
+        "title": "Prepare the shrimp",
+        "instruction": "Pat thawed shrimp dry and season with salt and pepper. Mince the garlic and chop the parsley.",
+        "ingredients": [
+          "raw shrimp",
+          "salt",
+          "black pepper",
+          "garlic",
+          "parsley"
+        ],
+        "safety": "Thaw shrimp in the refrigerator, keep chilled until cooking, and wash hands after handling raw seafood."
+      },
+      {
+        "id": "sear",
+        "title": "Sear the shrimp",
+        "instruction": "Heat olive oil and one tablespoon butter over medium-high heat. Add shrimp in one layer and cook for two minutes, then flip.",
+        "ingredients": [
+          "olive oil",
+          "butter",
+          "raw shrimp"
+        ],
+        "durationSeconds": 120
+      },
+      {
+        "id": "garlic",
+        "title": "Add garlic butter",
+        "instruction": "Lower to medium heat and add remaining butter and garlic. Stir for two to three minutes until shrimp are firm, pearly and opaque throughout; remove promptly when cooked.",
+        "ingredients": [
+          "butter",
+          "garlic",
+          "raw shrimp"
+        ],
+        "durationSeconds": 180,
+        "safety": "Shrimp must be opaque throughout; do not rely only on exterior pink color."
+      },
+      {
+        "id": "finish",
+        "title": "Finish and serve",
+        "instruction": "Turn off the heat. Stir in lemon juice and parsley and divide the shrimp and sauce between two plates.",
+        "ingredients": [
+          "lemon juice",
+          "parsley"
+        ],
+        "safety": "Refrigerate leftovers in shallow containers within two hours, use within three to four days, and reheat to 165°F (74°C)."
+      }
+    ],
+    "imageKind": "photo",
+    "totalMinutes": 20,
+    "emoji": "🍽️",
+    "calories": null,
+    "nutrition": {
+      "status": "unavailable",
+      "reason": "No verified nutrition calculation is available for this recipe."
+    }
+  },
+  {
+    "id": "spaghetti-pomodoro",
+    "title": "Spaghetti Pomodoro",
+    "description": "Spaghetti tossed with a simple garlic, tomato and basil sauce.",
+    "cuisine": "Italian",
+    "tags": [
+      "pasta",
+      "vegetarian",
+      "weeknight"
+    ],
+    "prepMinutes": 10,
+    "cookMinutes": 25,
+    "servings": 4,
+    "ingredients": [
+      {
+        "name": "spaghetti",
+        "amount": 12,
+        "unit": "ounce"
+      },
+      {
+        "name": "olive oil",
+        "amount": 2,
+        "unit": "tablespoon"
+      },
+      {
+        "name": "garlic",
+        "amount": 4,
+        "unit": "clove",
+        "note": "thinly sliced"
+      },
+      {
+        "name": "canned crushed tomatoes",
+        "amount": 28,
+        "unit": "ounce"
+      },
+      {
+        "name": "salt",
+        "amount": 2,
+        "unit": "teaspoon",
+        "note": "divided; one and a half for pasta water"
+      },
+      {
+        "name": "black pepper",
+        "amount": 0.25,
+        "unit": "teaspoon"
+      },
+      {
+        "name": "fresh basil",
+        "amount": 0.5,
+        "unit": "cup",
+        "note": "torn"
+      },
+      {
+        "name": "parmesan",
+        "amount": 0.25,
+        "unit": "cup",
+        "note": "grated"
+      },
+      {
+        "name": "water",
+        "amount": 12,
+        "unit": "cup",
+        "note": "for boiling pasta"
+      }
+    ],
+    "steps": [
+      {
+        "id": "sauce",
+        "title": "Start the sauce",
+        "instruction": "Heat oil over medium-low heat in a wide pan. Cook garlic for one minute without browning, then add tomatoes, half a teaspoon salt and pepper.",
+        "ingredients": [
+          "olive oil",
+          "garlic",
+          "canned crushed tomatoes",
+          "salt",
+          "black pepper"
+        ],
+        "durationSeconds": 60
+      },
+      {
+        "id": "simmer",
+        "title": "Simmer the tomatoes",
+        "instruction": "Simmer the sauce gently for twenty minutes, stirring occasionally. Meanwhile bring the water and remaining salt to a boil in a large pot.",
+        "ingredients": [
+          "water",
+          "salt"
+        ],
+        "durationSeconds": 1200
+      },
+      {
+        "id": "pasta",
+        "title": "Cook the spaghetti",
+        "instruction": "Cook spaghetti in the boiling water for the package's al dente time, usually eight to eleven minutes. Reserve half a cup of pasta water, then drain carefully.",
+        "ingredients": [
+          "spaghetti"
+        ],
+        "safety": "Keep your face and hands away from rising steam when draining."
+      },
+      {
+        "id": "finish",
+        "title": "Toss and serve",
+        "instruction": "Toss spaghetti with sauce and basil over low heat for one minute. Add reserved pasta water a little at a time if needed, then serve with parmesan.",
+        "ingredients": [
+          "spaghetti",
+          "fresh basil",
+          "parmesan"
+        ],
+        "durationSeconds": 60,
+        "safety": "Refrigerate leftovers in shallow containers within two hours, use within three to four days, and reheat to 165°F (74°C)."
+      }
+    ],
+    "image": "/recipes/placeholder.svg",
+    "imageKind": "placeholder",
+    "totalMinutes": 35,
+    "emoji": "🍽️",
+    "calories": null,
+    "nutrition": {
+      "status": "unavailable",
+      "reason": "No verified nutrition calculation is available for this recipe."
+    }
+  },
+  {
+    "id": "chickpea-spinach-curry",
+    "title": "Chickpea Spinach Curry",
+    "description": "A filling meat-free tomato curry with chickpeas and spinach.",
+    "cuisine": "Indian-inspired",
+    "tags": [
+      "vegan",
+      "legumes",
+      "one-pot"
+    ],
+    "prepMinutes": 10,
+    "cookMinutes": 25,
+    "servings": 4,
+    "ingredients": [
+      {
+        "name": "canned chickpeas",
+        "amount": 30,
+        "unit": "ounce",
+        "note": "drained and rinsed"
+      },
+      {
+        "name": "onion",
+        "amount": 1,
+        "unit": "",
+        "note": "diced"
+      },
+      {
+        "name": "neutral oil",
+        "amount": 2,
+        "unit": "tablespoon"
+      },
+      {
+        "name": "garlic",
+        "amount": 3,
+        "unit": "clove",
+        "note": "minced"
+      },
+      {
+        "name": "fresh ginger",
+        "amount": 1,
+        "unit": "tablespoon",
+        "note": "grated"
+      },
+      {
+        "name": "curry powder",
+        "amount": 1,
+        "unit": "tablespoon"
+      },
+      {
+        "name": "canned crushed tomatoes",
+        "amount": 14,
+        "unit": "ounce"
+      },
+      {
+        "name": "coconut milk",
+        "amount": 13.5,
+        "unit": "ounce"
+      },
+      {
+        "name": "spinach",
+        "amount": 5,
+        "unit": "cup"
+      },
+      {
+        "name": "salt",
+        "amount": 0.5,
+        "unit": "teaspoon"
+      },
+      {
+        "name": "lemon juice",
+        "amount": 1,
+        "unit": "tablespoon"
+      }
+    ],
+    "steps": [
+      {
+        "id": "prep",
+        "title": "Prepare the ingredients",
+        "instruction": "Drain and rinse chickpeas. Dice onion, mince garlic, grate ginger and wash the spinach.",
+        "ingredients": [
+          "canned chickpeas",
+          "onion",
+          "garlic",
+          "fresh ginger",
+          "spinach"
+        ]
+      },
+      {
+        "id": "aromatics",
+        "title": "Cook the aromatics",
+        "instruction": "Heat oil in a saucepan over medium heat. Cook onion for six minutes, then stir in garlic, ginger and curry powder for one minute.",
+        "ingredients": [
+          "neutral oil",
+          "onion",
+          "garlic",
+          "fresh ginger",
+          "curry powder"
+        ],
+        "durationSeconds": 420
+      },
+      {
+        "id": "simmer",
+        "title": "Simmer the chickpeas",
+        "instruction": "Add chickpeas, tomatoes, coconut milk and salt. Simmer uncovered for fifteen minutes, stirring occasionally.",
+        "ingredients": [
+          "canned chickpeas",
+          "canned crushed tomatoes",
+          "coconut milk",
+          "salt"
+        ],
+        "durationSeconds": 900
+      },
+      {
+        "id": "finish",
+        "title": "Wilt the spinach",
+        "instruction": "Add spinach in handfuls and stir for two minutes until wilted. Turn off the heat, stir in lemon juice and serve hot.",
+        "ingredients": [
+          "spinach",
+          "lemon juice"
+        ],
+        "durationSeconds": 120,
+        "safety": "Refrigerate leftovers in shallow containers within two hours, use within three to four days, and reheat to 165°F (74°C)."
+      }
+    ],
+    "image": "/recipes/placeholder.svg",
+    "imageKind": "placeholder",
+    "totalMinutes": 35,
+    "emoji": "🍽️",
+    "calories": null,
+    "nutrition": {
+      "status": "unavailable",
+      "reason": "No verified nutrition calculation is available for this recipe."
+    }
+  },
+  {
+    "id": "miso-soup",
+    "title": "Miso Soup",
+    "description": "A light Japanese soup with tofu, wakame and miso stirred in gently at the end.",
+    "cuisine": "Japanese",
+    "tags": [
+      "soup",
+      "quick",
+      "tofu"
+    ],
+    "prepMinutes": 5,
+    "cookMinutes": 10,
+    "servings": 2,
+    "ingredients": [
+      {
+        "name": "prepared dashi",
+        "amount": 3,
+        "unit": "cup",
+        "note": "unsalted"
+      },
+      {
+        "name": "silken tofu",
+        "amount": 6,
+        "unit": "ounce",
+        "note": "cubed"
+      },
+      {
+        "name": "dried wakame",
+        "amount": 1,
+        "unit": "teaspoon"
+      },
+      {
+        "name": "white miso",
+        "amount": 2,
+        "unit": "tablespoon"
+      },
+      {
+        "name": "scallions",
+        "amount": 2,
+        "unit": "",
+        "note": "thinly sliced"
+      }
+    ],
+    "steps": [
+      {
+        "id": "prep",
+        "title": "Prepare tofu and scallions",
+        "instruction": "Drain the tofu and cut into small cubes. Wash and thinly slice the scallions.",
+        "ingredients": [
+          "silken tofu",
+          "scallions"
+        ]
+      },
+      {
+        "id": "broth",
+        "title": "Heat the broth",
+        "instruction": "Bring dashi to a gentle simmer in a saucepan. Add wakame and simmer for three minutes to rehydrate it.",
+        "ingredients": [
+          "prepared dashi",
+          "dried wakame"
+        ],
+        "durationSeconds": 180
+      },
+      {
+        "id": "tofu",
+        "title": "Warm the tofu",
+        "instruction": "Add tofu carefully and simmer gently for two minutes until hot. Turn off the heat.",
+        "ingredients": [
+          "silken tofu"
+        ],
+        "durationSeconds": 120
+      },
+      {
+        "id": "miso",
+        "title": "Stir in miso",
+        "instruction": "Whisk miso with a ladle of warm broth in a small bowl until smooth, then stir it back into the pot. Add scallions and serve immediately; avoid boiling after adding miso.",
+        "ingredients": [
+          "white miso",
+          "scallions"
+        ],
+        "safety": "Refrigerate leftovers in shallow containers within two hours, use within three to four days, and reheat to 165°F (74°C)."
+      }
+    ],
+    "image": "/recipes/placeholder.svg",
+    "imageKind": "placeholder",
+    "totalMinutes": 15,
+    "emoji": "🍽️",
+    "calories": null,
+    "nutrition": {
+      "status": "unavailable",
+      "reason": "No verified nutrition calculation is available for this recipe."
+    }
+  },
+  {
+    "id": "teriyaki-salmon",
+    "title": "Teriyaki Salmon",
+    "description": "Oven-baked salmon brushed with a homemade soy and ginger glaze.",
+    "cuisine": "Japanese-inspired",
+    "tags": [
+      "fish",
+      "oven",
+      "weeknight"
+    ],
+    "prepMinutes": 10,
+    "cookMinutes": 20,
+    "servings": 2,
+    "ingredients": [
+      {
+        "name": "salmon fillets",
+        "amount": 12,
+        "unit": "ounce",
+        "note": "two equal fillets"
+      },
+      {
+        "name": "soy sauce",
+        "amount": 2,
+        "unit": "tablespoon"
+      },
+      {
+        "name": "water",
+        "amount": 2,
+        "unit": "tablespoon"
+      },
+      {
+        "name": "honey",
+        "amount": 1,
+        "unit": "tablespoon"
+      },
+      {
+        "name": "rice vinegar",
+        "amount": 1,
+        "unit": "tablespoon"
+      },
+      {
+        "name": "fresh ginger",
+        "amount": 1,
+        "unit": "teaspoon",
+        "note": "grated"
+      },
+      {
+        "name": "garlic",
+        "amount": 1,
+        "unit": "clove",
+        "note": "minced"
+      },
+      {
+        "name": "neutral oil",
+        "amount": 1,
+        "unit": "teaspoon"
+      },
+      {
+        "name": "sesame seeds",
+        "amount": 1,
+        "unit": "teaspoon"
+      }
+    ],
+    "steps": [
+      {
+        "id": "prep",
+        "title": "Prepare the oven",
+        "instruction": "Heat the oven to 400°F (200°C). Oil a baking dish and place salmon skin-side down in it.",
+        "ingredients": [
+          "neutral oil",
+          "salmon fillets"
+        ],
+        "safety": "Keep raw fish and its utensils separate from cooked food; wash hands after handling."
+      },
+      {
+        "id": "glaze",
+        "title": "Make the glaze",
+        "instruction": "Simmer soy sauce, water, honey, vinegar, ginger and garlic in a small saucepan for four minutes until slightly thickened. Set aside half in a clean bowl for serving.",
+        "ingredients": [
+          "soy sauce",
+          "water",
+          "honey",
+          "rice vinegar",
+          "fresh ginger",
+          "garlic"
+        ],
+        "durationSeconds": 240
+      },
+      {
+        "id": "bake",
+        "title": "Bake the salmon",
+        "instruction": "Brush salmon with the remaining glaze. Bake for twelve to sixteen minutes, until a thermometer in the thickest part reads 145°F (63°C).",
+        "ingredients": [
+          "salmon fillets"
+        ],
+        "durationSeconds": 720,
+        "safety": "Cooking time depends on thickness; use a thermometer and do not reuse a brush that touched raw fish on cooked salmon."
+      },
+      {
+        "id": "serve",
+        "title": "Finish and serve",
+        "instruction": "Spoon the reserved clean glaze over the cooked salmon and sprinkle with sesame seeds. Divide between two plates.",
+        "ingredients": [
+          "sesame seeds"
+        ],
+        "safety": "Refrigerate leftovers in shallow containers within two hours, use within three to four days, and reheat to 165°F (74°C)."
+      }
+    ],
+    "image": "/recipes/placeholder.svg",
+    "imageKind": "placeholder",
+    "totalMinutes": 30,
+    "emoji": "🍽️",
+    "calories": null,
+    "nutrition": {
+      "status": "unavailable",
+      "reason": "No verified nutrition calculation is available for this recipe."
+    }
+  },
+  {
+    "id": "vegetable-fried-rice",
+    "title": "Vegetable Fried Rice",
+    "description": "A quick Chinese-inspired skillet rice with peas, carrots and scrambled eggs.",
+    "cuisine": "Chinese-inspired",
+    "tags": [
+      "rice",
+      "vegetarian",
+      "quick"
+    ],
+    "prepMinutes": 10,
+    "cookMinutes": 15,
+    "servings": 2,
+    "ingredients": [
+      {
+        "name": "cooked rice",
+        "amount": 3,
+        "unit": "cup",
+        "note": "properly chilled"
+      },
+      {
+        "name": "eggs",
+        "amount": 2,
+        "unit": "",
+        "note": "beaten"
+      },
+      {
+        "name": "neutral oil",
+        "amount": 2,
+        "unit": "tablespoon",
+        "note": "divided"
+      },
+      {
+        "name": "carrot",
+        "amount": 1,
+        "unit": "",
+        "note": "finely diced"
+      },
+      {
+        "name": "frozen peas",
+        "amount": 0.5,
+        "unit": "cup"
+      },
+      {
+        "name": "garlic",
+        "amount": 2,
+        "unit": "clove",
+        "note": "minced"
+      },
+      {
+        "name": "scallions",
+        "amount": 2,
+        "unit": "",
+        "note": "sliced"
+      },
+      {
+        "name": "soy sauce",
+        "amount": 2,
+        "unit": "tablespoon"
+      },
+      {
+        "name": "sesame oil",
+        "amount": 1,
+        "unit": "teaspoon"
+      }
+    ],
+    "steps": [
+      {
+        "id": "prep",
+        "title": "Prepare the ingredients",
+        "instruction": "Break up chilled rice clumps with a fork. Dice carrot, mince garlic and slice scallions; beat eggs in a bowl.",
+        "ingredients": [
+          "cooked rice",
+          "carrot",
+          "garlic",
+          "scallions",
+          "eggs"
+        ],
+        "safety": "Use freshly cooked rice or rice promptly refrigerated within two hours. Reheat refrigerated rice to 165°F (74°C)."
+      },
+      {
+        "id": "eggs",
+        "title": "Scramble the eggs",
+        "instruction": "Heat one tablespoon neutral oil in a large skillet over medium-high heat. Scramble eggs for two minutes until set, then transfer to a clean plate.",
+        "ingredients": [
+          "neutral oil",
+          "eggs"
+        ],
+        "durationSeconds": 120
+      },
+      {
+        "id": "vegetables",
+        "title": "Cook the vegetables",
+        "instruction": "Add remaining neutral oil and carrot to the pan and cook for four minutes. Add peas, garlic and scallions and stir for two minutes.",
+        "ingredients": [
+          "neutral oil",
+          "carrot",
+          "frozen peas",
+          "garlic",
+          "scallions"
+        ],
+        "durationSeconds": 360
+      },
+      {
+        "id": "rice",
+        "title": "Fry the rice",
+        "instruction": "Add rice and soy sauce and stir-fry for five minutes, breaking up any clumps. Return eggs and stir in sesame oil; heat everything to 165°F (74°C), then serve.",
+        "ingredients": [
+          "cooked rice",
+          "soy sauce",
+          "eggs",
+          "sesame oil"
+        ],
+        "durationSeconds": 300,
+        "safety": "Use freshly cooked rice or rice promptly refrigerated within two hours. Reheat refrigerated rice to 165°F (74°C)."
+      }
+    ],
+    "image": "/recipes/placeholder.svg",
+    "imageKind": "placeholder",
+    "totalMinutes": 25,
+    "emoji": "🍽️",
+    "calories": null,
+    "nutrition": {
+      "status": "unavailable",
+      "reason": "No verified nutrition calculation is available for this recipe."
+    }
+  },
+  {
+    "id": "homemade-tacos",
+    "title": "Homemade Tacos",
+    "description": "Weeknight ground beef tacos with crisp lettuce, tomatoes and a simple spice blend.",
+    "cuisine": "Mexican-inspired",
+    "tags": [
+      "beef",
+      "quick",
+      "family"
+    ],
+    "prepMinutes": 15,
+    "cookMinutes": 15,
+    "servings": 4,
+    "ingredients": [
+      {
+        "name": "ground beef",
+        "amount": 1,
+        "unit": "pound"
+      },
+      {
+        "name": "onion",
+        "amount": 1,
+        "unit": "",
+        "note": "diced"
+      },
+      {
+        "name": "neutral oil",
+        "amount": 1,
+        "unit": "tablespoon"
+      },
+      {
+        "name": "ground cumin",
+        "amount": 2,
+        "unit": "teaspoon"
+      },
+      {
+        "name": "chili powder",
+        "amount": 2,
+        "unit": "teaspoon",
+        "note": "mild blend"
+      },
+      {
+        "name": "salt",
+        "amount": 0.5,
+        "unit": "teaspoon"
+      },
+      {
+        "name": "tomato paste",
+        "amount": 1,
+        "unit": "tablespoon"
+      },
+      {
+        "name": "water",
+        "amount": 0.5,
+        "unit": "cup"
+      },
+      {
+        "name": "small corn tortillas",
+        "amount": 8,
+        "unit": ""
+      },
+      {
+        "name": "lettuce",
+        "amount": 2,
+        "unit": "cup",
+        "note": "shredded"
+      },
+      {
+        "name": "tomatoes",
+        "amount": 2,
+        "unit": "",
+        "note": "diced"
+      },
+      {
+        "name": "cheddar",
+        "amount": 0.5,
+        "unit": "cup",
+        "note": "grated"
+      },
+      {
+        "name": "lime",
+        "amount": 1,
+        "unit": "",
+        "note": "cut into wedges"
+      }
+    ],
+    "steps": [
+      {
+        "id": "prep",
+        "title": "Prepare the toppings",
+        "instruction": "Wash and shred lettuce, dice tomatoes and onion, grate cheese and cut lime into wedges. Keep the toppings away from raw beef.",
+        "ingredients": [
+          "lettuce",
+          "tomatoes",
+          "onion",
+          "cheddar",
+          "lime"
+        ]
+      },
+      {
+        "id": "beef",
+        "title": "Cook the beef",
+        "instruction": "Heat oil over medium-high heat and cook onion for three minutes. Add beef and cook for seven minutes, breaking it into crumbles, until it reaches 160°F (71°C); carefully drain excess fat.",
+        "ingredients": [
+          "neutral oil",
+          "onion",
+          "ground beef"
+        ],
+        "durationSeconds": 600,
+        "safety": "Check ground beef reaches 160°F (71°C) with a food thermometer; color alone does not show it is safe."
+      },
+      {
+        "id": "season",
+        "title": "Season the filling",
+        "instruction": "Stir in cumin, chili powder, salt, tomato paste and water. Simmer for four minutes until the filling is moist but not watery.",
+        "ingredients": [
+          "ground cumin",
+          "chili powder",
+          "salt",
+          "tomato paste",
+          "water"
+        ],
+        "durationSeconds": 240
+      },
+      {
+        "id": "serve",
+        "title": "Warm and fill tortillas",
+        "instruction": "Warm tortillas in a dry skillet for about thirty seconds per side. Divide beef among tortillas and top with lettuce, tomatoes and cheese; serve with lime wedges.",
+        "ingredients": [
+          "small corn tortillas",
+          "lettuce",
+          "tomatoes",
+          "cheddar",
+          "lime"
+        ],
+        "safety": "Refrigerate leftovers in shallow containers within two hours, use within three to four days, and reheat to 165°F (74°C)."
+      }
+    ],
+    "image": "/recipes/placeholder.svg",
+    "imageKind": "placeholder",
+    "totalMinutes": 30,
+    "emoji": "🍽️",
+    "calories": null,
+    "nutrition": {
+      "status": "unavailable",
+      "reason": "No verified nutrition calculation is available for this recipe."
+    }
+  },
+  {
+    "id": "black-bean-quesadillas",
+    "title": "Black Bean Quesadillas",
+    "description": "Crisp folded tortillas filled with seasoned black beans, corn and melted cheese.",
+    "cuisine": "Mexican-inspired",
+    "tags": [
+      "vegetarian",
+      "beans",
+      "quick"
+    ],
+    "prepMinutes": 10,
+    "cookMinutes": 15,
+    "servings": 2,
+    "ingredients": [
+      {
+        "name": "canned black beans",
+        "amount": 15,
+        "unit": "ounce",
+        "note": "drained and rinsed"
+      },
+      {
+        "name": "frozen corn",
+        "amount": 0.5,
+        "unit": "cup",
+        "note": "thawed"
+      },
+      {
+        "name": "ground cumin",
+        "amount": 1,
+        "unit": "teaspoon"
+      },
+      {
+        "name": "salt",
+        "amount": 0.25,
+        "unit": "teaspoon"
+      },
+      {
+        "name": "lime juice",
+        "amount": 1,
+        "unit": "tablespoon"
+      },
+      {
+        "name": "flour tortillas",
+        "amount": 4,
+        "unit": "",
+        "note": "eight-inch"
+      },
+      {
+        "name": "cheddar",
+        "amount": 1,
+        "unit": "cup",
+        "note": "grated"
+      },
+      {
+        "name": "neutral oil",
+        "amount": 2,
+        "unit": "teaspoon",
+        "note": "divided"
+      }
+    ],
+    "steps": [
+      {
+        "id": "filling",
+        "title": "Mix the filling",
+        "instruction": "Drain and rinse beans and thaw corn. Mash half the beans, then mix with remaining beans, corn, cumin, salt and lime juice.",
+        "ingredients": [
+          "canned black beans",
+          "frozen corn",
+          "ground cumin",
+          "salt",
+          "lime juice"
+        ]
+      },
+      {
+        "id": "assemble",
+        "title": "Fill the tortillas",
+        "instruction": "Divide the filling and cheese over one half of each tortilla. Fold the empty halves over and gently press flat.",
+        "ingredients": [
+          "flour tortillas",
+          "cheddar"
+        ]
+      },
+      {
+        "id": "cook",
+        "title": "Cook in batches",
+        "instruction": "Heat one teaspoon oil in a skillet over medium heat. Cook two quesadillas for three minutes per side until crisp and hot throughout; repeat with remaining oil and quesadillas.",
+        "ingredients": [
+          "neutral oil",
+          "flour tortillas"
+        ],
+        "durationSeconds": 180,
+        "safety": "Turn down the heat if tortillas brown before the cheese melts."
+      },
+      {
+        "id": "serve",
+        "title": "Slice and serve",
+        "instruction": "Rest for one minute so the filling settles. Cut each quesadilla into wedges and serve two per person.",
+        "ingredients": [],
+        "durationSeconds": 60,
+        "safety": "Refrigerate leftovers in shallow containers within two hours, use within three to four days, and reheat to 165°F (74°C)."
+      }
+    ],
+    "image": "/recipes/placeholder.svg",
+    "imageKind": "placeholder",
+    "totalMinutes": 25,
+    "emoji": "🍽️",
+    "calories": null,
+    "nutrition": {
+      "status": "unavailable",
+      "reason": "No verified nutrition calculation is available for this recipe."
+    }
+  },
+  {
+    "id": "greek-chickpea-salad",
+    "title": "Greek Chickpea Salad",
+    "description": "A fresh chickpea salad with cucumber, tomatoes, olives and feta in a lemon dressing.",
+    "cuisine": "Greek-inspired",
+    "tags": [
+      "vegetarian",
+      "no-cook",
+      "salad"
+    ],
+    "prepMinutes": 20,
+    "cookMinutes": 0,
+    "servings": 4,
+    "ingredients": [
+      {
+        "name": "canned chickpeas",
+        "amount": 30,
+        "unit": "ounce",
+        "note": "drained and rinsed"
+      },
+      {
+        "name": "cucumber",
+        "amount": 1,
+        "unit": "",
+        "note": "diced"
+      },
+      {
+        "name": "cherry tomatoes",
+        "amount": 2,
+        "unit": "cup",
+        "note": "halved"
+      },
+      {
+        "name": "red onion",
+        "amount": 0.5,
+        "unit": "",
+        "note": "finely diced"
+      },
+      {
+        "name": "pitted olives",
+        "amount": 0.5,
+        "unit": "cup",
+        "note": "sliced"
+      },
+      {
+        "name": "feta",
+        "amount": 4,
+        "unit": "ounce",
+        "note": "crumbled; pasteurized"
+      },
+      {
+        "name": "olive oil",
+        "amount": 3,
+        "unit": "tablespoon"
+      },
+      {
+        "name": "lemon juice",
+        "amount": 2,
+        "unit": "tablespoon"
+      },
+      {
+        "name": "dried oregano",
+        "amount": 1,
+        "unit": "teaspoon"
+      },
+      {
+        "name": "black pepper",
+        "amount": 0.25,
+        "unit": "teaspoon"
+      }
+    ],
+    "steps": [
+      {
+        "id": "prep",
+        "title": "Wash and chop",
+        "instruction": "Wash cucumber and tomatoes, then dice cucumber and halve tomatoes. Dice onion, slice olives and drain and rinse chickpeas.",
+        "ingredients": [
+          "cucumber",
+          "cherry tomatoes",
+          "red onion",
+          "pitted olives",
+          "canned chickpeas"
+        ]
+      },
+      {
+        "id": "dressing",
+        "title": "Mix the dressing",
+        "instruction": "Whisk olive oil, lemon juice, oregano and pepper in a large bowl.",
+        "ingredients": [
+          "olive oil",
+          "lemon juice",
+          "dried oregano",
+          "black pepper"
+        ]
+      },
+      {
+        "id": "toss",
+        "title": "Toss the salad",
+        "instruction": "Add chickpeas, vegetables and olives and toss well. Fold in feta gently so it stays in small pieces.",
+        "ingredients": [
+          "canned chickpeas",
+          "cucumber",
+          "cherry tomatoes",
+          "red onion",
+          "pitted olives",
+          "feta"
+        ]
+      },
+      {
+        "id": "serve",
+        "title": "Serve or chill",
+        "instruction": "Divide among four bowls, or cover and refrigerate until serving. Stir once more before serving to redistribute the dressing.",
+        "ingredients": [],
+        "safety": "Keep the salad refrigerated at 40°F (4°C) or below and refrigerate within two hours of preparation."
+      }
+    ],
+    "image": "/recipes/placeholder.svg",
+    "imageKind": "placeholder",
+    "totalMinutes": 20,
+    "emoji": "🍽️",
+    "calories": null,
+    "nutrition": {
+      "status": "unavailable",
+      "reason": "No verified nutrition calculation is available for this recipe."
+    }
+  },
+  {
+    "id": "lentil-vegetable-soup",
+    "title": "Lentil Vegetable Soup",
+    "description": "A hearty Mediterranean-inspired soup with brown lentils, tomatoes and vegetables.",
+    "cuisine": "Mediterranean-inspired",
+    "tags": [
+      "vegan",
+      "soup",
+      "make-ahead"
+    ],
+    "prepMinutes": 15,
+    "cookMinutes": 40,
+    "servings": 4,
+    "ingredients": [
+      {
+        "name": "brown lentils",
+        "amount": 1,
+        "unit": "cup",
+        "note": "dry; rinsed and picked over"
+      },
+      {
+        "name": "olive oil",
+        "amount": 2,
+        "unit": "tablespoon"
+      },
+      {
+        "name": "onion",
+        "amount": 1,
+        "unit": "",
+        "note": "diced"
+      },
+      {
+        "name": "carrots",
+        "amount": 2,
+        "unit": "",
+        "note": "diced"
+      },
+      {
+        "name": "celery stalks",
+        "amount": 2,
+        "unit": "",
+        "note": "diced"
+      },
+      {
+        "name": "garlic",
+        "amount": 3,
+        "unit": "clove",
+        "note": "minced"
+      },
+      {
+        "name": "canned diced tomatoes",
+        "amount": 14,
+        "unit": "ounce"
+      },
+      {
+        "name": "vegetable broth",
+        "amount": 5,
+        "unit": "cup"
+      },
+      {
+        "name": "dried thyme",
+        "amount": 1,
+        "unit": "teaspoon"
+      },
+      {
+        "name": "salt",
+        "amount": 0.5,
+        "unit": "teaspoon"
+      },
+      {
+        "name": "lemon juice",
+        "amount": 2,
+        "unit": "tablespoon"
+      }
+    ],
+    "steps": [
+      {
+        "id": "prep",
+        "title": "Prepare the vegetables",
+        "instruction": "Rinse lentils and remove any debris. Dice onion, carrots and celery and mince garlic.",
+        "ingredients": [
+          "brown lentils",
+          "onion",
+          "carrots",
+          "celery stalks",
+          "garlic"
+        ]
+      },
+      {
+        "id": "saute",
+        "title": "Soften the vegetables",
+        "instruction": "Heat oil in a large pot over medium heat. Cook onion, carrots and celery for seven minutes; stir in garlic for one minute.",
+        "ingredients": [
+          "olive oil",
+          "onion",
+          "carrots",
+          "celery stalks",
+          "garlic"
+        ],
+        "durationSeconds": 480
+      },
+      {
+        "id": "simmer",
+        "title": "Cook the lentils",
+        "instruction": "Add lentils, tomatoes, broth, thyme and salt. Bring to a boil, then simmer partially covered for thirty minutes, until lentils are tender; add water if needed.",
+        "ingredients": [
+          "brown lentils",
+          "canned diced tomatoes",
+          "vegetable broth",
+          "dried thyme",
+          "salt"
+        ],
+        "durationSeconds": 1800
+      },
+      {
+        "id": "finish",
+        "title": "Finish the soup",
+        "instruction": "Stir in lemon juice. For a thicker soup, mash a few lentils against the side of the pot; divide among four bowls.",
+        "ingredients": [
+          "lemon juice"
+        ],
+        "safety": "Refrigerate leftovers in shallow containers within two hours, use within three to four days, and reheat to 165°F (74°C)."
+      }
+    ],
+    "image": "/recipes/placeholder.svg",
+    "imageKind": "placeholder",
+    "totalMinutes": 55,
+    "emoji": "🍽️",
+    "calories": null,
+    "nutrition": {
+      "status": "unavailable",
+      "reason": "No verified nutrition calculation is available for this recipe."
+    }
+  },
+  {
+    "id": "shakshuka",
+    "title": "Shakshuka",
+    "description": "Eggs gently cooked in a spiced tomato and pepper sauce, served with bread.",
+    "cuisine": "North African-inspired",
+    "tags": [
+      "vegetarian",
+      "eggs",
+      "one-pan"
+    ],
+    "prepMinutes": 15,
+    "cookMinutes": 30,
+    "servings": 2,
+    "ingredients": [
+      {
+        "name": "olive oil",
+        "amount": 2,
+        "unit": "tablespoon"
+      },
+      {
+        "name": "onion",
+        "amount": 1,
+        "unit": "",
+        "note": "diced"
+      },
+      {
+        "name": "red bell pepper",
+        "amount": 1,
+        "unit": "",
+        "note": "diced"
+      },
+      {
+        "name": "garlic",
+        "amount": 3,
+        "unit": "clove",
+        "note": "minced"
+      },
+      {
+        "name": "ground cumin",
+        "amount": 1,
+        "unit": "teaspoon"
+      },
+      {
+        "name": "paprika",
+        "amount": 1,
+        "unit": "teaspoon"
+      },
+      {
+        "name": "salt",
+        "amount": 0.5,
+        "unit": "teaspoon"
+      },
+      {
+        "name": "canned crushed tomatoes",
+        "amount": 28,
+        "unit": "ounce"
+      },
+      {
+        "name": "eggs",
+        "amount": 4,
+        "unit": ""
+      },
+      {
+        "name": "parsley",
+        "amount": 2,
+        "unit": "tablespoon",
+        "note": "chopped"
+      },
+      {
+        "name": "bread",
+        "amount": 4,
+        "unit": "",
+        "note": "slices"
+      }
+    ],
+    "steps": [
+      {
+        "id": "vegetables",
+        "title": "Cook the vegetables",
+        "instruction": "Heat oil in a deep skillet over medium heat. Cook diced onion and pepper for eight minutes until soft, stirring regularly.",
+        "ingredients": [
+          "olive oil",
+          "onion",
+          "red bell pepper"
+        ],
+        "durationSeconds": 480
+      },
+      {
+        "id": "sauce",
+        "title": "Simmer the sauce",
+        "instruction": "Add garlic, cumin, paprika and salt and cook for one minute. Stir in tomatoes and simmer uncovered for twelve minutes until thickened.",
+        "ingredients": [
+          "garlic",
+          "ground cumin",
+          "paprika",
+          "salt",
+          "canned crushed tomatoes"
+        ],
+        "durationSeconds": 720
+      },
+      {
+        "id": "eggs",
+        "title": "Cook the eggs",
+        "instruction": "Make four wells in the sauce and crack one egg into each. Cover and cook on low for eight to ten minutes until both whites and yolks are firm.",
+        "ingredients": [
+          "eggs"
+        ],
+        "durationSeconds": 480,
+        "safety": "Cook eggs until whites and yolks are firm; wash hands after handling shells."
+      },
+      {
+        "id": "serve",
+        "title": "Finish and serve",
+        "instruction": "Scatter parsley over the eggs and sauce. Divide between two plates and serve with bread for scooping.",
+        "ingredients": [
+          "parsley",
+          "bread"
+        ],
+        "safety": "Refrigerate leftovers in shallow containers within two hours, use within three to four days, and reheat to 165°F (74°C)."
+      }
+    ],
+    "image": "/recipes/placeholder.svg",
+    "imageKind": "placeholder",
+    "totalMinutes": 45,
+    "emoji": "🍽️",
+    "calories": null,
+    "nutrition": {
+      "status": "unavailable",
+      "reason": "No verified nutrition calculation is available for this recipe."
+    }
+  },
+  {
+    "id": "thai-basil-chicken",
+    "title": "Thai Basil Chicken",
+    "description": "A Thai-inspired chicken stir-fry with basil and a savory garlic sauce.",
+    "cuisine": "Thai-inspired",
+    "tags": [
+      "chicken",
+      "stir-fry",
+      "quick"
+    ],
+    "prepMinutes": 15,
+    "cookMinutes": 15,
+    "servings": 2,
+    "ingredients": [
+      {
+        "name": "boneless chicken thighs",
+        "amount": 1,
+        "unit": "pound",
+        "note": "finely chopped"
+      },
+      {
+        "name": "neutral oil",
+        "amount": 1,
+        "unit": "tablespoon"
+      },
+      {
+        "name": "garlic",
+        "amount": 4,
+        "unit": "clove",
+        "note": "minced"
+      },
+      {
+        "name": "red chili",
+        "amount": 1,
+        "unit": "",
+        "note": "sliced; remove seeds for less heat"
+      },
+      {
+        "name": "green beans",
+        "amount": 1,
+        "unit": "cup",
+        "note": "cut into one-inch pieces"
+      },
+      {
+        "name": "soy sauce",
+        "amount": 1,
+        "unit": "tablespoon"
+      },
+      {
+        "name": "oyster sauce",
+        "amount": 1,
+        "unit": "tablespoon"
+      },
+      {
+        "name": "sugar",
+        "amount": 1,
+        "unit": "teaspoon"
+      },
+      {
+        "name": "water",
+        "amount": 2,
+        "unit": "tablespoon"
+      },
+      {
+        "name": "Thai basil leaves",
+        "amount": 1,
+        "unit": "cup"
+      },
+      {
+        "name": "cooked rice",
+        "amount": 2,
+        "unit": "cup",
+        "note": "freshly cooked"
+      }
+    ],
+    "steps": [
+      {
+        "id": "prep",
+        "title": "Prepare sauce and ingredients",
+        "instruction": "Mix soy sauce, oyster sauce, sugar and water in a bowl. Prepare garlic, chili and beans, then chop chicken on a separate board.",
+        "ingredients": [
+          "soy sauce",
+          "oyster sauce",
+          "sugar",
+          "water",
+          "garlic",
+          "red chili",
+          "green beans",
+          "boneless chicken thighs"
+        ],
+        "safety": "Keep raw poultry separate from ready-to-eat food, wash hands and utensils, and check the thickest pieces reach 165°F (74°C) with a thermometer."
+      },
+      {
+        "id": "aromatics",
+        "title": "Start the stir-fry",
+        "instruction": "Heat oil in a large skillet over medium-high heat. Stir-fry garlic and chili for thirty seconds, then add chicken and cook for five minutes, stirring often.",
+        "ingredients": [
+          "neutral oil",
+          "garlic",
+          "red chili",
+          "boneless chicken thighs"
+        ],
+        "durationSeconds": 300
+      },
+      {
+        "id": "beans",
+        "title": "Cook with the sauce",
+        "instruction": "Add beans and prepared sauce. Cook for five to seven minutes until beans are tender-crisp and chicken reaches 165°F (74°C); add a splash of water if the pan dries out.",
+        "ingredients": [
+          "green beans"
+        ],
+        "durationSeconds": 420,
+        "safety": "Keep raw poultry separate from ready-to-eat food, wash hands and utensils, and check the thickest pieces reach 165°F (74°C) with a thermometer."
+      },
+      {
+        "id": "basil",
+        "title": "Add basil and serve",
+        "instruction": "Turn off the heat and fold in basil until wilted. Serve over the freshly cooked rice.",
+        "ingredients": [
+          "Thai basil leaves",
+          "cooked rice"
+        ],
+        "safety": "Use freshly cooked rice or rice promptly refrigerated within two hours. Reheat refrigerated rice to 165°F (74°C)."
+      }
+    ],
+    "image": "/recipes/placeholder.svg",
+    "imageKind": "placeholder",
+    "totalMinutes": 30,
+    "emoji": "🍽️",
+    "calories": null,
+    "nutrition": {
+      "status": "unavailable",
+      "reason": "No verified nutrition calculation is available for this recipe."
+    }
+  },
+  {
+    "id": "lemon-herb-chicken",
+    "title": "Lemon Herb Chicken",
+    "description": "Roasted chicken thighs and potatoes with lemon, garlic and oregano.",
+    "cuisine": "Mediterranean-inspired",
+    "tags": [
+      "chicken",
+      "oven",
+      "sheet-pan"
+    ],
+    "prepMinutes": 15,
+    "cookMinutes": 40,
+    "servings": 4,
+    "ingredients": [
+      {
+        "name": "boneless chicken thighs",
+        "amount": 1.5,
+        "unit": "pound"
+      },
+      {
+        "name": "potatoes",
+        "amount": 1.5,
+        "unit": "pound",
+        "note": "cut into three-quarter-inch pieces"
+      },
+      {
+        "name": "olive oil",
+        "amount": 3,
+        "unit": "tablespoon",
+        "note": "divided"
+      },
+      {
+        "name": "lemon juice",
+        "amount": 3,
+        "unit": "tablespoon"
+      },
+      {
+        "name": "garlic",
+        "amount": 4,
+        "unit": "clove",
+        "note": "minced"
+      },
+      {
+        "name": "dried oregano",
+        "amount": 2,
+        "unit": "teaspoon"
+      },
+      {
+        "name": "salt",
+        "amount": 1,
+        "unit": "teaspoon",
+        "note": "divided"
+      },
+      {
+        "name": "black pepper",
+        "amount": 0.5,
+        "unit": "teaspoon",
+        "note": "divided"
+      }
+    ],
+    "steps": [
+      {
+        "id": "potatoes",
+        "title": "Start the potatoes",
+        "instruction": "Heat the oven to 425°F (220°C). Toss potatoes with one tablespoon oil, half the salt and half the pepper on a rimmed baking sheet; roast for fifteen minutes.",
+        "ingredients": [
+          "potatoes",
+          "olive oil",
+          "salt",
+          "black pepper"
+        ],
+        "durationSeconds": 900
+      },
+      {
+        "id": "season",
+        "title": "Season the chicken",
+        "instruction": "Mix remaining oil, salt and pepper with lemon juice, garlic and oregano in a bowl. Add chicken and turn to coat.",
+        "ingredients": [
+          "olive oil",
+          "salt",
+          "black pepper",
+          "lemon juice",
+          "garlic",
+          "dried oregano",
+          "boneless chicken thighs"
+        ],
+        "safety": "Keep raw poultry separate from ready-to-eat food, wash hands and utensils, and check the thickest pieces reach 165°F (74°C) with a thermometer."
+      },
+      {
+        "id": "roast",
+        "title": "Roast together",
+        "instruction": "Turn potatoes and add chicken to the sheet in one layer. Roast for twenty to twenty-five minutes until potatoes are tender and chicken reaches 165°F (74°C).",
+        "ingredients": [
+          "boneless chicken thighs",
+          "potatoes"
+        ],
+        "durationSeconds": 1500,
+        "safety": "Keep raw poultry separate from ready-to-eat food, wash hands and utensils, and check the thickest pieces reach 165°F (74°C) with a thermometer."
+      },
+      {
+        "id": "serve",
+        "title": "Rest and serve",
+        "instruction": "Rest the chicken for five minutes, then divide chicken and potatoes among four plates. Discard any uncooked marinade left in the bowl.",
+        "ingredients": [],
+        "durationSeconds": 300,
+        "safety": "Refrigerate leftovers in shallow containers within two hours, use within three to four days, and reheat to 165°F (74°C)."
+      }
+    ],
+    "image": "/recipes/placeholder.svg",
+    "imageKind": "placeholder",
+    "totalMinutes": 55,
+    "emoji": "🍽️",
+    "calories": null,
+    "nutrition": {
+      "status": "unavailable",
+      "reason": "No verified nutrition calculation is available for this recipe."
+    }
+  },
+  {
+    "id": "avocado-pasta",
+    "title": "Avocado Pasta",
+    "description": "Pasta with a fresh avocado, lemon and basil sauce, best eaten immediately.",
+    "cuisine": "Italian-inspired",
+    "tags": [
+      "vegan",
+      "pasta",
+      "quick"
+    ],
+    "prepMinutes": 10,
+    "cookMinutes": 10,
+    "servings": 2,
+    "ingredients": [
+      {
+        "name": "pasta",
+        "amount": 6,
+        "unit": "ounce"
+      },
+      {
+        "name": "ripe avocado",
+        "amount": 1,
+        "unit": ""
+      },
+      {
+        "name": "lemon juice",
+        "amount": 2,
+        "unit": "tablespoon"
+      },
+      {
+        "name": "olive oil",
+        "amount": 1,
+        "unit": "tablespoon"
+      },
+      {
+        "name": "fresh basil",
+        "amount": 0.5,
+        "unit": "cup"
+      },
+      {
+        "name": "garlic",
+        "amount": 1,
+        "unit": "clove",
+        "note": "small; minced"
+      },
+      {
+        "name": "salt",
+        "amount": 1.5,
+        "unit": "teaspoon",
+        "note": "one teaspoon for pasta water"
+      },
+      {
+        "name": "black pepper",
+        "amount": 0.25,
+        "unit": "teaspoon"
+      },
+      {
+        "name": "cherry tomatoes",
+        "amount": 1,
+        "unit": "cup",
+        "note": "halved"
+      },
+      {
+        "name": "water",
+        "amount": 8,
+        "unit": "cup",
+        "note": "for boiling pasta"
+      }
+    ],
+    "steps": [
+      {
+        "id": "pasta",
+        "title": "Cook the pasta",
+        "instruction": "Bring water and one teaspoon salt to a boil. Cook pasta for the package's al dente time, usually eight to ten minutes; reserve half a cup cooking water before draining.",
+        "ingredients": [
+          "water",
+          "salt",
+          "pasta"
+        ],
+        "safety": "Drain carefully to avoid steam burns."
+      },
+      {
+        "id": "prep",
+        "title": "Prepare the produce",
+        "instruction": "Wash the avocado skin before cutting, then remove the pit and scoop out the flesh. Wash basil and tomatoes and halve tomatoes.",
+        "ingredients": [
+          "ripe avocado",
+          "fresh basil",
+          "cherry tomatoes"
+        ]
+      },
+      {
+        "id": "sauce",
+        "title": "Blend the sauce",
+        "instruction": "Blend avocado, lemon juice, olive oil, basil, garlic, remaining salt and pepper with two tablespoons reserved pasta water until smooth. Add more reserved water a spoonful at a time if needed.",
+        "ingredients": [
+          "ripe avocado",
+          "lemon juice",
+          "olive oil",
+          "fresh basil",
+          "garlic",
+          "salt",
+          "black pepper"
+        ]
+      },
+      {
+        "id": "serve",
+        "title": "Toss and serve",
+        "instruction": "Toss drained pasta with avocado sauce off the heat. Fold in tomatoes and serve immediately; refrigerate leftovers promptly and use within one day for best quality.",
+        "ingredients": [
+          "pasta",
+          "cherry tomatoes"
+        ],
+        "safety": "Refrigerate within two hours; the sauce will darken during storage."
+      }
+    ],
+    "image": "/recipes/placeholder.svg",
+    "imageKind": "placeholder",
+    "totalMinutes": 20,
+    "emoji": "🍽️",
+    "calories": null,
+    "nutrition": {
+      "status": "unavailable",
+      "reason": "No verified nutrition calculation is available for this recipe."
+    }
+  },
+  {
+    "id": "mushroom-risotto",
+    "title": "Mushroom Risotto",
+    "description": "Creamy arborio rice with browned mushrooms and parmesan, made without wine.",
+    "cuisine": "Italian",
+    "tags": [
+      "vegetarian",
+      "rice",
+      "comfort-food"
+    ],
+    "prepMinutes": 15,
+    "cookMinutes": 35,
+    "servings": 4,
+    "ingredients": [
+      {
+        "name": "arborio rice",
+        "amount": 1.5,
+        "unit": "cup"
+      },
+      {
+        "name": "vegetable broth",
+        "amount": 6,
+        "unit": "cup"
+      },
+      {
+        "name": "mushrooms",
+        "amount": 12,
+        "unit": "ounce",
+        "note": "sliced"
+      },
+      {
+        "name": "onion",
+        "amount": 1,
+        "unit": "",
+        "note": "finely diced"
+      },
+      {
+        "name": "garlic",
+        "amount": 2,
+        "unit": "clove",
+        "note": "minced"
+      },
+      {
+        "name": "olive oil",
+        "amount": 2,
+        "unit": "tablespoon"
+      },
+      {
+        "name": "butter",
+        "amount": 2,
+        "unit": "tablespoon",
+        "note": "divided"
+      },
+      {
+        "name": "parmesan",
+        "amount": 0.5,
+        "unit": "cup",
+        "note": "grated; vegetarian rennet if needed"
+      },
+      {
+        "name": "black pepper",
+        "amount": 0.25,
+        "unit": "teaspoon"
+      },
+      {
+        "name": "lemon juice",
+        "amount": 1,
+        "unit": "tablespoon"
+      }
+    ],
+    "steps": [
+      {
+        "id": "prep",
+        "title": "Prepare and warm the broth",
+        "instruction": "Slice mushrooms, dice onion and mince garlic. Heat broth in a saucepan and keep it at a gentle simmer.",
+        "ingredients": [
+          "mushrooms",
+          "onion",
+          "garlic",
+          "vegetable broth"
+        ]
+      },
+      {
+        "id": "mushrooms",
+        "title": "Brown the mushrooms",
+        "instruction": "Heat oil in a wide pan over medium-high heat. Cook mushrooms for seven minutes until browned; transfer to a bowl.",
+        "ingredients": [
+          "olive oil",
+          "mushrooms"
+        ],
+        "durationSeconds": 420
+      },
+      {
+        "id": "rice",
+        "title": "Toast the rice",
+        "instruction": "Lower the heat to medium and melt one tablespoon butter in the pan. Cook onion for four minutes, garlic for thirty seconds, then stir in rice for two minutes.",
+        "ingredients": [
+          "butter",
+          "onion",
+          "garlic",
+          "arborio rice"
+        ],
+        "durationSeconds": 360
+      },
+      {
+        "id": "simmer",
+        "title": "Add broth gradually",
+        "instruction": "Add warm broth one ladle at a time, stirring frequently and adding more when nearly absorbed. Continue for twenty to twenty-five minutes until rice is tender with a slight bite; you may not need all the broth.",
+        "ingredients": [
+          "vegetable broth",
+          "arborio rice"
+        ],
+        "durationSeconds": 1200,
+        "tip": "Keep a gentle simmer rather than a hard boil."
+      },
+      {
+        "id": "finish",
+        "title": "Finish the risotto",
+        "instruction": "Turn off the heat and stir in mushrooms, remaining butter, parmesan, pepper and lemon juice. Add a little warm broth if needed so the risotto flows gently, then serve immediately.",
+        "ingredients": [
+          "mushrooms",
+          "butter",
+          "parmesan",
+          "black pepper",
+          "lemon juice"
+        ],
+        "safety": "Use freshly cooked rice or rice promptly refrigerated within two hours. Reheat refrigerated rice to 165°F (74°C)."
+      }
+    ],
+    "image": "/recipes/placeholder.svg",
+    "imageKind": "placeholder",
+    "totalMinutes": 50,
+    "emoji": "🍽️",
+    "calories": null,
+    "nutrition": {
+      "status": "unavailable",
+      "reason": "No verified nutrition calculation is available for this recipe."
+    }
+  },
+  {
+    "id": "beef-broccoli-stir-fry",
+    "title": "Beef and Broccoli Stir-Fry",
+    "description": "Thin slices of beef and crisp broccoli in a quick soy and ginger sauce.",
+    "cuisine": "Chinese-inspired",
+    "tags": [
+      "beef",
+      "stir-fry",
+      "quick"
+    ],
+    "prepMinutes": 20,
+    "cookMinutes": 15,
+    "servings": 2,
+    "ingredients": [
+      {
+        "name": "sirloin steak",
+        "amount": 0.75,
+        "unit": "pound",
+        "note": "thinly sliced against the grain"
+      },
+      {
+        "name": "broccoli florets",
+        "amount": 3,
+        "unit": "cup"
+      },
+      {
+        "name": "neutral oil",
+        "amount": 2,
+        "unit": "tablespoon",
+        "note": "divided"
+      },
+      {
+        "name": "garlic",
+        "amount": 3,
+        "unit": "clove",
+        "note": "minced"
+      },
+      {
+        "name": "fresh ginger",
+        "amount": 1,
+        "unit": "tablespoon",
+        "note": "grated"
+      },
+      {
+        "name": "soy sauce",
+        "amount": 2,
+        "unit": "tablespoon"
+      },
+      {
+        "name": "oyster sauce",
+        "amount": 1,
+        "unit": "tablespoon"
+      },
+      {
+        "name": "cornstarch",
+        "amount": 1,
+        "unit": "tablespoon"
+      },
+      {
+        "name": "water",
+        "amount": 0.5,
+        "unit": "cup",
+        "note": "divided"
+      },
+      {
+        "name": "brown sugar",
+        "amount": 1,
+        "unit": "teaspoon"
+      }
+    ],
+    "steps": [
+      {
+        "id": "prep",
+        "title": "Prepare the sauce",
+        "instruction": "Mix soy sauce, oyster sauce, cornstarch, sugar and a quarter cup water. Prepare broccoli, garlic and ginger, then thinly slice beef on a separate board.",
+        "ingredients": [
+          "soy sauce",
+          "oyster sauce",
+          "cornstarch",
+          "brown sugar",
+          "water",
+          "broccoli florets",
+          "garlic",
+          "fresh ginger",
+          "sirloin steak"
+        ],
+        "safety": "Wash hands and utensils after handling raw beef."
+      },
+      {
+        "id": "broccoli",
+        "title": "Steam the broccoli",
+        "instruction": "Heat one tablespoon oil in a large skillet over medium-high heat. Add broccoli and remaining quarter cup water, cover for three minutes, then uncover and transfer broccoli to a bowl.",
+        "ingredients": [
+          "neutral oil",
+          "broccoli florets",
+          "water"
+        ],
+        "durationSeconds": 180
+      },
+      {
+        "id": "beef",
+        "title": "Sear the beef",
+        "instruction": "Add remaining oil and sear beef in a single layer, in batches if needed, for about four minutes, turning once. Check representative thick slices reach 145°F (63°C), then transfer to a clean plate and rest three minutes.",
+        "ingredients": [
+          "neutral oil",
+          "sirloin steak"
+        ],
+        "durationSeconds": 240,
+        "safety": "Use a food thermometer; whole-cut beef needs 145°F (63°C) and a three-minute rest."
+      },
+      {
+        "id": "sauce",
+        "title": "Thicken the sauce",
+        "instruction": "Lower heat to medium, add garlic and ginger and stir for thirty seconds. Stir the sauce mixture again, pour into the pan and simmer for two minutes until glossy.",
+        "ingredients": [
+          "garlic",
+          "fresh ginger"
+        ],
+        "durationSeconds": 120
+      },
+      {
+        "id": "finish",
+        "title": "Bring together",
+        "instruction": "Return rested beef and broccoli to the pan and toss for one minute until coated and hot. Divide between two plates and serve immediately.",
+        "ingredients": [
+          "sirloin steak",
+          "broccoli florets"
+        ],
+        "durationSeconds": 60,
+        "safety": "Refrigerate leftovers in shallow containers within two hours, use within three to four days, and reheat to 165°F (74°C)."
+      }
+    ],
+    "image": "/recipes/placeholder.svg",
+    "imageKind": "placeholder",
+    "totalMinutes": 35,
+    "emoji": "🍽️",
+    "calories": null,
+    "nutrition": {
+      "status": "unavailable",
+      "reason": "No verified nutrition calculation is available for this recipe."
+    }
+  }
+]

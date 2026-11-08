@@ -1,0 +1,7 @@
+All 50 recipes are connected through browsing, detail pages, search/filter logic, favorites, Collection, and cooking selection. Added direct voice-cooking links in Collection.
+
+Verified all 50 IDs, mocked call-start selection, default `/cook`, and invalid-ID handling. Catalog checks, offline integration checks, and TypeScript pass.
+
+Vitest, production build completion, and browser verification remain blocked by `spawn EPERM`. Exact evidence is recorded in [RECIPE-INTEGRATION-REPORT.md](RECIPE-INTEGRATION-REPORT.md).
+
+No provider calls, secrets changes, or Git mutations.

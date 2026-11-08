@@ -1,0 +1,50 @@
+2026-11-08T02:20:23.2690086-07:00 START 01-build-attempt-1 timeout=1200s
+2026-11-08T02:20:24.4374550-07:00 END 01-build-attempt-1 exit= stdout=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022023\01-build-attempt-1.stdout.txt stderr=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022023\01-build-attempt-1.stderr.txt
+2026-11-08T02:20:24.4501611-07:00 START 02-recipes-attempt-1 timeout=1200s
+2026-11-08T02:20:25.5434830-07:00 END 02-recipes-attempt-1 exit= stdout=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022023\02-recipes-attempt-1.stdout.txt stderr=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022023\02-recipes-attempt-1.stderr.txt
+2026-11-08T02:20:25.5507945-07:00 START 03-integration-attempt-1 timeout=1200s
+2026-11-08T02:20:26.6471437-07:00 END 03-integration-attempt-1 exit= stdout=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022023\03-integration-attempt-1.stdout.txt stderr=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022023\03-integration-attempt-1.stderr.txt
+2026-11-08T02:20:26.6491487-07:00 START 04-voice-attempt-1 timeout=1200s
+2026-11-08T02:20:27.7027634-07:00 END 04-voice-attempt-1 exit= stdout=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022023\04-voice-attempt-1.stdout.txt stderr=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022023\04-voice-attempt-1.stderr.txt
+2026-11-08T02:20:27.7118192-07:00 START 05-quality-attempt-1 timeout=1200s
+2026-11-08T02:20:28.7224401-07:00 END 05-quality-attempt-1 exit= stdout=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022023\05-quality-attempt-1.stdout.txt stderr=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022023\05-quality-attempt-1.stderr.txt
+2026-11-08T02:20:28.7319048-07:00 START gate-1-typescript timeout=300s
+2026-11-08T02:20:31.0193392-07:00 END gate-1-typescript exit= stdout=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022023\gate-1-typescript.stdout.txt stderr=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022023\gate-1-typescript.stderr.txt
+2026-11-08T02:20:31.0232865-07:00 START gate-1-tests timeout=300s
+2026-11-08T02:20:33.1120286-07:00 END gate-1-tests exit= stdout=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022023\gate-1-tests.stdout.txt stderr=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022023\gate-1-tests.stderr.txt
+2026-11-08T02:20:33.1120286-07:00 START gate-1-build timeout=600s
+2026-11-08T02:20:35.8631595-07:00 END gate-1-build exit= stdout=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022023\gate-1-build.stdout.txt stderr=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022023\gate-1-build.stderr.txt
+2026-11-08T02:20:35.8792667-07:00 START gate-1-foundation timeout=180s
+2026-11-08T02:20:36.5915547-07:00 END gate-1-foundation exit= stdout=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022023\gate-1-foundation.stdout.txt stderr=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022023\gate-1-foundation.stderr.txt
+2026-11-08T02:20:36.5976962-07:00 START gate-1-catalog timeout=180s
+2026-11-08T02:20:37.2001978-07:00 END gate-1-catalog exit= stdout=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022023\gate-1-catalog.stdout.txt stderr=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022023\gate-1-catalog.stderr.txt
+2026-11-08T02:20:37.2001978-07:00 GATES gate-1 exits=0,0,0,0,0 (zero means verified command only)
+2026-11-08T02:20:37.2083476-07:00 START 06-repair-1-attempt-1 timeout=1200s
+2026-11-08T02:20:38.2221795-07:00 END 06-repair-1-attempt-1 exit= stdout=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022023\06-repair-1-attempt-1.stdout.txt stderr=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022023\06-repair-1-attempt-1.stderr.txt
+2026-11-08T02:20:38.2378427-07:00 START gate-2-typescript timeout=300s
+2026-11-08T02:20:40.1653346-07:00 END gate-2-typescript exit= stdout=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022023\gate-2-typescript.stdout.txt stderr=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022023\gate-2-typescript.stderr.txt
+2026-11-08T02:20:40.1709975-07:00 START gate-2-tests timeout=300s
+2026-11-08T02:20:41.8992305-07:00 END gate-2-tests exit= stdout=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022023\gate-2-tests.stdout.txt stderr=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022023\gate-2-tests.stderr.txt
+2026-11-08T02:20:41.9106454-07:00 START gate-2-build timeout=600s
+2026-11-08T02:20:44.8032138-07:00 END gate-2-build exit= stdout=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022023\gate-2-build.stdout.txt stderr=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022023\gate-2-build.stderr.txt
+2026-11-08T02:20:44.8112252-07:00 START gate-2-foundation timeout=180s
+2026-11-08T02:20:45.4726533-07:00 END gate-2-foundation exit= stdout=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022023\gate-2-foundation.stdout.txt stderr=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022023\gate-2-foundation.stderr.txt
+2026-11-08T02:20:45.4726533-07:00 START gate-2-catalog timeout=180s
+2026-11-08T02:20:46.0541735-07:00 END gate-2-catalog exit= stdout=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022023\gate-2-catalog.stdout.txt stderr=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022023\gate-2-catalog.stderr.txt
+2026-11-08T02:20:46.0562594-07:00 GATES gate-2 exits=0,0,0,0,0 (zero means verified command only)
+2026-11-08T02:20:46.0658444-07:00 START 06-repair-2-attempt-1 timeout=1200s
+2026-11-08T02:20:47.0571286-07:00 END 06-repair-2-attempt-1 exit= stdout=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022023\06-repair-2-attempt-1.stdout.txt stderr=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022023\06-repair-2-attempt-1.stderr.txt
+2026-11-08T02:20:47.0659703-07:00 START final-gate-typescript timeout=300s
+2026-11-08T02:20:49.1001916-07:00 END final-gate-typescript exit= stdout=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022023\final-gate-typescript.stdout.txt stderr=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022023\final-gate-typescript.stderr.txt
+2026-11-08T02:20:49.1001916-07:00 START final-gate-tests timeout=300s
+2026-11-08T02:20:50.7396120-07:00 END final-gate-tests exit= stdout=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022023\final-gate-tests.stdout.txt stderr=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022023\final-gate-tests.stderr.txt
+2026-11-08T02:20:50.7540635-07:00 START final-gate-build timeout=600s
+2026-11-08T02:20:53.4293364-07:00 END final-gate-build exit= stdout=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022023\final-gate-build.stdout.txt stderr=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022023\final-gate-build.stderr.txt
+2026-11-08T02:20:53.4293364-07:00 START final-gate-foundation timeout=180s
+2026-11-08T02:20:54.0818960-07:00 END final-gate-foundation exit= stdout=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022023\final-gate-foundation.stdout.txt stderr=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022023\final-gate-foundation.stderr.txt
+2026-11-08T02:20:54.0990727-07:00 START final-gate-catalog timeout=180s
+2026-11-08T02:20:54.6901840-07:00 END final-gate-catalog exit= stdout=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022023\final-gate-catalog.stdout.txt stderr=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022023\final-gate-catalog.stderr.txt
+2026-11-08T02:20:54.6930009-07:00 GATES final-gate exits=0,0,0,0,0 (zero means verified command only)
+2026-11-08T02:20:54.6930009-07:00 START 99-final-report-attempt-1 timeout=1200s
+2026-11-08T02:20:55.6727503-07:00 END 99-final-report-attempt-1 exit= stdout=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022023\99-final-report-attempt-1.stdout.txt stderr=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022023\99-final-report-attempt-1.stderr.txt
+2026-11-08T02:20:55.6778149-07:00 FINISHED gatesPassed=True report=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022023\WORKFLOW-REPORT.md

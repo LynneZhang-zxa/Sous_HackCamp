@@ -1,0 +1,27 @@
+node:assert:152
+  throw new AssertionError(obj);
+  ^
+
+AssertionError [ERR_ASSERTION]: Catalog must contain exactly 50 recipes
+
+20 !== 50
+
+    at C:\Users\L\Desktop\sous\Sous_HackCamp\scripts\catalog-gate.cjs:22:8
+    at Script.runInContext (node:vm:149:12)
+    at Script.runInNewContext (node:vm:154:17)
+    at Object.runInNewContext (node:vm:310:38)
+    at Object.<anonymous> (C:\Users\L\Desktop\sous\Sous_HackCamp\scripts\catalog-gate.cjs:24:4)
+    at Module._compile (node:internal/modules/cjs/loader:1854:14)
+    at Object..js (node:internal/modules/cjs/loader:1985:10)
+    at Module.load (node:internal/modules/cjs/loader:1577:32)
+    at Module._load (node:internal/modules/cjs/loader:1379:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19) {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: 20,
+  expected: 50,
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.16.0

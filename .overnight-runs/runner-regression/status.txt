@@ -1,0 +1,7 @@
+2026-11-08T02:21:44.5044721-07:00 START stderr-success timeout=30s
+2026-11-08T02:21:45.1922233-07:00 END stderr-success exit=0 stdout=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\runner-regression\stderr-success.stdout.txt stderr=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\runner-regression\stderr-success.stderr.txt
+2026-11-08T02:21:45.2103911-07:00 START failed-command timeout=30s
+2026-11-08T02:21:45.9481395-07:00 END failed-command exit=7 stdout=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\runner-regression\failed-command.stdout.txt stderr=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\runner-regression\failed-command.stderr.txt
+2026-11-08T02:21:45.9531238-07:00 START continued-command timeout=30s
+2026-11-08T02:21:46.5961982-07:00 END continued-command exit=0 stdout=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\runner-regression\continued-command.stdout.txt stderr=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\runner-regression\continued-command.stderr.txt
+2026-11-08T02:21:46.5992952-07:00 PASS stderr warning preserved, failure recorded as 7, subsequent command ran

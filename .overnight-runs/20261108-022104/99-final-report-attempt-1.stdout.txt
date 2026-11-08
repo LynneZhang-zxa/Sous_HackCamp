@@ -1,0 +1,8 @@
+Created [SOUS-OVERNIGHT-REPORT.md](SOUS-OVERNIGHT-REPORT.md) with independent source and log findings.
+
+- Verified exactly **50 recipes**, original 20 unchanged.
+- **544 tests**, TypeScript and offline integration/voice checks passed.
+- Historical overnight build passed; current build, dev server and Edge launch hit `spawn EPERM`.
+- Browser interactions and live voice remain unverified.
+
+No Git mutations, secret changes, remote Alebex changes or paid calls.

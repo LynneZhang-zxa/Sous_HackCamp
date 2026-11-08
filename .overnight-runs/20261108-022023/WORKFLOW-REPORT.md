@@ -1,0 +1,1 @@
+INVALID DIAGNOSTIC RUN: PowerShell returned null ExitCode; null was incorrectly cast to zero. No gate or development success can be inferred from this run. Corrected runner uses explicit child exit-code files. See run 20261108-022104 and later runner regression tests.

@@ -1,0 +1,5 @@
+Audited all 50 recipes and 201 steps. Removed the chicken-only knowledge base, added recipe/session ID validation, and corrected duration rounding.
+
+Offline mocked checks and TypeScript pass. Vitest and the full build remain blocked by `spawn EPERM`. Unsafe wording remains in the unchanged agent prompt because the required prompting guide was inaccessible. Live voice was not verified.
+
+Details and remaining limitations: [VOICE-CONTEXT-AUDIT.md](VOICE-CONTEXT-AUDIT.md).

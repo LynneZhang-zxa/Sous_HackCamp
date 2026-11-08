@@ -1,0 +1,2134 @@
+OpenAI Codex v0.166.0
+--------
+workdir: C:\Users\L\Desktop\sous\Sous_HackCamp
+model: gpt-6.1-sol
+provider: openai
+approval: never
+sandbox: workspace-write [workdir, /tmp, $TMPDIR]
+reasoning effort: none
+reasoning summaries: none
+session id: 01a1ba95-bf5d-73e0-a317-6af9d8b7ad82
+--------
+user
+You are modifying the existing SOUS Next.js repository. Read FOUNDATION-REPORT.md and inspect actual source before editing. Work on the assigned stage fully, rather than stopping after planning. Do not commit, push, pull, fetch, reset, rebase, merge, create or switch branches, or modify Git configuration. Do not modify secrets, .env files, remote Alebex configuration, or run paid provider calls. Do not delete unrelated files. Do not introduce authentication or new databases. MANDATORY: attempt every assigned task even when another task or verification fails. Never defer recipe expansion because build, browser, or Alebex access is blocked. On a blocker, record exact evidence, finish all independent subtasks, and continue. A failed check is not permission to skip subsequent stages. Do not fake test success. You may fix package/config issues using existing dependencies; do not upgrade packages or install new ones without an established necessity. Record remaining blockers clearly.
+Independently inspect source and logs in C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022104. Write SOUS-OVERNIGHT-REPORT.md distinguishing implemented, verified, failed and blocked work; actual recipe count, checks, changed files and remaining browser/live voice limitations. Gate pass=True does not establish all feature requirements. No Git mutations.
+
+
+codex
+I’ll read the foundation report, inspect the source and overnight logs, then complete any unfinished assigned work and write an evidence-based report. I’ll keep Git, secrets, remote Alebex configuration, and paid calls untouched.
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "Get-Content FOUNDATION-REPORT.md; Get-ChildItem .overnight-runs/20261108-022104; rg --files -g '"'!node_modules'"' -g '"'!package-lock.json'"' -g '"'!pnpm-lock.yaml'"' -g '"'!yarn.lock'"' | Select-Object -First 100" in C:\Users\L\Desktop\sous\Sous_HackCamp
+ succeeded in 494ms:
+# SOUS foundation development report
+
+Latest recheck (2026-11-08): [REQUIREMENTS-RECHECK-REPORT.md](REQUIREMENTS-RECHECK-REPORT.md). Actual `listRecipes()` still verifies exactly 50 complete unique recipes with original records preserved. Repaired saved-storage recovery messaging and added component event coverage; 544 tests and standalone TypeScript pass. Production build/dev remain blocked by subprocess `EPERM`; Playwright browser is absent. Browser and live-provider verification remain incomplete.
+
+Latest repair verification (2026-11-08): see [REQUIREMENTS-REPAIR-REPORT.md](REQUIREMENTS-REPAIR-REPORT.md). Actual `listRecipes()` confirms 50 complete unique recipes with the original 20 unchanged; 543 tests and offline integration/voice checks pass. Local prompt safety/uncertainty wording repaired. Current build and dev server still fail with `spawn EPERM`; Playwright Chromium is missing. Historical statuses below do not supersede these explicit current limitations.
+
+Latest verification (2026-11-08): `npm test` now passes all 542 tests after repairing expanded-recipe ingredient links and using Vitest's native config loader/thread pool. Production build and local server still fail at `spawn EPERM`. See [FOUNDATION-REGRESSION-REPORT.md](FOUNDATION-REGRESSION-REPORT.md) for this pass's changes, stage status and exact evidence; earlier results below are historical.
+
+Update (2026-11-08): recipe expansion is now complete at exactly 50 recipes, with the original 20 records unchanged. See [CATALOG-EXPANSION-REPORT.md](CATALOG-EXPANSION-REPORT.md) for batch validation and current checks. The foundation report below records the earlier stage; its deferred-library statements are historical.
+
+## Status
+
+The foundation quality gate is **not yet met**: full tests, browser verification and the completed production build are blocked by process restrictions. No paid calls, secrets changes, Git mutations, new dependencies, authentication, databases, or Stage B accessibility features were introduced.
+
+| Stage | Status | Result |
+| --- | --- | --- |
+| Recipe stabilization | Partially completed | Existing centralized listing, detailed routes and invalid-ID handling preserved; saving and loading UI added. All 20 recipe records resolve in offline checks; HTTP routes remain unverified. |
+| Navigation restructuring | Implemented, browser verification pending | Home, Tools and Collection; native keyboard-operable Tools disclosure; search and honest Settings disclosure. |
+| Homepage cleanup / collection | Implemented, browser verification pending | Removed standalone tools, large voice card, My Recipes and Quick Actions. Balanced nutrition and recommendation; nutrition explicitly demo data. Dedicated collection page. |
+| Library expansion | Deferred | 20 recipes, zero added. Existing IDs unchanged and unique. Foundation correctness takes priority over 50 recipes. |
+| Search / filters | Implemented, partial verification | Shared case-insensitive title, cuisine, ingredient and tag search; combined cuisine/tag/time filters; deterministic alphabetical/time sorting; reset and empty state. URL-backed GET forms. |
+| Saved Recipes | Implemented, partial verification | Local browser storage; save/remove on listing/detail/collection; same-tab and cross-tab update events; invalid IDs and corrupt JSON discarded; storage failures shown. Reload and browser UI behavior unverified. Uploaded and Recently Cooked honestly coming soon. |
+| Universal voice | Partially completed | Existing selection flow preserved. Invalid JSON and non-string IDs rejected before provider contact. Non-chicken calls now receive their own complete recipe as knowledge base, avoiding the chicken-specific knowledge base. Existing chicken path and audio/WebSocket handling preserved. |
+| Final regression | Blocked in part | Direct TypeScript and offline checks pass; full test runner/build worker/dev server cannot spawn. |
+
+## Actual verification
+
+- `npx tsc --noEmit`: PASS after implementation.
+- `node scripts/foundation-check.cjs`: PASS. Checks all 20 unique recipe records, lookup, assets, search fields, combined filters, empty result, time sorting, saved-data serialization/deduplication/removal/malformed values, recipe-specific call payloads and context length. Pure logic only; no provider calls and no browser storage API coverage. Uses Node 24 experimental type stripping to load local TypeScript without spawning tools.
+- `git diff --check`: PASS.
+- `npm test`: BLOCKED before test execution, both baseline and final attempt. Vite config loading hits Windows `spawn EPERM`. No Vitest tests can be claimed as passed or assertion-failed. New discovery/persistence and malformed call-start tests added; existing page tests updated for async search and new navigation.
+- `npm run build`: FAILED to complete. Production compilation succeeded; TypeScript worker spawn failed with `EPERM`. This is not a successful production build.
+- `npm run dev -- --hostname 127.0.0.1`: BLOCKED by `spawn EPERM`; browser and HTTP checks were not performed.
+- Alebex prompting guide retrieval: unavailable through web tool, then DNS resolution failed via PowerShell. No agent prompt edits made.
+
+## Limitations and known follow-up work
+
+- Full detail-page render tests and runtime 404s still require the normal test runner and local server. All 20 records resolve, but that is not verification of all HTTP routes.
+- Saved UI persistence, multi-tab synchronization, keyboard interaction and mobile layout need browser checks. Storage is per browser, without cross-device sync.
+- Existing agent prompt and chicken knowledge base contain chicken-specific advice, visual doneness language and recipe-specific allergen assertions. They were not rewritten because the required prompting guide could not be read. These need review before claiming universally safe live guidance. Non-chicken knowledge payloads are now recipe-specific, but that does not verify deployed agent behavior.
+- Existing chicken context keeps the prior context format; tips/safety are present in the full non-chicken recipe knowledge payload. No remote agent configuration was changed.
+- Live Alebex audio, interruption/mark handling, tools, recipe-specific conversation, substitutions and step synchronization remain unverified. No real paid calls were made.
+- Nutrition overview is a clearly marked demo; recommendation is a fixed editorial pick, not personalization. Existing estimated recipe nutrition remains labeled with provenance.
+- Library remains 20 recipes by deliberate foundation-first prioritization while verification is blocked.
+
+## Files changed in this task
+
+Modified:
+- app/page.tsx
+- app/globals.css
+- app/recipes/page.tsx
+- app/recipes/[id]/page.tsx
+- app/api/call/start/route.ts
+- components/Nav.tsx
+- lib/recipe.ts (decimal amount formatting correction)
+- lib/agent-config.ts (knowledge base selection only)
+- lib/recipe-pages.test.ts
+- lib/call-start-recipe.test.ts
+
+Created:
+- app/tools/page.tsx
+- app/collection/my-recipes/page.tsx
+- app/recipes/loading.tsx
+- components/SavedRecipes.tsx
+- lib/recipe-search.ts
+- lib/saved-recipes.ts
+- lib/discovery.test.ts
+- scripts/foundation-check.cjs
+- FOUNDATION-REPORT.md
+
+Pre-existing workspace changes: next-env.d.ts, tsconfig.tsbuildinfo, overnight-task.md. TypeScript/build commands may refresh generated type artifacts; these were not intentionally edited as product changes.
+
+## Preparation for tomorrow
+
+1. In an environment permitting normal tool workers, rerun TypeScript, Vitest and production build; then browser-check all routes, combined search, favorites reload, mobile overflow and keyboard controls.
+2. Retrieve the required prompting guide and review the deployed prompt, safety language and recipe-specific substitution guidance. Perform an explicitly authorized manual live voice smoke test after mock tests pass.
+3. Keep recipe data, cooking session state and voice presentation separate. Use these boundaries to design tomorrow's accessibility features after the foundation gate passes.
+4. Expand the catalog only after stability checks pass, with recipe review rather than filler records.
+
+## Continuous workflow follow-up
+The parent retrieved the required Alebex prompting guide successfully. Read `.overnight-runs/20261108-022104/alebex-prompting-guide.md` before any local prompt edits. The local agent prompt still needs universal recipe safety wording review; remote agent edits and paid calls remain forbidden. Prior verification blockers above are historical; use the latest workflow gates and parent-verification.txt for current evidence.
+
+
+    目录: C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022104
+
+
+Mode                 LastWriteTime         Length Name                                                                 
+----                 -------------         ------ ----                                                                 
+-a----         2026/11/8      2:21            579 01-build-attempt-1.command.ps1                                       
+-a----         2026/11/8      2:22              3 01-build-attempt-1.exit.txt                                          
+-a----         2026/11/8      2:22          99582 01-build-attempt-1.stderr.txt                                        
+-a----         2026/11/8      2:22            536 01-build-attempt-1.stdout.txt                                        
+-a----         2026/11/8      2:21           1307 01-build.prompt.txt                                                  
+-a----         2026/11/8      2:22            583 02-recipes-attempt-1.command.ps1                                     
+-a----         2026/11/8      2:23          73969 02-recipes-attempt-1.stderr.txt                                      
+-a----         2026/11/8      2:22              0 02-recipes-attempt-1.stdout.txt                                      
+-a----         2026/11/8      2:35            583 02-recipes-attempt-2.command.ps1                                     
+-a----         2026/11/8      2:41              3 02-recipes-attempt-2.exit.txt                                        
+-a----         2026/11/8      2:41         141674 02-recipes-attempt-2.stderr.txt                                      
+-a----         2026/11/8      2:41            501 02-recipes-attempt-2.stdout.txt                                      
+-a----         2026/11/8      2:35           1757 02-recipes.prompt.txt                                                
+-a----         2026/11/8      2:41            591 03-integration-attempt-1.command.ps1                                 
+-a----         2026/11/8      2:43              3 03-integration-attempt-1.exit.txt                                    
+-a----         2026/11/8      2:43         125208 03-integration-attempt-1.stderr.txt                                  
+-a----         2026/11/8      2:43            577 03-integration-attempt-1.stdout.txt                                  
+-a----         2026/11/8      2:41           1331 03-integration.prompt.txt                                            
+-a----         2026/11/8      2:43            579 04-voice-attempt-1.command.ps1                                       
+-a----         2026/11/8      2:47              3 04-voice-attempt-1.exit.txt                                          
+-a----         2026/11/8      2:47         206917 04-voice-attempt-1.stderr.txt                                        
+-a----         2026/11/8      2:47            474 04-voice-attempt-1.stdout.txt                                        
+-a----         2026/11/8      2:43           1354 04-voice.prompt.txt                                                  
+-a----         2026/11/8      2:47            583 05-quality-attempt-1.command.ps1                                     
+-a----         2026/11/8      2:50              3 05-quality-attempt-1.exit.txt                                        
+-a----         2026/11/8      2:50         285816 05-quality-attempt-1.stderr.txt                                      
+-a----         2026/11/8      2:50            673 05-quality-attempt-1.stdout.txt                                      
+-a----         2026/11/8      2:47           1243 05-quality.prompt.txt                                                
+-a----         2026/11/8      2:51            585 06-repair-1-attempt-1.command.ps1                                    
+-a----         2026/11/8      2:53              3 06-repair-1-attempt-1.exit.txt                                       
+-a----         2026/11/8      2:53         205014 06-repair-1-attempt-1.stderr.txt                                     
+-a----         2026/11/8      2:53            559 06-repair-1-attempt-1.stdout.txt                                     
+-a----         2026/11/8      2:51           1504 06-repair-1.prompt.txt                                               
+-a----         2026/11/8      2:53            585 06-repair-2-attempt-1.command.ps1                                    
+-a----         2026/11/8      2:55              3 06-repair-2-attempt-1.exit.txt                                       
+-a----         2026/11/8      2:55         119232 06-repair-2-attempt-1.stderr.txt                                     
+-a----         2026/11/8      2:55            522 06-repair-2-attempt-1.stdout.txt                                     
+-a----         2026/11/8      2:53           1504 06-repair-2.prompt.txt                                               
+-a----         2026/11/8      2:55            593 99-final-report-attempt-1.command.ps1                                
+-a----         2026/11/8      2:55              0 99-final-report-attempt-1.stderr.txt                                 
+-a----         2026/11/8      2:55              0 99-final-report-attempt-1.stdout.txt                                 
+-a----         2026/11/8      2:55           1370 99-final-report.prompt.txt                                           
+-a----         2026/11/8      2:45          45276 alebex-prompting-guide.md                                            
+-a----         2026/11/8      2:55            403 final-gate-build.command.ps1                                         
+-a----         2026/11/8      2:55              3 final-gate-build.exit.txt                                            
+-a----         2026/11/8      2:55              0 final-gate-build.stderr.txt                                          
+-a----         2026/11/8      2:55           1108 final-gate-build.stdout.txt                                          
+-a----         2026/11/8      2:55            421 final-gate-catalog.command.ps1                                       
+-a----         2026/11/8      2:55              3 final-gate-catalog.exit.txt                                          
+-a----         2026/11/8      2:55            182 final-gate-catalog.stderr.txt                                        
+-a----         2026/11/8      2:55            116 final-gate-catalog.stdout.txt                                        
+-a----         2026/11/8      2:55            428 final-gate-foundation.command.ps1                                    
+-a----         2026/11/8      2:55              3 final-gate-foundation.exit.txt                                       
+-a----         2026/11/8      2:55            182 final-gate-foundation.stderr.txt                                     
+-a----         2026/11/8      2:55            136 final-gate-foundation.stdout.txt                                     
+-a----         2026/11/8      2:55            398 final-gate-tests.command.ps1                                         
+-a----         2026/11/8      2:55              3 final-gate-tests.exit.txt                                            
+-a----         2026/11/8      2:55            546 final-gate-tests.stderr.txt                                          
+-a----         2026/11/8      2:55            259 final-gate-tests.stdout.txt                                          
+-a----         2026/11/8      2:55            424 final-gate-typescript.command.ps1                                    
+-a----         2026/11/8      2:55              3 final-gate-typescript.exit.txt                                       
+-a----         2026/11/8      2:55              0 final-gate-typescript.stderr.txt                                     
+-a----         2026/11/8      2:55              0 final-gate-typescript.stdout.txt                                     
+-a----         2026/11/8      2:50            399 gate-1-build.command.ps1                                             
+-a----         2026/11/8      2:51              3 gate-1-build.exit.txt                                                
+-a----         2026/11/8      2:50              0 gate-1-build.stderr.txt                                              
+-a----         2026/11/8      2:51           1108 gate-1-build.stdout.txt                                              
+-a----         2026/11/8      2:51            417 gate-1-catalog.command.ps1                                           
+-a----         2026/11/8      2:51              3 gate-1-catalog.exit.txt                                              
+-a----         2026/11/8      2:51            183 gate-1-catalog.stderr.txt                                            
+-a----         2026/11/8      2:51            116 gate-1-catalog.stdout.txt                                            
+-a----         2026/11/8      2:51            424 gate-1-foundation.command.ps1                                        
+-a----         2026/11/8      2:51              3 gate-1-foundation.exit.txt                                           
+-a----         2026/11/8      2:51            182 gate-1-foundation.stderr.txt                                         
+-a----         2026/11/8      2:51            136 gate-1-foundation.stdout.txt                                         
+-a----         2026/11/8      2:50            394 gate-1-tests.command.ps1                                             
+-a----         2026/11/8      2:50              3 gate-1-tests.exit.txt                                                
+-a----         2026/11/8      2:50            546 gate-1-tests.stderr.txt                                              
+-a----         2026/11/8      2:50            257 gate-1-tests.stdout.txt                                              
+-a----         2026/11/8      2:50            420 gate-1-typescript.command.ps1                                        
+-a----         2026/11/8      2:50              3 gate-1-typescript.exit.txt                                           
+-a----         2026/11/8      2:50              0 gate-1-typescript.stderr.txt                                         
+-a----         2026/11/8      2:50              0 gate-1-typescript.stdout.txt                                         
+-a----         2026/11/8      2:53            399 gate-2-build.command.ps1                                             
+-a----         2026/11/8      2:53              3 gate-2-build.exit.txt                                                
+-a----         2026/11/8      2:53              0 gate-2-build.stderr.txt                                              
+-a----         2026/11/8      2:53           1108 gate-2-build.stdout.txt                                              
+-a----         2026/11/8      2:53            417 gate-2-catalog.command.ps1                                           
+-a----         2026/11/8      2:53              3 gate-2-catalog.exit.txt                                              
+-a----         2026/11/8      2:53            183 gate-2-catalog.stderr.txt                                            
+-a----         2026/11/8      2:53            116 gate-2-catalog.stdout.txt                                            
+-a----         2026/11/8      2:53            424 gate-2-foundation.command.ps1                                        
+-a----         2026/11/8      2:53              3 gate-2-foundation.exit.txt                                           
+-a----         2026/11/8      2:53            182 gate-2-foundation.stderr.txt                                         
+-a----         2026/11/8      2:53            136 gate-2-foundation.stdout.txt                                         
+-a----         2026/11/8      2:53            394 gate-2-tests.command.ps1                                             
+-a----         2026/11/8      2:53              3 gate-2-tests.exit.txt                                                
+-a----         2026/11/8      2:53            546 gate-2-tests.stderr.txt                                              
+-a----         2026/11/8      2:53            257 gate-2-tests.stdout.txt                                              
+-a----         2026/11/8      2:53            420 gate-2-typescript.command.ps1                                        
+-a----         2026/11/8      2:53              3 gate-2-typescript.exit.txt                                           
+-a----         2026/11/8      2:53              0 gate-2-typescript.stderr.txt                                         
+-a----         2026/11/8      2:53              0 gate-2-typescript.stdout.txt                                         
+-a----         2026/11/8      2:45            597 parent-verification.txt                                              
+-a----         2026/11/8      2:55          14287 status.txt                                                           
+VOICE-CONTEXT-AUDIT.md
+vitest.config.ts
+tsconfig.tsbuildinfo
+tsconfig.json
+supabase\migrations\0001_init.sql
+scripts\width-check.mjs
+scripts\voice-context-check.cjs
+scripts\test-continuous-runner.ps1
+scripts\screenshot.mjs
+scripts\safe-browser-check.mjs
+scripts\recipe-integration-check.cjs
+scripts\original-recipes.json
+scripts\live-ui.mjs
+scripts\foundation-check.cjs
+scripts\finish-check.mjs
+scripts\e2e-voice.ts
+scripts\create-agent.ts
+scripts\catalog-gate.cjs
+run-sous-continuous.ps1
+REQUIREMENTS-REPAIR-REPORT.md
+REQUIREMENTS-RECHECK-REPORT.md
+RECIPE-INTEGRATION-REPORT.md
+README.md
+public\recipes\tomato-beef-stew.jpg
+public\recipes\SOURCES.md
+public\recipes\placeholder.svg
+public\recipes\garlic-butter-shrimp.jpg
+public\recipes\creamy-garlic-chicken.jpg
+public\recipes\chicken-curry.jpg
+public\recipes\bibimbap.jpg
+public\pcm-worklet.js
+public\images\sous-hero.jpg
+postcss.config.mjs
+package.json
+overnight-task.md
+next.config.ts
+next-env.d.ts
+lib\voice-recipe-request.test.ts
+lib\supabase.ts
+lib\store.ts
+lib\session.ts
+lib\session.test.ts
+lib\saved-recipes.ts
+lib\saved-recipes-ui.test.ts
+lib\recipes\README.md
+lib\recipes\catalog.ts
+lib\recipe.ts
+lib\recipe.test.ts
+lib\recipe-search.ts
+lib\recipe-pages.test.ts
+lib\recipe-image.test.ts
+lib\discovery.test.ts
+lib\cook-screen.test.ts
+lib\call-start-recipe.test.ts
+lib\alebex.ts
+lib\agent-config.ts
+lib\agent-config.test.ts
+FOUNDATION-REPORT.md
+FOUNDATION-REGRESSION-REPORT.md
+BUILD-FIX-REPORT.md
+AGENTS.md
+CATALOG-EXPANSION-REPORT.md
+app\tools\page.tsx
+components\voice\useVoiceCall.ts
+docs\superpowers\specs\2026-10-07-sous-voice-cooking-mvp-design.md
+components\Toast.tsx
+components\SavedRecipes.tsx
+components\RecipeImage.tsx
+components\Nav.tsx
+components\FoodTile.tsx
+components\cook\VoicePanel.tsx
+components\cook\StepPanel.tsx
+components\cook\MicButton.tsx
+components\cook\CookScreen.tsx
+app\layout.tsx
+app\globals.css
+app\page.tsx
+app\fonts\young-serif\YoungSerif-Regular.ttf
+app\fonts\young-serif\OFL.txt
+app\fonts\README.md
+app\recipes\[id]\page.tsx
+app\recipes\page.tsx
+app\recipes\not-found.tsx
+app\recipes\loading.tsx
+app\recipes\error.tsx
+app\collection\my-recipes\page.tsx
+app\fonts\figtree\OFL.txt
+app\fonts\figtree\Figtree.ttf
+app\cook\page.tsx
+app\fonts\caveat\OFL.txt
+app\fonts\caveat\Caveat.ttf
+app\api\tools\route.ts
+app\api\call\start\route.ts
+app\api\session\[id]\route.ts
+
+
+
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command 'Get-Content .overnight-runs/20261108-022104/*prompt.txt; Get-Content .overnight-runs/20261108-022104/parent-verification.txt; Get-Content .overnight-runs/20261108-022104/status.txt | Select-Object -Last 45; Get-Content package.json; Get-Content REQUIREMENTS-RECHECK-REPORT.md' in C:\Users\L\Desktop\sous\Sous_HackCamp
+ succeeded in 254ms:
+You are modifying the existing SOUS Next.js repository. Read FOUNDATION-REPORT.md and inspect actual source before editing. Work on the assigned stage fully, rather than stopping after planning. Do not commit, push, pull, fetch, reset, rebase, merge, create or switch branches, or modify Git configuration. Do not modify secrets, .env files, remote Alebex configuration, or run paid provider calls. Do not delete unrelated files. Do not introduce authentication or new databases. MANDATORY: attempt every assigned task even when another task or verification fails. Never defer recipe expansion because build, browser, or Alebex access is blocked. On a blocker, record exact evidence, finish all independent subtasks, and continue. A failed check is not permission to skip subsequent stages. Do not fake test success. You may fix package/config issues using existing dependencies; do not upgrade packages or install new ones without an established necessity. Record remaining blockers clearly.
+Fix current Next.js 16.4.5 build failures with minimal scoped changes. Diagnose Turbopack @tailwindcss/postcss resolution and Webpack App Router page type/export errors (MicIcon, recipes optional props). Run npm test, npx tsc --noEmit, npm run build and report actual results. Do not alter unrelated features.
+You are modifying the existing SOUS Next.js repository. Read FOUNDATION-REPORT.md and inspect actual source before editing. Work on the assigned stage fully, rather than stopping after planning. Do not commit, push, pull, fetch, reset, rebase, merge, create or switch branches, or modify Git configuration. Do not modify secrets, .env files, remote Alebex configuration, or run paid provider calls. Do not delete unrelated files. Do not introduce authentication or new databases. MANDATORY: attempt every assigned task even when another task or verification fails. Never defer recipe expansion because build, browser, or Alebex access is blocked. On a blocker, record exact evidence, finish all independent subtasks, and continue. A failed check is not permission to skip subsequent stages. Do not fake test success. You may fix package/config issues using existing dependencies; do not upgrade packages or install new ones without an established necessity. Record remaining blockers clearly.
+Expand the one centralized catalog from its current 20 recipes to exactly 50 unique complete realistic recipes. Preserve original 20 IDs and data. Add 30 distinct recipes with ingredients, amounts, units, times, servings, ordered practical steps, relevant safety tips. Do not invent nutrition or download external photos; use existing fallback. Add automated catalog validation and verify exact count.
+`nIMPORTANT: Prior attempt stalled for over ten minutes without output or file changes. Implement in batches of at most FIVE recipes per file-writing tool call, save and validate each batch immediately, then continue until exactly 50. Do not generate all 30 additions in a single huge tool call. Inspect prior partial work and preserve original 20 records.
+You are modifying the existing SOUS Next.js repository. Read FOUNDATION-REPORT.md and inspect actual source before editing. Work on the assigned stage fully, rather than stopping after planning. Do not commit, push, pull, fetch, reset, rebase, merge, create or switch branches, or modify Git configuration. Do not modify secrets, .env files, remote Alebex configuration, or run paid provider calls. Do not delete unrelated files. Do not introduce authentication or new databases. MANDATORY: attempt every assigned task even when another task or verification fails. Never defer recipe expansion because build, browser, or Alebex access is blocked. On a blocker, record exact evidence, finish all independent subtasks, and continue. A failed check is not permission to skip subsequent stages. Do not fake test success. You may fix package/config issues using existing dependencies; do not upgrade packages or install new ones without an established necessity. Record remaining blockers clearly.
+Integrate all 50 recipes into /recipes, /recipes/[id], search, filters, favorites, Collection, and voice cooking links. Ensure 404 for invalid IDs, default /cook behavior with no ID, and correct selected ID in call-start. Preserve Home/Tools/Collection and homepage cleanup. Test each of 50 IDs and shared search and favorites logic.
+You are modifying the existing SOUS Next.js repository. Read FOUNDATION-REPORT.md and inspect actual source before editing. Work on the assigned stage fully, rather than stopping after planning. Do not commit, push, pull, fetch, reset, rebase, merge, create or switch branches, or modify Git configuration. Do not modify secrets, .env files, remote Alebex configuration, or run paid provider calls. Do not delete unrelated files. Do not introduce authentication or new databases. MANDATORY: attempt every assigned task even when another task or verification fails. Never defer recipe expansion because build, browser, or Alebex access is blocked. On a blocker, record exact evidence, finish all independent subtasks, and continue. A failed check is not permission to skip subsequent stages. Do not fake test success. You may fix package/config issues using existing dependencies; do not upgrade packages or install new ones without an established necessity. Record remaining blockers clearly.
+Audit and minimally fix local universal voice recipe context for all 50 recipes. Detect chicken-specific knowledge leakage, wrong selected ID, step and ingredient mismatch, unsafe claims. Preserve Alebex audio, websocket, tools, agent remote configuration and keys. Mock all provider calls. Do not claim live voice verified without real authorized testing.
+You are modifying the existing SOUS Next.js repository. Read FOUNDATION-REPORT.md and inspect actual source before editing. Work on the assigned stage fully, rather than stopping after planning. Do not commit, push, pull, fetch, reset, rebase, merge, create or switch branches, or modify Git configuration. Do not modify secrets, .env files, remote Alebex configuration, or run paid provider calls. Do not delete unrelated files. Do not introduce authentication or new databases. MANDATORY: attempt every assigned task even when another task or verification fails. Never defer recipe expansion because build, browser, or Alebex access is blocked. On a blocker, record exact evidence, finish all independent subtasks, and continue. A failed check is not permission to skip subsequent stages. Do not fake test success. You may fix package/config issues using existing dependencies; do not upgrade packages or install new ones without an established necessity. Record remaining blockers clearly.
+Run TypeScript, npm test, production build and safe local route/browser verification if possible. Fix introduced regressions. Preserve existing homepage/navigation. Report remaining limitations honestly; do not claim a build passed if it failed.
+You are modifying the existing SOUS Next.js repository. Read FOUNDATION-REPORT.md and inspect actual source before editing. Work on the assigned stage fully, rather than stopping after planning. Do not commit, push, pull, fetch, reset, rebase, merge, create or switch branches, or modify Git configuration. Do not modify secrets, .env files, remote Alebex configuration, or run paid provider calls. Do not delete unrelated files. Do not introduce authentication or new databases. MANDATORY: attempt every assigned task even when another task or verification fails. Never defer recipe expansion because build, browser, or Alebex access is blocked. On a blocker, record exact evidence, finish all independent subtasks, and continue. A failed check is not permission to skip subsequent stages. Do not fake test success. You may fix package/config issues using existing dependencies; do not upgrade packages or install new ones without an established necessity. Record remaining blockers clearly.
+Read execution logs in C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022104. Attempt every unresolved requirement: build, exactly 50 complete unique recipes preserving original IDs, all listing/detail/search/filter/saved integrations, universal recipe voice context and mocked tests. Repair feasible failures; do not repeat blocked commands without diagnosis. Verify via actual listRecipes(). Never call unverified or blocked tasks complete. No Git mutations, secret changes or paid calls.
+You are modifying the existing SOUS Next.js repository. Read FOUNDATION-REPORT.md and inspect actual source before editing. Work on the assigned stage fully, rather than stopping after planning. Do not commit, push, pull, fetch, reset, rebase, merge, create or switch branches, or modify Git configuration. Do not modify secrets, .env files, remote Alebex configuration, or run paid provider calls. Do not delete unrelated files. Do not introduce authentication or new databases. MANDATORY: attempt every assigned task even when another task or verification fails. Never defer recipe expansion because build, browser, or Alebex access is blocked. On a blocker, record exact evidence, finish all independent subtasks, and continue. A failed check is not permission to skip subsequent stages. Do not fake test success. You may fix package/config issues using existing dependencies; do not upgrade packages or install new ones without an established necessity. Record remaining blockers clearly.
+Read execution logs in C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022104. Attempt every unresolved requirement: build, exactly 50 complete unique recipes preserving original IDs, all listing/detail/search/filter/saved integrations, universal recipe voice context and mocked tests. Repair feasible failures; do not repeat blocked commands without diagnosis. Verify via actual listRecipes(). Never call unverified or blocked tasks complete. No Git mutations, secret changes or paid calls.
+You are modifying the existing SOUS Next.js repository. Read FOUNDATION-REPORT.md and inspect actual source before editing. Work on the assigned stage fully, rather than stopping after planning. Do not commit, push, pull, fetch, reset, rebase, merge, create or switch branches, or modify Git configuration. Do not modify secrets, .env files, remote Alebex configuration, or run paid provider calls. Do not delete unrelated files. Do not introduce authentication or new databases. MANDATORY: attempt every assigned task even when another task or verification fails. Never defer recipe expansion because build, browser, or Alebex access is blocked. On a blocker, record exact evidence, finish all independent subtasks, and continue. A failed check is not permission to skip subsequent stages. Do not fake test success. You may fix package/config issues using existing dependencies; do not upgrade packages or install new ones without an established necessity. Record remaining blockers clearly.
+Independently inspect source and logs in C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022104. Write SOUS-OVERNIGHT-REPORT.md distinguishing implemented, verified, failed and blocked work; actual recipe count, checks, changed files and remaining browser/live voice limitations. Gate pass=True does not establish all feature requirements. No Git mutations.
+Parent verification after stage 01: npm test passed 9 files / 200 tests; npm run build passed production compilation, TypeScript, static generation. Executed outside restricted child sandbox. Catalog still 20 at this point. Reverification required after recipe/integration edits.
+Required Alebex prompting guide successfully retrieved by parent at .overnight-runs/20261108-022104/alebex-prompting-guide.md. Read that local copy before local prompt/knowledge edits. The earlier child proxy failure is resolved for documentation access; remote agent configuration and paid calls remain forbidden.
+2026-11-08T02:50:52.2338075-07:00 START gate-1-typescript timeout=300s
+2026-11-08T02:50:54.6286931-07:00 END gate-1-typescript exit=0 stdout=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022104\gate-1-typescript.stdout.txt stderr=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022104\gate-1-typescript.stderr.txt
+2026-11-08T02:50:54.6338087-07:00 START gate-1-tests timeout=300s
+2026-11-08T02:50:56.9939621-07:00 END gate-1-tests exit=0 stdout=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022104\gate-1-tests.stdout.txt stderr=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022104\gate-1-tests.stderr.txt
+2026-11-08T02:50:57.0000950-07:00 START gate-1-build timeout=600s
+2026-11-08T02:51:04.0039783-07:00 END gate-1-build exit=0 stdout=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022104\gate-1-build.stdout.txt stderr=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022104\gate-1-build.stderr.txt
+2026-11-08T02:51:04.0111638-07:00 START gate-1-foundation timeout=180s
+2026-11-08T02:51:04.6626836-07:00 END gate-1-foundation exit=0 stdout=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022104\gate-1-foundation.stdout.txt stderr=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022104\gate-1-foundation.stderr.txt
+2026-11-08T02:51:04.6690472-07:00 START gate-1-catalog timeout=180s
+2026-11-08T02:51:05.3815319-07:00 END gate-1-catalog exit=0 stdout=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022104\gate-1-catalog.stdout.txt stderr=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022104\gate-1-catalog.stderr.txt
+2026-11-08T02:51:05.3835151-07:00 GATES gate-1 exits=0,0,0,0,0 (zero means verified command only)
+2026-11-08T02:51:05.3935055-07:00 START 06-repair-1-attempt-1 timeout=1200s
+2026-11-08T02:51:35.5024188-07:00 RUNNING 06-repair-1-attempt-1 pid=28468 stdout=0 stderr=139604
+2026-11-08T02:52:05.5098739-07:00 RUNNING 06-repair-1-attempt-1 pid=28468 stdout=0 stderr=172074
+2026-11-08T02:52:35.5247654-07:00 RUNNING 06-repair-1-attempt-1 pid=28468 stdout=0 stderr=192494
+2026-11-08T02:53:05.5279877-07:00 RUNNING 06-repair-1-attempt-1 pid=28468 stdout=0 stderr=204430
+2026-11-08T02:53:10.6005307-07:00 END 06-repair-1-attempt-1 exit=0 stdout=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022104\06-repair-1-attempt-1.stdout.txt stderr=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022104\06-repair-1-attempt-1.stderr.txt
+2026-11-08T02:53:10.6065299-07:00 START gate-2-typescript timeout=300s
+2026-11-08T02:53:13.5195870-07:00 END gate-2-typescript exit=0 stdout=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022104\gate-2-typescript.stdout.txt stderr=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022104\gate-2-typescript.stderr.txt
+2026-11-08T02:53:13.5257557-07:00 START gate-2-tests timeout=300s
+2026-11-08T02:53:16.9875347-07:00 END gate-2-tests exit=0 stdout=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022104\gate-2-tests.stdout.txt stderr=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022104\gate-2-tests.stderr.txt
+2026-11-08T02:53:16.9945219-07:00 START gate-2-build timeout=600s
+2026-11-08T02:53:35.0283436-07:00 END gate-2-build exit=0 stdout=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022104\gate-2-build.stdout.txt stderr=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022104\gate-2-build.stderr.txt
+2026-11-08T02:53:35.0436334-07:00 START gate-2-foundation timeout=180s
+2026-11-08T02:53:36.2940747-07:00 END gate-2-foundation exit=0 stdout=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022104\gate-2-foundation.stdout.txt stderr=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022104\gate-2-foundation.stderr.txt
+2026-11-08T02:53:36.3061151-07:00 START gate-2-catalog timeout=180s
+2026-11-08T02:53:37.1907084-07:00 END gate-2-catalog exit=0 stdout=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022104\gate-2-catalog.stdout.txt stderr=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022104\gate-2-catalog.stderr.txt
+2026-11-08T02:53:37.1946907-07:00 GATES gate-2 exits=0,0,0,0,0 (zero means verified command only)
+2026-11-08T02:53:37.2105409-07:00 START 06-repair-2-attempt-1 timeout=1200s
+2026-11-08T02:54:07.3598896-07:00 RUNNING 06-repair-2-attempt-1 pid=15800 stdout=0 stderr=88527
+2026-11-08T02:54:37.3789797-07:00 RUNNING 06-repair-2-attempt-1 pid=15800 stdout=0 stderr=103335
+2026-11-08T02:55:07.3958037-07:00 RUNNING 06-repair-2-attempt-1 pid=15800 stdout=0 stderr=109161
+2026-11-08T02:55:24.9592660-07:00 END 06-repair-2-attempt-1 exit=0 stdout=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022104\06-repair-2-attempt-1.stdout.txt stderr=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022104\06-repair-2-attempt-1.stderr.txt
+2026-11-08T02:55:24.9652551-07:00 START final-gate-typescript timeout=300s
+2026-11-08T02:55:27.1055499-07:00 END final-gate-typescript exit=0 stdout=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022104\final-gate-typescript.stdout.txt stderr=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022104\final-gate-typescript.stderr.txt
+2026-11-08T02:55:27.1164831-07:00 START final-gate-tests timeout=300s
+2026-11-08T02:55:29.7862007-07:00 END final-gate-tests exit=0 stdout=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022104\final-gate-tests.stdout.txt stderr=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022104\final-gate-tests.stderr.txt
+2026-11-08T02:55:29.7948318-07:00 START final-gate-build timeout=600s
+2026-11-08T02:55:36.4651433-07:00 END final-gate-build exit=0 stdout=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022104\final-gate-build.stdout.txt stderr=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022104\final-gate-build.stderr.txt
+2026-11-08T02:55:36.4700886-07:00 START final-gate-foundation timeout=180s
+2026-11-08T02:55:37.0850832-07:00 END final-gate-foundation exit=0 stdout=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022104\final-gate-foundation.stdout.txt stderr=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022104\final-gate-foundation.stderr.txt
+2026-11-08T02:55:37.0901290-07:00 START final-gate-catalog timeout=180s
+2026-11-08T02:55:37.6409607-07:00 END final-gate-catalog exit=0 stdout=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022104\final-gate-catalog.stdout.txt stderr=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022104\final-gate-catalog.stderr.txt
+2026-11-08T02:55:37.6409607-07:00 GATES final-gate exits=0,0,0,0,0 (zero means verified command only)
+2026-11-08T02:55:37.6581992-07:00 START 99-final-report-attempt-1 timeout=1200s
+{
+  "name": "sous",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "test": "vitest run --configLoader native",
+    "test:watch": "vitest --configLoader native",
+    "create-agent": "tsx --env-file=.env.local scripts/create-agent.ts",
+    "seed": "tsx --env-file=.env.local scripts/seed.ts",
+    "test:catalog": "node scripts/catalog-gate.cjs"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.117.3",
+    "next": "16.4.5",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.3",
+    "@types/node": "^26.6.4",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "playwright": "^1.64.0",
+    "tailwindcss": "^4.3.3",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.3"
+  }
+}
+# Requirements recheck 鈥?2026-11-08
+
+Read FOUNDATION-REPORT.md, prior repair reports, overnight execution status and gate stdout/stderr under `.overnight-runs/20261108-022104`, and actual recipe, listing/detail, collection, search, saved, call-start and voice source before editing.
+
+## Repair
+
+`components/SavedRecipes.tsx` now clears a stale storage error after a successful refresh. Added `lib/saved-recipes-ui.test.ts`, exercising the actual component effect and click handler with mocked React hooks and browser storage/events: initial loading, save, external changes, read failure/recovery, write failure/retry and listener cleanup. These mocks do not verify browser hydration or real cross-tab delivery.
+
+## Current verification
+
+- `npm test`: exit 0, 10 files, 544 tests passed after repair.
+- `npx tsc --noEmit --incremental false`: exit 0 after repair.
+- `node scripts/catalog-gate.cjs`: passed using actual `listRecipes()`: exactly 50 unique complete recipes, original 20 records and ordering unchanged; assets, linked ingredients, timing, safety and nutrition metadata checked. No further catalog expansion needed.
+- `node scripts/foundation-check.cjs`: passed for all 50 records, search, combined filters, sorting, saved serialization and mocked payloads.
+- `node scripts/recipe-integration-check.cjs`: passed all 50 listing/detail/cook selections, combined search, rendered favorites collection, mocked call-start IDs, default selection and invalid-ID handling.
+- `node scripts/voice-context-check.cjs`: passed all 50 selected-recipe knowledge payloads and 211 steps, navigation, tips/safety, ingredient references, timers, servings, substitutions, finished state and recipe/session mismatch rejection. Largest tested context 2,661/4,000 characters. No provider calls.
+
+## Remaining blockers
+
+- `npm run build`: exit 1, `Compiled successfully in 1196ms`, then `Running TypeScript ...` and `spawn EPERM`. Production build is NOT verified. Overnight gate-2 stdout contains a historical completed build, but it does not establish success in this run.
+- Diagnosis: a minimal `spawnSync(process.execPath, ['--version'])` returns `status: null`, code `EPERM`, syscall `spawnSync C:\Program Files\nodejs\node.exe`. Installed Next.js type-check code uses its TypeScript CLI path; prior documented worker/API alternatives also failed. No type-check bypass, dependency change or repeated build trial was introduced.
+- `npm run dev -- --hostname 127.0.0.1 --port 3100`: `Error: spawn EPERM`, errno -4048, from `next/dist/cli/next-dev.js:393:45`. HTTP route behavior remains unverified in this run.
+- Direct Playwright Chromium launch: `Executable doesn't exist at C:\Users\L\AppData\Local\ms-playwright\chromium_headless_shell-1248\chrome-headless-shell-win64\chrome-headless-shell.exe`. No download/install attempted. Real browser persistence, cross-tab behavior, mobile layout and keyboard verification remain pending.
+- Remote agent prompt/configuration and live audio/interruption/tool synchronization remain unverified. Remote edits and paid calls were prohibited and were not attempted.
+
+Every assigned independent requirement was checked despite the build failure. No Git mutations, secret or environment-file changes, new dependencies, authentication, databases or paid calls.
+
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command 'Get-Content lib/recipe.ts,lib/recipe-search.ts,lib/saved-recipes.ts,components/SavedRecipes.tsx,lib/agent-config.ts,app/api/call/start/route.ts; Get-Content scripts/catalog-gate.cjs' in C:\Users\L\Desktop\sous\Sous_HackCamp
+ succeeded in 240ms:
+import { ADDITIONAL_RECIPES } from "./recipes/catalog";
+
+// JSON-serializable contract shared by the catalog, UI, and Voice Cooking.
+
+export type Ingredient = {
+  name: string;
+  /** Amount for the recipe's base servings. Null for "to taste" items. */
+  amount: number | null;
+  unit: string; // "", "cup", "tablespoon", "teaspoon", "clove", "pound", "ounce"
+  note?: string;
+};
+
+export type Step = {
+  id: string;
+  title: string;
+  /** One to three plain sentences, written to be read aloud. */
+  instruction: string;
+  /** Suggested time for this step, used when the cook asks for "a timer" without a length. */
+  durationSeconds?: number;
+  tip?: string;
+  safety?: string;
+  /** Ingredient names used in this step, matched against Ingredient.name. */
+  ingredients?: string[];
+};
+
+export type Recipe = {
+  id: string;
+  title: string;
+  description: string;
+  cuisine: string;
+  tags: string[];
+  image: string;
+  imageKind: "photo" | "placeholder";
+  prepMinutes: number;
+  cookMinutes: number;
+  servings: number;
+  totalMinutes: number;
+  /** Legacy per-serving field. Null means unavailable; see nutrition for provenance. */
+  calories: number | null;
+  nutrition: { status: "unavailable"; reason: string } | {
+    status: "estimated";
+    basis: "per-serving";
+    calories: number;
+    source: string;
+  };
+  emoji: string;
+  ingredients: Ingredient[];
+  steps: Step[];
+};
+
+export const CREAMY_GARLIC_CHICKEN: Recipe = {
+  id: "creamy-garlic-chicken",
+  title: "Creamy Garlic Chicken",
+  description:
+    "Golden seared chicken cutlets in a silky garlic parmesan cream sauce. One pan, about thirty minutes.",
+  cuisine: "Italian-American",
+  tags: ["chicken", "one-pan", "weeknight"],
+  image: "/recipes/creamy-garlic-chicken.jpg",
+  imageKind: "photo",
+  prepMinutes: 10,
+  cookMinutes: 20,
+  servings: 2,
+  totalMinutes: 30,
+  calories: 610,
+  nutrition: { status: "estimated", basis: "per-serving", calories: 610, source: "Legacy SOUS estimate; not independently calculated and excludes serving accompaniments." },
+  emoji: "馃崡",
+  ingredients: [
+    { name: "boneless skinless chicken breasts", amount: 2, unit: "", note: "about one pound" },
+    { name: "salt", amount: 1, unit: "teaspoon" },
+    { name: "black pepper", amount: 0.5, unit: "teaspoon" },
+    { name: "paprika", amount: 1, unit: "teaspoon" },
+    { name: "olive oil", amount: 2, unit: "tablespoon" },
+    { name: "butter", amount: 2, unit: "tablespoon" },
+    { name: "garlic", amount: 6, unit: "clove", note: "minced" },
+    { name: "chicken broth", amount: 0.5, unit: "cup" },
+    { name: "heavy cream", amount: 1, unit: "cup" },
+    { name: "parmesan", amount: 0.5, unit: "cup", note: "finely grated" },
+    { name: "Italian seasoning", amount: 1, unit: "teaspoon" },
+    { name: "baby spinach", amount: 2, unit: "cup", note: "optional" },
+    { name: "fresh parsley", amount: null, unit: "", note: "chopped, to finish" },
+  ],
+  steps: [
+    {
+      id: "prep-chicken",
+      title: "Prep the chicken",
+      instruction:
+        "Pat the chicken dry, then slice each breast in half horizontally so you have four thin cutlets. Season both sides with the salt, pepper and paprika.",
+      durationSeconds: 180,
+      tip: "Thin, even cutlets cook through at the same time as the outside browns.",
+      safety: "Wash your hands and the board after touching raw chicken.",
+      ingredients: ["boneless skinless chicken breasts", "salt", "black pepper", "paprika"],
+    },
+    {
+      id: "mise-en-place",
+      title: "Get everything ready",
+      instruction:
+        "Mince the garlic, and measure out the broth, cream and parmesan so they're next to the stove. Things move fast once the pan is hot.",
+      durationSeconds: 180,
+      ingredients: ["garlic", "chicken broth", "heavy cream", "parmesan"],
+    },
+    {
+      id: "heat-pan",
+      title: "Heat the pan",
+      instruction:
+        "Set a large skillet over medium-high heat and add the olive oil. It's ready when the oil shimmers and flows easily.",
+      durationSeconds: 120,
+      safety: "If the oil starts smoking, the pan is too hot. Pull it off the heat for a moment and turn the burner down a notch.",
+      ingredients: ["olive oil"],
+    },
+    {
+      id: "sear-chicken",
+      title: "Sear the chicken",
+      instruction:
+        "Lay the cutlets in the pan and leave them alone for four to five minutes until golden. Flip and cook three to four more minutes, until a thermometer in the thickest part reads 165掳F (74掳C). Move them to a clean plate.",
+      durationSeconds: 300,
+      tip: "If the pan is crowded, sear in two batches. Crowding steams the chicken instead of browning it.",
+      safety: "Check chicken reaches 165掳F (74掳C) with a food thermometer; color alone is not a safety check. Use a clean plate, not the one that held raw chicken.",
+      ingredients: ["boneless skinless chicken breasts"],
+    },
+    {
+      id: "garlic-butter",
+      title: "Butter and garlic",
+      instruction:
+        "Turn the heat down to medium. Add the butter and the garlic, and stir constantly for about thirty to sixty seconds, just until it smells amazing. Don't let it brown.",
+      durationSeconds: 45,
+      safety: "Garlic burns fast and turns bitter. If it goes dark brown, wipe out the pan and start this step again with fresh butter.",
+      ingredients: ["butter", "garlic"],
+    },
+    {
+      id: "deglaze",
+      title: "Deglaze with broth",
+      instruction:
+        "Pour in the chicken broth and scrape up the browned bits from the bottom of the pan. Let it bubble for a minute or two until it reduces by about half.",
+      durationSeconds: 90,
+      tip: "Those browned bits are where most of the flavor lives.",
+      ingredients: ["chicken broth"],
+    },
+    {
+      id: "cream-sauce",
+      title: "Make the cream sauce",
+      instruction:
+        "Lower the heat to medium-low. Stir in the heavy cream, the Italian seasoning and the parmesan. Simmer gently for three to four minutes until the sauce coats the back of a spoon. If you're using spinach, stir it in now and let it wilt.",
+      durationSeconds: 240,
+      safety: "Keep it at a gentle simmer. A hard boil can make a cream sauce split.",
+      ingredients: ["heavy cream", "Italian seasoning", "parmesan", "baby spinach"],
+    },
+    {
+      id: "return-chicken",
+      title: "Bring it together",
+      instruction:
+        "Slide the chicken and any juices from the plate back into the sauce. Spoon sauce over the top and warm everything through for about two minutes. Taste, and add salt and pepper if it needs it.",
+      durationSeconds: 120,
+      ingredients: ["boneless skinless chicken breasts", "salt", "black pepper"],
+    },
+    {
+      id: "finish",
+      title: "Finish and serve",
+      instruction:
+        "Turn off the heat and scatter the parsley over the top. Serve it over pasta or rice, or with crusty bread for the sauce.",
+      durationSeconds: 60,
+      ingredients: ["fresh parsley"],
+    },
+  ],
+};
+
+export const RECIPE_LIST: readonly Recipe[] = [CREAMY_GARLIC_CHICKEN, ...ADDITIONAL_RECIPES];
+
+export const RECIPES: Readonly<Record<string, Recipe>> = Object.fromEntries(
+  RECIPE_LIST.map((recipe) => [recipe.id, recipe]),
+);
+
+export const POPULAR_RECIPE_IDS = ["creamy-garlic-chicken", "tomato-beef-stew", "chicken-curry", "bibimbap", "garlic-butter-shrimp"] as const;
+export const POPULAR_RECIPES = POPULAR_RECIPE_IDS.map((id) => RECIPES[id]);
+
+export function listRecipes(): readonly Recipe[] {
+  return RECIPE_LIST;
+}
+
+/** Per-serving nutrition presentation with explicit estimate/unavailable status. */
+export function nutritionLabel(recipe: Recipe): string {
+  return recipe.nutrition.status === "estimated"
+    ? `~${recipe.nutrition.calories} kcal (estimated)`
+    : "Nutrition unavailable";
+}
+
+export function getRecipe(id: string): Recipe | undefined {
+  return Object.hasOwn(RECIPES, id) ? RECIPES[id] : undefined;
+}
+
+// ----- Amount formatting -----
+
+const UNIT_PLURAL: Record<string, string> = {
+  cup: "cups",
+  tablespoon: "tablespoons",
+  teaspoon: "teaspoons",
+  clove: "cloves",
+  pound: "pounds",
+  ounce: "ounces",
+};
+
+const SMALL_WORDS = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve"];
+
+function numberWord(n: number): string {
+  return n <= 12 ? SMALL_WORDS[n] : String(n);
+}
+
+/** Scale a base amount to the requested servings. */
+export function scaleAmount(amount: number, baseServings: number, servings: number): number {
+  const scaled = (amount * servings) / baseServings;
+  // Round to the nearest quarter for kitchen friendliness.
+  return Math.round(scaled * 4) / 4;
+}
+
+/** "陆 cup", "2 tablespoons", "6 cloves" for the screen. */
+export function formatAmount(amount: number | null, unit: string): string {
+  if (amount === null) return unit ? unit : "";
+  const whole = Math.floor(amount);
+  const frac = amount - whole;
+  const fracGlyph = frac === 0.25 ? "录" : frac === 0.5 ? "陆" : frac === 0.75 ? "戮" : "";
+  const num = frac !== 0 && !fracGlyph ? String(amount) : whole === 0 ? fracGlyph || "0" : `${whole}${fracGlyph}`;
+  if (!unit) return num;
+  const u = amount > 1 ? UNIT_PLURAL[unit] ?? unit : unit;
+  return `${num} ${u}`;
+}
+
+/** "half a cup", "two tablespoons", "six cloves" for the voice. */
+export function spokenAmount(amount: number | null, unit: string): string {
+  if (amount === null) return "";
+  const whole = Math.floor(amount);
+  const frac = amount - whole;
+  const fracWord = frac === 0.25 ? "a quarter" : frac === 0.5 ? "half" : frac === 0.75 ? "three quarters" : "";
+  const plural = UNIT_PLURAL[unit] ?? unit;
+  if (frac !== 0 && !fracWord) return `${amount}${unit ? ` ${amount > 1 ? plural : unit}` : ""}`;
+  if (whole === 0) {
+    if (!unit) return fracWord;
+    return frac === 0.5 ? `half a ${unit}` : `${fracWord} of a ${unit}`;
+  }
+  const wholeWord = numberWord(whole);
+  const num = fracWord ? `${wholeWord} and ${fracWord === "half" ? "a half" : fracWord}` : wholeWord;
+  if (!unit) return num;
+  return `${num} ${amount > 1 ? plural : unit}`;
+}
+
+export function describeIngredient(ing: Ingredient, baseServings: number, servings: number, mode: "screen" | "spoken"): string {
+  const amt = ing.amount === null ? null : scaleAmount(ing.amount, baseServings, servings);
+  const q = mode === "screen" ? formatAmount(amt, ing.unit) : spokenAmount(amt, ing.unit);
+  const note = ing.note ? (mode === "screen" ? ` (${ing.note})` : `, ${ing.note}`) : "";
+  return q ? `${q} ${ing.name}${note}` : `${ing.name}${note}`;
+}
+import type { Recipe } from "./recipe";
+export type RecipeQuery = { q?: string; cuisine?: string; maxMinutes?: string; tag?: string; sort?: string };
+export function searchRecipes(recipes: readonly Recipe[], query: RecipeQuery): Recipe[] {
+ const terms = (query.q ?? "").trim().toLowerCase().split(/\s+/).filter(Boolean);
+ const max = Number(query.maxMinutes);
+ return recipes.filter(r => {
+  const text = [r.title, r.cuisine, ...r.tags, ...r.ingredients.map(i => i.name)].join(" ").toLowerCase();
+  return terms.every(t => text.includes(t)) && (!query.cuisine || r.cuisine.toLowerCase() === query.cuisine.toLowerCase() || r.cuisine.toLowerCase().split(/[- ]/).includes(query.cuisine.toLowerCase())) && (!query.tag || r.tags.includes(query.tag)) && (!Number.isFinite(max) || max <= 0 || r.totalMinutes <= max);
+ }).sort((a,b) => {
+  const time = query.sort === "shortest" ? a.totalMinutes-b.totalMinutes : query.sort === "longest" ? b.totalMinutes-a.totalMinutes : 0;
+  return time || a.title.localeCompare(b.title, "en") || a.id.localeCompare(b.id, "en");
+ });
+}
+import { getRecipe } from "./recipe";
+export const SAVED_KEY = "sous.saved-recipes.v1";
+export function parseSaved(value: string | null): string[] {
+ try { const ids: unknown = JSON.parse(value ?? "[]"); return Array.isArray(ids) ? [...new Set(ids.filter((id): id is string => typeof id === "string" && !!getRecipe(id)))] : []; } catch { return []; }
+}
+export function toggleSaved(ids: string[], id: string): string[] {
+ if (!getRecipe(id)) return ids;
+ return ids.includes(id) ? ids.filter(value => value !== id) : [...new Set([...ids,id])];
+}
+"use client";
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import { getRecipe } from "@/lib/recipe";
+import { parseSaved, SAVED_KEY, toggleSaved } from "@/lib/saved-recipes";
+function useSaved() {
+ const [ids,setIds] = useState<string[]>([]);
+ const [ready,setReady] = useState(false);
+ const [error,setError] = useState("");
+ useEffect(() => {
+  const refresh = () => { try { setIds(parseSaved(localStorage.getItem(SAVED_KEY))); setError(""); } catch { setError("Browser storage is unavailable. Saved recipes cannot persist."); } setReady(true); };
+  refresh(); window.addEventListener("storage",refresh); window.addEventListener("sous-saved",refresh);
+  return () => { window.removeEventListener("storage",refresh); window.removeEventListener("sous-saved",refresh); };
+ },[]);
+ const toggle = (id: string) => { try { const next = toggleSaved(parseSaved(localStorage.getItem(SAVED_KEY)),id); localStorage.setItem(SAVED_KEY,JSON.stringify(next)); setIds(next); setError(""); window.dispatchEvent(new Event("sous-saved")); } catch { setError("Could not save your change. Browser storage is unavailable or full."); } };
+ return {ids,ready,error,toggle};
+}
+export function SaveRecipe({id}: {id:string}) {
+ const {ids,ready,error,toggle} = useSaved();
+ const title = getRecipe(id)?.title ?? "recipe";
+ return <div><button type="button" disabled={!ready} aria-pressed={ids.includes(id)} onClick={() => toggle(id)} className="rounded-full border border-line bg-paper px-4 py-2 text-sm text-forest disabled:opacity-50">{ids.includes(id) ? "Unsave" : "Save"} {title}</button>{error && <p role="status" className="mt-2 text-sm">{error}</p>}</div>;
+}
+export function SavedRecipes() {
+ const {ids,ready,error} = useSaved();
+ const [category,setCategory] = useState("Saved");
+ return <><div className="my-6 flex flex-wrap gap-3" aria-label="Recipe categories">{["Saved","Uploaded","Recently Cooked"].map(c => <button key={c} aria-pressed={category===c} onClick={() => setCategory(c)} className={`rounded-full px-4 py-2 ${category===c ? "bg-forest text-white" : "bg-paper"}`}>{c}</button>)}</div>{error && <p role="status">{error}</p>}{category !== "Saved" ? <p>{category} recipes are coming soon.</p> : !ready ? <p role="status">Loading saved recipes...</p> : !ids.length ? <p>No saved recipes yet. <Link href="/recipes" className="text-forest underline">Find a recipe to save</Link>.</p> : <ul className="grid gap-4 sm:grid-cols-2">{ids.map(id => <li key={id} className="rounded-3xl bg-paper p-5 shadow-card"><Link href={`/recipes/${id}`} className="mb-4 block font-display text-2xl">{getRecipe(id)!.title}</Link><Link href={`/cook?recipeId=${encodeURIComponent(id)}`} className="mb-4 block text-forest underline">Cook by Voice</Link><SaveRecipe id={id}/></li>)}</ul>}<p className="mt-6 text-sm text-muted">Saved on this browser only.</p></>;
+}
+import { describeIngredient, type Recipe } from "./recipe";
+import { numWord, type SessionState } from "./session";
+
+export const AGENT_NAME = "Sous";
+
+export const FIRST_MESSAGE =
+  "Hey chef, Sous here. I've got your recipe up. Whenever you're ready, just ask me what to do first.";
+
+export const AGENT_PROMPT = `You're Sous, a friendly cook talking with a home cook on a live voice call while they cook. Only the words meant for the cook are heard, so never narrate what you're doing or mention tools.
+
+The selected recipe and where they are in it are under About this caller, and every tool result tells you the current step. Your knowledge base contains only that selected recipe, including its ingredients, tips and safety notes. Use those facts for this call; never carry over ingredients or advice from another recipe. If a fact or substitution is not covered, say you don't know rather than inventing it. Never promise a dish or substitute is allergen-free; ask the cook to check ingredient labels and cross-contact risks.
+
+Talk like a friend standing next to them at the stove: warm, relaxed, one or two short sentences, one idea at a time. Give the action, not the structure. Never say step numbers or things like step two of nine unless they ask which step they're on. Don't repeat their words back, and don't ask if they need anything else.
+
+When they ask what to do first, what's next, or say they're done, call next_step and tell them what to do in your own words. When they ask a question, answer it from the recipe and leave the step where it is. When they ask you to repeat, say it again, simpler. When they're missing an ingredient, suggest the best swap from your knowledge base, and call note_substitution once they go with it. Only start a timer when they ask, with manage_timer. If they just say okay, thanks or got it, reply with a word at most.
+
+If something's burning, smoking or splitting, prioritize safety over continuing the recipe. Follow the selected recipe's safety notes and thermometer checks; never use color, clear juices or cooking time alone to confirm safe doneness. Never make the cook feel bad about a mistake.
+
+Say numbers, times and temperatures in words. No exclamation marks, no lists. Use contractions. If a tool fails, say the requested change wasn't confirmed. You may repeat known recipe guidance, but never claim a step, timer, serving count or substitution changed without a successful tool result.`;
+
+export const TOOL_NAMES = [
+  "next_step",
+  "previous_step",
+  "get_current_step",
+  "jump_to_step",
+  "manage_timer",
+  "note_substitution",
+  "set_servings",
+] as const;
+export type ToolName = (typeof TOOL_NAMES)[number];
+
+export type CustomTool = {
+  name: ToolName;
+  description: string;
+  url: string;
+  headers: Record<string, string>;
+  timeoutMs: number;
+  parameters: Record<string, unknown>;
+};
+
+export function buildTools(publicBase: string, session: SessionState): CustomTool[] {
+  const url = `${publicBase.replace(/\/$/, "")}/api/tools`;
+  const headers = { "X-Sous-Session": session.id, "X-Sous-Secret": session.secret };
+  const none = { type: "object", properties: {} };
+  const mk = (name: ToolName, description: string, parameters: Record<string, unknown> = none): CustomTool => ({
+    name,
+    description,
+    url,
+    headers,
+    timeoutMs: 8000,
+    parameters,
+  });
+  return [
+    mk(
+      "next_step",
+      "Move the cook to the next step of the recipe and return it. Call this when the cook says they're done, finished, ready, or asks what's next or what to do next. Do not call it when they ask a question about the current step, ask for a repeat, or report a problem."
+    ),
+    mk(
+      "previous_step",
+      "Move the cook back to the previous step and return it. Call this when the cook asks to go back, says they missed something in the last step, or wants the previous step again."
+    ),
+    mk(
+      "get_current_step",
+      "Return the step the cook is on right now, with its ingredients and amounts. Call this when the cook asks what step they're on, asks you to repeat the step, or asks what they should be doing now. Do not call it to repeat an answer you just gave."
+    ),
+    mk(
+      "jump_to_step",
+      "Jump to a specific step by number and return it. Call this when the cook names a step number, or asks to start over from the beginning (step one).",
+      {
+        type: "object",
+        properties: { step_number: { type: "integer", description: "The step number to jump to, starting at one" } },
+        required: ["step_number"],
+      }
+    ),
+    mk(
+      "manage_timer",
+      "Start or cancel a kitchen timer shown on the cook's screen. Call this when the cook asks for a timer, agrees to one you offered, or asks to cancel one. Do not call it just because the recipe mentions a time.",
+      {
+        type: "object",
+        properties: {
+          action: { type: "string", enum: ["start", "cancel"], description: "start a new timer or cancel a running one" },
+          label: { type: "string", description: "Short name for the timer, like garlic or sear side two" },
+          seconds: { type: "integer", description: "Length in seconds. Leave empty to use the current step's suggested time." },
+        },
+        required: ["action"],
+      }
+    ),
+    mk(
+      "note_substitution",
+      "Record that the cook is replacing an ingredient with something else, so it shows on their screen and is remembered. Call this once the cook lacks an ingredient and you've agreed on what to use instead. Do not call it while still discussing options.",
+      {
+        type: "object",
+        properties: {
+          ingredient: { type: "string", description: "The recipe ingredient being replaced" },
+          substitute: { type: "string", description: "What the cook is using instead" },
+        },
+        required: ["ingredient", "substitute"],
+      }
+    ),
+    mk(
+      "set_servings",
+      "Change how many servings the recipe is scaled to and return the new amounts. Call this when the cook says how many people they're cooking for or asks to double or halve the recipe.",
+      {
+        type: "object",
+        properties: { servings: { type: "integer", description: "Number of servings, one to twelve" } },
+        required: ["servings"],
+      }
+    ),
+  ];
+}
+
+function weekdayDate(d = new Date()): string {
+  return d.toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric" });
+}
+
+/** Facts about this cook and this call. Must stay under 4,000 characters. */
+export function buildContext(recipe: Recipe, state: SessionState, now = new Date()): string {
+  if (state.recipeId !== recipe.id) throw new Error("Recipe/session mismatch");
+  const total = recipe.steps.length;
+  const idx = Math.min(state.stepIndex, total - 1);
+  const step = recipe.steps[idx];
+  const where =
+    state.stepIndex >= total
+      ? "They have finished every step."
+      : !state.started
+        ? `They haven't started yet. When they ask what to do first, the first step is ${step.title}. After that, tool results tell you the current step as it changes.`
+        : `They are on step ${numWord(idx + 1)} of ${numWord(total)}, ${step.title}. Tool results tell you the current step as it changes.`;
+  const subs = state.substitutions.length
+    ? `Substitutions so far: ${state.substitutions.map((s) => `${s.substitute} instead of ${s.ingredient}`).join("; ")}.`
+    : "No substitutions so far.";
+  const ingredients = recipe.ingredients.map((i) => describeIngredient(i, recipe.servings, state.servings, "spoken")).join("; ");
+  const steps = recipe.steps
+    .map((s, i) => {
+      const mins = s.durationSeconds ? ` (about ${spokenMinutes(s.durationSeconds)})` : "";
+      return `${i + 1}. ${s.title}. ${s.instruction}${mins}`;
+    })
+    .join("\n");
+  const text = `Recipe ID: ${recipe.id}. Today is ${weekdayDate(now)}. The cook is making ${recipe.title} for ${numWord(state.servings)} ${state.servings === 1 ? "person" : "people"}. ${where} ${subs}
+
+Ingredients for ${numWord(state.servings)} servings: ${ingredients}.
+
+The recipe has ${numWord(total)} steps:
+${steps}`;
+  if (text.length > 4000) throw new Error(`context too long: ${text.length}`);
+  return text;
+}
+
+function spokenMinutes(seconds: number): string {
+  if (seconds < 60) return `${numWord(seconds)} seconds`;
+  const m = Math.floor(seconds / 60);
+  const remainder = seconds % 60;
+  return `${numWord(m)} minute${m === 1 ? "" : "s"}${remainder ? ` and ${numWord(remainder)} seconds` : ""}`;
+}
+
+export function buildStartCall(agentId: string, recipe: Recipe, state: SessionState, publicBase: string | null) {
+  return {
+    type: "start_call" as const,
+    agent: { id: agentId },
+    ...(publicBase ? { customTools: buildTools(publicBase, state) } : {}),
+    context: buildContext(recipe, state),
+    // One source of recipe facts for every selection, including tips and safety.
+    knowledgeBase: JSON.stringify(recipe),
+  };
+}
+import { NextResponse } from "next/server";
+import { buildStartCall } from "@/lib/agent-config";
+import { mintWsToken, requireEnv, resolvePublicBase, WS_URL } from "@/lib/alebex";
+import { CREAMY_GARLIC_CHICKEN, getRecipe } from "@/lib/recipe";
+import { createSession } from "@/lib/store";
+
+export async function POST(req: Request) {
+  try {
+    let body: unknown;
+    try { body = await req.json(); } catch { return NextResponse.json({ error: "Invalid JSON" }, { status: 400 }); }
+    if (!body || typeof body !== "object" || Array.isArray(body) || ("recipeId" in body && typeof body.recipeId !== "string")) {
+      return NextResponse.json({ error: "recipeId must be a string" }, { status: 400 });
+    }
+    const { recipeId } = body as { recipeId?: string };
+    const recipe = getRecipe(recipeId ?? CREAMY_GARLIC_CHICKEN.id);
+    if (!recipe) return NextResponse.json({ error: "Unknown recipe" }, { status: 404 });
+
+    const agentId = requireEnv("ALEBEX_AGENT_ID");
+    const session = await createSession(recipe.id);
+    const { base, source } = await resolvePublicBase(req);
+    const warnings: string[] = [];
+    if (!base) warnings.push("No public https base for tools (start ngrok or set PUBLIC_BASE). The agent can talk but cannot change steps.");
+
+    let token: string;
+    try {
+      token = await mintWsToken();
+    } catch (e) {
+      if (process.env.NODE_ENV === "production" && process.env.ALLOW_RAW_KEY !== "1") throw e;
+      console.warn("[sous] token mint failed, using raw key for the socket:", (e as Error).message);
+      token = requireEnv("ALEBEX_API_KEY");
+      // Dev-only fallback; logged above, not shown to the cook.
+    }
+
+    console.log(`[sous] call start session=${session.id} tools=${base ?? "none"} (${source})`);
+    return NextResponse.json({
+      sessionId: session.id,
+      secret: session.secret,
+      wsUrl: WS_URL,
+      subprotocol: `alebex.token.${token}`,
+      startCall: buildStartCall(agentId, recipe, session, base),
+      state: session,
+      recipe,
+      warnings,
+    });
+  } catch (e) {
+    const message = (e as Error).message;
+    console.error("[sous] call start failed:", message);
+    return NextResponse.json({ error: message }, { status: 500 });
+  }
+}
+const fs = require('node:fs');
+const vm = require('node:vm');
+const path = require('node:path');
+const source = fs.readFileSync(path.join(__dirname,'foundation-check.cjs'),'utf8');
+const loader = source.slice(0,source.indexOf('const {listRecipes,getRecipe'));
+const expected = Number(process.argv[2] || 50);
+const checks = `
+const {listRecipes,getRecipe} = load('lib/recipe.ts');
+const recipes = listRecipes();
+assert.equal(recipes.length, ${expected}, 'Expected catalog count');
+assert.equal(new Set(recipes.map(r=>r.id)).size, recipes.length);
+assert.equal(new Set(recipes.map(r=>r.title.toLowerCase())).size, recipes.length);
+const originals = JSON.parse(fs.readFileSync(path.resolve(__dirname,'original-recipes.json'),'utf8'));
+assert.equal(originals.length,20);
+assert.equal(JSON.stringify(recipes.slice(0,20)),JSON.stringify(originals),'Original records or ordering changed');
+for(const original of originals) assert.equal(JSON.stringify(getRecipe(original.id)),JSON.stringify(original),'Original changed: '+original.id);
+for(const r of recipes) {
+ assert.equal(getRecipe(r.id),r);
+ for(const key of ['id','title','description','cuisine']) assert.ok(typeof r[key]==='string' && r[key].trim());
+ assert.ok(Number.isInteger(r.servings) && r.servings>0);
+ assert.ok(Number.isInteger(r.prepMinutes) && r.prepMinutes>=0 && Number.isInteger(r.cookMinutes) && r.cookMinutes>=0);
+ assert.equal(r.totalMinutes,r.prepMinutes+r.cookMinutes); assert.ok(r.totalMinutes>0);
+ assert.ok(r.tags.length && r.ingredients.length>=3 && r.steps.length>=4);
+ assert.equal(new Set(r.steps.map(s=>s.id)).size,r.steps.length);
+ assert.ok(fs.existsSync(path.resolve(__dirname,'../public',r.image.replace(/^\\//,''))));
+ for(const i of r.ingredients) assert.ok(i.name && (i.amount===null || Number.isFinite(i.amount) && i.amount>0) && ['', 'cup', 'tablespoon', 'teaspoon', 'clove', 'pound', 'ounce'].includes(i.unit));
+ const linked = new Set(r.steps.flatMap(s=>s.ingredients || []));
+ for(const i of r.ingredients) assert.ok(linked.has(i.name),'Ingredient not linked to a step in '+r.id+': '+i.name);
+ for(const s of r.steps) {
+  assert.ok(s.id && s.title && s.instruction.length>20);
+  if(s.durationSeconds!==undefined) assert.ok(Number.isFinite(s.durationSeconds) && s.durationSeconds>0);
+  for(const name of s.ingredients || []) assert.ok(r.ingredients.some(i=>i.name===name),'Unknown ingredient: '+name);
+ }
+ if(!originals.some(o=>o.id===r.id)) {
+  assert.ok(r.ingredients.every(i=>Number.isFinite(i.amount) && i.amount>0));
+  assert.ok(r.steps.some(s=>s.safety));
+  assert.equal(r.image,'/recipes/placeholder.svg');
+  assert.equal(r.nutrition.status,'unavailable'); assert.equal(r.calories,null);
+ }
+}
+console.log('PASS: '+recipes.length+' unique complete recipes; original 20 unchanged; assets, safety, ingredients, timing and nutrition checked.');
+`;
+vm.runInNewContext(loader+checks,{require,__dirname,console},{filename:__filename});
+
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command 'npx tsc --noEmit' in C:\Users\L\Desktop\sous\Sous_HackCamp
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command 'npm test' in C:\Users\L\Desktop\sous\Sous_HackCamp
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command 'node scripts/catalog-gate.cjs; node scripts/foundation-check.cjs; node scripts/recipe-integration-check.cjs; node scripts/voice-context-check.cjs' in C:\Users\L\Desktop\sous\Sous_HackCamp
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command 'Get-Content .overnight-runs/20261108-022104/final-gate-*.stdout.txt; Get-Content .overnight-runs/20261108-022104/final-gate-tests.stderr.txt; Get-Content next.config.ts,postcss.config.mjs,vitest.config.ts; Get-Content scripts/safe-browser-check.mjs' in C:\Users\L\Desktop\sous\Sous_HackCamp
+ succeeded in 244ms:
+
+> sous@0.1.0 build
+> next build
+
+鈻?Next.js 16.4.5 (Turbopack)
+鉁?Running next.config.ts took 41ms
+
+  Creating an optimized production build ...
+鉁?Compiled successfully in 847ms
+  Running TypeScript ...
+  Finished TypeScript in 581ms ...
+  Collecting page data using 12 workers ...
+  Generating static pages using 12 workers (0/59) ...
+  Generating static pages using 12 workers (14/59) 
+  Generating static pages using 12 workers (29/59) 
+  Generating static pages using 12 workers (44/59) 
+鉁?Generating static pages using 12 workers (59/59) in 1086ms
+  Finalizing page optimization ...
+
+Route (app)
+鈹?鈼?/
+鈹?鈼?/_not-found
+鈹?茠 /api/call/start
+鈹?茠 /api/session/[id]
+鈹?茠 /api/tools
+鈹?鈼?/collection/my-recipes
+鈹?茠 /cook
+鈹?茠 /recipes
+鈹?  /recipes/[id]
+鈹?鈹?鈼?/recipes/creamy-garlic-chicken
+鈹?鈹?鈼?/recipes/tomato-beef-stew
+鈹?鈹?鈼?/recipes/chicken-curry
+鈹?鈹?鈼?[+47 more paths]
+鈹?鈼?/tools
+
+
+鈼? (Static)   prerendered as static content
+鈼? (SSG)      prerendered as static HTML (uses generateStaticParams)
+茠  (Dynamic)  server-rendered on demand
+
+PASS: 50 unique complete recipes; original 20 unchanged; assets, safety, ingredients, timing and nutrition checked.
+PASS: 50 recipe records, assets, search, combined filters, sorting, saved-data persistence and mocked call payloads. No external calls.
+
+> sous@0.1.0 test
+> vitest run --configLoader native
+
+
+ RUN  v5.0.3 C:/Users/L/Desktop/sous/Sous_HackCamp
+
+
+ Test Files  10 passed (10)
+      Tests  544 passed (544)
+   Start at  01:55:28
+   Duration  569ms (transform 41%, import 38%, tests 17%, worker 4%)
+
+(node:17272) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/L/Desktop/sous/Sous_HackCamp/vitest.config.ts?fresh-import-f6eqm5teq8h=0,file:///C:/Users/L/Desktop/sous/Sous_HackCamp/vitest.config.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to \\?\C:\Users\L\Desktop\sous\Sous_HackCamp\package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+import type { NextConfig } from "next";
+
+const nextConfig: NextConfig = {
+  reactStrictMode: true,
+  experimental: {
+    agentUpgrade: "security",
+  },
+};
+
+export default nextConfig;
+import { fileURLToPath } from "node:url";
+
+const config = {
+  plugins: {
+    // Resolve from this config rather than Turbopack's generated worker directory.
+    [fileURLToPath(new URL("./node_modules/@tailwindcss/postcss/dist/index.js", import.meta.url))]: {},
+  },
+};
+export default config;
+import { defineConfig } from "vitest/config";
+import { fileURLToPath } from "node:url";
+
+export default defineConfig({
+  test: { include: ["lib/**/*.test.ts"], pool: "threads" },
+  resolve: { alias: { "@": fileURLToPath(new URL(".", import.meta.url)) } },
+});
+import assert from 'node:assert/strict';
+import { chromium } from 'playwright';
+import { listRecipes } from '../lib/recipe.ts';
+const base = process.env.SOUS_TEST_BASE || 'http://127.0.0.1:3187';
+const localFetch = url => fetch(url,{signal:AbortSignal.timeout(15000)});
+const recipes = listRecipes();
+for (const recipe of recipes) {
+ const response = await localFetch(`${base}/recipes/${recipe.id}`);
+ assert.equal(response.status, 200, recipe.id);
+ assert.ok((await response.text()).includes(recipe.title), recipe.id);
+}
+for (const route of ['/recipes/not-a-real-recipe','/cook?recipeId=not-a-real-recipe']) {
+ assert.equal((await localFetch(base+route)).status,404,route);
+}
+assert.equal((await localFetch(base+'/cook')).status,200);
+console.log('PASS HTTP: all 50 detail routes, invalid detail/cook 404s, default cook');
+const browser = await chromium.launch({headless:true,channel:'msedge'});
+try {
+ const context = await browser.newContext({viewport:{width:1280,height:900}});
+ await context.route('**/*', route => {
+  const u = new URL(route.request().url());
+  if (u.origin !== base || u.pathname.startsWith('/api/')) return route.abort();
+  return route.continue();
+ });
+ const page = await context.newPage();
+ const recipe = recipes.at(-1);
+ await page.goto(`${base}/recipes/${recipe.id}`);
+ await page.getByRole('button',{name:`Save ${recipe.title}`,exact:true}).click();
+ await page.reload();
+ await page.getByRole('button',{name:`Unsave ${recipe.title}`,exact:true}).waitFor();
+ const collection = await context.newPage();
+ await collection.goto(base+'/collection/my-recipes');
+ await collection.getByRole('link',{name:recipe.title,exact:true}).waitFor();
+ await collection.getByRole('link',{name:'Cook by Voice',exact:true}).waitFor();
+ await page.getByRole('button',{name:`Unsave ${recipe.title}`,exact:true}).click();
+ await collection.getByText('No saved recipes yet.',{exact:false}).waitFor();
+ await page.setViewportSize({width:390,height:844});
+ for(const path of ['/','/recipes','/tools','/collection/my-recipes']) {
+  await page.goto(base+path);
+  assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),`mobile overflow: ${path}`);
+ }
+ console.log('PASS browser: save/reload, Collection links, cross-tab removal, mobile overflow on Home/Recipes/Tools/Collection. All API and external requests blocked; no voice call started.');
+} finally {await browser.close();}
+
+ succeeded in 1680ms:
+ succeeded in 2069ms:
+
+> sous@0.1.0 test
+> vitest run --configLoader native
+
+(node:28640) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/L/Desktop/sous/Sous_HackCamp/vitest.config.ts?fresh-import-3w6rmxngwk7=0,file:///C:/Users/L/Desktop/sous/Sous_HackCamp/vitest.config.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to \\?\C:\Users\L\Desktop\sous\Sous_HackCamp\package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+ RUN  v5.0.3 C:/Users/L/Desktop/sous/Sous_HackCamp
+
+
+ Test Files  10 passed (10)
+      Tests  544 passed (544)
+   Start at  01:56:02
+   Duration  761ms (transform 43%, import 36%, tests 16%, worker 5%)
+
+
+ succeeded in 2082ms:
+PASS: 50 unique complete recipes; original 20 unchanged; assets, safety, ingredients, timing and nutrition checked.
+(node:17260) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS: 50 recipe records, assets, search, combined filters, sorting, saved-data persistence and mocked call payloads. No external calls.
+(node:31556) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+[sous] call start session=offline tools=https://example.test (offline)
+[sous] call start session=offline tools=https://example.test (offline)
+[sous] call start session=offline tools=https://example.test (offline)
+[sous] call start session=offline tools=https://example.test (offline)
+[sous] call start session=offline tools=https://example.test (offline)
+[sous] call start session=offline tools=https://example.test (offline)
+[sous] call start session=offline tools=https://example.test (offline)
+[sous] call start session=offline tools=https://example.test (offline)
+[sous] call start session=offline tools=https://example.test (offline)
+[sous] call start session=offline tools=https://example.test (offline)
+[sous] call start session=offline tools=https://example.test (offline)
+[sous] call start session=offline tools=https://example.test (offline)
+[sous] call start session=offline tools=https://example.test (offline)
+[sous] call start session=offline tools=https://example.test (offline)
+[sous] call start session=offline tools=https://example.test (offline)
+[sous] call start session=offline tools=https://example.test (offline)
+[sous] call start session=offline tools=https://example.test (offline)
+[sous] call start session=offline tools=https://example.test (offline)
+[sous] call start session=offline tools=https://example.test (offline)
+[sous] call start session=offline tools=https://example.test (offline)
+[sous] call start session=offline tools=https://example.test (offline)
+[sous] call start session=offline tools=https://example.test (offline)
+[sous] call start session=offline tools=https://example.test (offline)
+[sous] call start session=offline tools=https://example.test (offline)
+[sous] call start session=offline tools=https://example.test (offline)
+[sous] call start session=offline tools=https://example.test (offline)
+[sous] call start session=offline tools=https://example.test (offline)
+[sous] call start session=offline tools=https://example.test (offline)
+[sous] call start session=offline tools=https://example.test (offline)
+[sous] call start session=offline tools=https://example.test (offline)
+[sous] call start session=offline tools=https://example.test (offline)
+[sous] call start session=offline tools=https://example.test (offline)
+[sous] call start session=offline tools=https://example.test (offline)
+[sous] call start session=offline tools=https://example.test (offline)
+[sous] call start session=offline tools=https://example.test (offline)
+[sous] call start session=offline tools=https://example.test (offline)
+[sous] call start session=offline tools=https://example.test (offline)
+[sous] call start session=offline tools=https://example.test (offline)
+[sous] call start session=offline tools=https://example.test (offline)
+[sous] call start session=offline tools=https://example.test (offline)
+[sous] call start session=offline tools=https://example.test (offline)
+[sous] call start session=offline tools=https://example.test (offline)
+[sous] call start session=offline tools=https://example.test (offline)
+[sous] call start session=offline tools=https://example.test (offline)
+[sous] call start session=offline tools=https://example.test (offline)
+[sous] call start session=offline tools=https://example.test (offline)
+[sous] call start session=offline tools=https://example.test (offline)
+[sous] call start session=offline tools=https://example.test (offline)
+[sous] call start session=offline tools=https://example.test (offline)
+[sous] call start session=offline tools=https://example.test (offline)
+PASS: all 50 listing/detail/cook selections, combined search, full favorites collection, mocked call-start IDs, default cook and invalid-ID 404 handling. No provider calls.
+PASS: 50 selected recipe payloads; 211 steps, ingredient references, navigation, tips/safety, timers, servings 1/base/12, substitutions, finished state, ID mismatch rejection. Max context: 2661/4000. No provider calls.
+(node:9828) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+codex
+The catalog check confirms exactly 50 recipes with the original 20 unchanged. All 544 tests, TypeScript, and the offline integration and voice checks pass. The overnight logs also show a successful production build; I’ll distinguish that historical result from this run’s build and browser evidence in the report.
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command 'npm run build' in C:\Users\L\Desktop\sous\Sous_HackCamp
+ exited 1 in 2414ms:
+
+> sous@0.1.0 build
+> next build
+
+▲ Next.js 16.4.5 (Turbopack)
+✓ Running next.config.ts took 38ms
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 801ms
+  Running TypeScript ...
+spawn EPERM
+
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "Get-Content app/recipes/page.tsx; Get-Content -LiteralPath 'app/recipes/[id]/page.tsx'; Get-Content app/cook/page.tsx,components/Nav.tsx,app/page.tsx; Get-Content BUILD-FIX-REPORT.md,REQUIREMENTS-RECHECK-REPORT.md; Get-Content .overnight-runs/20261108-022104/final-gate-build.exit.txt; Get-Content scripts/recipe-integration-check.cjs | Select-Object -First 100" in C:\Users\L\Desktop\sous\Sous_HackCamp
+ succeeded in 279ms:
+import { searchRecipes } from "@/lib/recipe-search";
+import { SaveRecipe } from "@/components/SavedRecipes";
+import Link from "next/link";
+import { Nav } from "@/components/Nav";
+import { RecipeImage } from "@/components/RecipeImage";
+import { listRecipes, nutritionLabel } from "@/lib/recipe";
+
+export const metadata = { title: "All recipes 路 Sous" };
+
+export default async function RecipesPage({ searchParams }: { searchParams: Promise<Record<string,string | string[] | undefined>> }) {
+  const raw = await searchParams ?? {};
+  const query = Object.fromEntries(Object.entries(raw).filter((entry): entry is [string,string] => typeof entry[1] === "string"));
+  const all = listRecipes();
+  const recipes = searchRecipes(all, query);
+  return <>
+    <Nav browsing />
+    <main id="main-content" className="mx-auto max-w-6xl px-4 py-10 pb-20 sm:px-6">
+      <Link href="/" className="text-sm font-semibold text-forest">鈫?Home</Link>
+      <h1 className="mt-5 font-display text-5xl">All recipes</h1>
+      <p className="mt-4 text-ink/75">Find your next meal. Explore {recipes.length} recipes and cook at your own pace.</p>
+      <form action="/recipes" id="recipe-search" className="mt-6 flex flex-wrap items-end gap-4 rounded-3xl bg-paper p-5">
+        <label className="flex flex-col gap-2">Search<input name="q" defaultValue={query.q} placeholder="Title, ingredient, cuisine or tag" className="rounded-xl border border-line p-2" /></label>
+        <label className="flex flex-col gap-2">Cuisine<select name="cuisine" defaultValue={query.cuisine ?? ""} className="rounded-xl border border-line p-2"><option value="">All cuisines</option>{[...new Set(all.map(r=>r.cuisine))].sort().map(c=><option key={c}>{c}</option>)}</select></label>
+        <label className="flex flex-col gap-2">Maximum minutes<input name="maxMinutes" type="number" min="1" defaultValue={query.maxMinutes} className="w-28 rounded-xl border border-line p-2" /></label>
+        <label className="flex flex-col gap-2">Tag<select name="tag" defaultValue={query.tag ?? ""} className="rounded-xl border border-line p-2"><option value="">All tags</option>{[...new Set(all.flatMap(r=>r.tags))].sort().map(t=><option key={t}>{t}</option>)}</select></label>
+        <label className="flex flex-col gap-2">Sort<select name="sort" defaultValue={query.sort ?? "alphabetical"} className="rounded-xl border border-line p-2"><option value="alphabetical">Alphabetical</option><option value="shortest">Shortest time</option><option value="longest">Longest time</option></select></label>
+        <button className="rounded-full bg-forest px-5 py-2 text-white">Search</button><Link href="/recipes" className="py-2 text-forest underline">Reset Filters</Link>
+      </form>
+      <p className="mt-4" role="status">{recipes.length} recipes found</p>
+      {recipes.length === 0 ? <div className="mt-8 rounded-3xl bg-paper p-8 shadow-card" role="status">
+        <h2 className="font-display text-2xl">{all.length ? "No matching recipes" : "No recipes yet"}</h2>
+        <p className="mt-2 text-muted">Try another search or reset your filters.</p>
+      </div> : <ul className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4" aria-label="All recipes">
+        {recipes.map(recipe => <li key={recipe.id} className="min-w-0">
+          <Link href={`/recipes/${recipe.id}`} className="block overflow-hidden rounded-3xl bg-paper shadow-card ring-1 ring-line/60 transition hover:-translate-y-0.5 hover:shadow-float">
+            <RecipeImage src={recipe.image} title={recipe.title} className="aspect-[4/3] w-full object-cover" />
+            <div className="p-5">
+              <p className="text-xs font-semibold text-forest">{recipe.cuisine}</p>
+              <h2 className="mt-2 font-display text-xl">{recipe.title}</h2>
+              <p className="mt-3 text-sm text-muted">{recipe.totalMinutes} min 路 {recipe.servings} servings</p>
+              {recipe.nutrition.status === "estimated" && <p className="mt-2 text-xs text-muted">{nutritionLabel(recipe)} per serving</p>}
+              <ul className="mt-3 flex flex-wrap gap-2" aria-label="Tags">
+                {recipe.tags.map(tag => <li key={tag} className="rounded-full bg-cream px-2 py-1 text-xs text-ink/70">{tag}</li>)}
+              </ul>
+            </div>
+          </Link>
+          <div className="mt-3"><SaveRecipe id={recipe.id}/></div>
+        </li>)}
+      </ul>}
+    </main>
+  </>;
+}
+import { SaveRecipe } from "@/components/SavedRecipes";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { Nav } from "@/components/Nav";
+import { RecipeImage } from "@/components/RecipeImage";
+import { describeIngredient, getRecipe, listRecipes, nutritionLabel } from "@/lib/recipe";
+
+export const dynamicParams = false;
+
+export function generateStaticParams() {
+  return listRecipes().map(recipe => ({ id: recipe.id }));
+}
+
+export default async function RecipePage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
+  const recipe = getRecipe(id);
+  if (!recipe) notFound();
+  return <>
+    <Nav browsing />
+    <main className="mx-auto max-w-6xl px-4 py-10 pb-20 sm:px-6">
+      <Link href="/recipes" className="text-sm font-semibold text-forest">鈫?All recipes</Link>
+      <article className="mt-6">
+        <div className="grid items-start gap-8 md:grid-cols-2">
+          <RecipeImage src={recipe.image} title={recipe.title} loading="eager" className="aspect-[4/3] w-full rounded-3xl object-cover shadow-card" />
+          <div className="min-w-0">
+            <p className="text-sm font-semibold text-forest">{recipe.cuisine}</p>
+            <h1 className="mt-3 font-display text-4xl sm:text-5xl">{recipe.title}</h1>
+            <p className="mt-4 text-lg text-ink/75">{recipe.description}</p>
+            <ul aria-label="Tags" className="mt-4 flex flex-wrap gap-2">
+              {recipe.tags.map(tag => <li key={tag} className="rounded-full bg-leaf px-3 py-1 text-sm text-forest-deep">{tag}</li>)}
+            </ul>
+            <dl className="mt-6 grid grid-cols-2 gap-4 rounded-3xl bg-paper p-5 shadow-card">
+              {[["Prep", recipe.prepMinutes + " min"], ["Cook", recipe.cookMinutes + " min"], ["Total", recipe.totalMinutes + " min"], ["Servings", recipe.servings]].map(([label, value]) => <div key={label}><dt className="text-sm text-muted">{label}</dt><dd className="mt-1 font-semibold">{value}</dd></div>)}
+            </dl>
+            {recipe.nutrition.status === "estimated" && <section className="mt-5 text-sm" aria-label="Estimated nutrition">
+              <p>{nutritionLabel(recipe)} per serving</p>
+              <p className="mt-1 text-xs text-muted">{recipe.nutrition.source}</p>
+            </section>}
+            <div className="mt-5"><SaveRecipe id={recipe.id}/></div>
+            <Link href={`/cook?recipeId=${encodeURIComponent(recipe.id)}`} className="mt-6 inline-flex rounded-full bg-forest px-6 py-3 font-semibold text-white">Cook by Voice</Link>
+          </div>
+        </div>
+        <div className="mt-10 grid items-start gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,2fr)]">
+          <section className="rounded-3xl bg-paper p-6 shadow-card" aria-labelledby="ingredients">
+            <h2 id="ingredients" className="font-display text-2xl">Ingredients</h2>
+            <p className="mt-2 text-sm text-muted">For {recipe.servings} servings</p>
+            <ul className="mt-4 list-disc space-y-3 pl-5">
+              {recipe.ingredients.map(ingredient => <li key={ingredient.name}>{describeIngredient(ingredient, recipe.servings, recipe.servings, "screen")}</li>)}
+            </ul>
+          </section>
+          <section aria-labelledby="instructions" className="min-w-0">
+            <h2 id="instructions" className="font-display text-3xl">Cooking instructions</h2>
+            <ol className="mt-5 space-y-5">
+              {recipe.steps.map((step, index) => <li key={step.id} className="rounded-3xl bg-paper p-6 shadow-card">
+                <h3 className="text-lg font-semibold">{index + 1}. {step.title}</h3>
+                {step.durationSeconds !== undefined && <p className="mt-1 text-sm text-muted">Suggested timer: {durationLabel(step.durationSeconds)}</p>}
+                <p className="mt-3 leading-relaxed">{step.instruction}</p>
+                {step.tip && <p className="mt-4 rounded-2xl bg-butter-tint p-3 text-sm"><strong>Tip: </strong>{step.tip}</p>}
+                {step.safety && <p className="mt-3 rounded-2xl bg-coral-tint p-3 text-sm"><strong>Safety: </strong>{step.safety}</p>}
+              </li>)}
+            </ol>
+          </section>
+        </div>
+      </article>
+    </main>
+  </>;
+}
+
+function durationLabel(seconds: number) {
+  const minutes = Math.floor(seconds / 60);
+  const remainder = seconds % 60;
+  return [minutes ? minutes + " min" : "", remainder ? remainder + " sec" : ""].filter(Boolean).join(" ");
+}
+import { notFound } from "next/navigation";
+import { CookScreen } from "@/components/cook/CookScreen";
+import { CREAMY_GARLIC_CHICKEN, getRecipe } from "@/lib/recipe";
+
+export default async function CookPage({ searchParams }: {
+  searchParams: Promise<{ recipeId?: string | string[] }>;
+}) {
+  const { recipeId } = await searchParams;
+  const recipe = recipeId === undefined ? CREAMY_GARLIC_CHICKEN
+    : typeof recipeId === "string" ? getRecipe(recipeId) : undefined;
+  if (!recipe) notFound();
+  return <CookScreen key={recipe.id} selectedRecipe={recipe} />;
+}
+import Link from "next/link";
+
+export function Nav({ onSoon, browsing = false }: { onSoon?: () => void; browsing?: boolean }) {
+  return (
+    <header className={`landing-nav relative z-40${browsing ? " browse-nav" : ""}`}>
+      <div className="landing-nav-inner">
+        <Link href="/" className="flex items-center gap-2.5">
+          <svg viewBox="0 0 32 40" className="h-10 w-8 text-coral" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" aria-hidden><path d="M8 35C-1 26 20 22 10 12M17 35C5 23 28 19 18 5M26 35C14 24 34 21 27 12" /></svg>
+          <span className="leading-none">
+            <span className="block font-display text-4xl text-ink">Sous</span>
+
+          </span>
+        </Link>
+        <nav className="landing-nav-links" aria-label="Primary">
+          <Link href="/">Home</Link>
+          <details className="relative">
+            <summary className="cursor-pointer rounded-full px-3 py-2">Tools</summary>
+            <div className="absolute left-0 top-full z-50 w-60 rounded-2xl bg-paper p-4 shadow-float">
+              <Link href="/tools#ingredients">What Can I Cook?</Link>
+              <Link href="/tools#upload">Upload Recipe</Link>
+              <Link href="/tools#history">History</Link>
+              <Link href="/recipes" aria-label="All recipes">All recipes</Link>
+              <Link href="/cook">Cook by Voice</Link>
+            </div>
+          </details>
+          <Link href="/collection/my-recipes" aria-label="Collection: My Recipes">Collection</Link>
+        </nav>
+        <div className="flex items-center gap-2">
+          <Link href="/recipes#recipe-search" aria-label="Search" className="rounded-full bg-paper px-3 py-2 shadow-card">Search</Link>
+          <details className="relative"><summary aria-label="Settings" className="cursor-pointer rounded-full bg-paper px-3 py-2 shadow-card">Settings</summary><p className="absolute right-0 z-50 w-52 rounded-2xl bg-paper p-4 shadow-float">Settings are coming soon.</p></details>
+        </div>
+      </div>
+    </header>
+  );
+}
+
+export function ChefHat({ className = "" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 32 32" className={className} fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+      <path d="M10 25h12v3H10z" />
+      <path d="M10 25v-6.5A6 6 0 0 1 7 8.3 6.5 6.5 0 0 1 16 5a6.5 6.5 0 0 1 9 3.3A6 6 0 0 1 22 18.5V25" />
+      <path d="M14 19v6M18 19v6" />
+    </svg>
+  );
+}
+"use client";
+
+import Link from "next/link";
+import { RecipeImage } from "@/components/RecipeImage";
+import { Nav } from "@/components/Nav";
+import { Toast, useToast } from "@/components/Toast";
+import { CREAMY_GARLIC_CHICKEN, POPULAR_RECIPES, nutritionLabel } from "@/lib/recipe";
+
+const FEATURED_ORDER = ["bibimbap", "chicken-curry", "creamy-garlic-chicken", "garlic-butter-shrimp", "tomato-beef-stew"];
+const CHIPS = ["All", "Chinese", "Italian", "Japanese", "Korean", "Indian", "Mexican"];
+
+export default function Home() {
+  const toast = useToast();
+  return (
+    <div className="landing-page">
+      <div className="landing-backdrop" aria-hidden="true" />
+      <Nav onSoon={toast.soon} />
+      <main className="landing-main">
+        <section className="landing-hero">
+          <div className="hero-copy">
+            <p className="hero-eyebrow">Your AI cooking companion</p>
+            <h1 className="font-display">Good Food <span>Starts with a Conversation</span></h1>
+            <p className="hero-description">Find recipes, get personalized suggestions, cook hands-free with an AI voice, and keep track of your nutrition, all in one place.</p>
+            <div className="hero-actions">
+              <Link href="/cook" className="hero-primary"><MicIcon className="h-5 w-5" /> Start cooking</Link>
+              <Link href="/recipes" className="hero-secondary">Browse recipes <span aria-hidden>鈫?/span></Link>
+            </div>
+          </div>
+        </section>
+        {/* Popular recipes */}
+        <section id="popular" className="recipe-showcase scroll-mt-24">
+          <div className="recipe-section-heading">
+            <h2 className="font-display text-3xl">Popular recipes</h2>
+            <div className="recipe-filters no-scrollbar flex gap-2 overflow-x-auto">
+              {CHIPS.map((c, i) => (
+                <Link href={i === 0 ? "/recipes" : `/recipes?cuisine=${encodeURIComponent(c)}`} key={c} className={`shrink-0 rounded-full px-3.5 py-1.5 text-sm transition ${i === 0 ? "bg-forest text-white" : "bg-paper text-ink/80 shadow-card hover:text-forest"}`}>
+                  {c}
+                </Link>
+              ))}
+            </div>
+          </div>
+          <div className="recipe-grid">
+            {[...POPULAR_RECIPES].sort((a, b) => FEATURED_ORDER.indexOf(a.id) - FEATURED_ORDER.indexOf(b.id)).map((r) => {
+              const live = r.id === CREAMY_GARLIC_CHICKEN.id;
+              const inner = (
+                <>
+                  <div className="relative">
+                    <RecipeImage src={r.image} title={r.title} className="block aspect-[1.85/1] w-full object-cover" loading="lazy" />
+                    {live ? (
+                      <span className="absolute left-3 top-3 rounded-full bg-coral px-2.5 py-1 text-xs font-semibold text-white">Cook by voice</span>
+                    ) : (
+                      <span className="absolute left-3 top-3 rounded-full bg-paper/90 px-2.5 py-1 text-xs font-medium text-muted">View recipe</span>
+                    )}
+                  </div>
+                  <div className="recipe-caption">
+                    <h3 className="font-semibold leading-snug">{r.title}</h3>
+                    <p className="mt-1.5 text-xs text-muted">
+                      {r.totalMinutes} min 路 {nutritionLabel(r)}
+                    </p>
+                    <p className="mt-2 inline-block rounded-full bg-cream px-2 py-0.5 text-xs text-ink/70">{r.cuisine}</p>
+                  </div>
+                </>
+              );
+              const cls = "group block overflow-hidden rounded-3xl bg-paper text-left shadow-card ring-1 ring-line/60 transition hover:-translate-y-0.5 hover:shadow-float";
+              return (
+                <Link key={r.id} href={`/recipes/${r.id}`} className={cls}>
+                  {inner}
+                </Link>
+              );
+            })}
+          </div>
+        </section>
+
+        <form className="landing-voice-search" action="/recipes">
+          <span className="voice-wave" aria-hidden>{[12,22,32,42,28,18].map((h,i)=><i key={i} style={{height:h}} />)}</span>
+          <input name="q" aria-label="Search recipes" placeholder="Search for a recipe, e.g. tomato beef stew, chicken curry鈥? />
+          <Link href="/cook" aria-label="Start cooking with voice" className="voice-search-mic"><MicIcon className="h-6 w-6" /></Link>
+          <button type="submit" className="sr-only">Search</button>
+        </form>
+        <div className="hero-notes"><span>Hey Chef, what&apos;s next?</span><span>Good food, brighter days</span></div>
+        {/* Dashboard row */}
+        <section className="mt-14 grid gap-4 lg:grid-cols-2">
+          <div id="nutrition" className="scroll-mt-24 rounded-3xl bg-paper p-6 shadow-card ring-1 ring-line/60">
+            <div className="flex items-center justify-between">
+              <h2 className="font-display text-2xl">Nutrition dashboard</h2>
+              <button onClick={toast.soon} className="shrink-0 whitespace-nowrap text-sm font-medium text-forest">
+                Edit goal 鈫?
+              </button>
+            </div>
+            <p className="mt-3 text-sm text-muted">Demo overview: these meals are sample data, not your activity.</p>
+            <div className="mt-5 flex flex-wrap items-center gap-6">
+              <Ring value={1250} max={2000} />
+              <ul className="space-y-3 text-sm">
+                <li>
+                  <span className="block text-muted">Consumed</span>
+                  <span className="font-semibold">1,250 kcal</span>
+                </li>
+                <li>
+                  <span className="block text-muted">Remaining</span>
+                  <span className="font-semibold">750 kcal</span>
+                </li>
+                <li>
+                  <span className="block text-muted">Daily goal</span>
+                  <span className="font-semibold">2,000 kcal</span>
+                </li>
+              </ul>
+            </div>
+            <h3 className="mt-6 text-sm font-semibold">Today&apos;s meals</h3>
+            <ul className="mt-2 divide-y divide-line text-sm">
+              {[
+                ["Breakfast", "Oatmeal with banana", 320, "馃ィ"],
+                ["Lunch", "Chicken salad", 520, "馃"],
+                ["Dinner (planned)", "Creamy garlic chicken", 610, "馃崡"],
+              ].map(([meal, dish, kcal, emoji]) => (
+                <li key={meal as string} className="flex items-center gap-3 py-2.5">
+                  <span className="text-xl">{emoji}</span>
+                  <span className="flex-1">
+                    <span className="block font-medium">{meal}</span>
+                    <span className="block text-xs text-muted">{dish}</span>
+                  </span>
+                  <span className="text-xs text-muted">{kcal} kcal</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="rounded-3xl bg-butter-tint p-6 shadow-card">
+            <h2 className="font-display text-2xl">Today&apos;s recommendation</h2>
+            <p className="mt-4 text-ink/75">Try a favorite from the SOUS kitchen.</p>
+            <Link href="/recipes/bibimbap" className="mt-6 block font-semibold text-forest">Bibimbap</Link>
+            <p className="mt-3 text-sm text-muted">Explore ingredients and instructions before you cook.</p>
+          </div>
+        </section>
+
+        <footer className="mt-16 flex flex-wrap items-center justify-between gap-2 border-t border-line pt-6 text-xs text-muted">
+          <span>Sous 路 hands-free cooking, powered by ALEBEX voice</span>
+          <span>Built for the hackathon</span>
+        </footer>
+      </main>
+      <Toast msg={toast.msg} />
+    </div>
+  );
+}
+
+function Ring({ value, max }: { value: number; max: number }) {
+  const r = 52;
+  const c = 2 * Math.PI * r;
+  const pct = Math.min(1, value / max);
+  return (
+    <svg viewBox="0 0 128 128" className="h-32 w-32 shrink-0" role="img" aria-label={`${value} of ${max} calories`}>
+      <circle cx="64" cy="64" r={r} fill="none" stroke="#e9e4d8" strokeWidth="12" />
+      <circle cx="64" cy="64" r={r} fill="none" stroke="#6b8f5e" strokeWidth="12" strokeLinecap="round" strokeDasharray={c} strokeDashoffset={c * (1 - pct)} transform="rotate(-90 64 64)" />
+      <text x="64" y="60" textAnchor="middle" className="fill-ink font-display" fontSize="22">
+        {value.toLocaleString()}
+      </text>
+      <text x="64" y="80" textAnchor="middle" className="fill-muted" fontSize="11">
+        / {max.toLocaleString()} kcal
+      </text>
+    </svg>
+  );
+}
+
+function MicIcon({ className = "" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+      <rect x="9" y="3" width="6" height="11" rx="3" />
+      <path d="M5 11a7 7 0 0 0 14 0M12 18v3M9 21h6" />
+    </svg>
+  );
+}
+# Build fixes 鈥?2026-11-08
+
+Read FOUNDATION-REPORT.md, the installed Next.js page and Turbopack documentation, and actual source before editing.
+
+## Scoped changes
+
+- `postcss.config.mjs`: resolve the installed Tailwind PostCSS entry with a config-relative URL converted to a native absolute path. Node could resolve the package normally, but Turbopack's generated PostCSS worker failed with `Cannot find module '@tailwindcss/postcss'`. Using `require.resolve` inside the bundled config instead produced a Turbopack module identifier and attempted to bundle native addons; the URL approach avoids both failures. The explicit entry targets the currently installed Tailwind 4.3.3 package layout and should be reviewed if that dependency changes.
+- `app/page.tsx`: keep `MicIcon` local; arbitrary named component exports are not valid App Router page exports. No imports of this export existed.
+- `app/recipes/page.tsx`: require the props object and promised `searchParams`, removing the default argument that made the whole page argument optional. Empty-query behavior is preserved.
+- `lib/recipe-pages.test.ts`: pass an explicit empty searchParams promise in the two direct page calls.
+
+## Actual verification
+
+- `npm test`: exit 1 before tests execute. Vite config loading fails in `externalize-deps`, with `Error: spawn EPERM` at `optimizeSafeRealPathSync`. No tests claimed as passed.
+- `npx tsc --noEmit`: exit 0.
+- `npm run build`: exit 1. Next.js 16.4.5 Turbopack reports `Compiled successfully`, then `Running TypeScript ...` and `spawn EPERM`. The original PostCSS resolution errors are gone. Production build completion remains unverified.
+- `npx next build --webpack`: exit 1 during compilation with `Error: spawn EPERM`, errno -4048, syscall `spawn`. This environment does not reach Webpack's page export/type validation; those fixes are source-reviewed and standalone TypeScript-checked, not claimed as a successful Webpack build.
+- `npx next typegen`: exit 0, route types generated successfully.
+- `git diff --check`: no whitespace errors reported.
+
+Remaining blocker: subprocess execution restrictions prevent the Vitest runner and production build workers from completing. Rerun tests and both build modes in an environment permitting those workers.
+
+No dependency installation or upgrades, Git mutations, secrets edits, remote Alebex configuration changes, or provider calls were performed. Existing unrelated workspace changes were preserved. Recipe expansion is outside this build-only assignment; recipe data was not edited.
+# Requirements recheck 鈥?2026-11-08
+
+Read FOUNDATION-REPORT.md, prior repair reports, overnight execution status and gate stdout/stderr under `.overnight-runs/20261108-022104`, and actual recipe, listing/detail, collection, search, saved, call-start and voice source before editing.
+
+## Repair
+
+`components/SavedRecipes.tsx` now clears a stale storage error after a successful refresh. Added `lib/saved-recipes-ui.test.ts`, exercising the actual component effect and click handler with mocked React hooks and browser storage/events: initial loading, save, external changes, read failure/recovery, write failure/retry and listener cleanup. These mocks do not verify browser hydration or real cross-tab delivery.
+
+## Current verification
+
+- `npm test`: exit 0, 10 files, 544 tests passed after repair.
+- `npx tsc --noEmit --incremental false`: exit 0 after repair.
+- `node scripts/catalog-gate.cjs`: passed using actual `listRecipes()`: exactly 50 unique complete recipes, original 20 records and ordering unchanged; assets, linked ingredients, timing, safety and nutrition metadata checked. No further catalog expansion needed.
+- `node scripts/foundation-check.cjs`: passed for all 50 records, search, combined filters, sorting, saved serialization and mocked payloads.
+- `node scripts/recipe-integration-check.cjs`: passed all 50 listing/detail/cook selections, combined search, rendered favorites collection, mocked call-start IDs, default selection and invalid-ID handling.
+- `node scripts/voice-context-check.cjs`: passed all 50 selected-recipe knowledge payloads and 211 steps, navigation, tips/safety, ingredient references, timers, servings, substitutions, finished state and recipe/session mismatch rejection. Largest tested context 2,661/4,000 characters. No provider calls.
+
+## Remaining blockers
+
+- `npm run build`: exit 1, `Compiled successfully in 1196ms`, then `Running TypeScript ...` and `spawn EPERM`. Production build is NOT verified. Overnight gate-2 stdout contains a historical completed build, but it does not establish success in this run.
+- Diagnosis: a minimal `spawnSync(process.execPath, ['--version'])` returns `status: null`, code `EPERM`, syscall `spawnSync C:\Program Files\nodejs\node.exe`. Installed Next.js type-check code uses its TypeScript CLI path; prior documented worker/API alternatives also failed. No type-check bypass, dependency change or repeated build trial was introduced.
+- `npm run dev -- --hostname 127.0.0.1 --port 3100`: `Error: spawn EPERM`, errno -4048, from `next/dist/cli/next-dev.js:393:45`. HTTP route behavior remains unverified in this run.
+- Direct Playwright Chromium launch: `Executable doesn't exist at C:\Users\L\AppData\Local\ms-playwright\chromium_headless_shell-1248\chrome-headless-shell-win64\chrome-headless-shell.exe`. No download/install attempted. Real browser persistence, cross-tab behavior, mobile layout and keyboard verification remain pending.
+- Remote agent prompt/configuration and live audio/interruption/tool synchronization remain unverified. Remote edits and paid calls were prohibited and were not attempted.
+
+Every assigned independent requirement was checked despite the build failure. No Git mutations, secret or environment-file changes, new dependencies, authentication, databases or paid calls.
+0
+// Exercise actual pages and call-start without workers, network, or credentials.
+const fs = require('node:fs');
+const path = require('node:path');
+const babel = require('next/dist/compiled/babel/core');
+const assert = require('node:assert/strict');
+const React = require('react');
+const { renderToStaticMarkup } = require('react-dom/server');
+const root = path.resolve(__dirname, '..');
+const cache = new Map();
+let sessionIds = [];
+let tokenRequests = 0;
+function load(file) {
+  const full = path.resolve(root, file);
+  if (cache.has(full)) return cache.get(full).exports;
+  const module = { exports: {} }; cache.set(full, module);
+  const code = babel.transformSync(fs.readFileSync(full, 'utf8'), {
+    filename: full, babelrc: false, configFile: false,
+    presets: [[require.resolve('next/babel'), { 'preset-env': { modules: 'commonjs' }, 'preset-react': { runtime: 'automatic' } }]],
+  }).code;
+  function localRequire(name) {
+    if (name === 'react' && full.endsWith(path.join('components', 'voice', 'useVoiceCall.ts'))) return {
+      useCallback: fn => fn, useEffect: () => {}, useRef: value => ({ current: value }), useState: value => [value, () => {}],
+    };
+    if (name === 'react' && full.endsWith(path.join('components', 'SavedRecipes.tsx'))) return {
+      ...React, useEffect: () => {},
+      useState: value => [Array.isArray(value) ? load('lib/recipe.ts').listRecipes().map(r => r.id) : value === false ? true : value, () => {}],
+    };
+    if (name.startsWith('@babel/runtime/')) return require('next/dist/compiled/' + name);
+    if (name === 'next/navigation') return { notFound() { throw new Error('404'); } };
+    if (name === '@/components/cook/CookScreen') return { CookScreen: () => null };
+    if (name === '@/lib/store') return { createSession: async id => {
+      sessionIds.push(id); return load('lib/session.ts').newSession(id, 'offline', 'offline');
+    } };
+    if (name === '@/lib/alebex') return {
+      requireEnv: () => 'offline-agent', WS_URL: 'wss://example.test',
+      resolvePublicBase: async () => ({ base: 'https://example.test', source: 'offline' }),
+      mintWsToken: async () => { tokenRequests++; return 'offline-token'; },
+    };
+    if (!name.startsWith('.') && !name.startsWith('@/')) return require(name);
+    const base = name.startsWith('@/') ? path.resolve(root, name.slice(2)) : path.resolve(path.dirname(full), name);
+    const target = ['.ts', '.tsx'].map(ext => base + ext).find(fs.existsSync);
+    if (!target) throw new Error('Unresolved local module: ' + name);
+    return load(target);
+  }
+  new Function('require', 'module', 'exports', code)(localRequire, module, module.exports);
+  return module.exports;
+}
+async function main() {
+  const { listRecipes, CREAMY_GARLIC_CHICKEN } = load('lib/recipe.ts');
+  const { searchRecipes } = load('lib/recipe-search.ts');
+  const { parseSaved, toggleSaved } = load('lib/saved-recipes.ts');
+  const detail = load('app/recipes/[id]/page.tsx');
+  const cook = load('app/cook/page.tsx').default;
+  const listing = load('app/recipes/page.tsx').default;
+  const { POST } = load('app/api/call/start/route.ts');
+  const { useVoiceCall } = load('components/voice/useVoiceCall.ts');
+  const recipes = listRecipes(); assert.equal(recipes.length, 50);
+  assert.deepEqual(detail.generateStaticParams(), recipes.map(({ id }) => ({ id })));
+  const html = renderToStaticMarkup(await listing({ searchParams: Promise.resolve({}) }));
+  let saved = [];
+  for (const recipe of recipes) {
+    assert.ok(html.includes(`href="/recipes/${recipe.id}"`));
+    const page = renderToStaticMarkup(await detail.default({ params: Promise.resolve({ id: recipe.id }) }));
+    assert.ok(page.includes(`href="/cook?recipeId=${recipe.id}"`));
+    assert.equal((await cook({ searchParams: Promise.resolve({ recipeId: recipe.id }) })).props.selectedRecipe.id, recipe.id);
+    assert.ok(searchRecipes(recipes, { q: recipe.title.toUpperCase(), cuisine: recipe.cuisine, tag: recipe.tags[0], maxMinutes: String(recipe.totalMinutes) }).includes(recipe));
+    saved = toggleSaved(saved, recipe.id);
+    const response = await POST(new Request('https://example.test/api/call/start', { method: 'POST', body: JSON.stringify({ recipeId: recipe.id }) }));
+    assert.equal(response.status, 200);
+    const body = await response.json();
+    assert.equal(body.recipe.id, recipe.id); assert.equal(body.state.recipeId, recipe.id);
+    assert.ok(body.startCall.context.includes(recipe.title));
+    assert.deepEqual(JSON.parse(body.startCall.knowledgeBase), recipe);
+    // Stop the real hook immediately after its mocked request, before audio/socket setup.
+    const originalFetch = global.fetch;
+    const requests = [];
+    try {
+      global.fetch = async (...args) => {
+        requests.push(args);
+        return { ok: false, json: async () => ({ error: 'Offline stop before microphone/socket' }) };
+      };
+      await useVoiceCall().start(recipe.id);
+      assert.equal(requests.length, 1);
+      assert.equal(requests[0][0], '/api/call/start');
+      assert.deepEqual(JSON.parse(requests[0][1].body), { recipeId: recipe.id });
+    } finally { global.fetch = originalFetch; }
+  }
+  assert.deepEqual(parseSaved(JSON.stringify(saved)), recipes.map(r => r.id));
+  const collection = renderToStaticMarkup(React.createElement(load('components/SavedRecipes.tsx').SavedRecipes));
+  for (const recipe of recipes) {
+    assert.ok(collection.includes(`href="/recipes/${recipe.id}"`));
+    assert.ok(collection.includes(`href="/cook?recipeId=${recipe.id}"`));
+  }
+  for (const recipe of recipes) assert.deepEqual(toggleSaved(saved, recipe.id), saved.filter(id => id !== recipe.id));
+  assert.deepEqual(sessionIds, recipes.map(r => r.id)); assert.equal(tokenRequests, 50);
+  assert.equal((await cook({ searchParams: Promise.resolve({}) })).props.selectedRecipe.id, CREAMY_GARLIC_CHICKEN.id);
+  for (const id of ['', 'missing', '__proto__', 'toString']) {
+    await assert.rejects(detail.default({ params: Promise.resolve({ id }) }), /404/);
+    await assert.rejects(cook({ searchParams: Promise.resolve({ recipeId: id }) }), /404/);
+    assert.equal((await POST(new Request('https://example.test/api/call/start', { method: 'POST', body: JSON.stringify({ recipeId: id }) }))).status, 404);
+
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command 'npm run dev -- --hostname 127.0.0.1 --port 3187' in C:\Users\L\Desktop\sous\Sous_HackCamp
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "node --input-type=module -e \"import { chromium } from 'playwright'; try { const b = await chromium.launch({headless:true,channel:'msedge'}); console.log('Browser launched'); await b.close(); } catch(e) { console.error(e.message); process.exitCode=1; }\"" in C:\Users\L\Desktop\sous\Sous_HackCamp
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command 'git status --short; git diff --stat; git diff --check; Get-Content .overnight-runs/20261108-022104/*attempt-1.stdout.txt; Get-Content lib/recipes/README.md' in C:\Users\L\Desktop\sous\Sous_HackCamp
+ exited 1 in 516ms:
+browserType.launch: spawn EPERM
+Call log:
+[2m  - <launching> C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,BlockOriginHeaderModificationOnRedirect,Translate,AutoDeElevate,OptimizationHints,NetworkTimeServiceQuerying,AimEnabled,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --disable-updater-scheduler --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --user-data-dir=C:\Users\L\AppData\Local\Temp\playwright_chromiumdev_profile-hoaLzc --remote-debugging-pipe --no-startup-window[22m
+
+
+ succeeded in 754ms:
+ M app/api/call/start/route.ts
+ M app/globals.css
+ M app/page.tsx
+ M app/recipes/[id]/page.tsx
+ M app/recipes/page.tsx
+ M components/Nav.tsx
+ M lib/agent-config.test.ts
+ M lib/agent-config.ts
+ M lib/call-start-recipe.test.ts
+ M lib/cook-screen.test.ts
+ M lib/recipe-pages.test.ts
+ M lib/recipe.test.ts
+ M lib/recipe.ts
+ M lib/recipes/catalog.ts
+ M next-env.d.ts
+ M next.config.ts
+ M package-lock.json
+ M package.json
+ M postcss.config.mjs
+ M tsconfig.tsbuildinfo
+ M vitest.config.ts
+?? .overnight-runs/
+?? BUILD-FIX-REPORT.md
+?? CATALOG-EXPANSION-REPORT.md
+?? FOUNDATION-REGRESSION-REPORT.md
+?? FOUNDATION-REPORT.md
+?? RECIPE-INTEGRATION-REPORT.md
+?? REQUIREMENTS-RECHECK-REPORT.md
+?? REQUIREMENTS-REPAIR-REPORT.md
+?? VOICE-CONTEXT-AUDIT.md
+?? app/collection/
+?? app/recipes/loading.tsx
+?? app/tools/
+?? components/SavedRecipes.tsx
+?? lib/discovery.test.ts
+?? lib/recipe-search.ts
+?? lib/saved-recipes-ui.test.ts
+?? lib/saved-recipes.ts
+?? overnight-task.md
+?? run-sous-continuous.ps1
+?? scripts/catalog-gate.cjs
+?? scripts/foundation-check.cjs
+?? scripts/original-recipes.json
+?? scripts/recipe-integration-check.cjs
+?? scripts/safe-browser-check.mjs
+?? scripts/test-continuous-runner.ps1
+?? scripts/voice-context-check.cjs
+warning: in the working copy of 'lib/cook-screen.test.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'lib/recipes/catalog.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'package.json', LF will be replaced by CRLF the next time Git touches it
+ app/api/call/start/route.ts   |    9 +-
+ app/globals.css               |   10 +
+ app/page.tsx                  |  157 +-
+ app/recipes/[id]/page.tsx     |    2 +
+ app/recipes/page.tsx          |   25 +-
+ components/Nav.tsx            |   55 +-
+ lib/agent-config.test.ts      |   28 +-
+ lib/agent-config.ts           |   45 +-
+ lib/call-start-recipe.test.ts |   14 +
+ lib/cook-screen.test.ts       |    3 +-
+ lib/recipe-pages.test.ts      |   17 +-
+ lib/recipe.test.ts            |    8 +-
+ lib/recipe.ts                 |    3 +-
+ lib/recipes/catalog.ts        | 3276 +++++++++++++++++++++++++++++++++++++++++
+ next-env.d.ts                 |    4 +-
+ next.config.ts                |    3 +
+ package-lock.json             |   94 +-
+ package.json                  |    9 +-
+ postcss.config.mjs            |    5 +-
+ tsconfig.tsbuildinfo          |    2 +-
+ vitest.config.ts              |    6 +-
+ 21 files changed, 3483 insertions(+), 292 deletions(-)
+warning: in the working copy of 'lib/cook-screen.test.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'lib/recipes/catalog.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'package.json', LF will be replaced by CRLF the next time Git touches it
+Applied scoped fixes for Tailwind PostCSS resolution, the invalid `MicIcon` page export, and recipes page optional props. Updated direct page test calls.
+
+Actual results:
+
+- `npx tsc --noEmit`: passed.
+- `npm test`: blocked before execution by `spawn EPERM`.
+- `npm run build`: compilation passed; TypeScript worker blocked by `spawn EPERM`.
+- Webpack build: blocked during compilation by `spawn EPERM`.
+
+Full build success remains unverified. Details: [BUILD-FIX-REPORT.md](/C:/Users/L/Desktop/sous/Sous_HackCamp/BUILD-FIX-REPORT.md).
+All 50 recipes are connected through browsing, detail pages, search/filter logic, favorites, Collection, and cooking selection. Added direct voice-cooking links in Collection.
+
+Verified all 50 IDs, mocked call-start selection, default `/cook`, and invalid-ID handling. Catalog checks, offline integration checks, and TypeScript pass.
+
+Vitest, production build completion, and browser verification remain blocked by `spawn EPERM`. Exact evidence is recorded in [RECIPE-INTEGRATION-REPORT.md](RECIPE-INTEGRATION-REPORT.md).
+
+No provider calls, secrets changes, or Git mutations.
+Audited all 50 recipes and 201 steps. Removed the chicken-only knowledge base, added recipe/session ID validation, and corrected duration rounding.
+
+Offline mocked checks and TypeScript pass. Vitest and the full build remain blocked by `spawn EPERM`. Unsafe wording remains in the unchanged agent prompt because the required prompting guide was inaccessible. Live voice was not verified.
+
+Details and remaining limitations: [VOICE-CONTEXT-AUDIT.md](VOICE-CONTEXT-AUDIT.md).
+Fixed recipe completeness issues across the 30 added recipes and repaired the test configuration. The catalog remains at 50 unique recipes; the original 20, homepage and navigation are preserved.
+
+- TypeScript: passed.
+- `npm test`: 542 tests passed across 9 files.
+- Catalog, foundation, recipe integration and voice-context checks: passed.
+- Production build: compiled, then failed with `spawn EPERM`.
+- Local server: blocked by `spawn EPERM`; browser behavior remains unverified.
+- No paid calls, secret changes, remote configuration changes or Git mutations.
+
+Full findings and remaining limitations: [FOUNDATION-REGRESSION-REPORT.md](FOUNDATION-REGRESSION-REPORT.md).
+Repaired the local voice prompt and added regression coverage.
+
+Verified:
+- Exactly 50 complete, unique recipes via actual `listRecipes()`; original 20 unchanged.
+- Listing/detail/search/filter/saved integrations and mocked voice checks pass.
+- All 543 tests and TypeScript checks pass.
+
+Still blocked: production build and dev server hit `spawn EPERM`; Playwright Chromium is missing. Browser and live voice behavior remain unverified.
+
+Evidence: [repair report](REQUIREMENTS-REPAIR-REPORT.md). No Git mutations, secret changes, remote edits, or paid calls.
+Fixed stale saved-recipes storage errors and added mocked event/recovery coverage.
+
+Verified:
+- Exactly 50 complete, unique recipes; original 20 unchanged.
+- Listing/detail/search/filter/saved and recipe voice-context checks pass.
+- 544 tests and TypeScript pass.
+
+Still blocked: build/dev subprocesses fail with `EPERM`; Playwright鈥檚 browser is missing. Browser and live voice behavior remain unverified.
+
+Details: [verification report](REQUIREMENTS-RECHECK-REPORT.md). No Git mutations, secret changes, or paid calls.
+# Recipe data system
+
+Import `Recipe`, `getRecipe(id)`, `listRecipes()` and `POPULAR_RECIPES` from `lib/recipe.ts`. This is the shared contract used by cooking sessions and the UI; step array order is cooking order. IDs are permanent references, not titles. Quantities are for base `servings`; an empty unit means a counted item, and `null` means an unmeasured garnish or seasoning with an explanatory note.
+
+`catalog.ts` holds nineteen additional recipes; the original Creamy Garlic Chicken export remains in `recipe.ts`. Authoring helpers return ordinary JSON objects. Preparation and cooking minutes are planning estimates; `totalMinutes` is their sum. Step timers are suggestions, not proof of doneness. Rice listed already cooked must be prepared separately; suggested accompaniments are not included in quantities or nutrition.
+
+The five existing photographs retain their paths and attribution in `public/recipes/SOURCES.md`. Other recipes explicitly use a shared local placeholder (`imageKind: "placeholder"`); replace with licensed dish photographs later.
+
+Nutrition is unavailable for new recipes. The chicken's legacy 610 kcal is preserved as an unverified estimate, not a calculated claim. `calories` remains a compatibility field but can now be null; it must match `nutrition`. UI consumers should use `nutritionLabel()` or inspect the status.
+
+Safety references: [FoodSafety.gov minimum cooking temperatures](https://www.foodsafety.gov/food-safety-charts/safe-minimum-internal-temperatures) and [leftover handling](https://www.foodsafety.gov/blog/10-smart-tips-keep-your-restaurant-leftovers-safe). Recipe formulations are SOUS editorial content and have not been kitchen-tested. Chicken's color-based doneness wording was corrected to thermometer guidance without changing step IDs or timers.
+
+## Future database migration
+
+The existing `public.recipes` schema has a text primary key and JSONB `data`. A future seed can upsert `{ id: recipe.id, title: recipe.title, description: recipe.description, data: recipe }` from `listRecipes()`. Preserve recipe and step IDs; retain array order in JSONB or add positions if normalizing ingredients and steps. Moving to asynchronous database reads will require deliberate updates to callers at that phase. No database writes or schema changes are performed here.
+
+Cooking sessions have a foreign key to `public.recipes`: seed the additional recipe rows before enabling them in deployed Voice Cooking. This phase preserves the default cooking selection and the other homepage cards' existing interactions. The My Recipes list remains a demonstration whose metadata comes from the catalog. Search, saving, uploads, authentication and routing are deferred.
+
+Run `npm test` and `npx tsc --noEmit --incremental false` for data integrity, local image checks and compatibility with the existing voice context limit.
+
+ exited 1 in 1082ms:
+
+> sous@0.1.0 dev
+> next dev --hostname 127.0.0.1 --port 3187
+
+⚠ You are using a non-standard "NODE_ENV" value in your environment. This creates inconsistencies in the project and is strongly advised against. Read more: https://nextjs.org/docs/messages/non-standard-node-env
+Error: spawn EPERM
+    at ChildProcess.spawn (node:internal/child_process:441:11)
+    at spawn (node:child_process:796:9)
+    at fork (node:child_process:174:10)
+    at C:\Users\L\Desktop\sous\Sous_HackCamp\node_modules\next\dist\cli\next-dev.js:393:45
+    at new Promise (<anonymous>)
+    at startServer (C:\Users\L\Desktop\sous\Sous_HackCamp\node_modules\next\dist\cli\next-dev.js:360:16)
+    at runDevServer (C:\Users\L\Desktop\sous\Sous_HackCamp\node_modules\next\dist\cli\next-dev.js:533:23)
+    at Module.nextDev (C:\Users\L\Desktop\sous\Sous_HackCamp\node_modules\next\dist\cli\next-dev.js:543:11) {
+  errno: -4048,
+  code: 'EPERM',
+  syscall: 'spawn'
+}
+
+codex
+This run’s production build compiles, then fails with `spawn EPERM` during the TypeScript phase. The dev server and installed Edge browser launch are also blocked by `EPERM`, so browser behavior remains unverified. I’ll record those limits alongside the passing local checks and historical build evidence.
+exec
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command 'Get-Content lib/store.ts | Select-Object -First 85; Get-Content .overnight-runs/20261108-022104/final-gate-build.command.ps1; Get-Content lib/recipe-pages.test.ts | Select-Object -First 45' in C:\Users\L\Desktop\sous\Sous_HackCamp
+ succeeded in 312ms:
+import { randomUUID, randomBytes } from "node:crypto";
+import { newSession, type SessionState } from "./session";
+import { supabaseAdmin } from "./supabase";
+
+// In-memory first (fast, reliable for a single dev server), mirrored to Supabase so a
+// multi-instance deployment can read a session another instance wrote.
+const g = globalThis as unknown as { __sousSessions?: Map<string, SessionState> };
+const memory = (g.__sousSessions ??= new Map<string, SessionState>());
+
+export async function createSession(recipeId: string): Promise<SessionState> {
+  const state = newSession(recipeId, randomUUID(), randomBytes(16).toString("hex"));
+  memory.set(state.id, state);
+  await mirror(state);
+  return state;
+}
+
+export async function getSession(id: string): Promise<SessionState | null> {
+  const hit = memory.get(id);
+  if (hit) return hit;
+  const sb = supabaseAdmin();
+  if (!sb) return null;
+  const { data, error } = await sb.from("cooking_sessions").select("state").eq("id", id).maybeSingle();
+  if (error) console.warn("[sous] supabase read failed", error.message);
+  const state = (data?.state as SessionState | undefined) ?? null;
+  if (state) memory.set(id, state);
+  return state;
+}
+
+export async function saveSession(state: SessionState): Promise<void> {
+  memory.set(state.id, state);
+  await mirror(state);
+}
+
+async function mirror(state: SessionState) {
+  const sb = supabaseAdmin();
+  if (!sb) return;
+  const { error } = await sb.from("cooking_sessions").upsert({
+    id: state.id,
+    recipe_id: state.recipeId,
+    state,
+    status: state.status,
+    step_index: state.stepIndex,
+    call_id: state.callId,
+    updated_at: new Date(state.updatedAt).toISOString(),
+  });
+  if (error) console.warn("[sous] supabase write failed", error.message);
+}
+$ErrorActionPreference = 'Continue'
+$PSNativeCommandUseErrorActionPreference = $false
+Set-Location -LiteralPath 'C:\Users\L\Desktop\sous\Sous_HackCamp'
+& npm.cmd run build
+$result = if ($null -eq $LASTEXITCODE) { 125 } else { $LASTEXITCODE }
+Set-Content -LiteralPath 'C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022104\final-gate-build.exit.txt' -Value $result
+exit $result
+import { createElement } from "react";
+import { renderToStaticMarkup } from "react-dom/server";
+import { describe, expect, it, vi } from "vitest";
+import * as recipeData from "./recipe";
+import { CREAMY_GARLIC_CHICKEN, describeIngredient, listRecipes } from "./recipe";
+import Home from "../app/page";
+import { Nav } from "../components/Nav";
+import RecipesPage from "../app/recipes/page";
+import RecipePage, { generateStaticParams } from "../app/recipes/[id]/page";
+import CookPage from "../app/cook/page";
+
+vi.mock("next/navigation", () => ({ notFound: () => { throw new Error("NEXT_HTTP_ERROR_FALLBACK;404"); } }));
+vi.mock("@/components/cook/CookScreen", () => ({ CookScreen: () => null }));
+const recipes = listRecipes();
+const htmlText = (text: string) => renderToStaticMarkup(createElement("span", null, text)).replace(/^<span>|<\/span>$/g, "");
+
+describe("recipe browsing and selection", () => {
+  it("lists every recipe with the correct detail link and existing image", async () => {
+    const html = renderToStaticMarkup(await RecipesPage({ searchParams: Promise.resolve({}) }));
+    expect((html.match(/href="\/recipes\//g) ?? []).length).toBe(50);
+    for (const recipe of recipes) {
+      expect(html).toContain('href="/recipes/' + recipe.id + '"');
+      expect(html).toContain('src="' + recipe.image + '"');
+      expect(html).toContain(htmlText(recipe.title));
+    }
+    expect(generateStaticParams()).toEqual(recipes.map(({ id }) => ({ id })));
+  });
+  it("connects homepage cards and navigation while retaining direct cooking actions", () => {
+    const home = renderToStaticMarkup(createElement(Home));
+    for (const id of ["creamy-garlic-chicken", "tomato-beef-stew", "chicken-curry", "bibimbap", "garlic-butter-shrimp"]) {
+      expect(home).toContain('href="/recipes/' + id + '"');
+    }
+    expect(home).toContain('href="/cook"');
+    expect(home).not.toContain("Quick actions");
+    expect(home).not.toContain("Tap to wake");
+    expect(home).toContain("Today&#x27;s recommendation");
+    const nav = renderToStaticMarkup(createElement(Nav));
+    expect(nav).toContain('href="/recipes"');
+    expect(nav).toContain('aria-label="All recipes"');
+    expect(nav).toContain('href="/cook"');
+    expect(nav).toContain('href="/tools#ingredients"');
+    expect(nav).toContain('href="/collection/my-recipes"');
+  });
+  it("shows a meaningful empty collection state", async () => {
+    const spy = vi.spyOn(recipeData, "listRecipes").mockReturnValue([]);
+
+apply patch
+patch: completed
+C:\Users\L\Desktop\sous\Sous_HackCamp\SOUS-OVERNIGHT-REPORT.md
+diff --git a/SOUS-OVERNIGHT-REPORT.md b/SOUS-OVERNIGHT-REPORT.md
+new file mode 100644
+index 0000000000000000000000000000000000000000..5056d3caa68548441498652be74387ff1be8a49a
+--- /dev/null
++++ b/SOUS-OVERNIGHT-REPORT.md
+@@ -0,0 +1,88 @@
++# SOUS overnight independent report
++
++Reviewed 2026-11-08 against actual source and `.overnight-runs/20261108-022104`, including stage prompts, stage summaries, `status.txt`, `parent-verification.txt`, and final gate command/stdout/stderr/exit files. Read `FOUNDATION-REPORT.md` before review. This assignment adds this report; it does not implement additional product changes. Verification can refresh generated build/type artifacts.
++
++## Outcome
++
++The catalog and local integrations are implemented and pass offline verification. **Actual `listRecipes()` returns exactly 50 unique recipes.** The original 20 records and their order match `scripts/original-recipes.json`; 30 additions use the local placeholder and unavailable nutrition rather than invented values. Automated completeness is verified; recipes have not been kitchen-tested and this is not an independent culinary or safety certification.
++
++The overnight final production build completed according to its detailed output and exit code. This review's production build fails after compilation because a subprocess cannot spawn. Browser behavior and live voice remain unverified. Neither gate success nor offline tests establishes those requirements.
++
++## Implemented and inspected
++
++| Area | Source evidence and verification boundary |
++| --- | --- |
++| Build repairs | `postcss.config.mjs` resolves the installed PostCSS entry relative to the config. `MicIcon` is local to `app/page.tsx`; recipe listing props use promised App Router search parameters. Original package-resolution/page-export failures are absent from the current build output. |
++| Catalog | Shared `lib/recipe.ts` and `lib/recipes/catalog.ts`; all 50 have lookup, assets, timing, servings, ingredients and ordered instructions. Catalog validation checks linked ingredient names, safety notes and unavailable nutrition on additions. |
++| Listing and detail | `/recipes` uses shared search and catalog data; detail static parameters enumerate all 50 IDs, with save and selected-ID cooking links. Invalid detail and cooking selections invoke `notFound()`. `/cook` defaults to Creamy Garlic Chicken. Offline rendering verifies these branches, not HTTP status delivery. |
++| Search and filters | Case-insensitive title/cuisine/ingredient/tag search; combined cuisine/tag/time filters, alphabetical/time sorting, reset and empty states. GET forms preserve URL queries. Pure logic and rendered integrations pass. |
++| Saved and Collection | Local storage parser drops invalid IDs, duplicates and malformed data. Components support saving/removing, storage error recovery, same-tab events and storage events. Collection includes detail and selected-recipe cooking links. Actual browser persistence and cross-tab delivery are pending. Uploaded and Recently Cooked explicitly remain coming soon. |
++| Home/navigation | Home/Tools/Collection, search and native Tools/Settings disclosures remain in source. Home nutrition is labeled demo data; recommendation is editorial. Tools placeholders are not completed upload/history features. Visual balance, keyboard use and mobile overflow have not been browser-verified. |
++| Voice | Call-start rejects malformed input/unknown IDs before provider contact. `buildStartCall` serializes the selected recipe as knowledge for every selection; context rejects recipe/session mismatches. Local prompt includes uncertainty, allergen and thermometer guidance, plus truthful handling of failed tools. No remote prompt update is implied. |
++
++## Checks independently rerun
++
++| Command | Actual result |
++| --- | --- |
++| `npm test` | Exit 0; **10 files, 544 tests passed**. Nonfatal module-type warning in native Vitest config loading. |
++| `npx tsc --noEmit` | Exit 0, no diagnostics. Standalone checking does not establish successful Next.js build worker execution. |
++| `node scripts/catalog-gate.cjs` | Pass: 50 unique complete recipes, original 20 unchanged, assets/safety/ingredients/timing/nutrition checks. |
++| `node scripts/foundation-check.cjs` | Pass: 50 records, assets, search, combined filters, sorting, saved serialization and mocked call payloads. |
++| `node scripts/recipe-integration-check.cjs` | Pass: all 50 listing/detail/cook selections, combined search, full favorites collection, mocked call-start IDs, default cook and invalid-ID branches. React/browser/provider dependencies are mocked; no HTTP/browser claim. |
++| `node scripts/voice-context-check.cjs` | Pass: all 50 payloads and **211 steps**, ingredient references, navigation, tips/safety, timers, servings at 1/base/12, substitutions, completion and mismatch rejection. Maximum tested context **2,661/4,000 characters**. No provider calls. |
++| `git diff --check` | Exit 0; only line-ending conversion warnings, no whitespace errors. Read-only Git inspection only. |
++| `npm run build` | Exit 1: `Compiled successfully in 801ms`, then `Running TypeScript ...`, then **`spawn EPERM`**. Current production build did not complete. |
++| `npm run dev -- --hostname 127.0.0.1 --port 3187` | Exit 1: **`spawn EPERM`**, errno -4048, syscall `spawn`, at `next/dist/cli/next-dev.js:393:45`. Also warns about nonstandard inherited `NODE_ENV`; no environment files changed. No local server became available for route checks. |
++| Direct installed Edge launch through Playwright | Exit 1: **`browserType.launch: spawn EPERM`**, targeting `C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe`. An installed browser alternative was attempted; no browser download or dependency installation. |
++
++Every independent verification above was attempted despite build failure. No additional recipe expansion is needed to reach the exact target. No failing assertions were observed in the completed offline checks; blocked runtime checks are not passes.
++
++## Overnight evidence versus current results
++
++- `final-gate-build.exit.txt` contains `0`; its stdout reports successful compilation, completed TypeScript, page-data collection, **59/59 static pages**, final optimization and the route table with three named recipe paths plus 47 more. `status.txt` records completion of that build at `2026-11-08T02:55:36.4651433-07:00`, exit 0. This is stronger historical evidence than a bare gate boolean, but does not replace the current failed build attempt or establish interactive correctness.
++- Final gate test stdout reports 544 passing tests in 10 files; catalog and foundation outputs report 50 passing records. These agree with independent reruns.
++- Earlier child reports record build/test subprocess restrictions; the parent verification explicitly describes successful checks outside the restricted child sandbox. Preserve that environment distinction rather than declaring either record false.
++- The prompting guide is present in `alebex-prompting-guide.md`, and parent verification records its retrieval. Earlier documentation-access blockers and earlier 20-recipe/201-step/542-test statements are historical. Current inspected prompt wording and current check counts supersede those statements.
++- `status.txt` ends with `START 99-final-report-attempt-1`; that attempt's stdout/stderr are empty and no exit file was present during inspection. Do not infer a completed final reporting stage from the runner starting it. This report supplies the requested independent assessment.
++
++## Changed files and attribution
++
++This review intentionally creates **`SOUS-OVERNIGHT-REPORT.md` only**. Existing changes below were already present at inspection; a working-tree diff cannot attribute them all to one overnight stage. No packages were installed or upgraded during this review.
++
++Tracked modified files observed with read-only `git status --short`:
++
++```text
++app/api/call/start/route.ts
++app/globals.css
++app/page.tsx
++app/recipes/[id]/page.tsx
++app/recipes/page.tsx
++components/Nav.tsx
++lib/agent-config.test.ts
++lib/agent-config.ts
++lib/call-start-recipe.test.ts
++lib/cook-screen.test.ts
++lib/recipe-pages.test.ts
++lib/recipe.test.ts
++lib/recipe.ts
++lib/recipes/catalog.ts
++next-env.d.ts
++next.config.ts
++package-lock.json
++package.json
++postcss.config.mjs
++tsconfig.tsbuildinfo
++vitest.config.ts
++```
++
++Existing untracked feature/check files include `app/collection/my-recipes/page.tsx`, `app/tools/page.tsx`, `app/recipes/loading.tsx`, `components/SavedRecipes.tsx`, `lib/recipe-search.ts`, `lib/saved-recipes.ts`, `lib/discovery.test.ts`, `lib/saved-recipes-ui.test.ts`, and the catalog/foundation/integration/voice/browser check scripts and original-recipe snapshot. Existing reports, `.overnight-runs/`, `overnight-task.md`, `run-sous-continuous.ps1` and `scripts/test-continuous-runner.ps1` are also untracked workflow artifacts. Generated `next-env.d.ts` and `tsconfig.tsbuildinfo` are not product feature changes. Package/lockfile differences predate this review and were left intact.
++
++## Remaining blocked or unverified work
++
++1. Complete a fresh production build in an environment allowing subprocesses. Do not bypass type checking to label this run successful.
++2. Run real HTTP checks for all 50 detail routes, invalid detail/cook 404s and default cook after a server starts. Offline `notFound()` mocks are insufficient proof of HTTP behavior.
++3. Verify browser hydration, save/reload, same-tab and real cross-tab updates, storage-denied behavior, combined form navigation, keyboard disclosures, image fallback and mobile overflow. `scripts/safe-browser-check.mjs` supplies some route/persistence/mobile checks, but could not run end to end here; its browser checks also do not cover every keyboard/search requirement.
++4. Live voice remains unverified: deployed agent behavior, selected-recipe discussion, substitutions, timers, serving changes, step synchronization, microphone/audio playback, interruption, held-mark echo and clear-audio behavior. Local tests mock providers and do not verify WebSocket/audio operation. Remote Alebex edits and paid calls were prohibited and were not attempted.
++5. Existing in-memory/session and optional Supabase deployment behavior is not a new database implementation or deployment verification. Catalog success does not prove deployed database rows or live session/provider connectivity. `lib/recipes/README.md` contains historical 20-recipe/deferred-feature wording and should not be treated as the current feature inventory.
++
++No Git mutations, secret or `.env` edits, remote Alebex changes, paid provider calls, authentication, new databases, dependency installation or unrelated deletion were performed during this review.
+
+codex
+Created [SOUS-OVERNIGHT-REPORT.md](SOUS-OVERNIGHT-REPORT.md) with independent source and log findings.
+
+- Verified exactly **50 recipes**, original 20 unchanged.
+- **544 tests**, TypeScript and offline integration/voice checks passed.
+- Historical overnight build passed; current build, dev server and Edge launch hit `spawn EPERM`.
+- Browser interactions and live voice remain unverified.
+
+No Git mutations, secret changes, remote Alebex changes or paid calls.
+tokens used
+62,094

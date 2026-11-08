@@ -15,9 +15,9 @@ const recipes = listRecipes();
 const htmlText = (text: string) => renderToStaticMarkup(createElement("span", null, text)).replace(/^<span>|<\/span>$/g, "");
 
 describe("recipe browsing and selection", () => {
-  it("lists every recipe with the correct detail link and existing image", () => {
-    const html = renderToStaticMarkup(createElement(RecipesPage));
-    expect((html.match(/href="\/recipes\//g) ?? []).length).toBe(20);
+  it("lists every recipe with the correct detail link and existing image", async () => {
+    const html = renderToStaticMarkup(await RecipesPage({ searchParams: Promise.resolve({}) }));
+    expect((html.match(/href="\/recipes\//g) ?? []).length).toBe(50);
     for (const recipe of recipes) {
       expect(html).toContain('href="/recipes/' + recipe.id + '"');
       expect(html).toContain('src="' + recipe.image + '"');
@@ -31,17 +31,24 @@ describe("recipe browsing and selection", () => {
       expect(home).toContain('href="/recipes/' + id + '"');
     }
     expect(home).toContain('href="/cook"');
-    expect(home).toContain("My recipes");
+    expect(home).not.toContain("Quick actions");
+    expect(home).not.toContain("Tap to wake");
+    expect(home).toContain("Today&#x27;s recommendation");
     const nav = renderToStaticMarkup(createElement(Nav));
-    expect(nav).toContain('href="/recipes"');
-    expect(nav).toContain('aria-label="All recipes"');
-    expect(nav).toContain('href="/cook"');
-    expect(nav).toContain('href="/#tools"');
+    expect(home).toMatch(/href="\/recipes"[^>]*>Show All/);
+    const primary = nav.match(/<nav[\s\S]*?<\/nav>/)![0];
+    expect(primary).toMatch(/>Home<\/a>[\s\S]*>My Recipes<\/a>[\s\S]*>Tools<\/summary>/);
+    expect(primary).not.toContain('>Collection<');
+    expect(primary).not.toContain('href="/recipes"');
+    expect((primary.match(/<summary/g) ?? []).length).toBe(1);
+    expect((primary.match(/href="\/tools#/g) ?? []).length).toBe(3);
+    expect(nav).toContain('href="/tools#ingredients"');
+    expect(nav).toContain('href="/collection/my-recipes"');
   });
-  it("shows a meaningful empty collection state", () => {
+  it("shows a meaningful empty collection state", async () => {
     const spy = vi.spyOn(recipeData, "listRecipes").mockReturnValue([]);
     try {
-      expect(renderToStaticMarkup(createElement(RecipesPage))).toContain("No recipes yet");
+      expect(renderToStaticMarkup(await RecipesPage({ searchParams: Promise.resolve({}) }))).toContain("No recipes yet");
     } finally { spy.mockRestore(); }
   });
 

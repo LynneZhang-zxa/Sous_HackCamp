@@ -1,0 +1,10 @@
+Fixed stale saved-recipes storage errors and added mocked event/recovery coverage.
+
+Verified:
+- Exactly 50 complete, unique recipes; original 20 unchanged.
+- Listing/detail/search/filter/saved and recipe voice-context checks pass.
+- 544 tests and TypeScript pass.
+
+Still blocked: build/dev subprocesses fail with `EPERM`; Playwright’s browser is missing. Browser and live voice behavior remain unverified.
+
+Details: [verification report](REQUIREMENTS-RECHECK-REPORT.md). No Git mutations, secret changes, or paid calls.

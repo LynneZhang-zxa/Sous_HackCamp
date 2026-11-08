@@ -1,12 +1,6 @@
 import Link from "next/link";
 
 export function Nav({ onSoon, browsing = false }: { onSoon?: () => void; browsing?: boolean }) {
-  const links = [
-    { label: "Recipes", href: "/recipes", active: true },
-    { label: "Cook", href: "/cook" },
-    { label: "Tools", href: "/#tools" },
-
-  ];
   return (
     <header className={`landing-nav relative z-40${browsing ? " browse-nav" : ""}`}>
       <div className="landing-nav-inner">
@@ -18,46 +12,23 @@ export function Nav({ onSoon, browsing = false }: { onSoon?: () => void; browsin
           </span>
         </Link>
         <nav className="landing-nav-links" aria-label="Primary">
-          {links.map((l) => (
-            <a
-              key={l.label}
-              href={l.href}
-              aria-label={l.label === "Recipes" ? "All recipes" : undefined}
-              className={`rounded-full px-4 py-2 text-sm font-medium transition ${l.active ? "bg-coral-tint text-coral" : "text-ink/80 hover:bg-leaf/60"}`}
-            >
-              <svg viewBox="0 0 24 24" className="h-6 w-6 shrink-0" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-                {l.label === "Recipes" ? <path d="m3 10 9-7 9 7M5 9v12h5v-7h4v7h5V9" /> : l.label === "Cook" ? <><rect x="9" y="2" width="6" height="13" rx="3" /><path d="M5 10v2a7 7 0 0 0 14 0v-2M12 19v3M9 22h6" /></> : <path d="M3 3h7v7H3zM14 3h7v7h-7zM3 14h7v7H3zM14 14h7v7h-7z" />}
-              </svg>{l.label}
-            </a>
-          ))}
+          <Link href="/">Home</Link>
+          <Link href="/collection/my-recipes">My Recipes</Link>
+          <details className="relative">
+            <summary className="cursor-pointer rounded-full px-3 py-2">Tools</summary>
+            <div className="absolute left-0 top-full z-50 w-60 rounded-2xl bg-paper p-4 shadow-float">
+              <Link href="/tools#ingredients">What Can I Cook?</Link>
+              <Link href="/tools#upload">Upload Recipe</Link>
+              <Link href="/tools#history">History</Link>
+            </div>
+          </details>
         </nav>
         <div className="flex items-center gap-2">
-          <IconButton label="Search" onClick={onSoon}>
-            <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-              <circle cx="11" cy="11" r="7" />
-              <path d="m20 20-3.5-3.5" />
-            </svg>
-          </IconButton>
-          <IconButton label="Notifications" onClick={onSoon}>
-            <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M6 9a6 6 0 1 1 12 0c0 5 2 6 2 6H4s2-1 2-6" />
-              <path d="M10 20a2 2 0 0 0 4 0" />
-            </svg>
-          </IconButton>
-          <button onClick={onSoon} aria-label="Account" className="flex h-9 w-9 items-center justify-center rounded-full bg-[#795439] text-sm font-semibold text-white">
-            E
-          </button>
+          <Link href="/recipes#recipe-search" aria-label="Search" className="rounded-full bg-paper px-3 py-2 shadow-card">Search</Link>
+          <details className="relative"><summary aria-label="Settings" className="cursor-pointer rounded-full bg-paper px-3 py-2 shadow-card">Settings</summary><p className="absolute right-0 z-50 w-52 rounded-2xl bg-paper p-4 shadow-float">Settings are coming soon.</p></details>
         </div>
       </div>
     </header>
-  );
-}
-
-function IconButton({ children, label, onClick }: { children: React.ReactNode; label: string; onClick?: () => void }) {
-  return (
-    <button onClick={onClick} aria-label={label} className="flex h-9 w-9 items-center justify-center rounded-full bg-paper text-ink/80 shadow-card transition hover:text-forest">
-      {children}
-    </button>
   );
 }
 

@@ -8,43 +8,15 @@ export const FIRST_MESSAGE =
 
 export const AGENT_PROMPT = `You're Sous, a friendly cook talking with a home cook on a live voice call while they cook. Only the words meant for the cook are heard, so never narrate what you're doing or mention tools.
 
-The recipe and where they are in it are under About this caller, and every tool result tells you the current step. Cooking know-how, fixes and substitutions are in your knowledge base.
+The selected recipe and where they are in it are under About this caller, and every tool result tells you the current step. Your knowledge base contains only that selected recipe, including its ingredients, tips and safety notes. Use those facts for this call; never carry over ingredients or advice from another recipe. If a fact or substitution is not covered, say you don't know rather than inventing it. Never promise a dish or substitute is allergen-free; ask the cook to check ingredient labels and cross-contact risks.
 
 Talk like a friend standing next to them at the stove: warm, relaxed, one or two short sentences, one idea at a time. Give the action, not the structure. Never say step numbers or things like step two of nine unless they ask which step they're on. Don't repeat their words back, and don't ask if they need anything else.
 
 When they ask what to do first, what's next, or say they're done, call next_step and tell them what to do in your own words. When they ask a question, answer it from the recipe and leave the step where it is. When they ask you to repeat, say it again, simpler. When they're missing an ingredient, suggest the best swap from your knowledge base, and call note_substitution once they go with it. Only start a timer when they ask, with manage_timer. If they just say okay, thanks or got it, reply with a word at most.
 
-If something's burning, smoking or splitting, give the single most urgent action first. A grease fire means heat off and a lid on, never water. Chicken is done at one hundred sixty-five degrees with no pink inside. Never make the cook feel bad about a mistake.
+If something's burning, smoking or splitting, prioritize safety over continuing the recipe. Follow the selected recipe's safety notes and thermometer checks; never use color, clear juices or cooking time alone to confirm safe doneness. Never make the cook feel bad about a mistake.
 
-Say numbers, times and temperatures in words. No exclamation marks, no lists. Use contractions. If a tool fails, just tell them the step from what you already know.`;
-
-export const KNOWLEDGE_BASE = `Burning garlic. Garlic burns in seconds once butter is hot and turns bitter. If it is golden, pull the pan off the heat and move straight on to adding liquid. If it is dark brown or black, wipe the pan out with a paper towel, add fresh butter and garlic over medium heat, and try again. Keep the garlic moving the whole time.
-
-Oil smoking or pan too hot. Wisps of smoke from oil mean the pan is too hot. Lift the pan off the burner for ten seconds, turn the heat down a notch, and carry on once the smoke stops. Olive oil smokes sooner than vegetable oil.
-
-Grease fire. Turn off the burner. Cover the pan with a metal lid or a baking sheet to smother it. Never pour water on burning oil, and never carry a burning pan. If it is not out in a few seconds, leave the kitchen and call emergency services.
-
-Sauce split or grainy. A cream sauce splits when it boils hard or when cold cream hits a very hot pan. Take it off the heat, add a splash of warm broth or cream, and whisk steadily until it comes back together. Parmesan goes grainy if the sauce is boiling when it is added, so add cheese over low heat.
-
-Sauce too thin or too thick. Too thin: simmer gently a few more minutes, or add a little more parmesan. Too thick: stir in a splash of broth, cream or pasta water until it flows.
-
-Chicken doneness. Chicken is done at one hundred sixty-five degrees Fahrenheit in the thickest part, with juices running clear and no pink inside. Thin cutlets take about four minutes per side over medium-high heat. If the outside is dark but the inside is pink, turn the heat down and cover the pan for a few minutes. If the chicken is dry, slice it thin and let it sit in the sauce.
-
-Too salty. Add a splash of cream or broth, a squeeze of lemon, or serve over plain pasta or rice. Taste before adding any more salt.
-
-Substitutes for heavy cream. Half-and-half with a tablespoon of butter works best. Whole milk whisked with a tablespoon of flour or cornstarch also works, simmer a little longer. Evaporated milk or full-fat coconut cream work too, coconut will change the flavor. For dairy-free, use coconut cream or a cashew cream.
-
-Substitutes for parmesan. Pecorino or grana padano, same amount. Any hard aged cheese works. For dairy-free, two tablespoons of nutritional yeast and a pinch of salt.
-
-Substitutes for chicken broth. Vegetable broth, or half a cup of water with a quarter teaspoon of bouillon, or a splash of dry white wine with water.
-
-Substitutes for butter. Use the same amount of olive oil. For garlic, an eighth of a teaspoon of garlic powder stands in for one clove, added with the liquid rather than fried.
-
-Substitutes for Italian seasoning. Half a teaspoon of dried oregano and half a teaspoon of dried thyme or basil. Spinach can be swapped for kale, stems removed, or skipped entirely. Chicken thighs can replace breasts, cook them two to three minutes longer per side.
-
-Allergies and diets. Dairy-free: coconut cream, olive oil instead of butter, nutritional yeast instead of parmesan. Gluten-free: the recipe has no gluten, serve with rice or gluten-free pasta. The recipe contains no nuts, eggs, soy or shellfish.
-
-Food safety. Wash hands, board and knife after handling raw chicken. Use a clean plate for cooked chicken. Leftovers go in the fridge within two hours and keep for three to four days. Reheat gently with a splash of broth so the sauce does not split.`;
+Say numbers, times and temperatures in words. No exclamation marks, no lists. Use contractions. If a tool fails, say the requested change wasn't confirmed. You may repeat known recipe guidance, but never claim a step, timer, serving count or substitution changed without a successful tool result.`;
 
 export const TOOL_NAMES = [
   "next_step",
@@ -143,6 +115,7 @@ function weekdayDate(d = new Date()): string {
 
 /** Facts about this cook and this call. Must stay under 4,000 characters. */
 export function buildContext(recipe: Recipe, state: SessionState, now = new Date()): string {
+  if (state.recipeId !== recipe.id) throw new Error("Recipe/session mismatch");
   const total = recipe.steps.length;
   const idx = Math.min(state.stepIndex, total - 1);
   const step = recipe.steps[idx];
@@ -162,7 +135,7 @@ export function buildContext(recipe: Recipe, state: SessionState, now = new Date
       return `${i + 1}. ${s.title}. ${s.instruction}${mins}`;
     })
     .join("\n");
-  const text = `Today is ${weekdayDate(now)}. The cook is making ${recipe.title} for ${numWord(state.servings)} ${state.servings === 1 ? "person" : "people"}. ${where} ${subs}
+  const text = `Recipe ID: ${recipe.id}. Today is ${weekdayDate(now)}. The cook is making ${recipe.title} for ${numWord(state.servings)} ${state.servings === 1 ? "person" : "people"}. ${where} ${subs}
 
 Ingredients for ${numWord(state.servings)} servings: ${ingredients}.
 
@@ -174,8 +147,9 @@ ${steps}`;
 
 function spokenMinutes(seconds: number): string {
   if (seconds < 60) return `${numWord(seconds)} seconds`;
-  const m = Math.round(seconds / 60);
-  return `${numWord(m)} minute${m === 1 ? "" : "s"}`;
+  const m = Math.floor(seconds / 60);
+  const remainder = seconds % 60;
+  return `${numWord(m)} minute${m === 1 ? "" : "s"}${remainder ? ` and ${numWord(remainder)} seconds` : ""}`;
 }
 
 export function buildStartCall(agentId: string, recipe: Recipe, state: SessionState, publicBase: string | null) {
@@ -184,6 +158,7 @@ export function buildStartCall(agentId: string, recipe: Recipe, state: SessionSt
     agent: { id: agentId },
     ...(publicBase ? { customTools: buildTools(publicBase, state) } : {}),
     context: buildContext(recipe, state),
-    knowledgeBase: KNOWLEDGE_BASE,
+    // One source of recipe facts for every selection, including tips and safety.
+    knowledgeBase: JSON.stringify(recipe),
   };
 }

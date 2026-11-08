@@ -1,0 +1,10 @@
+Repaired the local voice prompt and added regression coverage.
+
+Verified:
+- Exactly 50 complete, unique recipes via actual `listRecipes()`; original 20 unchanged.
+- Listing/detail/search/filter/saved integrations and mocked voice checks pass.
+- All 543 tests and TypeScript checks pass.
+
+Still blocked: production build and dev server hit `spawn EPERM`; Playwright Chromium is missing. Browser and live voice behavior remain unverified.
+
+Evidence: [repair report](REQUIREMENTS-REPAIR-REPORT.md). No Git mutations, secret changes, remote edits, or paid calls.

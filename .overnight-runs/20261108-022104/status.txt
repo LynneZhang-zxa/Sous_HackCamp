@@ -1,0 +1,115 @@
+2026-11-08T02:21:04.2315183-07:00 START 01-build-attempt-1 timeout=1200s
+2026-11-08T02:21:34.3530531-07:00 RUNNING 01-build-attempt-1 pid=26704 stdout=0 stderr=48578
+2026-11-08T02:22:04.3640989-07:00 RUNNING 01-build-attempt-1 pid=26704 stdout=0 stderr=78348
+2026-11-08T02:22:34.3644383-07:00 RUNNING 01-build-attempt-1 pid=26704 stdout=0 stderr=92609
+2026-11-08T02:22:56.9734870-07:00 END 01-build-attempt-1 exit=0 stdout=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022104\01-build-attempt-1.stdout.txt stderr=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022104\01-build-attempt-1.stderr.txt
+2026-11-08T02:22:56.9775135-07:00 START 02-recipes-attempt-1 timeout=1200s
+2026-11-08T02:23:27.1128896-07:00 RUNNING 02-recipes-attempt-1 pid=27976 stdout=0 stderr=73222
+2026-11-08T02:23:57.1301034-07:00 RUNNING 02-recipes-attempt-1 pid=27976 stdout=0 stderr=73969
+2026-11-08T02:24:27.1468916-07:00 RUNNING 02-recipes-attempt-1 pid=27976 stdout=0 stderr=73969
+2026-11-08T02:24:57.1759288-07:00 RUNNING 02-recipes-attempt-1 pid=27976 stdout=0 stderr=73969
+2026-11-08T02:28:21.1860211-07:00 RUNNING 02-recipes-attempt-1 pid=27976 stdout=0 stderr=73969
+2026-11-08T02:28:51.1897011-07:00 RUNNING 02-recipes-attempt-1 pid=27976 stdout=0 stderr=73969
+2026-11-08T02:29:21.2041821-07:00 RUNNING 02-recipes-attempt-1 pid=27976 stdout=0 stderr=73969
+2026-11-08T02:29:51.2202365-07:00 RUNNING 02-recipes-attempt-1 pid=27976 stdout=0 stderr=73969
+2026-11-08T02:30:21.2426773-07:00 RUNNING 02-recipes-attempt-1 pid=27976 stdout=0 stderr=73969
+2026-11-08T02:30:51.2472117-07:00 RUNNING 02-recipes-attempt-1 pid=27976 stdout=0 stderr=73969
+2026-11-08T02:31:21.2475290-07:00 RUNNING 02-recipes-attempt-1 pid=27976 stdout=0 stderr=73969
+2026-11-08T02:31:51.2609359-07:00 RUNNING 02-recipes-attempt-1 pid=27976 stdout=0 stderr=73969
+2026-11-08T02:32:21.2650512-07:00 RUNNING 02-recipes-attempt-1 pid=27976 stdout=0 stderr=73969
+2026-11-08T02:32:51.2683252-07:00 RUNNING 02-recipes-attempt-1 pid=27976 stdout=0 stderr=73969
+2026-11-08T02:33:21.2930381-07:00 RUNNING 02-recipes-attempt-1 pid=27976 stdout=0 stderr=73969
+2026-11-08T02:33:51.3154455-07:00 RUNNING 02-recipes-attempt-1 pid=27976 stdout=0 stderr=73969
+2026-11-08T02:34:21.3354192-07:00 RUNNING 02-recipes-attempt-1 pid=27976 stdout=0 stderr=73969
+2026-11-08T02:34:51.3499910-07:00 RUNNING 02-recipes-attempt-1 pid=27976 stdout=0 stderr=73969
+2026-11-08T02:35:21.3649021-07:00 RUNNING 02-recipes-attempt-1 pid=27976 stdout=0 stderr=73969
+PARENT: recipe attempt 1 stalled over ten minutes without output or file writes; terminating this stage only to use its bounded retry with incremental batch instructions.
+2026-11-08T02:35:32.6924683-07:00 END 02-recipes-attempt-1 exit=125 stdout=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022104\02-recipes-attempt-1.stdout.txt stderr=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022104\02-recipes-attempt-1.stderr.txt
+2026-11-08T02:35:32.6924683-07:00 FAILED 02-recipes attempt=1 exit=125; remaining independent stages will continue
+2026-11-08T02:35:32.7083303-07:00 START 02-recipes-attempt-2 timeout=1200s
+2026-11-08T02:36:02.8272538-07:00 RUNNING 02-recipes-attempt-2 pid=9772 stdout=0 stderr=70393
+2026-11-08T02:36:32.8430603-07:00 RUNNING 02-recipes-attempt-2 pid=9772 stdout=0 stderr=74850
+2026-11-08T02:37:02.8623593-07:00 RUNNING 02-recipes-attempt-2 pid=9772 stdout=0 stderr=74850
+2026-11-08T02:37:32.8820231-07:00 RUNNING 02-recipes-attempt-2 pid=9772 stdout=0 stderr=80982
+2026-11-08T02:38:02.8826236-07:00 RUNNING 02-recipes-attempt-2 pid=9772 stdout=0 stderr=88039
+2026-11-08T02:38:32.8949533-07:00 RUNNING 02-recipes-attempt-2 pid=9772 stdout=0 stderr=94898
+2026-11-08T02:39:02.9119187-07:00 RUNNING 02-recipes-attempt-2 pid=9772 stdout=0 stderr=102050
+2026-11-08T02:39:32.9225447-07:00 RUNNING 02-recipes-attempt-2 pid=9772 stdout=0 stderr=102238
+2026-11-08T02:40:02.9443573-07:00 RUNNING 02-recipes-attempt-2 pid=9772 stdout=0 stderr=110274
+2026-11-08T02:40:32.9504912-07:00 RUNNING 02-recipes-attempt-2 pid=9772 stdout=0 stderr=126162
+2026-11-08T02:41:02.9597108-07:00 RUNNING 02-recipes-attempt-2 pid=9772 stdout=0 stderr=134916
+2026-11-08T02:41:32.9691412-07:00 RUNNING 02-recipes-attempt-2 pid=9772 stdout=0 stderr=141148
+2026-11-08T02:41:34.9007815-07:00 END 02-recipes-attempt-2 exit=0 stdout=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022104\02-recipes-attempt-2.stdout.txt stderr=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022104\02-recipes-attempt-2.stderr.txt
+2026-11-08T02:41:34.9137724-07:00 START 03-integration-attempt-1 timeout=1200s
+2026-11-08T02:42:05.0121066-07:00 RUNNING 03-integration-attempt-1 pid=5260 stdout=0 stderr=61090
+2026-11-08T02:42:35.0215189-07:00 RUNNING 03-integration-attempt-1 pid=5260 stdout=0 stderr=75446
+2026-11-08T02:43:05.0411088-07:00 RUNNING 03-integration-attempt-1 pid=5260 stdout=0 stderr=83423
+2026-11-08T02:43:35.0476137-07:00 RUNNING 03-integration-attempt-1 pid=5260 stdout=0 stderr=114247
+2026-11-08T02:43:52.5167767-07:00 END 03-integration-attempt-1 exit=0 stdout=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022104\03-integration-attempt-1.stdout.txt stderr=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022104\03-integration-attempt-1.stderr.txt
+2026-11-08T02:43:52.5167767-07:00 START 04-voice-attempt-1 timeout=1200s
+2026-11-08T02:44:22.6268836-07:00 RUNNING 04-voice-attempt-1 pid=1288 stdout=0 stderr=82056
+2026-11-08T02:44:52.6351498-07:00 RUNNING 04-voice-attempt-1 pid=1288 stdout=0 stderr=106918
+2026-11-08T02:45:22.6464481-07:00 RUNNING 04-voice-attempt-1 pid=1288 stdout=0 stderr=157169
+2026-11-08T02:45:52.6695622-07:00 RUNNING 04-voice-attempt-1 pid=1288 stdout=0 stderr=175639
+2026-11-08T02:46:22.6887250-07:00 RUNNING 04-voice-attempt-1 pid=1288 stdout=0 stderr=190265
+2026-11-08T02:46:52.6987847-07:00 RUNNING 04-voice-attempt-1 pid=1288 stdout=0 stderr=190265
+2026-11-08T02:47:03.8771026-07:00 END 04-voice-attempt-1 exit=0 stdout=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022104\04-voice-attempt-1.stdout.txt stderr=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022104\04-voice-attempt-1.stderr.txt
+2026-11-08T02:47:03.8853054-07:00 START 05-quality-attempt-1 timeout=1200s
+2026-11-08T02:47:33.9633536-07:00 RUNNING 05-quality-attempt-1 pid=18308 stdout=0 stderr=82129
+2026-11-08T02:48:03.9801810-07:00 RUNNING 05-quality-attempt-1 pid=18308 stdout=0 stderr=125358
+2026-11-08T02:48:33.9904403-07:00 RUNNING 05-quality-attempt-1 pid=18308 stdout=0 stderr=205441
+2026-11-08T02:49:03.9973463-07:00 RUNNING 05-quality-attempt-1 pid=18308 stdout=0 stderr=229529
+2026-11-08T02:49:34.0129587-07:00 RUNNING 05-quality-attempt-1 pid=18308 stdout=0 stderr=229541
+2026-11-08T02:50:04.0290766-07:00 RUNNING 05-quality-attempt-1 pid=18308 stdout=0 stderr=267324
+2026-11-08T02:50:34.0441000-07:00 RUNNING 05-quality-attempt-1 pid=18308 stdout=0 stderr=272392
+2026-11-08T02:50:52.2202328-07:00 END 05-quality-attempt-1 exit=0 stdout=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022104\05-quality-attempt-1.stdout.txt stderr=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022104\05-quality-attempt-1.stderr.txt
+2026-11-08T02:50:52.2338075-07:00 START gate-1-typescript timeout=300s
+2026-11-08T02:50:54.6286931-07:00 END gate-1-typescript exit=0 stdout=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022104\gate-1-typescript.stdout.txt stderr=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022104\gate-1-typescript.stderr.txt
+2026-11-08T02:50:54.6338087-07:00 START gate-1-tests timeout=300s
+2026-11-08T02:50:56.9939621-07:00 END gate-1-tests exit=0 stdout=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022104\gate-1-tests.stdout.txt stderr=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022104\gate-1-tests.stderr.txt
+2026-11-08T02:50:57.0000950-07:00 START gate-1-build timeout=600s
+2026-11-08T02:51:04.0039783-07:00 END gate-1-build exit=0 stdout=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022104\gate-1-build.stdout.txt stderr=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022104\gate-1-build.stderr.txt
+2026-11-08T02:51:04.0111638-07:00 START gate-1-foundation timeout=180s
+2026-11-08T02:51:04.6626836-07:00 END gate-1-foundation exit=0 stdout=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022104\gate-1-foundation.stdout.txt stderr=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022104\gate-1-foundation.stderr.txt
+2026-11-08T02:51:04.6690472-07:00 START gate-1-catalog timeout=180s
+2026-11-08T02:51:05.3815319-07:00 END gate-1-catalog exit=0 stdout=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022104\gate-1-catalog.stdout.txt stderr=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022104\gate-1-catalog.stderr.txt
+2026-11-08T02:51:05.3835151-07:00 GATES gate-1 exits=0,0,0,0,0 (zero means verified command only)
+2026-11-08T02:51:05.3935055-07:00 START 06-repair-1-attempt-1 timeout=1200s
+2026-11-08T02:51:35.5024188-07:00 RUNNING 06-repair-1-attempt-1 pid=28468 stdout=0 stderr=139604
+2026-11-08T02:52:05.5098739-07:00 RUNNING 06-repair-1-attempt-1 pid=28468 stdout=0 stderr=172074
+2026-11-08T02:52:35.5247654-07:00 RUNNING 06-repair-1-attempt-1 pid=28468 stdout=0 stderr=192494
+2026-11-08T02:53:05.5279877-07:00 RUNNING 06-repair-1-attempt-1 pid=28468 stdout=0 stderr=204430
+2026-11-08T02:53:10.6005307-07:00 END 06-repair-1-attempt-1 exit=0 stdout=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022104\06-repair-1-attempt-1.stdout.txt stderr=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022104\06-repair-1-attempt-1.stderr.txt
+2026-11-08T02:53:10.6065299-07:00 START gate-2-typescript timeout=300s
+2026-11-08T02:53:13.5195870-07:00 END gate-2-typescript exit=0 stdout=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022104\gate-2-typescript.stdout.txt stderr=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022104\gate-2-typescript.stderr.txt
+2026-11-08T02:53:13.5257557-07:00 START gate-2-tests timeout=300s
+2026-11-08T02:53:16.9875347-07:00 END gate-2-tests exit=0 stdout=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022104\gate-2-tests.stdout.txt stderr=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022104\gate-2-tests.stderr.txt
+2026-11-08T02:53:16.9945219-07:00 START gate-2-build timeout=600s
+2026-11-08T02:53:35.0283436-07:00 END gate-2-build exit=0 stdout=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022104\gate-2-build.stdout.txt stderr=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022104\gate-2-build.stderr.txt
+2026-11-08T02:53:35.0436334-07:00 START gate-2-foundation timeout=180s
+2026-11-08T02:53:36.2940747-07:00 END gate-2-foundation exit=0 stdout=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022104\gate-2-foundation.stdout.txt stderr=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022104\gate-2-foundation.stderr.txt
+2026-11-08T02:53:36.3061151-07:00 START gate-2-catalog timeout=180s
+2026-11-08T02:53:37.1907084-07:00 END gate-2-catalog exit=0 stdout=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022104\gate-2-catalog.stdout.txt stderr=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022104\gate-2-catalog.stderr.txt
+2026-11-08T02:53:37.1946907-07:00 GATES gate-2 exits=0,0,0,0,0 (zero means verified command only)
+2026-11-08T02:53:37.2105409-07:00 START 06-repair-2-attempt-1 timeout=1200s
+2026-11-08T02:54:07.3598896-07:00 RUNNING 06-repair-2-attempt-1 pid=15800 stdout=0 stderr=88527
+2026-11-08T02:54:37.3789797-07:00 RUNNING 06-repair-2-attempt-1 pid=15800 stdout=0 stderr=103335
+2026-11-08T02:55:07.3958037-07:00 RUNNING 06-repair-2-attempt-1 pid=15800 stdout=0 stderr=109161
+2026-11-08T02:55:24.9592660-07:00 END 06-repair-2-attempt-1 exit=0 stdout=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022104\06-repair-2-attempt-1.stdout.txt stderr=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022104\06-repair-2-attempt-1.stderr.txt
+2026-11-08T02:55:24.9652551-07:00 START final-gate-typescript timeout=300s
+2026-11-08T02:55:27.1055499-07:00 END final-gate-typescript exit=0 stdout=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022104\final-gate-typescript.stdout.txt stderr=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022104\final-gate-typescript.stderr.txt
+2026-11-08T02:55:27.1164831-07:00 START final-gate-tests timeout=300s
+2026-11-08T02:55:29.7862007-07:00 END final-gate-tests exit=0 stdout=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022104\final-gate-tests.stdout.txt stderr=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022104\final-gate-tests.stderr.txt
+2026-11-08T02:55:29.7948318-07:00 START final-gate-build timeout=600s
+2026-11-08T02:55:36.4651433-07:00 END final-gate-build exit=0 stdout=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022104\final-gate-build.stdout.txt stderr=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022104\final-gate-build.stderr.txt
+2026-11-08T02:55:36.4700886-07:00 START final-gate-foundation timeout=180s
+2026-11-08T02:55:37.0850832-07:00 END final-gate-foundation exit=0 stdout=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022104\final-gate-foundation.stdout.txt stderr=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022104\final-gate-foundation.stderr.txt
+2026-11-08T02:55:37.0901290-07:00 START final-gate-catalog timeout=180s
+2026-11-08T02:55:37.6409607-07:00 END final-gate-catalog exit=0 stdout=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022104\final-gate-catalog.stdout.txt stderr=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022104\final-gate-catalog.stderr.txt
+2026-11-08T02:55:37.6409607-07:00 GATES final-gate exits=0,0,0,0,0 (zero means verified command only)
+2026-11-08T02:55:37.6581992-07:00 START 99-final-report-attempt-1 timeout=1200s
+2026-11-08T02:56:07.7608166-07:00 RUNNING 99-final-report-attempt-1 pid=29084 stdout=0 stderr=91931
+2026-11-08T02:56:37.7744320-07:00 RUNNING 99-final-report-attempt-1 pid=29084 stdout=0 stderr=139695
+2026-11-08T02:57:07.7882230-07:00 RUNNING 99-final-report-attempt-1 pid=29084 stdout=0 stderr=139695
+2026-11-08T02:57:30.3640209-07:00 END 99-final-report-attempt-1 exit=0 stdout=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022104\99-final-report-attempt-1.stdout.txt stderr=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022104\99-final-report-attempt-1.stderr.txt
+2026-11-08T02:57:30.3690201-07:00 FINISHED gatesPassed=True report=C:\Users\L\Desktop\sous\Sous_HackCamp\.overnight-runs\20261108-022104\WORKFLOW-REPORT.md
