@@ -109,7 +109,7 @@ function Intro({ recipe, status, error, onStart }: { recipe: typeof CREAMY_GARLI
       </div>
 
       <aside className="lg:sticky lg:top-20 lg:self-start">
-        <div className="rounded-3xl bg-paper p-6 text-center shadow-card ring-1 ring-line/60">
+        <div className="sous-voice-card rounded-3xl bg-paper p-6 text-center shadow-card ring-1 ring-line/60">
           <div className="flex justify-center">
             <MicButton status={status === "connecting" ? "connecting" : "idle"} onClick={onStart} />
           </div>

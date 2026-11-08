@@ -6,103 +6,32 @@ import { Nav } from "@/components/Nav";
 import { Toast, useToast } from "@/components/Toast";
 import { CREAMY_GARLIC_CHICKEN, POPULAR_RECIPES, getRecipe, nutritionLabel } from "@/lib/recipe";
 
+const FEATURED_ORDER = ["bibimbap", "chicken-curry", "creamy-garlic-chicken", "garlic-butter-shrimp", "tomato-beef-stew"];
 const CHIPS = ["All", "Chinese", "Italian", "Japanese", "Korean", "Indian", "Mexican", "Quick & easy", "Healthy"];
 
 export default function Home() {
   const toast = useToast();
   return (
-    <>
+    <div className="landing-page">
+      <div className="landing-backdrop" aria-hidden="true" />
       <Nav onSoon={toast.soon} />
-      <main className="mx-auto max-w-6xl px-4 pb-24 sm:px-6">
-        {/* Hero */}
-        <section className="grid items-center gap-10 pt-12 pb-10 md:grid-cols-[1.1fr_0.9fr] md:pt-16">
-          <div>
-            <h1 className="font-display leading-[0.95] text-ink">
-              <span className="block text-6xl sm:text-7xl md:text-8xl">Good Food</span>
-              <span className="mt-2 block text-3xl text-forest sm:text-4xl md:text-5xl">Starts with a Conversation</span>
-            </h1>
-            <p className="mt-6 max-w-lg text-lg text-ink/75">
-              Find recipes, get personalized suggestions, cook hands-free with an AI voice, and keep track of your nutrition, all in one place.
-            </p>
-            <form
-              className="mt-8 flex items-center gap-2 rounded-full bg-paper p-2 pl-5 shadow-card ring-1 ring-line"
-              onSubmit={(e) => {
-                e.preventDefault();
-                toast.soon();
-              }}
-            >
-              <svg viewBox="0 0 24 24" className="h-5 w-5 shrink-0 text-muted" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-                <circle cx="11" cy="11" r="7" />
-                <path d="m20 20-3.5-3.5" />
-              </svg>
-              <input
-                className="w-full bg-transparent text-base outline-none placeholder:text-muted"
-                placeholder="Search for a recipe, e.g. tomato beef stew, chicken curry…"
-                aria-label="Search recipes"
-              />
-              <button type="submit" aria-label="Search" className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-forest text-white transition hover:bg-forest-deep">
-                <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M5 12h14M13 6l6 6-6 6" />
-                </svg>
-              </button>
-            </form>
-          </div>
-          <div className="relative mx-auto aspect-square w-full max-w-md">
-            <FoodTile emoji="🍝" tone="coral" className="h-full w-full rounded-full shadow-float" size="text-[9rem] sm:text-[11rem]" />
-            <span className="absolute -left-4 top-6 -rotate-6 rounded-2xl bg-paper px-4 py-2 font-hand text-2xl text-ink shadow-card">
-              Hey Chef, what&apos;s next?
-            </span>
-            <span className="absolute -right-2 bottom-10 rotate-3 rounded-2xl bg-paper px-4 py-2 font-hand text-2xl text-forest shadow-card">
-              Good food, brighter days
-            </span>
-          </div>
-        </section>
-
-        {/* Feature cards */}
-        <section className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4" aria-label="What you can do">
-          <FeatureCard tone="bg-leaf" title="What can I cook?" body="Upload a photo of your ingredients or tell me what you have." icon="🥬">
-            <button onClick={toast.soon} className="mt-auto w-full rounded-full bg-forest px-4 py-3 text-sm font-semibold text-white transition hover:bg-forest-deep">
-              Upload ingredients
-            </button>
-          </FeatureCard>
-          <FeatureCard tone="bg-coral-tint" title="Upload a recipe" body="From a photo, a video or plain text." icon="📄">
-            <button onClick={toast.soon} className="mt-auto w-full rounded-full bg-coral px-4 py-3 text-sm font-semibold text-white transition hover:brightness-95">
-              Upload recipe
-            </button>
-          </FeatureCard>
-          <FeatureCard tone="bg-butter-tint" title="Today's recommendation" body="Personalized picks for you." icon="✨">
-            <a href="#popular" className="mt-auto block w-full rounded-full bg-butter px-4 py-3 text-center text-sm font-semibold text-ink transition hover:brightness-95">
-              See today&apos;s picks
-            </a>
-          </FeatureCard>
-          <div className="flex flex-col rounded-3xl bg-sky-tint p-5 shadow-card">
-            <div className="flex items-start gap-3">
-              <span className="text-2xl" aria-hidden>
-                🎙️
-              </span>
-              <div>
-                <h2 className="font-display text-xl leading-tight">Start cooking with voice</h2>
-                <p className="mt-1 text-sm text-ink/70">Hands-free guidance, step by step.</p>
-              </div>
+      <main className="landing-main">
+        <section className="landing-hero">
+          <div className="hero-copy">
+            <p className="hero-eyebrow">Your AI cooking companion</p>
+            <h1 className="font-display">Good Food <span>Starts with a Conversation</span></h1>
+            <p className="hero-description">Find recipes, get personalized suggestions, cook hands-free with an AI voice, and keep track of your nutrition, all in one place.</p>
+            <div className="hero-actions">
+              <Link href="/cook" className="hero-primary"><MicIcon className="h-5 w-5" /> Start cooking</Link>
+              <a href="#popular" className="hero-secondary">Browse recipes <span aria-hidden>→</span></a>
             </div>
-            <Link href="/cook" className="group mt-5 flex flex-1 flex-col items-center justify-center gap-3" aria-label="Start cooking with voice">
-              <span className="relative flex h-28 w-28 items-center justify-center">
-                <span className="mic-breathe absolute inset-0 rounded-full bg-forest/30" />
-                <span className="relative flex h-24 w-24 items-center justify-center rounded-full bg-forest text-white shadow-float transition group-hover:scale-105">
-                  <MicIcon className="h-10 w-10" />
-                </span>
-              </span>
-              <span className="text-sm font-semibold text-forest">Tap to wake</span>
-              <span className="-mt-2 font-hand text-xl text-ink/70">&ldquo;Hey Chef&rdquo;</span>
-            </Link>
           </div>
         </section>
-
         {/* Popular recipes */}
-        <section id="popular" className="mt-14 scroll-mt-24">
-          <div className="flex flex-wrap items-center gap-3">
+        <section id="popular" className="recipe-showcase scroll-mt-24">
+          <div className="recipe-section-heading">
             <h2 className="font-display text-3xl">Popular recipes</h2>
-            <div className="no-scrollbar ml-auto flex gap-2 overflow-x-auto">
+            <div className="recipe-filters no-scrollbar flex gap-2 overflow-x-auto">
               {CHIPS.map((c, i) => (
                 <button key={c} onClick={i === 0 ? undefined : toast.soon} className={`shrink-0 rounded-full px-3.5 py-1.5 text-sm transition ${i === 0 ? "bg-forest text-white" : "bg-paper text-ink/80 shadow-card hover:text-forest"}`}>
                   {c}
@@ -110,20 +39,20 @@ export default function Home() {
               ))}
             </div>
           </div>
-          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
-            {POPULAR_RECIPES.map((r) => {
+          <div className="recipe-grid">
+            {[...POPULAR_RECIPES].sort((a, b) => FEATURED_ORDER.indexOf(a.id) - FEATURED_ORDER.indexOf(b.id)).map((r) => {
               const live = r.id === CREAMY_GARLIC_CHICKEN.id;
               const inner = (
                 <>
                   <div className="relative">
-                    <img src={r.image} alt={r.title} className="block aspect-[4/3] w-full object-cover" loading="lazy" />
+                    <img src={r.image} alt={r.title} className="block aspect-[1.85/1] w-full object-cover" loading="lazy" />
                     {live ? (
                       <span className="absolute left-3 top-3 rounded-full bg-coral px-2.5 py-1 text-xs font-semibold text-white">Cook by voice</span>
                     ) : (
                       <span className="absolute left-3 top-3 rounded-full bg-paper/90 px-2.5 py-1 text-xs font-medium text-muted">Coming soon</span>
                     )}
                   </div>
-                  <div className="p-4">
+                  <div className="recipe-caption">
                     <h3 className="font-semibold leading-snug">{r.title}</h3>
                     <p className="mt-1.5 text-xs text-muted">
                       {r.totalMinutes} min · {nutritionLabel(r)}
@@ -146,6 +75,55 @@ export default function Home() {
           </div>
         </section>
 
+        <form className="landing-voice-search" onSubmit={(e) => { e.preventDefault(); toast.soon(); }}>
+          <span className="voice-wave" aria-hidden>{[12,22,32,42,28,18].map((h,i)=><i key={i} style={{height:h}} />)}</span>
+          <input aria-label="Search recipes" placeholder="Search for a recipe, e.g. tomato beef stew, chicken curry…" />
+          <Link href="/cook" aria-label="Start cooking with voice" className="voice-search-mic"><MicIcon className="h-6 w-6" /></Link>
+          <button type="submit" className="sr-only">Search</button>
+        </form>
+        <div className="hero-notes"><span>Hey Chef, what&apos;s next?</span><span>Good food, brighter days</span></div>
+        <div id="tools" className="landing-tools">
+        {/* Feature cards */}
+        <section className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4" aria-label="What you can do">
+          <FeatureCard tone="bg-leaf" title="What can I cook?" body="Upload a photo of your ingredients or tell me what you have." icon="🥬">
+            <button onClick={toast.soon} className="mt-auto w-full rounded-full bg-forest px-4 py-3 text-sm font-semibold text-white transition hover:bg-forest-deep">
+              Upload ingredients
+            </button>
+          </FeatureCard>
+          <FeatureCard tone="bg-coral-tint" title="Upload a recipe" body="From a photo, a video or plain text." icon="📄">
+            <button onClick={toast.soon} className="mt-auto w-full rounded-full bg-coral px-4 py-3 text-sm font-semibold text-white transition hover:brightness-95">
+              Upload recipe
+            </button>
+          </FeatureCard>
+          <FeatureCard tone="bg-butter-tint" title="Today's recommendation" body="Personalized picks for you." icon="✨">
+            <a href="#popular" className="mt-auto block w-full rounded-full bg-butter px-4 py-3 text-center text-sm font-semibold text-ink transition hover:brightness-95">
+              See today&apos;s picks
+            </a>
+          </FeatureCard>
+          <div className="flex flex-col sous-voice-card rounded-3xl bg-sky-tint p-5 shadow-card">
+            <div className="flex items-start gap-3">
+              <span className="text-2xl" aria-hidden>
+                🎙️
+              </span>
+              <div>
+                <h2 className="font-display text-xl leading-tight">Start cooking with voice</h2>
+                <p className="mt-1 text-sm text-ink/70">Hands-free guidance, step by step.</p>
+              </div>
+            </div>
+            <Link href="/cook" className="group mt-5 flex flex-1 flex-col items-center justify-center gap-3" aria-label="Start cooking with voice">
+              <span className="relative flex h-28 w-28 items-center justify-center">
+                <span className="mic-breathe absolute inset-0 rounded-full bg-coral/20" />
+                <span className="relative flex h-24 w-24 items-center justify-center sous-mic rounded-full bg-coral text-white shadow-float transition group-hover:scale-105">
+                  <MicIcon className="h-10 w-10" />
+                </span>
+              </span>
+              <span className="text-sm font-semibold text-forest">Tap to wake</span>
+              <span className="-mt-2 font-hand text-xl text-ink/70">&ldquo;Hey Chef&rdquo;</span>
+            </Link>
+          </div>
+        </section>
+
+        </div>
         {/* Dashboard row */}
         <section className="mt-14 grid gap-4 lg:grid-cols-3">
           <div id="nutrition" className="scroll-mt-24 rounded-3xl bg-paper p-6 shadow-card ring-1 ring-line/60">
@@ -269,7 +247,7 @@ export default function Home() {
         </footer>
       </main>
       <Toast msg={toast.msg} />
-    </>
+    </div>
   );
 }
 

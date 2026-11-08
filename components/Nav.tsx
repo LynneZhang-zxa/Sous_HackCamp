@@ -2,29 +2,31 @@ import Link from "next/link";
 
 export function Nav({ onSoon }: { onSoon?: () => void }) {
   const links = [
-    { label: "Home", href: "/", active: true },
-    { label: "Recipes", href: "#popular" },
-    { label: "Nutrition", href: "#nutrition" },
-    { label: "My Recipes", href: "#my-recipes" },
+    { label: "Recipes", href: "#popular", active: true },
+    { label: "Cook", href: "/cook" },
+    { label: "Tools", href: "#tools" },
+
   ];
   return (
-    <header className="sticky top-0 z-40 border-b border-line/70 bg-cream/85 backdrop-blur">
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
+    <header className="landing-nav relative z-40">
+      <div className="landing-nav-inner">
         <Link href="/" className="flex items-center gap-2.5">
-          <ChefHat className="h-8 w-8 text-forest" />
+          <svg viewBox="0 0 32 40" className="h-10 w-8 text-coral" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" aria-hidden><path d="M8 35C-1 26 20 22 10 12M17 35C5 23 28 19 18 5M26 35C14 24 34 21 27 12" /></svg>
           <span className="leading-none">
-            <span className="block font-display text-2xl text-forest">Sous</span>
-            <span className="block text-[11px] tracking-wide text-muted">Your AI cooking companion</span>
+            <span className="block font-display text-4xl text-ink">Sous</span>
+
           </span>
         </Link>
-        <nav className="hidden items-center gap-1 md:flex" aria-label="Primary">
+        <nav className="landing-nav-links" aria-label="Primary">
           {links.map((l) => (
             <a
               key={l.label}
               href={l.href}
-              className={`rounded-full px-4 py-2 text-sm font-medium transition ${l.active ? "bg-leaf text-forest" : "text-ink/80 hover:bg-leaf/60"}`}
+              className={`rounded-full px-4 py-2 text-sm font-medium transition ${l.active ? "bg-coral-tint text-coral" : "text-ink/80 hover:bg-leaf/60"}`}
             >
-              {l.label}
+              <svg viewBox="0 0 24 24" className="h-6 w-6 shrink-0" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                {l.label === "Recipes" ? <path d="m3 10 9-7 9 7M5 9v12h5v-7h4v7h5V9" /> : l.label === "Cook" ? <><rect x="9" y="2" width="6" height="13" rx="3" /><path d="M5 10v2a7 7 0 0 0 14 0v-2M12 19v3M9 22h6" /></> : <path d="M3 3h7v7H3zM14 3h7v7h-7zM3 14h7v7H3zM14 14h7v7h-7z" />}
+              </svg>{l.label}
             </a>
           ))}
         </nav>
@@ -41,7 +43,7 @@ export function Nav({ onSoon }: { onSoon?: () => void }) {
               <path d="M10 20a2 2 0 0 0 4 0" />
             </svg>
           </IconButton>
-          <button onClick={onSoon} aria-label="Account" className="flex h-9 w-9 items-center justify-center rounded-full bg-forest text-sm font-semibold text-white">
+          <button onClick={onSoon} aria-label="Account" className="flex h-9 w-9 items-center justify-center rounded-full bg-[#795439] text-sm font-semibold text-white">
             E
           </button>
         </div>

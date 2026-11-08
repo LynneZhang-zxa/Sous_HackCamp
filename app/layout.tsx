@@ -1,10 +1,26 @@
 import type { Metadata } from "next";
-import { Caveat, Figtree, Young_Serif } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 
-const display = Young_Serif({ subsets: ["latin"], weight: "400", variable: "--font-display" });
-const body = Figtree({ subsets: ["latin"], variable: "--font-body" });
-const hand = Caveat({ subsets: ["latin"], weight: ["500", "600"], variable: "--font-hand" });
+// Keep fonts in the repository so builds do not depend on Google Fonts access.
+const display = localFont({
+  src: "./fonts/young-serif/YoungSerif-Regular.ttf",
+  weight: "400",
+  display: "swap",
+  variable: "--font-young-serif",
+});
+const body = localFont({
+  src: "./fonts/figtree/Figtree.ttf",
+  weight: "300 900",
+  display: "swap",
+  variable: "--font-figtree",
+});
+const hand = localFont({
+  src: "./fonts/caveat/Caveat.ttf",
+  weight: "400 700",
+  display: "swap",
+  variable: "--font-caveat",
+});
 
 export const metadata: Metadata = {
   title: "Sous · Your AI cooking companion",

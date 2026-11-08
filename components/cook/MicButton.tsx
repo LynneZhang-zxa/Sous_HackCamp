@@ -10,12 +10,12 @@ export function MicButton({ status, onClick, size = "lg" }: { status: VoiceStatu
   const speaking = status === "speaking";
   const sleeping = status === "sleeping";
   const connecting = status === "connecting";
-  const disc = speaking ? "bg-amber" : sleeping ? "bg-muted" : connecting ? "bg-moss" : "bg-forest";
+  const disc = speaking ? "bg-amber" : sleeping ? "bg-muted" : connecting ? "bg-moss" : "bg-coral sous-mic";
   const label =
     status === "idle" ? "Start cooking" : listening ? "Listening. Tap to pause." : speaking ? "Sous is speaking" : sleeping ? "Paused. Tap to wake." : connecting ? "Connecting" : "Start again";
   return (
     <button onClick={onClick} aria-label={label} className={`relative flex ${dim} items-center justify-center rounded-full outline-none`}>
-      {listening && <span className="mic-breathe absolute inset-0 rounded-full bg-forest/30" />}
+      {listening && <span className="mic-breathe absolute inset-0 rounded-full bg-coral/20" />}
       {speaking && (
         <>
           <span className="mic-ripple absolute inset-3 rounded-full border-4 border-amber/70" />

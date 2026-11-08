@@ -56,7 +56,7 @@ export function VoicePanel({
 
   return (
     <aside className="min-w-0 space-y-4 lg:sticky lg:top-20 lg:self-start">
-      <div className="rounded-3xl bg-paper p-6 text-center shadow-card ring-1 ring-line/60">
+      <div className="sous-voice-card rounded-3xl bg-paper p-6 text-center shadow-card ring-1 ring-line/60">
         <div className="flex justify-center">
           <MicButton status={status} onClick={onMic} />
         </div>
@@ -151,8 +151,8 @@ function TimerRow({ label, endsAt, seconds, onCancel }: { label: string; endsAt:
   return (
     <li className="flex items-center gap-3">
       <svg viewBox="0 0 44 44" className="h-11 w-11 shrink-0" aria-hidden>
-        <circle cx="22" cy="22" r={r} fill="none" stroke="#e9e4d8" strokeWidth="4" />
-        <circle cx="22" cy="22" r={r} fill="none" stroke={left <= 10 ? "#e8603c" : "#2f5b3c"} strokeWidth="4" strokeLinecap="round" strokeDasharray={c} strokeDashoffset={c * (1 - pct)} transform="rotate(-90 22 22)" />
+        <circle cx="22" cy="22" r={r} fill="none" stroke="var(--color-line)" strokeWidth="4" />
+        <circle cx="22" cy="22" r={r} fill="none" stroke={left <= 10 ? "var(--color-coral)" : "var(--color-forest)"} strokeWidth="4" strokeLinecap="round" strokeDasharray={c} strokeDashoffset={c * (1 - pct)} transform="rotate(-90 22 22)" />
       </svg>
       <span className="min-w-0 flex-1">
         <span className="block truncate text-sm font-medium">{label}</span>
