@@ -1,14 +1,14 @@
 import Link from "next/link";
 
-export function Nav({ onSoon }: { onSoon?: () => void }) {
+export function Nav({ onSoon, browsing = false }: { onSoon?: () => void; browsing?: boolean }) {
   const links = [
-    { label: "Recipes", href: "#popular", active: true },
+    { label: "Recipes", href: "/recipes", active: true },
     { label: "Cook", href: "/cook" },
-    { label: "Tools", href: "#tools" },
+    { label: "Tools", href: "/#tools" },
 
   ];
   return (
-    <header className="landing-nav relative z-40">
+    <header className={`landing-nav relative z-40${browsing ? " browse-nav" : ""}`}>
       <div className="landing-nav-inner">
         <Link href="/" className="flex items-center gap-2.5">
           <svg viewBox="0 0 32 40" className="h-10 w-8 text-coral" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" aria-hidden><path d="M8 35C-1 26 20 22 10 12M17 35C5 23 28 19 18 5M26 35C14 24 34 21 27 12" /></svg>
@@ -22,6 +22,7 @@ export function Nav({ onSoon }: { onSoon?: () => void }) {
             <a
               key={l.label}
               href={l.href}
+              aria-label={l.label === "Recipes" ? "All recipes" : undefined}
               className={`rounded-full px-4 py-2 text-sm font-medium transition ${l.active ? "bg-coral-tint text-coral" : "text-ink/80 hover:bg-leaf/60"}`}
             >
               <svg viewBox="0 0 24 24" className="h-6 w-6 shrink-0" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden>

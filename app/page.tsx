@@ -23,7 +23,7 @@ export default function Home() {
             <p className="hero-description">Find recipes, get personalized suggestions, cook hands-free with an AI voice, and keep track of your nutrition, all in one place.</p>
             <div className="hero-actions">
               <Link href="/cook" className="hero-primary"><MicIcon className="h-5 w-5" /> Start cooking</Link>
-              <a href="#popular" className="hero-secondary">Browse recipes <span aria-hidden>→</span></a>
+              <Link href="/recipes" className="hero-secondary">Browse recipes <span aria-hidden>→</span></Link>
             </div>
           </div>
         </section>
@@ -49,7 +49,7 @@ export default function Home() {
                     {live ? (
                       <span className="absolute left-3 top-3 rounded-full bg-coral px-2.5 py-1 text-xs font-semibold text-white">Cook by voice</span>
                     ) : (
-                      <span className="absolute left-3 top-3 rounded-full bg-paper/90 px-2.5 py-1 text-xs font-medium text-muted">Coming soon</span>
+                      <span className="absolute left-3 top-3 rounded-full bg-paper/90 px-2.5 py-1 text-xs font-medium text-muted">View recipe</span>
                     )}
                   </div>
                   <div className="recipe-caption">
@@ -62,14 +62,10 @@ export default function Home() {
                 </>
               );
               const cls = "group block overflow-hidden rounded-3xl bg-paper text-left shadow-card ring-1 ring-line/60 transition hover:-translate-y-0.5 hover:shadow-float";
-              return live ? (
-                <Link key={r.title} href="/cook" className={cls}>
+              return (
+                <Link key={r.id} href={`/recipes/${r.id}`} className={cls}>
                   {inner}
                 </Link>
-              ) : (
-                <button key={r.title} onClick={toast.soon} className={cls}>
-                  {inner}
-                </button>
               );
             })}
           </div>

@@ -238,3 +238,9 @@ body {
   border-bottom: 0;
   box-shadow: none;
 }
+
+/* Let recipe browsing navigation wrap without crowding the content on small screens. */
+@media (max-width: 700px) {
+  .browse-nav .landing-nav-inner { height: auto; min-height: 64px; padding-block: 12px; }
+  .browse-nav .landing-nav-links { order: 3; width: 100%; justify-content: center; margin: 0; }
+}
