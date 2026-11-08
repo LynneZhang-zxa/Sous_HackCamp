@@ -7,12 +7,14 @@ const cache = new Map();
 function load(file) {
  const full = path.resolve(__dirname,"..",file);
  if (cache.has(full)) return cache.get(full).exports;
+ if (full.endsWith(".json")) return JSON.parse(fs.readFileSync(full,"utf8"));
  const module = {exports:{}}; cache.set(full,module);
  let code = stripTypeScriptTypes(fs.readFileSync(full,"utf8"));
  const exported = [...code.matchAll(/export (?:const|function|class) (\w+)/g)].map(m=>m[1]);
  code = code.replace(/import \{([^}]+)\} from (["'][^"']+["']);/g, "const {$1} = require($2);").replace(/export (?=const|function|class)/g, "");
+ code = code.replace(/import (\w+) from (["'][^"']+["']);/g, "const $1 = require($2);");
  code += "\nObject.assign(exports,{"+exported.join(",")+"});";
- new Function("require","module","exports",code)(name => name.startsWith(".") ? load(path.relative(path.resolve(__dirname,".."),path.resolve(path.dirname(full),name+".ts"))) : require(name),module,module.exports);
+ new Function("require","module","exports",code)(name => name.startsWith(".") ? load(path.relative(path.resolve(__dirname,".."),path.resolve(path.dirname(full),name.endsWith(".json") ? name : name+".ts"))) : require(name),module,module.exports);
  return module.exports;
 }
 const {listRecipes,getRecipe,formatAmount,spokenAmount} = load("lib/recipe.ts");

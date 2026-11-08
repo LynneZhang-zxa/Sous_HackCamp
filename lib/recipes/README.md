@@ -4,7 +4,7 @@ Import `Recipe`, `getRecipe(id)`, `listRecipes()` and `POPULAR_RECIPES` from `li
 
 `catalog.ts` holds nineteen additional recipes; the original Creamy Garlic Chicken export remains in `recipe.ts`. Authoring helpers return ordinary JSON objects. Preparation and cooking minutes are planning estimates; `totalMinutes` is their sum. Step timers are suggestions, not proof of doneness. Rice listed already cooked must be prepared separately; suggested accompaniments are not included in quantities or nutrition.
 
-The five existing photographs retain their paths and attribution in `public/recipes/SOURCES.md`. Other recipes explicitly use a shared local placeholder (`imageKind: "placeholder"`); replace with licensed dish photographs later.
+The five existing photographs retain their paths and attribution in `public/recipes/SOURCES.md`. Thirteen additional dish photographs now have verified source/license records in `image-sources.json`; `image-sources.ts` exposes them to the catalog and public credits. Thirty-two recipes still explicitly use the local placeholder (`imageKind: "placeholder"`). See `docs/recipe-image-audit.md` for complete coverage and remaining limitations.
 
 Nutrition is unavailable for new recipes. The chicken's legacy 610 kcal is preserved as an unverified estimate, not a calculated claim. `calories` remains a compatibility field but can now be null; it must match `nutrition`. UI consumers should use `nutritionLabel()` or inspect the status.
 

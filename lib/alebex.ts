@@ -1,3 +1,4 @@
+import { readFile } from "node:fs/promises";
 export const ALEBEX_API = "https://api.alebex.ai/api/v1";
 export const ENGINE = "https://api.voice.alebex.ai";
 export const WS_URL = "wss://api.voice.alebex.ai/public/ws/call";
@@ -36,6 +37,13 @@ export async function mintWsToken(): Promise<string> {
  */
 export async function resolvePublicBase(req: Request): Promise<{ base: string | null; source: string }> {
   if (process.env.PUBLIC_BASE) return { base: process.env.PUBLIC_BASE.replace(/\/$/, ""), source: "env" };
+  try {
+    const relay=JSON.parse(await readFile(".voice-tunnel.local.json","utf8"));
+    if(typeof relay.publicBase==="string" && /^https:\/\/[a-z0-9-]+\.trycloudflare\.com$/.test(relay.publicBase) && Number.isInteger(relay.port) && relay.port>1023 && relay.port<65536){
+      const health=await fetch(`http://127.0.0.1:${relay.port}/health`,{signal:AbortSignal.timeout(500)});
+      if(health.ok && (await health.json()).instanceId===relay.instanceId)return {base:relay.publicBase,source:"restricted-relay"};
+    }
+  }catch{/* No verified relay running. */}
   try {
     const r = await fetch("http://127.0.0.1:4040/api/tunnels", { signal: AbortSignal.timeout(800) });
     const j = (await r.json()) as { tunnels?: { public_url?: string }[] };

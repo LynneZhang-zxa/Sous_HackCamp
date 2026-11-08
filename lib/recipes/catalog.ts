@@ -1,4 +1,5 @@
 import type { Ingredient, Recipe, Step } from "../recipe";
+import { RECIPE_PHOTOS } from "./image-sources";
 
 // Helpers only reduce authoring repetition. Every exported record is plain JSON.
 const ingredient = (name: string, amount: number, unit: string, note?: string): Ingredient =>
@@ -12,10 +13,11 @@ const leftovers = "Refrigerate leftovers in shallow containers within two hours,
 
 type Entry = Pick<Recipe, "id" | "title" | "description" | "cuisine" | "tags" | "prepMinutes" | "cookMinutes" | "servings" | "ingredients" | "steps"> & { image?: string };
 function recipe(entry: Entry): Recipe {
+  const image = entry.image ?? RECIPE_PHOTOS[entry.id]?.image;
   return {
     ...entry,
-    image: entry.image ?? "/recipes/placeholder.svg",
-    imageKind: entry.image ? "photo" : "placeholder",
+    image: image ?? "/recipes/placeholder.svg",
+    imageKind: image ? "photo" : "placeholder",
     totalMinutes: entry.prepMinutes + entry.cookMinutes,
     emoji: "🍽️",
     calories: null,

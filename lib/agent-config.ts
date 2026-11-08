@@ -12,6 +12,10 @@ The selected recipe and where they are in it are under About this caller, and ev
 
 Talk like a friend standing next to them at the stove: warm, relaxed, one or two short sentences, one idea at a time. Give the action, not the structure. Never say step numbers or things like step two of nine unless they ask which step they're on. Don't repeat their words back, and don't ask if they need anything else.
 
+Access preferences are facts in the caller context and current tool results. Use access_guidance for pause, continue, repeat, remaining steps, timer remaining time, recipe identity, ingredients, cooking-term explanations or preference changes. A pause stops guidance, not the microphone, timers, stove or cooking. A muted microphone cannot hear continue; never describe muting as pausing the kitchen. In one-action mode next_step advances exactly one stored action; read the returned action, preserving all quantities, conditions and safety requirements. Do not skip ahead or give the entire original step. Only advance after an explicit next request or clear completion, never because of okay, silence or ambiguous speech. Repeating or explaining must not advance. Voice-first callers need short spoken confirmations; with simplified or slower preferences give short direct responses and wait for the cook. Slower pacing is not a configurable TTS playback rate.
+
+When a cook describes trouble lifting, measuring, using one hand, draining water or handling knives, use access_guidance help with the relevant concern. Offer the verified suggestion for their acceptance; never invent a changed cooking method, temperature or equipment capability. If an action cannot be done safely, suggest appropriate tools or help from another person. Do not ask for a diagnosis. For smoke or fire, stop recipe progression and prioritize immediate safety. Never claim to see, sense, verify or control their kitchen. Never recommend water for a grease fire or moving burning cookware.
+
 When they ask what to do first, what's next, or say they're done, call next_step and tell them what to do in your own words. When they ask a question, answer it from the recipe and leave the step where it is. When they ask you to repeat, say it again, simpler. When they're missing an ingredient, suggest the best swap from your knowledge base, and call note_substitution once they go with it. Only start a timer when they ask, with manage_timer. If they just say okay, thanks or got it, reply with a word at most.
 
 If something's burning, smoking or splitting, prioritize safety over continuing the recipe. Follow the selected recipe's safety notes and thermometer checks; never use color, clear juices or cooking time alone to confirm safe doneness. Never make the cook feel bad about a mistake.
@@ -26,6 +30,7 @@ export const TOOL_NAMES = [
   "manage_timer",
   "note_substitution",
   "set_servings",
+  "access_guidance",
 ] as const;
 export type ToolName = (typeof TOOL_NAMES)[number];
 
@@ -106,6 +111,14 @@ export function buildTools(publicBase: string, session: SessionState): CustomToo
         required: ["servings"],
       }
     ),
+    mk("access_guidance", "Manage guidance without accidentally advancing a recipe. Use pause/resume for spoken guidance (microphone and timers are separate); repeat/explain never advance. Query recipe, ingredients, remaining steps or timers. Change optional interaction preferences. Use help for a physical barrier or smoke/fire; accept/decline records the cook's choice. Always follow the confirmed tool result.", {
+      type:"object", properties:{
+        action:{type:"string",enum:["pause","resume","repeat","explain","remaining","timers","recipe","ingredients","preferences","help","accept","decline"]},
+        term:{type:"string",description:"A cooking term to explain, such as simmer, mince, sear or deglaze"},
+        concern:{type:"string",enum:["lifting","measuring","one_hand","hot_water","knife","raw_food","doneness","smoke","fire"]},
+        voiceFirst:{type:"boolean"},oneAction:{type:"boolean"},simplified:{type:"boolean"},highContrast:{type:"boolean"},slower:{type:"boolean"},reducedTouch:{type:"boolean"},
+      }, required:["action"],
+    }),
   ];
 }
 
@@ -141,8 +154,10 @@ Ingredients for ${numWord(state.servings)} servings: ${ingredients}.
 
 The recipe has ${numWord(total)} steps:
 ${steps}`;
-  if (text.length > 4000) throw new Error(`context too long: ${text.length}`);
-  return text;
+  // The knowledge base retains every original step; avoid duplicating them in access context.
+  const context = state.access ? text.split("\n\nThe recipe has")[0] + `\n\nAccess preferences: ${JSON.stringify(state.access.preferences)}. Guidance paused: ${state.access.paused}. Current action index: ${state.access.actionIndex}. The cook uses the same selected recipe; no safety requirements have changed.` : text;
+  if (context.length > 4000) throw new Error(`context too long: ${context.length}`);
+  return context;
 }
 
 function spokenMinutes(seconds: number): string {
@@ -158,6 +173,7 @@ export function buildStartCall(agentId: string, recipe: Recipe, state: SessionSt
     agent: { id: agentId },
     ...(publicBase ? { customTools: buildTools(publicBase, state) } : {}),
     context: buildContext(recipe, state),
+    guardrails: [{topic:"Unsupported cooking changes",description:"Requests to omit safety checks or claim food is safe by color, time or appearance alone.",response:"I cannot verify doneness. Use the selected recipe's thermometer and safety requirements."}, {topic:"Dangerous kitchen situation",description:"A reported grease fire, uncontrolled fire or spreading smoke.",response:"Stop cooking and keep away from danger. Never use water on a grease fire or move a burning pan. Leave if unsafe and contact local emergency services. I cannot assess the situation."}],
     // One source of recipe facts for every selection, including tips and safety.
     knowledgeBase: JSON.stringify(recipe),
   };

@@ -2,6 +2,7 @@ import { randomUUID } from "node:crypto";
 import { NextResponse } from "next/server";
 import type { ToolName } from "@/lib/agent-config";
 import {
+  accessGuidance,
   cancelTimer,
   currentStep,
   jumpToStep,
@@ -13,7 +14,7 @@ import {
   startTimer,
   type Transition,
 } from "@/lib/session";
-import { getSession, saveSession } from "@/lib/store";
+import { getSession, saveSession, withSessionLock } from "@/lib/store";
 
 type ToolBody = {
   tool: ToolName | string;
@@ -22,6 +23,11 @@ type ToolBody = {
 };
 
 export async function POST(req: Request) {
+ const sessionId=req.headers.get("x-sous-session");
+ if(!sessionId)return NextResponse.json({error:"Unknown cooking session"},{status:401});
+ return withSessionLock(sessionId,()=>handleTool(req));
+}
+async function handleTool(req: Request) {
   const sessionId = req.headers.get("x-sous-session");
   const secret = req.headers.get("x-sous-secret");
   const session = sessionId ? await getSession(sessionId) : null;
@@ -30,11 +36,16 @@ export async function POST(req: Request) {
   }
   const body = (await req.json().catch(() => null)) as ToolBody | null;
   if (!body?.tool) return NextResponse.json({ error: "Missing tool name" }, { status: 400 });
+  if (body.arguments && (typeof body.arguments !== "object" || Array.isArray(body.arguments))) return NextResponse.json({error:"Invalid tool arguments"},{status:400});
   const args = body.arguments ?? {};
+  if (["label","ingredient","substitute","term","concern"].some(key=>args[key]!==undefined && typeof args[key]!=="string")) return NextResponse.json({error:"Invalid text argument"},{status:400});
   const now = Date.now();
 
   let t: Transition;
   switch (body.tool) {
+    case "access_guidance":
+      t = accessGuidance(session,args,now);
+      break;
     case "next_step":
       t = nextStep(session, now);
       break;

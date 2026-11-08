@@ -12,9 +12,9 @@ export function MicButton({ status, onClick, size = "lg" }: { status: VoiceStatu
   const connecting = status === "connecting";
   const disc = speaking ? "bg-amber" : sleeping ? "bg-muted" : connecting ? "bg-moss" : "bg-coral sous-mic";
   const label =
-    status === "idle" ? "Start cooking" : listening ? "Listening. Tap to pause." : speaking ? "Sous is speaking" : sleeping ? "Paused. Tap to wake." : connecting ? "Connecting" : "Start again";
+    status === "idle" ? "Start cooking" : listening ? "Listening. Activate to mute microphone." : speaking ? "Sous is speaking. Activate to mute microphone" : sleeping ? "Microphone muted. Activate to unmute." : connecting ? "Connecting" : "Start again";
   return (
-    <button onClick={onClick} aria-label={label} className={`relative flex ${dim} items-center justify-center rounded-full outline-none`}>
+    <button disabled={connecting} type="button" onClick={onClick} aria-label={label} className={`cook-mic relative flex ${dim} items-center justify-center rounded-full outline-none`}>
       {listening && <span className="mic-breathe absolute inset-0 rounded-full bg-coral/20" />}
       {speaking && (
         <>
@@ -24,7 +24,7 @@ export function MicButton({ status, onClick, size = "lg" }: { status: VoiceStatu
         </>
       )}
       {connecting && <span className="blink absolute inset-0 rounded-full bg-moss/30" />}
-      <span className={`relative flex ${inner} items-center justify-center rounded-full ${disc} text-white shadow-float transition-colors duration-300`}>
+      <span className={`cook-mic-disc relative flex ${inner} items-center justify-center rounded-full ${disc} text-white shadow-float transition-colors duration-300`}>
         {speaking ? (
           <SpeakerIcon className={icon} />
         ) : sleeping ? (

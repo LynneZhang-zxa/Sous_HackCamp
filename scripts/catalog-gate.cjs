@@ -7,13 +7,15 @@ const expected = Number(process.argv[2] || 50);
 const checks = `
 const {listRecipes,getRecipe} = load('lib/recipe.ts');
 const recipes = listRecipes();
+const {RECIPE_PHOTOS} = load('lib/recipes/image-sources.ts');
+const contentOnly = ({image,imageKind,...content}) => content;
 assert.equal(recipes.length, ${expected}, 'Expected catalog count');
 assert.equal(new Set(recipes.map(r=>r.id)).size, recipes.length);
 assert.equal(new Set(recipes.map(r=>r.title.toLowerCase())).size, recipes.length);
 const originals = JSON.parse(fs.readFileSync(path.resolve(__dirname,'original-recipes.json'),'utf8'));
 assert.equal(originals.length,20);
-assert.equal(JSON.stringify(recipes.slice(0,20)),JSON.stringify(originals),'Original records or ordering changed');
-for(const original of originals) assert.equal(JSON.stringify(getRecipe(original.id)),JSON.stringify(original),'Original changed: '+original.id);
+assert.equal(JSON.stringify(recipes.slice(0,20).map(contentOnly)),JSON.stringify(originals.map(contentOnly)),'Original records or ordering changed');
+for(const original of originals) assert.equal(JSON.stringify(contentOnly(getRecipe(original.id))),JSON.stringify(contentOnly(original)),'Original changed: '+original.id);
 for(const r of recipes) {
  assert.equal(getRecipe(r.id),r);
  for(const key of ['id','title','description','cuisine']) assert.ok(typeof r[key]==='string' && r[key].trim());
@@ -34,7 +36,8 @@ for(const r of recipes) {
  if(!originals.some(o=>o.id===r.id)) {
   assert.ok(r.ingredients.every(i=>Number.isFinite(i.amount) && i.amount>0));
   assert.ok(r.steps.some(s=>s.safety));
-  assert.equal(r.image,'/recipes/placeholder.svg');
+  if (r.imageKind === 'placeholder') assert.equal(r.image,'/recipes/placeholder.svg');
+  else assert.equal(r.image,RECIPE_PHOTOS[r.id]?.image,'Photo requires verified metadata');
   assert.equal(r.nutrition.status,'unavailable'); assert.equal(r.calories,null);
  }
 }

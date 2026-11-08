@@ -33,8 +33,8 @@ class PCMWorklet extends AudioWorkletProcessor {
       this.push(buf[i] * (1 - frac) + buf[i + 1] * frac);
       pos += this.ratio;
     }
-    const consumed = Math.floor(pos);
-    this.pending = buf.slice(Math.min(consumed, buf.length));
+    const consumed = Math.min(Math.floor(pos), buf.length);
+    this.pending = buf.slice(consumed);
     this.pos = pos - consumed;
     return true;
   }

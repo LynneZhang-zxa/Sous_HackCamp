@@ -1,22 +1,30 @@
 "use client";
 
 import Link from "next/link";
+import { useState } from "react";
+import { RecipeCard } from "@/components/RecipeCard";
+import { CuisineChips } from "@/components/CuisineChips";
+import { recipeCuisines, searchRecipes } from "@/lib/recipe-search";
 import { Recommendation } from "@/components/Recommendation";
 import { RecipeImage } from "@/components/RecipeImage";
 import { Nav } from "@/components/Nav";
 import { Toast, useToast } from "@/components/Toast";
-import { CREAMY_GARLIC_CHICKEN, POPULAR_RECIPES, nutritionLabel } from "@/lib/recipe";
+import { POPULAR_RECIPES, listRecipes } from "@/lib/recipe";
 
 const FEATURED_ORDER = ["bibimbap", "chicken-curry", "creamy-garlic-chicken", "garlic-butter-shrimp", "tomato-beef-stew"];
-const CHIPS = ["All", "Chinese", "Italian", "Japanese", "Korean", "Indian", "Mexican"];
+const ALL_RECIPES = listRecipes();
+const CUISINES = recipeCuisines(ALL_RECIPES);
 
 export default function Home() {
   const toast = useToast();
+  const [cuisine, setCuisine] = useState("");
+  const previews = cuisine ? searchRecipes(ALL_RECIPES, {cuisine}) : [...POPULAR_RECIPES].sort((a,b) => FEATURED_ORDER.indexOf(a.id) - FEATURED_ORDER.indexOf(b.id));
+  const discoveryHref = cuisine ? `/recipes?cuisine=${encodeURIComponent(cuisine)}` : "/recipes";
   return (
     <div className="landing-page">
       <div className="landing-backdrop" aria-hidden="true" />
       <Nav onSoon={toast.soon} />
-      <main className="landing-main">
+      <main data-sous-page="/" className="landing-main">
         <section className="landing-hero">
           <div className="hero-copy">
             <p className="hero-eyebrow">Your AI cooking companion</p>
@@ -28,56 +36,13 @@ export default function Home() {
             </div>
           </div>
         </section>
-        {/* Popular recipes */}
         <section id="popular" className="recipe-showcase scroll-mt-24">
-          <div className="recipe-section-heading">
-            <div className="flex items-center gap-5"><h2 className="font-display text-3xl">Popular recipes</h2><Link href="/recipes" className="shrink-0 text-sm font-semibold text-forest underline underline-offset-4">Show All</Link></div>
-            <div className="recipe-filters no-scrollbar flex gap-2 overflow-x-auto">
-              {CHIPS.map((c, i) => (
-                <Link href={i === 0 ? "/recipes" : `/recipes?cuisine=${encodeURIComponent(c)}`} key={c} className={`shrink-0 rounded-full px-3.5 py-1.5 text-sm transition ${i === 0 ? "bg-forest text-white" : "bg-paper text-ink/80 shadow-card hover:text-forest"}`}>
-                  {c}
-                </Link>
-              ))}
-            </div>
-          </div>
-          <div className="recipe-grid">
-            {[...POPULAR_RECIPES].sort((a, b) => FEATURED_ORDER.indexOf(a.id) - FEATURED_ORDER.indexOf(b.id)).map((r) => {
-              const live = r.id === CREAMY_GARLIC_CHICKEN.id;
-              const inner = (
-                <>
-                  <div className="relative">
-                    <RecipeImage src={r.image} title={r.title} className="block aspect-[1.85/1] w-full object-cover" loading="lazy" />
-                    {live ? (
-                      <span className="absolute left-3 top-3 rounded-full bg-coral px-2.5 py-1 text-xs font-semibold text-white">Cook by voice</span>
-                    ) : (
-                      <span className="absolute left-3 top-3 rounded-full bg-paper/90 px-2.5 py-1 text-xs font-medium text-muted">View recipe</span>
-                    )}
-                  </div>
-                  <div className="recipe-caption">
-                    <h3 className="font-semibold leading-snug">{r.title}</h3>
-                    <p className="mt-1.5 text-xs text-muted">
-                      {r.totalMinutes} min · {nutritionLabel(r)}
-                    </p>
-                    <p className="mt-2 inline-block rounded-full bg-cream px-2 py-0.5 text-xs text-ink/70">{r.cuisine}</p>
-                  </div>
-                </>
-              );
-              const cls = "group block overflow-hidden rounded-3xl bg-paper text-left shadow-card ring-1 ring-line/60 transition hover:-translate-y-0.5 hover:shadow-float";
-              return (
-                <Link key={r.id} href={`/recipes/${r.id}`} className={cls}>
-                  {inner}
-                </Link>
-              );
-            })}
-          </div>
+          <div className="preview-heading"><div><p className="discovery-eyebrow">A LITTLE INSPIRATION</p><h2 className="font-display text-3xl">Popular recipes</h2></div><Link href={discoveryHref} className="preview-show-all">Show All <span aria-hidden>↗</span></Link></div>
+          <CuisineChips categories={CUISINES} selected={cuisine} onSelect={setCuisine} />
+          {previews.length ? <div className="recipe-preview-row" aria-label="Popular recipe previews">{previews.slice(0, 8).map(recipe => <RecipeCard key={recipe.id} recipe={recipe} compact />)}</div> : <p className="discovery-empty">No recipes for this cuisine yet.</p>}
         </section>
 
-        <form className="landing-voice-search" action="/recipes">
-          <span className="voice-wave" aria-hidden>{[12,22,32,42,28,18].map((h,i)=><i key={i} style={{height:h}} />)}</span>
-          <input name="q" aria-label="Search recipes" placeholder="Search for a recipe, e.g. tomato beef stew, chicken curry…" />
-          <Link href="/cook" aria-label="Start cooking with voice" className="voice-search-mic"><MicIcon className="h-6 w-6" /></Link>
-          <button type="submit" className="sr-only">Search</button>
-        </form>
+
         <div className="hero-notes"><span>Hey Chef, what&apos;s next?</span><span>Good food, brighter days</span></div>
         {/* Dashboard row */}
         <section className="mt-8 grid items-start gap-5 lg:grid-cols-2">

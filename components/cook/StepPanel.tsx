@@ -1,5 +1,6 @@
 "use client";
 
+import { instructionActions, plainInstruction } from "@/lib/adaptive-instructions";
 import { describeIngredient, type Recipe } from "@/lib/recipe";
 import type { SessionState } from "@/lib/session";
 
@@ -9,54 +10,63 @@ export function StepPanel({
   onPrev,
   onNext,
   onJump,
+  busy = false,
 }: {
   recipe: Recipe;
   state: SessionState;
   onPrev: () => void;
   onNext: () => void;
   onJump: (n: number) => void;
+  busy?: boolean;
 }) {
   const total = recipe.steps.length;
   const finished = state.stepIndex >= total;
   const idx = Math.min(state.stepIndex, total - 1);
   const step = recipe.steps[idx];
-  const pct = finished ? 100 : Math.round((idx / total) * 100);
+  const actions=instructionActions(step);
+  const oneAction=state.access?.preferences.oneAction ?? false;
+  const actionIndex=Math.min(state.access?.actionIndex ?? 0,actions.length-1);
+  const sourceInstruction=oneAction ? actions[actionIndex] : step.instruction;
+  const instruction=state.access?.preferences.simplified ? plainInstruction(sourceInstruction) : sourceInstruction;
+  const paused=state.access?.paused ?? false;
+  const pct = finished ? 100 : Math.round(((idx + (oneAction ? actionIndex/actions.length : 0)) / total) * 100);
   const stepIngredients = (step.ingredients ?? [])
     .map((n) => recipe.ingredients.find((i) => i.name === n))
     .filter((i): i is NonNullable<typeof i> => Boolean(i));
 
   return (
-    <section aria-live="polite" className="min-w-0 space-y-5">
+    <section aria-labelledby="current-step-title" className="min-w-0 space-y-5">
       {finished ? (
         <div className="rounded-3xl bg-forest p-8 text-cream shadow-float">
           <p className="text-sm font-semibold uppercase tracking-wider text-leaf">All {total} steps done</p>
-          <h2 className="mt-2 font-display text-4xl sm:text-5xl">{recipe.title} is ready.</h2>
-          <p className="mt-4 max-w-xl text-lg text-cream/85">Plate it up, spoon the sauce over the top, and enjoy. Leftovers keep three to four days in the fridge.</p>
+          <h2 id="current-step-title" className="mt-2 font-display text-4xl sm:text-5xl">{recipe.title} is ready.</h2>
+          <p className="mt-4 max-w-xl text-lg text-cream/85">All recipe instructions have been shown. Check the recipe’s thermometer and safety requirements before serving; completing the steps alone does not verify safe doneness.</p>
           <div className="mt-6 text-6xl" aria-hidden>
             🍽️
           </div>
         </div>
       ) : (
         <div className="rounded-3xl bg-paper p-6 shadow-card ring-1 ring-line/60 sm:p-8">
-          <div className="flex items-center justify-between gap-4">
+          <div className="step-panel-heading flex items-center justify-between gap-4">
             <p className="text-sm font-semibold uppercase tracking-wider text-forest">
-              Step {idx + 1} of {total}
+              Step {idx + 1} of {total}{oneAction ? ` · Action ${actionIndex+1} of ${actions.length}` : ""}{paused ? " · Guidance paused" : ""}
             </p>
             <div className="flex gap-1">
-              <button onClick={onPrev} disabled={idx === 0} aria-label="Previous step" className="rounded-full p-2 text-muted transition hover:bg-cream hover:text-forest disabled:opacity-30">
+              <button onClick={onPrev} disabled={busy || paused || (idx === 0 && (!oneAction || actionIndex===0))} aria-label={oneAction ? "Previous action" : "Previous step"} className="rounded-full p-2 text-muted transition hover:bg-cream hover:text-forest disabled:opacity-30">
                 <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="m15 6-6 6 6 6" />
                 </svg>
               </button>
-              <button onClick={onNext} aria-label="Next step" className="rounded-full p-2 text-muted transition hover:bg-cream hover:text-forest">
+              <button onClick={onNext} disabled={busy || paused} aria-label={oneAction ? "Next action" : "Next step"} className="rounded-full p-2 text-muted transition hover:bg-cream hover:text-forest">
                 <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="m9 6 6 6-6 6" />
                 </svg>
               </button>
             </div>
           </div>
-          <h2 className="mt-2 font-display text-3xl leading-tight sm:text-4xl">{step.title}</h2>
-          <p className="mt-4 text-xl leading-relaxed text-ink/90 sm:text-2xl">{step.instruction}</p>
+          <h2 id="current-step-title" className="mt-2 font-display text-3xl leading-tight sm:text-4xl">{step.title}</h2>
+          <p className="mt-4 text-xl leading-relaxed text-ink/90 sm:text-2xl">{instruction}</p>
+          {oneAction && <details className="mt-4 text-sm text-muted"><summary>Read the full original step</summary><p className="mt-2">{step.instruction}</p></details>}
           {stepIngredients.length > 0 && (
             <ul className="mt-5 flex flex-wrap gap-2" aria-label="Ingredients for this step">
               {stepIngredients.map((i) => (
@@ -90,7 +100,7 @@ export function StepPanel({
           <span>Progress</span>
           <span>{pct}%</span>
         </div>
-        <div className="mt-1.5 flex gap-1" role="progressbar" aria-valuenow={pct} aria-valuemin={0} aria-valuemax={100}>
+        <div className="mt-1.5 flex gap-1" role="progressbar" aria-label="Recipe progress" aria-valuenow={pct} aria-valuemin={0} aria-valuemax={100}>
           {recipe.steps.map((s, i) => (
             <span key={s.id} className={`h-2 flex-1 rounded-full transition-colors ${i < state.stepIndex ? "bg-forest" : i === state.stepIndex ? "bg-moss" : "bg-line"}`} />
           ))}
@@ -103,7 +113,7 @@ export function StepPanel({
           const current = i === state.stepIndex;
           return (
             <li key={s.id}>
-              <button onClick={() => onJump(i + 1)} className={`flex w-full items-start gap-3 px-5 py-3 text-left transition hover:bg-cream/70 ${current ? "bg-leaf/50" : ""}`}>
+              <button disabled={busy || paused} aria-current={current ? "step" : undefined} onClick={() => onJump(i + 1)} className={`step-summary-button flex w-full items-start gap-3 px-5 py-3 text-left transition hover:bg-cream/70 ${current ? "bg-leaf/50" : ""}`}>
                 <span className={`mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-xs font-semibold ${done ? "bg-forest text-white" : current ? "bg-moss text-white" : "bg-cream text-muted"}`}>
                   {done ? "✓" : i + 1}
                 </span>

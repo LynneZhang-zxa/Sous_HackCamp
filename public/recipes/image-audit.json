@@ -52,69 +52,87 @@
   {
     "id": "spaghetti-pomodoro",
     "title": "Spaghetti Pomodoro",
-    "image": "/recipes/placeholder.svg",
+    "image": "/recipes/spaghetti-pomodoro.jpg",
     "exists": true,
-    "sha256": "d378cf3700518b62df855f3c1a800f2664f5e78a0aa37a342541adcb9ca25369",
-    "status": "needs-licensed-photo",
-    "notes": "Shared fallback, not a photograph. Needs a verified matching photograph and license.",
-    "candidate": "spaghetti-pomodoro-commons.jpg"
+    "sha256": "829d39dbb6fcec1c33ae164a43543fa83fa9b0686980fcdc08537c450e1225ad",
+    "status": "verified-illustrative-photo",
+    "notes": "Visual dish review completed. Illustrative photo, not a kitchen-tested image of this exact recipe.",
+    "source": "https://commons.wikimedia.org/wiki/File:Spaghetti_pomodoro,_Venice.jpg",
+    "author": "Gerda Arendt",
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
   },
   {
     "id": "chickpea-spinach-curry",
     "title": "Chickpea Spinach Curry",
-    "image": "/recipes/placeholder.svg",
+    "image": "/recipes/chickpea-spinach-curry.jpg",
     "exists": true,
-    "sha256": "d378cf3700518b62df855f3c1a800f2664f5e78a0aa37a342541adcb9ca25369",
-    "status": "needs-licensed-photo",
-    "notes": "Shared fallback, not a photograph. Needs a verified matching photograph and license.",
-    "candidate": "chickpea-spinach-curry-commons.jpg"
+    "sha256": "ae87eb7d182c70513890d21cf3b3c60d1011a690d0279a7cf3718ddf442c9a06",
+    "status": "verified-illustrative-photo",
+    "notes": "Visual dish review completed. Illustrative photo, not a kitchen-tested image of this exact recipe.",
+    "source": "https://commons.wikimedia.org/wiki/File:Spinach-Chickpea_Curry_(3117324894).jpg",
+    "author": "Kari Sullivan from Austin, TX",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0"
   },
   {
     "id": "miso-soup",
     "title": "Miso Soup",
-    "image": "/recipes/placeholder.svg",
+    "image": "/recipes/miso-soup.jpg",
     "exists": true,
-    "sha256": "d378cf3700518b62df855f3c1a800f2664f5e78a0aa37a342541adcb9ca25369",
-    "status": "needs-licensed-photo",
-    "notes": "Shared fallback, not a photograph. Needs a verified matching photograph and license.",
-    "candidate": "miso-soup-commons.jpg"
+    "sha256": "d84c5689396bc38e567e465d705325c8152d6e06918daed7d761a47a3563416f",
+    "status": "verified-illustrative-photo",
+    "notes": "Visual dish review completed. Illustrative photo, not a kitchen-tested image of this exact recipe.",
+    "source": "https://commons.wikimedia.org/wiki/File:Miso_Soup_001.jpg",
+    "author": "Ocdp",
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
   },
   {
     "id": "teriyaki-salmon",
     "title": "Teriyaki Salmon",
-    "image": "/recipes/placeholder.svg",
+    "image": "/recipes/teriyaki-salmon.jpg",
     "exists": true,
-    "sha256": "d378cf3700518b62df855f3c1a800f2664f5e78a0aa37a342541adcb9ca25369",
-    "status": "needs-licensed-photo",
-    "notes": "Shared fallback, not a photograph. Needs a verified matching photograph and license.",
-    "candidate": "teriyaki-salmon-commons.jpg"
+    "sha256": "673574a1ecdf43ad4bb28d37793877e0b1767b900fdcb216a0c465cdbf5f2bc3",
+    "status": "verified-illustrative-photo",
+    "notes": "Visual dish review completed. Illustrative photo, not a kitchen-tested image of this exact recipe.",
+    "source": "https://commons.wikimedia.org/wiki/File:Liat_Portal_for_Foodie_Disorder_-_Oven-baked_teriyaki_salmon_with_vegetables.jpg",
+    "author": "HaJunkiyada",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
   },
   {
     "id": "vegetable-fried-rice",
     "title": "Vegetable Fried Rice",
-    "image": "/recipes/placeholder.svg",
+    "image": "/recipes/vegetable-fried-rice.jpg",
     "exists": true,
-    "sha256": "d378cf3700518b62df855f3c1a800f2664f5e78a0aa37a342541adcb9ca25369",
-    "status": "needs-licensed-photo",
-    "notes": "Shared fallback, not a photograph. Needs a verified matching photograph and license.",
-    "candidate": "vegetable-fried-rice-commons.jpg"
+    "sha256": "3f4f04985debaa6b737a433e5a5db93669d69ceb9b598f742d11aa7b9edb1fe5",
+    "status": "verified-illustrative-photo",
+    "notes": "Visual dish review completed. Illustrative photo, not a kitchen-tested image of this exact recipe.",
+    "source": "https://commons.wikimedia.org/wiki/File:Kerala_vegetable_fried_rice_2.jpg",
+    "author": "Ganesh Mohan T",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
   },
   {
     "id": "homemade-tacos",
     "title": "Homemade Tacos",
-    "image": "/recipes/placeholder.svg",
+    "image": "/recipes/homemade-tacos.jpg",
     "exists": true,
-    "sha256": "d378cf3700518b62df855f3c1a800f2664f5e78a0aa37a342541adcb9ca25369",
-    "status": "needs-licensed-photo",
-    "notes": "Shared fallback, not a photograph. Needs a verified matching photograph and license.",
-    "candidate": "homemade-tacos-commons.jpg"
+    "sha256": "3998d28830dcbae3ff6abf267fbfff7b2b1278d24889d23141aa698c838dbf11",
+    "status": "verified-illustrative-photo",
+    "notes": "Visual dish review completed. Illustrative photo, not a kitchen-tested image of this exact recipe.",
+    "source": "https://commons.wikimedia.org/wiki/File:Homemade_Tacos_with_Avocado.jpg",
+    "author": "Robert Loescher",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
   },
   {
     "id": "black-bean-quesadillas",
     "title": "Black Bean Quesadillas",
     "image": "/recipes/placeholder.svg",
     "exists": true,
-    "sha256": "d378cf3700518b62df855f3c1a800f2664f5e78a0aa37a342541adcb9ca25369",
+    "sha256": "8235c64fcfde987bbb0630eca4564f016207e3a44f6c42440062d1130703a39a",
     "status": "needs-licensed-photo",
     "notes": "Shared fallback, not a photograph. Needs a verified matching photograph and license.",
     "candidate": "black-bean-quesadillas-commons.jpg"
@@ -124,7 +142,7 @@
     "title": "Greek Chickpea Salad",
     "image": "/recipes/placeholder.svg",
     "exists": true,
-    "sha256": "d378cf3700518b62df855f3c1a800f2664f5e78a0aa37a342541adcb9ca25369",
+    "sha256": "8235c64fcfde987bbb0630eca4564f016207e3a44f6c42440062d1130703a39a",
     "status": "needs-licensed-photo",
     "notes": "Shared fallback, not a photograph. Needs a verified matching photograph and license.",
     "candidate": null
@@ -132,29 +150,35 @@
   {
     "id": "lentil-vegetable-soup",
     "title": "Lentil Vegetable Soup",
-    "image": "/recipes/placeholder.svg",
+    "image": "/recipes/lentil-vegetable-soup.jpg",
     "exists": true,
-    "sha256": "d378cf3700518b62df855f3c1a800f2664f5e78a0aa37a342541adcb9ca25369",
-    "status": "needs-licensed-photo",
-    "notes": "Shared fallback, not a photograph. Needs a verified matching photograph and license.",
-    "candidate": "lentil-vegetable-soup-commons.jpg"
+    "sha256": "4969794af733f96c73f3db5ea6ace0304db0c591843c9a49b09272b5e66cb4db",
+    "status": "verified-illustrative-photo",
+    "notes": "Visual dish review completed. Illustrative photo, not a kitchen-tested image of this exact recipe.",
+    "source": "https://commons.wikimedia.org/wiki/File:Amy%27s_lentil_vegetable_soup.jpg",
+    "author": "Mx. Granger",
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
   },
   {
     "id": "shakshuka",
     "title": "Shakshuka",
-    "image": "/recipes/placeholder.svg",
+    "image": "/recipes/shakshuka.jpg",
     "exists": true,
-    "sha256": "d378cf3700518b62df855f3c1a800f2664f5e78a0aa37a342541adcb9ca25369",
-    "status": "needs-licensed-photo",
-    "notes": "Shared fallback, not a photograph. Needs a verified matching photograph and license.",
-    "candidate": "shakshuka-commons.jpg"
+    "sha256": "927faf6d70587c3fabf5ae8ed01342ba9360401e4f4d9b24507e3ee425039cd4",
+    "status": "verified-illustrative-photo",
+    "notes": "Visual dish review completed. Illustrative photo, not a kitchen-tested image of this exact recipe.",
+    "source": "https://commons.wikimedia.org/wiki/File:Shakshuka_by_Calliopejen1.jpg",
+    "author": "Calliopejen1",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
   },
   {
     "id": "thai-basil-chicken",
     "title": "Thai Basil Chicken",
     "image": "/recipes/placeholder.svg",
     "exists": true,
-    "sha256": "d378cf3700518b62df855f3c1a800f2664f5e78a0aa37a342541adcb9ca25369",
+    "sha256": "8235c64fcfde987bbb0630eca4564f016207e3a44f6c42440062d1130703a39a",
     "status": "needs-licensed-photo",
     "notes": "Shared fallback, not a photograph. Needs a verified matching photograph and license.",
     "candidate": "thai-basil-chicken-commons.jpg"
@@ -162,19 +186,22 @@
   {
     "id": "lemon-herb-chicken",
     "title": "Lemon Herb Chicken",
-    "image": "/recipes/placeholder.svg",
+    "image": "/recipes/lemon-herb-chicken.jpg",
     "exists": true,
-    "sha256": "d378cf3700518b62df855f3c1a800f2664f5e78a0aa37a342541adcb9ca25369",
-    "status": "needs-licensed-photo",
-    "notes": "Shared fallback, not a photograph. Needs a verified matching photograph and license.",
-    "candidate": null
+    "sha256": "596ef10826d54663a6b3caec31bd73a72643202db7e21f85c72df1e9d4213a63",
+    "status": "verified-illustrative-photo",
+    "notes": "Visual dish review completed. Illustrative photo, not a kitchen-tested image of this exact recipe.",
+    "source": "https://commons.wikimedia.org/wiki/File:Grilled_chicken_with_lemon_and_herbs_served_on_a_dark_platter.jpg",
+    "author": "Shixart1985",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0"
   },
   {
     "id": "avocado-pasta",
     "title": "Avocado Pasta",
     "image": "/recipes/placeholder.svg",
     "exists": true,
-    "sha256": "d378cf3700518b62df855f3c1a800f2664f5e78a0aa37a342541adcb9ca25369",
+    "sha256": "8235c64fcfde987bbb0630eca4564f016207e3a44f6c42440062d1130703a39a",
     "status": "needs-licensed-photo",
     "notes": "Shared fallback, not a photograph. Needs a verified matching photograph and license.",
     "candidate": null
@@ -182,39 +209,48 @@
   {
     "id": "mushroom-risotto",
     "title": "Mushroom Risotto",
-    "image": "/recipes/placeholder.svg",
+    "image": "/recipes/mushroom-risotto.jpg",
     "exists": true,
-    "sha256": "d378cf3700518b62df855f3c1a800f2664f5e78a0aa37a342541adcb9ca25369",
-    "status": "needs-licensed-photo",
-    "notes": "Shared fallback, not a photograph. Needs a verified matching photograph and license.",
-    "candidate": null
+    "sha256": "1af625269ffc5886d31db659286d0c2395747f5672c6e2640d82470786d7c77a",
+    "status": "verified-illustrative-photo",
+    "notes": "Visual dish review completed. Illustrative photo, not a kitchen-tested image of this exact recipe.",
+    "source": "https://commons.wikimedia.org/wiki/File:Mushroom_and_Leek_Risotto_(49535206656).jpg",
+    "author": "spurekar",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0"
   },
   {
     "id": "beef-broccoli-stir-fry",
     "title": "Beef and Broccoli Stir-Fry",
-    "image": "/recipes/placeholder.svg",
+    "image": "/recipes/beef-broccoli-stir-fry.jpg",
     "exists": true,
-    "sha256": "d378cf3700518b62df855f3c1a800f2664f5e78a0aa37a342541adcb9ca25369",
-    "status": "needs-licensed-photo",
-    "notes": "Shared fallback, not a photograph. Needs a verified matching photograph and license.",
-    "candidate": null
+    "sha256": "66d830dc275b9725c184a543cc39f0992ff0d3d09582476f4dbaef487f0032d9",
+    "status": "verified-illustrative-photo",
+    "notes": "Visual dish review completed. Illustrative photo, not a kitchen-tested image of this exact recipe.",
+    "source": "https://commons.wikimedia.org/wiki/File:Beef_and_broccoli_stir_fry.jpg",
+    "author": "Joy",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0"
   },
   {
     "id": "roasted-tomato-soup",
     "title": "Roasted Tomato Soup",
-    "image": "/recipes/placeholder.svg",
+    "image": "/recipes/roasted-tomato-soup.jpg",
     "exists": true,
-    "sha256": "d378cf3700518b62df855f3c1a800f2664f5e78a0aa37a342541adcb9ca25369",
-    "status": "needs-licensed-photo",
-    "notes": "Shared fallback, not a photograph. Needs a verified matching photograph and license.",
-    "candidate": null
+    "sha256": "0e17e2eec6d392866919745f829a7e306cafa5512181dba202e8890217789265",
+    "status": "verified-illustrative-photo",
+    "notes": "Visual dish review completed. Illustrative photo, not a kitchen-tested image of this exact recipe.",
+    "source": "https://commons.wikimedia.org/wiki/File:Grilled_cheese_sandwich_with_roasted_tomato_soup.jpg",
+    "author": "jeffreyw",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0"
   },
   {
     "id": "baked-sweet-potato-beans",
     "title": "Baked Sweet Potatoes with Beans",
     "image": "/recipes/placeholder.svg",
     "exists": true,
-    "sha256": "d378cf3700518b62df855f3c1a800f2664f5e78a0aa37a342541adcb9ca25369",
+    "sha256": "8235c64fcfde987bbb0630eca4564f016207e3a44f6c42440062d1130703a39a",
     "status": "needs-licensed-photo",
     "notes": "Shared fallback, not a photograph. Needs a verified matching photograph and license.",
     "candidate": null
@@ -224,7 +260,7 @@
     "title": "Broccoli Cheddar Frittata",
     "image": "/recipes/placeholder.svg",
     "exists": true,
-    "sha256": "d378cf3700518b62df855f3c1a800f2664f5e78a0aa37a342541adcb9ca25369",
+    "sha256": "8235c64fcfde987bbb0630eca4564f016207e3a44f6c42440062d1130703a39a",
     "status": "needs-licensed-photo",
     "notes": "Shared fallback, not a photograph. Needs a verified matching photograph and license.",
     "candidate": null
@@ -234,7 +270,7 @@
     "title": "Lemon Couscous with Chickpeas",
     "image": "/recipes/placeholder.svg",
     "exists": true,
-    "sha256": "d378cf3700518b62df855f3c1a800f2664f5e78a0aa37a342541adcb9ca25369",
+    "sha256": "8235c64fcfde987bbb0630eca4564f016207e3a44f6c42440062d1130703a39a",
     "status": "needs-licensed-photo",
     "notes": "Shared fallback, not a photograph. Needs a verified matching photograph and license.",
     "candidate": null
@@ -244,7 +280,7 @@
     "title": "Creamy Polenta with Mushrooms",
     "image": "/recipes/placeholder.svg",
     "exists": true,
-    "sha256": "d378cf3700518b62df855f3c1a800f2664f5e78a0aa37a342541adcb9ca25369",
+    "sha256": "8235c64fcfde987bbb0630eca4564f016207e3a44f6c42440062d1130703a39a",
     "status": "needs-licensed-photo",
     "notes": "Shared fallback, not a photograph. Needs a verified matching photograph and license.",
     "candidate": null
@@ -252,19 +288,22 @@
   {
     "id": "sesame-tofu-noodles",
     "title": "Sesame Tofu Noodles",
-    "image": "/recipes/placeholder.svg",
+    "image": "/recipes/sesame-tofu-noodles.jpg",
     "exists": true,
-    "sha256": "d378cf3700518b62df855f3c1a800f2664f5e78a0aa37a342541adcb9ca25369",
-    "status": "needs-licensed-photo",
-    "notes": "Shared fallback, not a photograph. Needs a verified matching photograph and license.",
-    "candidate": null
+    "sha256": "9c5caee24fdd8d5b30a42da71d11a4d52c41b700950ec634f6244eb2297cd5a9",
+    "status": "verified-illustrative-photo",
+    "notes": "Visual dish review completed. Illustrative photo, not a kitchen-tested image of this exact recipe.",
+    "source": "https://commons.wikimedia.org/wiki/File:Unique-texture-tofu-noodle-salad-tossed-in-a-sesame-dressing-18.jpg",
+    "author": "Shu-Chun Chuang",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
   },
   {
     "id": "red-lentil-dal",
     "title": "Red Lentil Dal",
     "image": "/recipes/placeholder.svg",
     "exists": true,
-    "sha256": "d378cf3700518b62df855f3c1a800f2664f5e78a0aa37a342541adcb9ca25369",
+    "sha256": "8235c64fcfde987bbb0630eca4564f016207e3a44f6c42440062d1130703a39a",
     "status": "needs-licensed-photo",
     "notes": "Shared fallback, not a photograph. Needs a verified matching photograph and license.",
     "candidate": null
@@ -274,7 +313,7 @@
     "title": "Spinach Ricotta Stuffed Shells",
     "image": "/recipes/placeholder.svg",
     "exists": true,
-    "sha256": "d378cf3700518b62df855f3c1a800f2664f5e78a0aa37a342541adcb9ca25369",
+    "sha256": "8235c64fcfde987bbb0630eca4564f016207e3a44f6c42440062d1130703a39a",
     "status": "needs-licensed-photo",
     "notes": "Shared fallback, not a photograph. Needs a verified matching photograph and license.",
     "candidate": null
@@ -284,7 +323,7 @@
     "title": "White Bean and Kale Skillet",
     "image": "/recipes/placeholder.svg",
     "exists": true,
-    "sha256": "d378cf3700518b62df855f3c1a800f2664f5e78a0aa37a342541adcb9ca25369",
+    "sha256": "8235c64fcfde987bbb0630eca4564f016207e3a44f6c42440062d1130703a39a",
     "status": "needs-licensed-photo",
     "notes": "Shared fallback, not a photograph. Needs a verified matching photograph and license.",
     "candidate": null
@@ -294,7 +333,7 @@
     "title": "Cauliflower Chickpea Traybake",
     "image": "/recipes/placeholder.svg",
     "exists": true,
-    "sha256": "d378cf3700518b62df855f3c1a800f2664f5e78a0aa37a342541adcb9ca25369",
+    "sha256": "8235c64fcfde987bbb0630eca4564f016207e3a44f6c42440062d1130703a39a",
     "status": "needs-licensed-photo",
     "notes": "Shared fallback, not a photograph. Needs a verified matching photograph and license.",
     "candidate": null
@@ -304,7 +343,7 @@
     "title": "Butternut Squash Soup",
     "image": "/recipes/placeholder.svg",
     "exists": true,
-    "sha256": "d378cf3700518b62df855f3c1a800f2664f5e78a0aa37a342541adcb9ca25369",
+    "sha256": "8235c64fcfde987bbb0630eca4564f016207e3a44f6c42440062d1130703a39a",
     "status": "needs-licensed-photo",
     "notes": "Shared fallback, not a photograph. Needs a verified matching photograph and license.",
     "candidate": null
@@ -314,7 +353,7 @@
     "title": "Quinoa Roasted Vegetable Bowls",
     "image": "/recipes/placeholder.svg",
     "exists": true,
-    "sha256": "d378cf3700518b62df855f3c1a800f2664f5e78a0aa37a342541adcb9ca25369",
+    "sha256": "8235c64fcfde987bbb0630eca4564f016207e3a44f6c42440062d1130703a39a",
     "status": "needs-licensed-photo",
     "notes": "Shared fallback, not a photograph. Needs a verified matching photograph and license.",
     "candidate": null
@@ -324,7 +363,7 @@
     "title": "Peanut Sweet Potato Stew",
     "image": "/recipes/placeholder.svg",
     "exists": true,
-    "sha256": "d378cf3700518b62df855f3c1a800f2664f5e78a0aa37a342541adcb9ca25369",
+    "sha256": "8235c64fcfde987bbb0630eca4564f016207e3a44f6c42440062d1130703a39a",
     "status": "needs-licensed-photo",
     "notes": "Shared fallback, not a photograph. Needs a verified matching photograph and license.",
     "candidate": null
@@ -334,7 +373,7 @@
     "title": "Potato Leek Soup",
     "image": "/recipes/placeholder.svg",
     "exists": true,
-    "sha256": "d378cf3700518b62df855f3c1a800f2664f5e78a0aa37a342541adcb9ca25369",
+    "sha256": "8235c64fcfde987bbb0630eca4564f016207e3a44f6c42440062d1130703a39a",
     "status": "needs-licensed-photo",
     "notes": "Shared fallback, not a photograph. Needs a verified matching photograph and license.",
     "candidate": null
@@ -344,7 +383,7 @@
     "title": "Eggplant Tomato Pasta",
     "image": "/recipes/placeholder.svg",
     "exists": true,
-    "sha256": "d378cf3700518b62df855f3c1a800f2664f5e78a0aa37a342541adcb9ca25369",
+    "sha256": "8235c64fcfde987bbb0630eca4564f016207e3a44f6c42440062d1130703a39a",
     "status": "needs-licensed-photo",
     "notes": "Shared fallback, not a photograph. Needs a verified matching photograph and license.",
     "candidate": null
@@ -354,7 +393,7 @@
     "title": "Turkey Bean Chili",
     "image": "/recipes/placeholder.svg",
     "exists": true,
-    "sha256": "d378cf3700518b62df855f3c1a800f2664f5e78a0aa37a342541adcb9ca25369",
+    "sha256": "8235c64fcfde987bbb0630eca4564f016207e3a44f6c42440062d1130703a39a",
     "status": "needs-licensed-photo",
     "notes": "Shared fallback, not a photograph. Needs a verified matching photograph and license.",
     "candidate": null
@@ -364,7 +403,7 @@
     "title": "Baked Lemon Cod",
     "image": "/recipes/placeholder.svg",
     "exists": true,
-    "sha256": "d378cf3700518b62df855f3c1a800f2664f5e78a0aa37a342541adcb9ca25369",
+    "sha256": "8235c64fcfde987bbb0630eca4564f016207e3a44f6c42440062d1130703a39a",
     "status": "needs-licensed-photo",
     "notes": "Shared fallback, not a photograph. Needs a verified matching photograph and license.",
     "candidate": null
@@ -374,7 +413,7 @@
     "title": "Pork Tenderloin with Apples",
     "image": "/recipes/placeholder.svg",
     "exists": true,
-    "sha256": "d378cf3700518b62df855f3c1a800f2664f5e78a0aa37a342541adcb9ca25369",
+    "sha256": "8235c64fcfde987bbb0630eca4564f016207e3a44f6c42440062d1130703a39a",
     "status": "needs-licensed-photo",
     "notes": "Shared fallback, not a photograph. Needs a verified matching photograph and license.",
     "candidate": null
@@ -384,7 +423,7 @@
     "title": "Chicken Noodle Soup",
     "image": "/recipes/placeholder.svg",
     "exists": true,
-    "sha256": "d378cf3700518b62df855f3c1a800f2664f5e78a0aa37a342541adcb9ca25369",
+    "sha256": "8235c64fcfde987bbb0630eca4564f016207e3a44f6c42440062d1130703a39a",
     "status": "needs-licensed-photo",
     "notes": "Shared fallback, not a photograph. Needs a verified matching photograph and license.",
     "candidate": null
@@ -394,7 +433,7 @@
     "title": "Salmon Potato Traybake",
     "image": "/recipes/placeholder.svg",
     "exists": true,
-    "sha256": "d378cf3700518b62df855f3c1a800f2664f5e78a0aa37a342541adcb9ca25369",
+    "sha256": "8235c64fcfde987bbb0630eca4564f016207e3a44f6c42440062d1130703a39a",
     "status": "needs-licensed-photo",
     "notes": "Shared fallback, not a photograph. Needs a verified matching photograph and license.",
     "candidate": null
@@ -404,7 +443,7 @@
     "title": "Ginger Chicken Lettuce Cups",
     "image": "/recipes/placeholder.svg",
     "exists": true,
-    "sha256": "d378cf3700518b62df855f3c1a800f2664f5e78a0aa37a342541adcb9ca25369",
+    "sha256": "8235c64fcfde987bbb0630eca4564f016207e3a44f6c42440062d1130703a39a",
     "status": "needs-licensed-photo",
     "notes": "Shared fallback, not a photograph. Needs a verified matching photograph and license.",
     "candidate": null
@@ -414,7 +453,7 @@
     "title": "Beef Meatballs in Tomato Sauce",
     "image": "/recipes/placeholder.svg",
     "exists": true,
-    "sha256": "d378cf3700518b62df855f3c1a800f2664f5e78a0aa37a342541adcb9ca25369",
+    "sha256": "8235c64fcfde987bbb0630eca4564f016207e3a44f6c42440062d1130703a39a",
     "status": "needs-licensed-photo",
     "notes": "Shared fallback, not a photograph. Needs a verified matching photograph and license.",
     "candidate": null
@@ -424,7 +463,7 @@
     "title": "Shrimp Coconut Noodle Soup",
     "image": "/recipes/placeholder.svg",
     "exists": true,
-    "sha256": "d378cf3700518b62df855f3c1a800f2664f5e78a0aa37a342541adcb9ca25369",
+    "sha256": "8235c64fcfde987bbb0630eca4564f016207e3a44f6c42440062d1130703a39a",
     "status": "needs-licensed-photo",
     "notes": "Shared fallback, not a photograph. Needs a verified matching photograph and license.",
     "candidate": null
@@ -434,7 +473,7 @@
     "title": "Chicken Fajita Skillet",
     "image": "/recipes/placeholder.svg",
     "exists": true,
-    "sha256": "d378cf3700518b62df855f3c1a800f2664f5e78a0aa37a342541adcb9ca25369",
+    "sha256": "8235c64fcfde987bbb0630eca4564f016207e3a44f6c42440062d1130703a39a",
     "status": "needs-licensed-photo",
     "notes": "Shared fallback, not a photograph. Needs a verified matching photograph and license.",
     "candidate": null
@@ -444,7 +483,7 @@
     "title": "Lentil Shepherd's Pie",
     "image": "/recipes/placeholder.svg",
     "exists": true,
-    "sha256": "d378cf3700518b62df855f3c1a800f2664f5e78a0aa37a342541adcb9ca25369",
+    "sha256": "8235c64fcfde987bbb0630eca4564f016207e3a44f6c42440062d1130703a39a",
     "status": "needs-licensed-photo",
     "notes": "Shared fallback, not a photograph. Needs a verified matching photograph and license.",
     "candidate": null
@@ -454,7 +493,7 @@
     "title": "Banana Oat Pancakes",
     "image": "/recipes/placeholder.svg",
     "exists": true,
-    "sha256": "d378cf3700518b62df855f3c1a800f2664f5e78a0aa37a342541adcb9ca25369",
+    "sha256": "8235c64fcfde987bbb0630eca4564f016207e3a44f6c42440062d1130703a39a",
     "status": "needs-licensed-photo",
     "notes": "Shared fallback, not a photograph. Needs a verified matching photograph and license.",
     "candidate": null
@@ -464,7 +503,7 @@
     "title": "Apple Cinnamon Porridge",
     "image": "/recipes/placeholder.svg",
     "exists": true,
-    "sha256": "d378cf3700518b62df855f3c1a800f2664f5e78a0aa37a342541adcb9ca25369",
+    "sha256": "8235c64fcfde987bbb0630eca4564f016207e3a44f6c42440062d1130703a39a",
     "status": "needs-licensed-photo",
     "notes": "Shared fallback, not a photograph. Needs a verified matching photograph and license.",
     "candidate": null
@@ -474,7 +513,7 @@
     "title": "Savory Spinach Oatmeal",
     "image": "/recipes/placeholder.svg",
     "exists": true,
-    "sha256": "d378cf3700518b62df855f3c1a800f2664f5e78a0aa37a342541adcb9ca25369",
+    "sha256": "8235c64fcfde987bbb0630eca4564f016207e3a44f6c42440062d1130703a39a",
     "status": "needs-licensed-photo",
     "notes": "Shared fallback, not a photograph. Needs a verified matching photograph and license.",
     "candidate": null
@@ -484,7 +523,7 @@
     "title": "Mediterranean Tuna Bean Salad",
     "image": "/recipes/placeholder.svg",
     "exists": true,
-    "sha256": "d378cf3700518b62df855f3c1a800f2664f5e78a0aa37a342541adcb9ca25369",
+    "sha256": "8235c64fcfde987bbb0630eca4564f016207e3a44f6c42440062d1130703a39a",
     "status": "needs-licensed-photo",
     "notes": "Shared fallback, not a photograph. Needs a verified matching photograph and license.",
     "candidate": null
@@ -494,7 +533,7 @@
     "title": "Roasted Carrot Hummus Wraps",
     "image": "/recipes/placeholder.svg",
     "exists": true,
-    "sha256": "d378cf3700518b62df855f3c1a800f2664f5e78a0aa37a342541adcb9ca25369",
+    "sha256": "8235c64fcfde987bbb0630eca4564f016207e3a44f6c42440062d1130703a39a",
     "status": "needs-licensed-photo",
     "notes": "Shared fallback, not a photograph. Needs a verified matching photograph and license.",
     "candidate": null

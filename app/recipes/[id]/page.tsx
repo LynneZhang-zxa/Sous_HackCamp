@@ -1,3 +1,4 @@
+import { RecipePhotoCredit } from "@/components/RecipePhotoCredit";
 import { SaveRecipe } from "@/components/SavedRecipes";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -17,11 +18,11 @@ export default async function RecipePage({ params }: { params: Promise<{ id: str
   if (!recipe) notFound();
   return <>
     <Nav browsing />
-    <main className="mx-auto max-w-6xl px-4 py-10 pb-20 sm:px-6">
+    <main data-sous-page={`/recipes/${recipe.id}`} className="mx-auto max-w-6xl px-4 py-10 pb-20 sm:px-6">
       <Link href="/recipes" className="text-sm font-semibold text-forest">← All recipes</Link>
       <article className="mt-6">
         <div className="grid items-start gap-8 md:grid-cols-2">
-          <RecipeImage src={recipe.image} title={recipe.title} loading="eager" className="aspect-[4/3] w-full rounded-3xl object-cover shadow-card" />
+          <div><RecipeImage src={recipe.image} title={recipe.title} loading="eager" className="aspect-[4/3] w-full rounded-3xl object-cover shadow-card" /><RecipePhotoCredit id={recipe.id} /></div>
           <div className="min-w-0">
             <p className="text-sm font-semibold text-forest">{recipe.cuisine}</p>
             <h1 className="mt-3 font-display text-4xl sm:text-5xl">{recipe.title}</h1>

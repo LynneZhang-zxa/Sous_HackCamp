@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { ToolsMenu } from "./access/ToolsMenu";
+import { AccessSettings } from "./access/AccessSettings";
 
 export function Nav({ onSoon, browsing = false }: { onSoon?: () => void; browsing?: boolean }) {
   return (
@@ -14,18 +16,11 @@ export function Nav({ onSoon, browsing = false }: { onSoon?: () => void; browsin
         <nav className="landing-nav-links" aria-label="Primary">
           <Link href="/">Home</Link>
           <Link href="/collection/my-recipes">My Recipes</Link>
-          <details className="relative">
-            <summary className="cursor-pointer rounded-full px-3 py-2">Tools</summary>
-            <div className="absolute left-0 top-full z-50 w-60 rounded-2xl bg-paper p-4 shadow-float">
-              <Link href="/tools#ingredients">What Can I Cook?</Link>
-              <Link href="/tools#upload">Upload Recipe</Link>
-              <Link href="/tools#history">History</Link>
-            </div>
-          </details>
+          <ToolsMenu />
         </nav>
         <div className="flex items-center gap-2">
           <Link href="/recipes#recipe-search" aria-label="Search" className="rounded-full bg-paper px-3 py-2 shadow-card">Search</Link>
-          <details className="relative"><summary aria-label="Settings" className="cursor-pointer rounded-full bg-paper px-3 py-2 shadow-card">Settings</summary><p className="absolute right-0 z-50 w-52 rounded-2xl bg-paper p-4 shadow-float">Settings are coming soon.</p></details>
+          <AccessSettings />
         </div>
       </div>
     </header>

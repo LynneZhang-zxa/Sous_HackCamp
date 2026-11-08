@@ -9,3 +9,5 @@ out/
 .DS_Store
 coverage/
 supabase/.temp/
+
+.voice-tunnel.local.json

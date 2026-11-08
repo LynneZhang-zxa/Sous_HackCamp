@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import { VoiceComposer } from "@/components/VoiceComposer";
+import { AccessProvider } from "@/components/access/AccessProvider";
+import { RouteAccessibility } from "@/components/access/RouteAccessibility";
 
 // Keep fonts in the repository so builds do not depend on Google Fonts access.
 const display = localFont({
@@ -30,7 +33,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${display.variable} ${body.variable} ${hand.variable}`}>
-      <body className="bg-cream text-ink font-body antialiased">{children}</body>
+      <body className="bg-cream text-ink font-body antialiased"><AccessProvider><RouteAccessibility />{children}<VoiceComposer /></AccessProvider></body>
     </html>
   );
 }

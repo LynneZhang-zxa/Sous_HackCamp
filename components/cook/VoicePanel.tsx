@@ -1,5 +1,6 @@
 "use client";
 
+import { cleanVoiceTranscript } from "@/lib/voice-transcript";
 import { useEffect, useState } from "react";
 import { MicButton } from "@/components/cook/MicButton";
 import type { Line, VoiceStatus } from "@/components/voice/useVoiceCall";
@@ -16,6 +17,7 @@ export function VoicePanel({
   onMic,
   onEnd,
   onCancelTimer,
+  microphonePanel,
 }: {
   status: VoiceStatus;
   error: string | null;
@@ -25,6 +27,7 @@ export function VoicePanel({
   onMic: () => void;
   onEnd: () => void;
   onCancelTimer: (label: string) => void;
+  microphonePanel?: React.ReactNode;
 }) {
   const lastCook = [...lines].reverse().find((l) => l.role === "cook");
   const lastSous = [...lines].reverse().find((l) => l.role === "sous");
@@ -34,12 +37,12 @@ export function VoicePanel({
       : status === "speaking"
         ? "Sous is speaking"
         : status === "sleeping"
-          ? "Paused"
+          ? "Microphone muted"
           : status === "connecting"
             ? "Connecting to Sous"
             : status === "ended"
-              ? "Session ended"
-              : status === "error"
+              ? "Voice session ended"
+              : status === "disconnected" ? "Voice disconnected" : status === "screen" ? "On-screen guidance" : status === "error"
                 ? "Couldn't connect"
                 : "Ready";
   const hint =
@@ -48,7 +51,7 @@ export function VoicePanel({
       : status === "speaking"
         ? "Interrupt any time, Sous will stop."
         : status === "sleeping"
-          ? "Tap the mic or say nothing. Timers still run."
+          ? "Use Unmute microphone to speak again. Guidance pause is separate; timers still run."
           : status === "connecting"
             ? "Allow the microphone when asked."
             : "";
@@ -81,6 +84,8 @@ export function VoicePanel({
         )}
       </div>
 
+      {microphonePanel}
+
       {(lastCook || lastSous) && (
         <div className="space-y-2">
           {lastCook && (
@@ -92,7 +97,7 @@ export function VoicePanel({
           {lastSous && (
             <div className="rounded-2xl bg-leaf px-4 py-3">
               <p className="text-[11px] font-semibold uppercase tracking-wider text-forest">Sous</p>
-              <p className="mt-0.5 text-sm text-forest-deep">{lastSous.text}</p>
+              <p className="mt-0.5 text-sm text-forest-deep">{cleanVoiceTranscript(lastSous.text)}</p>
             </div>
           )}
         </div>
@@ -125,10 +130,10 @@ export function VoicePanel({
       )}
 
       {state && (
-        <div className="flex items-center justify-between px-1 text-xs text-muted">
+        <div className="voice-session-footer flex items-center justify-between px-1 text-xs text-muted">
           <span>Serving {state.servings}</span>
           <button onClick={onEnd} className="rounded-full px-3 py-1.5 font-medium text-coral transition hover:bg-coral-tint">
-            End cooking
+            End voice connection
           </button>
         </div>
       )}
@@ -156,11 +161,11 @@ function TimerRow({ label, endsAt, seconds, onCancel }: { label: string; endsAt:
       </svg>
       <span className="min-w-0 flex-1">
         <span className="block truncate text-sm font-medium">{label}</span>
-        <span className={`block font-mono text-lg tabular-nums ${left <= 10 ? "text-coral" : ""}`}>
+        <span role="timer" aria-label={`${label}: ${Math.floor(left/60)} minutes ${left%60} seconds remaining`} className={`block font-mono text-lg tabular-nums ${left <= 10 ? "text-coral" : ""}`}>
           {mm}:{ss}
         </span>
       </span>
-      <button onClick={onCancel} className="text-xs text-muted hover:text-coral">
+      <button aria-label={`Cancel ${label} timer`} onClick={onCancel} className="text-xs text-muted hover:text-coral">
         Cancel
       </button>
     </li>

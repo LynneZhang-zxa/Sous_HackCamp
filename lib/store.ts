@@ -1,5 +1,5 @@
 import { randomUUID, randomBytes } from "node:crypto";
-import { newSession, type SessionState } from "./session";
+import { configureAccess, newSession, type SessionState } from "./session";
 import { supabaseAdmin } from "./supabase";
 
 // In-memory first (fast, reliable for a single dev server), mirrored to Supabase so a
@@ -7,8 +7,9 @@ import { supabaseAdmin } from "./supabase";
 const g = globalThis as unknown as { __sousSessions?: Map<string, SessionState> };
 const memory = (g.__sousSessions ??= new Map<string, SessionState>());
 
-export async function createSession(recipeId: string): Promise<SessionState> {
-  const state = newSession(recipeId, randomUUID(), randomBytes(16).toString("hex"));
+export async function createSession(recipeId: string, preferences?: unknown): Promise<SessionState> {
+  let state = newSession(recipeId, randomUUID(), randomBytes(16).toString("hex"));
+  if (preferences !== undefined) state = configureAccess(state,preferences).state;
   memory.set(state.id, state);
   await mirror(state);
   return state;
@@ -44,4 +45,12 @@ async function mirror(state: SessionState) {
     updated_at: new Date(state.updatedAt).toISOString(),
   });
   if (error) console.warn("[sous] supabase write failed", error.message);
+}
+
+// Serialize tool actions on this server, so screen and voice updates do not overwrite one another.
+const queues = new Map<string,Promise<unknown>>();
+export async function withSessionLock<T>(id: string, action: () => Promise<T>): Promise<T> {
+ const previous=queues.get(id) ?? Promise.resolve();
+ const current=previous.catch(()=>{}).then(action);queues.set(id,current);
+ try{return await current;}finally{if(queues.get(id)===current)queues.delete(id);}
 }

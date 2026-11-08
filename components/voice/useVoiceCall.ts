@@ -1,10 +1,15 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import { cleanVoiceTranscript } from "@/lib/voice-transcript";
+import { readyPlaybackMarks, type PlaybackMark } from "@/lib/playback-marks";
+import { normalizeAccess, type AccessPreferences } from "@/lib/access-preferences";
+import { RECOVERY_KEY, type CookingRecovery } from "@/lib/cooking-recovery";
 import type { Recipe } from "@/lib/recipe";
 import type { SessionState } from "@/lib/session";
 
-export type VoiceStatus = "idle" | "connecting" | "listening" | "speaking" | "sleeping" | "ended" | "error";
+export type VoiceStatus = "idle" | "connecting" | "listening" | "speaking" | "sleeping" | "ended" | "error" | "disconnected" | "screen";
+export type MicrophoneInfo = {level:number;framesSent:number;device:string;contextState:string;trackMuted:boolean;lastFrameAt:number};
 export type Line = { id: number; role: "cook" | "sous"; text: string; at: number };
 
 type StartResponse = {
@@ -17,6 +22,7 @@ type StartResponse = {
   recipe: Recipe;
   warnings: string[];
   error?: string;
+  guidance?: {spoken:string};
 };
 
 type Frame = Record<string, unknown> & { type?: string };
@@ -31,27 +37,38 @@ function parseUtterance(f: Frame): { role: "cook" | "sous"; text: string; final:
   const who = String(f.role ?? f.speaker ?? f.from ?? f.source ?? f.participant ?? "").toLowerCase();
   const role: "cook" | "sous" = /user|caller|human|you|customer/.test(who) ? "cook" : /agent|assistant|ai|bot|model/.test(who) ? "sous" : f.type === "transcript" ? "cook" : "sous";
   const finalRaw = f.final ?? f.is_final ?? f.isFinal ?? f.completed;
-  return { role, text: text.trim(), final: finalRaw === undefined ? true : Boolean(finalRaw) };
+  const cleaned=cleanVoiceTranscript(text);
+  if(!cleaned)return null;
+  return { role, text: cleaned, final: finalRaw === undefined ? true : Boolean(finalRaw) };
 }
 
 export function useVoiceCall() {
   const [status, setStatus] = useState<VoiceStatus>("idle");
+  const [microphone,setMicrophone]=useState<MicrophoneInfo>({level:0,framesSent:0,device:"",contextState:"inactive",trackMuted:false,lastFrameAt:0});
+  const [inputDevices,setInputDevices]=useState<MediaDeviceInfo[]>([]);
+  const [micMuted,setMicMuted] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [lines, setLines] = useState<Line[]>([]);
   const [state, setState] = useState<SessionState | null>(null);
   const [recipe, setRecipe] = useState<Recipe | null>(null);
   const [warnings, setWarnings] = useState<string[]>([]);
+  const [announcement,setAnnouncement] = useState("");
   const [callId, setCallId] = useState<string | null>(null);
 
   const r = useRef({
     ws: null as WebSocket | null,
     captureCtx: null as AudioContext | null,
+    captureNodes: [] as AudioNode[],
+    callReady: false,
+    capturing: false,
+    sentFrames: 0,
+    lastMeterAt: 0,
     playCtx: null as AudioContext | null,
     stream: null as MediaStream | null,
     muted: false,
     base: "listening" as "listening" | "sleeping",
     playing: new Set<AudioBufferSourceNode>(),
-    heldMarks: [] as Frame[],
+    heldMarks: [] as PlaybackMark<AudioBufferSourceNode,Frame>[],
     playhead: 0,
     sessionId: "",
     secret: "",
@@ -63,7 +80,52 @@ export function useVoiceCall() {
     lineId: 0,
     partialId: null as number | null,
     closed: false,
+    starting: false,
+    generation: 0,
+    preferences: normalizeAccess(null),
+    connectTimer: 0 as ReturnType<typeof setTimeout> | 0,
   });
+
+  const connectMicrophone=useCallback(async(deviceId?:string)=>{
+    const ref=r.current;if(ref.capturing)throw new Error("The microphone is still connecting. Try again in a moment.");ref.capturing=true;
+    const generation=ref.generation;
+    let stream:MediaStream|null=null;let ctx:AudioContext|null=null;
+    try{
+      stream=await navigator.mediaDevices.getUserMedia({audio:{channelCount:1,echoCancellation:true,noiseSuppression:true,autoGainControl:true,...(deviceId ? {deviceId:{exact:deviceId}}:{})}});
+      if(ref.closed || generation!==ref.generation){stream.getTracks().forEach(t=>t.stop());return;}
+      try{ctx=new AudioContext({sampleRate:16000});}catch{ctx=new AudioContext();}
+      await ctx.audioWorklet.addModule("/pcm-worklet.js");
+      const source=ctx.createMediaStreamSource(stream),node=new AudioWorkletNode(ctx,"pcm-worklet"),sink=ctx.createGain();
+      sink.gain.value=0;source.connect(node);node.connect(sink);sink.connect(ctx.destination);
+      await ctx.resume();
+      if(ref.closed || generation!==ref.generation){stream.getTracks().forEach(t=>t.stop());await ctx.close();return;}
+      const oldStream=ref.stream,oldContext=ref.captureCtx;
+      ref.stream=stream;ref.captureCtx=ctx;ref.captureNodes=[source,node,sink];
+      oldStream?.getTracks().forEach(t=>t.stop());void oldContext?.close().catch(()=>{});
+      const track=stream.getAudioTracks()[0];
+      if(!track)throw new Error("No microphone audio track is available.");
+      setMicrophone({level:0,framesSent:ref.sentFrames,device:track.label || "Default microphone",contextState:ctx.state,trackMuted:track.muted,lastFrameAt:0});
+      node.port.onmessage=(ev:MessageEvent<ArrayBuffer>)=>{
+        if(ref.stream!==stream || ref.closed)return;
+        const pcm=new Int16Array(ev.data);let sum=0;for(const n of pcm)sum+=(n/32768)**2;
+        const ws=ref.ws;
+        // The provider requires start_call, then call_started, before microphone audio.
+        if(ref.callReady && ws?.readyState===WebSocket.OPEN){ws.send(ref.muted ? ref.silence : ev.data);ref.sentFrames++;}
+        const now=Date.now();if(now-ref.lastMeterAt>=200){ref.lastMeterAt=now;setMicrophone({level:Math.min(1,Math.sqrt(sum/Math.max(pcm.length,1))*8),framesSent:ref.sentFrames,device:track.label || "Default microphone",contextState:ctx!.state,trackMuted:track.muted,lastFrameAt:now});}
+      };
+      node.onprocessorerror=()=>setError("Microphone audio processing stopped. Choose Reconnect microphone.");
+      track.onended=()=>{if(ref.stream===stream && !ref.closed)setError("The selected microphone stopped. Choose another input or reconnect the microphone.");};
+      try{setInputDevices((await navigator.mediaDevices.enumerateDevices()).filter(d=>d.kind==="audioinput"));}catch{setInputDevices([]);}
+    }catch(error){
+      if(stream!==ref.stream){stream?.getTracks().forEach(t=>t.stop());void ctx?.close().catch(()=>{});}
+      const e=error as Error;
+      const message=e.name==="NotAllowedError" ? "Microphone permission is blocked. Allow microphone access for localhost in Chrome and macOS Privacy & Security, then reconnect." : e.name==="NotFoundError" ? "No microphone was found. Connect an input device and try again." : e.name==="NotReadableError" ? "The microphone could not be opened. Check whether another application or the system is blocking it." : e.message;
+      throw new Error(message);
+    }finally{ref.capturing=false;}
+  },[]);
+  const reconnectMicrophone=useCallback(async(deviceId?:string)=>{
+    try{await connectMicrophone(deviceId);await r.current.playCtx?.resume();setError(null);}catch(e){setError((e as Error).message);}
+  },[connectMicrophone]);
 
   const addLine = useCallback((role: "cook" | "sous", text: string, final: boolean) => {
     setLines((prev) => {
@@ -91,13 +153,14 @@ export function useVoiceCall() {
 
   const sendHeldMarks = useCallback(() => {
     const ref = r.current;
-    while (ref.heldMarks.length) send(ref.heldMarks.shift()!);
+    for(const mark of readyPlaybackMarks(ref.heldMarks,ref.playing))send(mark);
   }, [send]);
 
   const setBase = useCallback((base: "listening" | "sleeping") => {
     const ref = r.current;
     ref.base = base;
     ref.muted = base === "sleeping";
+    setMicMuted(ref.muted);
     if (ref.playing.size === 0) setStatus(base);
   }, []);
 
@@ -105,7 +168,7 @@ export function useVoiceCall() {
     (frame: Frame) => {
       const ref = r.current;
       const ctx = ref.playCtx;
-      if (!ctx || typeof frame.data !== "string") return;
+      if (ref.closed || !ctx || typeof frame.data !== "string") return;
       const bytes = Uint8Array.from(atob(frame.data), (c) => c.charCodeAt(0));
       const pcm = new Int16Array(bytes.buffer, 0, bytes.length >> 1);
       if (!pcm.length) return;
@@ -122,10 +185,9 @@ export function useVoiceCall() {
       setStatus("speaking");
       src.onended = () => {
         ref.playing.delete(src);
-        if (ref.playing.size === 0) {
-          sendHeldMarks();
-          setStatus(ref.base);
-        }
+        if(ref.closed || ref.playCtx!==ctx)return;
+        sendHeldMarks();
+        if(ref.playing.size===0)setStatus(ref.base);
       };
     },
     [sendHeldMarks]
@@ -143,7 +205,7 @@ export function useVoiceCall() {
     ref.playing.clear();
     ref.playhead = 0;
     sendHeldMarks();
-    setStatus(ref.base);
+    if(ref.ws && !ref.closed)setStatus(ref.base);
   }, [sendHeldMarks]);
 
   const refresh = useCallback(async () => {
@@ -151,7 +213,10 @@ export function useVoiceCall() {
     if (!ref.sessionId) return;
     try {
       const res = await fetch(`/api/session/${ref.sessionId}`, { cache: "no-store" });
-      if (!res.ok) return;
+      if (!res.ok) {
+        if(res.status===404){setError("This cooking session is no longer available. Start a new session; old timers cannot be recovered.");setStatus("error");ref.sessionId="";}
+        return;
+      }
       const s = (await res.json()) as SessionState;
       setState(s);
       if (s.voiceCommand && s.voiceCommand.at > ref.lastSleepAt) {
@@ -165,27 +230,33 @@ export function useVoiceCall() {
 
   /** Apply a tool from the screen (manual controls, timer firing). */
   const act = useCallback(
-    async (tool: string, args: Record<string, unknown> = {}, opts: { notifyAgent?: boolean } = {}) => {
+    async (tool: string, args: Record<string, unknown> = {}, opts: { notifyAgent?: boolean; speak?: boolean } = {}) => {
       const ref = r.current;
       if (!ref.sessionId) return null;
+      try {
       const res = await fetch("/api/tools", {
         method: "POST",
         headers: { "Content-Type": "application/json", "X-Sous-Session": ref.sessionId, "X-Sous-Secret": ref.secret },
         body: JSON.stringify({ tool, arguments: args, call: { id: callId ?? undefined } }),
       });
-      const result = (await res.json().catch(() => ({}))) as { spoken?: string; stepNumber?: number; title?: string };
+      const result = (await res.json().catch(() => ({}))) as { spoken?: string; stepNumber?: number; title?: string; error?: string; accessPreferences?: AccessPreferences };
+      if(!res.ok)throw new Error(result.error ?? "The requested change was not confirmed. Try again.");
+      if(result.accessPreferences)ref.preferences=normalizeAccess(result.accessPreferences);
+      setError(null);
+      setAnnouncement(result.spoken ?? "");
       await refresh();
-      if (opts.notifyAgent && result.stepNumber) {
+      if (opts.notifyAgent && result.spoken) {
         send({
           type: "call_event",
           name: "step.changed",
-          payload: { step: `step ${result.stepNumber}`, title: result.title ?? "" },
-          hint: "The cook changed steps on the screen. Remember the new step. Say nothing unless asked.",
-          speak: false,
+          payload: { step: result.stepNumber ?? null, title: result.title ?? "", confirmedInstruction:result.spoken },
+          hint: "The screen action is already confirmed. Read the confirmed instruction if speaking is requested. Do not advance or repeat the tool action.",
+          speak: opts.speak ?? ref.preferences.voiceFirst,
           priority: "normal",
         });
       }
       return result;
+      } catch(e){setError((e as Error).message);setAnnouncement("The requested change could not be confirmed. Check the displayed progress or reconnect before retrying.");return null;}
     },
     [callId, refresh, send]
   );
@@ -193,6 +264,10 @@ export function useVoiceCall() {
   const cleanup = useCallback(() => {
     const ref = r.current;
     ref.closed = true;
+    ref.callReady=false;
+    ref.captureNodes=[];
+    ref.heldMarks=[];ref.playhead=0;
+    if(ref.connectTimer)clearTimeout(ref.connectTimer);ref.connectTimer=0;
     if (ref.pingTimer) clearInterval(ref.pingTimer);
     if (ref.pollTimer) clearInterval(ref.pollTimer);
     ref.pingTimer = 0;
@@ -211,11 +286,15 @@ export function useVoiceCall() {
       }
     }
     ref.playing.clear();
+    try{ref.ws?.close();}catch{/* already closed */}
     ref.ws = null;
   }, []);
 
   const stop = useCallback(() => {
     const ref = r.current;
+    ref.generation++;
+    ref.starting=false;
+    try{sessionStorage.removeItem(RECOVERY_KEY);}catch{/* optional recovery storage */}
     send({ type: "end_call" });
     try {
       ref.ws?.close();
@@ -231,6 +310,8 @@ export function useVoiceCall() {
       const ref = r.current;
       switch (f.type) {
         case "call_started":
+          ref.callReady=true;
+          if(ref.connectTimer)clearTimeout(ref.connectTimer);ref.connectTimer=0;
           setCallId(String(f.call_id ?? ""));
           setStatus(ref.base);
           break;
@@ -238,8 +319,8 @@ export function useVoiceCall() {
           play(f);
           break;
         case "mark":
-          ref.heldMarks.push(f);
-          if (ref.playing.size === 0) sendHeldMarks();
+          ref.heldMarks.push({frame:f,pending:new Set(ref.playing)});
+          sendHeldMarks();
           break;
         case "clear_audio":
           stopPlayback();
@@ -264,6 +345,7 @@ export function useVoiceCall() {
           const msg = `${f.code ?? "error"}: ${f.message ?? ""}`;
           console.error("[alebex]", msg);
           setError(msg);
+          if(!["already_started","message_too_large","bad_message"].includes(String(f.code))){cleanup();setStatus("error");}
           break;
         }
         default:
@@ -274,71 +356,65 @@ export function useVoiceCall() {
   );
 
   const start = useCallback(
-    async (recipeId?: string) => {
+    async (recipeId?: string, options?: {preferences?: AccessPreferences;resume?: CookingRecovery;resumeCurrent?: boolean;screenOnly?: boolean}) => {
       const ref = r.current;
+      if(ref.starting)return;
+      cleanup();
+      ref.starting=true;
+      const generation=++ref.generation;
+      const screenOnly=options?.screenOnly ?? false;
       setError(null);
       setLines([]);
       setStatus("connecting");
       try {
+        const recovery=options?.resume ?? (options?.resumeCurrent && ref.sessionId ? {sessionId:ref.sessionId,secret:ref.secret}:null);
+        if(options?.resumeCurrent && !recovery)throw new Error("Recovery credentials are unavailable. Start a new session explicitly; previous progress has not been restored.");
         // 1. Ask the server for a session, a socket token and the start_call frame.
-        const res = await fetch("/api/call/start", {
+        const res = await fetch(screenOnly ? "/api/session" : "/api/call/start", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ recipeId }),
+          body: JSON.stringify({ recipeId, ...(options?.preferences ? {preferences:options.preferences}:{}), ...(recovery ? {resumeSessionId:recovery.sessionId,resumeSecret:recovery.secret}: {}) }),
         });
         const cfg = (await res.json()) as StartResponse;
+        if(generation!==ref.generation)return;
         if (!res.ok || cfg.error) throw new Error(cfg.error ?? `start failed (${res.status})`);
+        ref.preferences=normalizeAccess(options?.preferences ?? cfg.state.access?.preferences);
         ref.sessionId = cfg.sessionId;
         ref.secret = cfg.secret;
         ref.closed = false;
         ref.base = "listening";
         ref.muted = false;
+        setMicMuted(false);
+        ref.sentFrames=0;ref.lastMeterAt=0;ref.callReady=false;
         ref.fired.clear();
         ref.lastSleepAt = 0;
         setState(cfg.state);
         setRecipe(cfg.recipe);
         setWarnings(cfg.warnings ?? []);
+        try{sessionStorage.setItem(RECOVERY_KEY,JSON.stringify({sessionId:cfg.sessionId,secret:cfg.secret,recipeId:cfg.recipe.id,savedAt:Date.now()}));}catch{setWarnings(previous=>[...previous,"Recovery is unavailable in this browser. Keep this page open to retain progress."]);}
+        if(screenOnly){setStatus("screen");setAnnouncement(cfg.guidance?.spoken ?? "On-screen guidance ready. No voice call has been started.");return;}
 
-        // 2. Microphone and audio contexts (inside the click, so autoplay rules are satisfied).
-        const stream = await navigator.mediaDevices.getUserMedia({
-          audio: { channelCount: 1, echoCancellation: true, noiseSuppression: true, autoGainControl: true },
-        });
-        ref.stream = stream;
+        // Microphone capture is independent of guidance pause, and is gated by call_started.
         const playCtx = new AudioContext({ sampleRate: 24000 });
         ref.playCtx = playCtx;
-        let captureCtx: AudioContext;
-        try {
-          captureCtx = new AudioContext({ sampleRate: 16000 });
-        } catch {
-          captureCtx = new AudioContext();
-        }
-        ref.captureCtx = captureCtx;
-        await captureCtx.audioWorklet.addModule("/pcm-worklet.js");
-        const source = captureCtx.createMediaStreamSource(stream);
-        const node = new AudioWorkletNode(captureCtx, "pcm-worklet");
-        const sink = captureCtx.createGain();
-        sink.gain.value = 0;
-        source.connect(node);
-        node.connect(sink);
-        sink.connect(captureCtx.destination);
-        node.port.onmessage = (ev: MessageEvent<ArrayBuffer>) => {
-          const ws = ref.ws;
-          if (ws && ws.readyState === WebSocket.OPEN) ws.send(ref.muted ? ref.silence : ev.data);
-        };
+        playCtx.onstatechange=()=>{if(!ref.closed && ref.playCtx===playCtx && playCtx.state==="suspended")setError("Audio playback is paused by the browser. Choose Resume audio to continue this call.");};
         await playCtx.resume();
-        await captureCtx.resume();
+        await connectMicrophone();
+        if(generation!==ref.generation)return;
 
         // 3. Open the call.
         const ws = new WebSocket(cfg.wsUrl, [cfg.subprotocol]);
         ws.binaryType = "arraybuffer";
+        if(generation!==ref.generation){ws.close();return;}
         ref.ws = ws;
+        ref.connectTimer=setTimeout(()=>{if(ref.ws===ws && !ref.closed){cleanup();setStatus("disconnected");setError("The voice connection timed out. Your confirmed progress is kept. Resume or use on-screen guidance.");}},20000);
         ws.onopen = () => {
           ws.send(JSON.stringify(cfg.startCall));
           ref.pingTimer = setInterval(() => send({ type: "ping" }), PING_MS);
-          ref.pollTimer = setInterval(() => void refresh(), POLL_MS);
+
         };
         ws.onmessage = (ev) => {
-          if (typeof ev.data !== "string") return;
+          if(ref.ws!==ws || ref.closed || typeof ev.data !== "string")return;
           try {
             handleFrame(JSON.parse(ev.data) as Frame);
           } catch {
@@ -349,23 +425,31 @@ export function useVoiceCall() {
         ws.onclose = (ev) => {
           if (ref.closed) return;
           cleanup();
-          setStatus((s) => (s === "ended" ? s : "ended"));
-          if (ev.code !== 1000 && ev.code !== 1005) setError((e) => e ?? `Connection closed (${ev.code})`);
+          setStatus("disconnected");
+          setError(`Voice disconnected (${ev.code}). Your confirmed progress is kept. Resume the session or continue with on-screen controls.`);
         };
       } catch (e) {
+        if(generation!==ref.generation)return;
         cleanup();
         setError((e as Error).message);
         setStatus("error");
-      }
+      } finally {if(generation===ref.generation)ref.starting=false;}
     },
-    [cleanup, handleFrame, refresh, send]
+    [cleanup, connectMicrophone, handleFrame, refresh, send]
   );
 
   const toggleSleep = useCallback(() => {
     const ref = r.current;
-    if (status === "idle" || status === "ended" || status === "error") return;
+    if (!["listening","speaking","sleeping"].includes(status))return;
     setBase(ref.base === "sleeping" ? "listening" : "sleeping");
   }, [setBase, status]);
+
+  const resumeAudio=useCallback(async()=>{
+    try{await r.current.playCtx?.resume();await r.current.captureCtx?.resume();setError(null);}catch{setError("Audio could not resume. Check this site's sound permissions, then try Resume audio again.");}
+  },[]);
+
+  // Session polling survives voice disconnection; timers do not depend on the microphone.
+  useEffect(()=>{if(!state?.id)return;const timer=setInterval(()=>void refresh(),POLL_MS);return()=>clearInterval(timer);},[state?.id,refresh]);
 
   // Fire timers from the browser clock: chime, tell the agent, mark it fired.
   useEffect(() => {
@@ -376,11 +460,12 @@ export function useVoiceCall() {
       if (t.status !== "running" || t.endsAt > now || ref.fired.has(t.id)) continue;
       ref.fired.add(t.id);
       chime(ref.playCtx);
+      setAnnouncement(`The ${t.label} timer is done. A timer does not confirm safe doneness.`);
       send({
         type: "call_event",
         name: "timer.done",
         payload: { timer: t.label },
-        hint: `Tell the cook their ${t.label} timer is done and what to do next on the current step.`,
+        hint: `Tell the cook their ${t.label} timer is done. Do not advance or resume paused guidance. Timer completion does not verify safe doneness.`,
         speak: true,
         priority: "interrupt",
         idempotencyKey: `timer-${t.id}`,
@@ -389,9 +474,9 @@ export function useVoiceCall() {
     }
   }, [state, send, act]);
 
-  useEffect(() => () => cleanup(), [cleanup]);
+  useEffect(() => () => {r.current.generation++;cleanup();}, [cleanup]);
 
-  return { status, error, lines, state, recipe, warnings, callId, start, stop, toggleSleep, act, refresh };
+  return { status, micMuted, microphone, inputDevices, reconnectMicrophone, resumeAudio, error, lines, state, recipe, warnings, callId, announcement, start, stop, toggleSleep, stopPlayback, act, refresh };
 }
 
 function chime(ctx: AudioContext | null) {
